@@ -1,15 +1,47 @@
 ---
 import "../styles/index.css";
 import Nav from "../components/Nav.astro";
-const { title } = Astro.props;
+const { title, desc } = Astro.props;
 ---
 
 <html lang="en">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link
+      rel="icon"
+      type="image/svg+xml"
+      href="https://www.gravatar.com/avatar/415a2a122d4390914ea08a12034392ef?s=64"
+    />
     <title>{title}</title>
+
+    <!-- SEO tag -->
+    <!-- Primary Meta Tags -->
+    <meta name="title" content={title} />
+    <meta name="description" content={desc ?? "My personal website"} />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://wolf-yuan.dev/" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={desc ?? "My personal website"} />
+    <meta
+      property="og:image"
+      content="https://www.gravatar.com/avatar/415a2a122d4390914ea08a12034392ef?s=512"
+    />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary" />
+    <meta property="twitter:url" content="https://wolf-yuan.dev" />
+    <meta property="twitter:title" content={title} />
+    <meta
+      property="twitter:description"
+      content={desc ?? "My personal website"}
+    />
+    <meta
+      property="twitter:image"
+      content="https://www.gravatar.com/avatar/415a2a122d4390914ea08a12034392ef?s=512"
+    />
   </head>
   <body class="max-w-4xl bg-gray-800 text-white mx-auto my-0">
     <Nav />
