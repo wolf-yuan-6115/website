@@ -2,6 +2,9 @@
 import "../styles/index.css";
 import Nav from "../components/Nav.jsx";
 const { title, desc } = Astro.props;
+
+import { Image } from "astro:assets";
+import avatarImage from "../assets/avatar.jpg";
 ---
 
 <html lang="en">
@@ -18,13 +21,19 @@ const { title, desc } = Astro.props;
     <!-- SEO tag -->
     <!-- Primary Meta Tags -->
     <meta name="title" content={title} />
-    <meta name="description" content={desc ?? "My personal website"} />
+    <meta
+      name="description"
+      content={desc ?? "My personal website"}
+    />
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://wolf-yuan.dev/" />
     <meta property="og:title" content={title} />
-    <meta property="og:description" content={desc ?? "My personal website"} />
+    <meta
+      property="og:description"
+      content={desc ?? "My personal website"}
+    />
     <meta
       property="og:image"
       content="https://www.gravatar.com/avatar/415a2a122d4390914ea08a12034392ef?s=512"
@@ -44,7 +53,13 @@ const { title, desc } = Astro.props;
     />
   </head>
   <body class="bg-gray-800 text-white">
-    <Nav client:load />
+    <Nav client:load>
+      <Image
+        src={avatarImage}
+        alt="My avatar"
+        class="rounded-full object-fill w-10 h-10"
+      />
+    </Nav>
     <div class="max-w-4xl mx-auto my-0">
       <slot />
     </div>
