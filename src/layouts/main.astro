@@ -4,7 +4,6 @@ import Nav from "../components/Nav.jsx";
 const { title, desc } = Astro.props;
 
 import { Image } from "astro:assets";
-import avatarImage from "../../public/avatar.jpg";
 ---
 
 <html lang="en">
@@ -55,7 +54,7 @@ import avatarImage from "../../public/avatar.jpg";
   <body class="bg-gray-800 text-white">
     <Nav client:load>
       <Image
-        src={avatarImage}
+        src="/avatar.jpg"
         alt="My avatar"
         class="rounded-full object-fill w-10 h-10"
       />
