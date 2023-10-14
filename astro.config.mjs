@@ -12,4 +12,9 @@ export default defineConfig({
     mode: "directory",
   }),
   output: "server",
+  image: {
+    service: {
+      entrypoint: "astro/assets/services/noop",
+    },
+  },
 });
