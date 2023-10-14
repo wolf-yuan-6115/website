@@ -1,6 +1,6 @@
 ---
 import "../styles/index.css";
-import Nav from "../components/Nav.astro";
+import Nav from "../components/Nav.jsx";
 const { title, desc } = Astro.props;
 ---
 
@@ -43,8 +43,10 @@ const { title, desc } = Astro.props;
       content="https://www.gravatar.com/avatar/415a2a122d4390914ea08a12034392ef?s=512"
     />
   </head>
-  <body class="max-w-4xl bg-gray-800 text-white mx-auto my-0">
-    <Nav />
-    <slot />
+  <body class="bg-gray-800 text-white">
+    <Nav client:load />
+    <div class="max-w-4xl mx-auto my-0">
+      <slot />
+    </div>
   </body>
-</html>
+</html>../components/Nav.jsx
