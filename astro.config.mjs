@@ -9,7 +9,7 @@ import cloudflare from "@astrojs/cloudflare";
 export default defineConfig({
   integrations: [mdx(), tailwind(), react()],
   adapter: cloudflare(),
-  output: "server",
+  output: "hybrid",
   image: {
     service: {
       entrypoint: "astro/assets/services/noop",
