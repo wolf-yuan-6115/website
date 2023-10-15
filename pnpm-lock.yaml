@@ -20,6 +20,9 @@ dependencies:
   '@fontsource-variable/jetbrains-mono':
     specifier: ^5.0.16
     version: 5.0.16
+  '@icons-pack/react-simple-icons':
+    specifier: ^9.1.0
+    version: 9.1.0(react@18.2.0)
   '@types/canvas-confetti':
     specifier: ^1.6.1
     version: 1.6.1
@@ -931,6 +934,14 @@ packages:
 
   /@iarna/toml@2.2.5:
     resolution: {integrity: sha512-trnsAYxU3xnS1gPHPyU961coFyLkh4gAD/0zQ5mymY4yOZ+CYvsPqUbOFSw0aDM4y0tV7tiFxL/1XfXPNC6IPg==}
+    dev: false
+
+  /@icons-pack/react-simple-icons@9.1.0(react@18.2.0):
+    resolution: {integrity: sha512-3v6W4SgkYX6bHfKrFvRZrxilv+4wXKYQ2DVRldqaZgcwGK5ajsW4PzLlqF9aw+uT/NeoMklunonoYwZlx9Kbwg==}
+    peerDependencies:
+      react: ^16.13 || ^17 || ^18
+    dependencies:
+      react: 18.2.0
     dev: false
 
   /@jridgewell/gen-mapping@0.3.3:

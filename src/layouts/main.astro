@@ -1,5 +1,4 @@
 ---
-import "../styles/index.css";
 import "@fontsource-variable/jetbrains-mono";
 
 import Nav from "../components/Nav.jsx";
@@ -55,13 +54,15 @@ import { Image } from "astro:assets";
   </head>
   <body class="bg-gray-800 text-white">
     <Nav client:load>
-      <Image
-        src="/avatar.jpg"
-        alt="My avatar"
-        width={40}
-        height={40}
-        class="rounded-full object-fill w-10 h-10"
-      />
+      <a href="/">
+        <Image
+          src="/avatar.jpg"
+          alt="My avatar"
+          width={40}
+          height={40}
+          class="rounded-full object-fill w-10 h-10"
+        />
+      </a>
     </Nav>
     <div class="max-w-4xl mx-auto my-0">
       <slot />
