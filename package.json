@@ -8,6 +8,7 @@
     "dev": "astro dev",
     "start": "astro dev",
     "build": "astro build",
+    "build:local": "astro build --config astro.local.config.mjs",
     "preview": "astro preview",
     "astro": "astro"
   },
