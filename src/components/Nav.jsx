@@ -38,13 +38,16 @@ export default function Nav({ children }) {
             </div>
           </div>
           <div className="col-start-2 col-end-3">
-            <div className="flex flex-row justify-end items-center gap-6 text-lg h-10">
-              <div className="basis-1/10">
+            <div className="flex justify-end items-center gap-6 text-lg h-10">
+              <div className="basis-1/8">
                 <a
                   href="https://gitlab.com/wolf-yuan"
                   target="_blank"
                 >
-                  <SiGitlab />
+                  <div className="flex justify-between items-center md:gap-2">
+                    <SiGitlab />
+                    <p className="sr-only md:not-sr-only">GitLab</p>
+                  </div>
                 </a>
               </div>
               <div className="basis-1/10">
@@ -52,7 +55,10 @@ export default function Nav({ children }) {
                   href="https://www.youtube.com/watch?v=dQw4w9WgXcQ"
                   target="_blank"
                 >
-                  <SiYoutube />
+                  <div className="flex justify-between items-center md:gap-2">
+                    <SiYoutube />
+                    <p className="sr-only md:not-sr-only">YouTube</p>
+                  </div>
                 </a>
               </div>
             </div>
