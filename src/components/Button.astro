@@ -1,0 +1,15 @@
+---
+import { twMerge } from "tailwind-merge";
+const { className, link, target } = Astro.props;
+---
+
+<a href={link} target={target ?? "_blank"} class="w-fit">
+  <div
+    class={twMerge(
+      "px-6 py-4 bg-gray-800 border-2 border-emerald-200 border-solid",
+      className,
+    )}
+  >
+    <slot />
+  </div>
+</a>
