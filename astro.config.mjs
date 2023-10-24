@@ -8,6 +8,7 @@ import { defineConfig } from "astro/config";
 
 // https://astro.build/config
 export default defineConfig({
+  site: "https://wolf-yuan.dev",
   integrations: [mdx(), tailwind(), react(), sitemap(), prefetch()],
   adapter: cloudflare(),
   output: "server",
