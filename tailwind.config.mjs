@@ -9,6 +9,7 @@ export default {
       fontFamily: {
         sans: [
           "'JetBrains Mono Variable'",
+          "'Noto Sans TC Variable'",
           ...defaultTheme.fontFamily.sans,
         ],
       },
