@@ -3,3 +3,5 @@ Disallow: /
 User-agent: *
 Disallow: 
 Disallow: /cgi-bin/
+
+Sitemap: https://wolf-yuan.dev/sitemap-index.xml
