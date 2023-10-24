@@ -1,5 +1,5 @@
-import { useEffect, useState } from "react";
 import { SiGitlab, SiYoutube } from "@icons-pack/react-simple-icons";
+import { useEffect, useState } from "react";
 import { twMerge } from "tailwind-merge";
 
 export default function Nav({ children }) {
