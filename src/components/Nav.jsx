@@ -4,10 +4,13 @@ import { twMerge } from "tailwind-merge";
 
 export default function Nav({ children }) {
   const [scroll, setScroll] = useState(false);
+  const [homepage, setHomepage] = useState(false);
   useEffect(() => {
     window.addEventListener("scroll", () => {
       setScroll(window.scrollY > 56);
     });
+
+    setHomepage(window.location.pathname == "/");
   });
 
   return (
@@ -30,7 +33,8 @@ export default function Nav({ children }) {
               <div
                 className={twMerge(
                   "basis-1/8 font-bold text-xl transition-opacity duration-300",
-                  scroll ? "opacity-100" : "opacity-0",
+                  scroll && homepage ? "opacity-100" : "opacity-0",
+                  !homepage && "opacity-100",
                 )}
               >
                 Wolf Yuan
