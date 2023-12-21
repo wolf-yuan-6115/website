@@ -23,6 +23,9 @@ dependencies:
   '@fontsource-variable/jetbrains-mono':
     specifier: ^5.0.19
     version: 5.0.19
+  '@fontsource-variable/noto-sans-tc':
+    specifier: ^5.0.4
+    version: 5.0.4
   '@icons-pack/react-simple-icons':
     specifier: ^9.2.0
     version: 9.2.0(react@18.2.0)
@@ -772,6 +775,10 @@ packages:
 
   /@fontsource-variable/jetbrains-mono@5.0.19:
     resolution: {integrity: sha512-7PTG1Kp3B/FgoNVPT8da4humj5JxQYxTtO08ZPS2IfanS37Yb/WShbgScnG/iupuFwiRnHVkIuC/2czxItxmyg==}
+    dev: false
+
+  /@fontsource-variable/noto-sans-tc@5.0.4:
+    resolution: {integrity: sha512-VWQE0FUjm3J8kwQV0isoQbmijD8SBZsQbwNf+YTrfbIEVA4PdHF/JZXHuSaCEd6l7GnP6Q15IorEHEMCaWHkzg==}
     dev: false
 
   /@iarna/toml@2.2.5:
