@@ -18,7 +18,7 @@
     "@astrojs/sitemap": "^3.0.3",
     "@astrojs/tailwind": "^5.0.4",
     "@fontsource-variable/jetbrains-mono": "^5.0.19",
-    "@fontsource-variable/noto-sans-tc": "^5.0.4",
+    "@fontsource/noto-sans-tc": "^5.0.17",
     "@icons-pack/react-simple-icons": "^9.2.0",
     "@types/canvas-confetti": "^1.6.4",
     "@types/react": "^18.2.45",
