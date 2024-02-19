@@ -3,7 +3,7 @@ import Base from "../layouts/main.astro";
 import Button from "../components/Button.astro";
 ---
 
-<Base title="404 Not found">
+<Base title="404 Not found" desc="Are you lost?">
   <div
     class="grid gap-y-12 place-items-center content-center h-screen"
   >
@@ -11,7 +11,10 @@ import Button from "../components/Button.astro";
       <p class="text-6xl font-extrabold md:text-7xl">404 Not Found</p>
     </div>
     <div class="grid grid-cols-2 gap-x-4">
-      <Button link="/">
+      <Button
+        link="/"
+        glow={true}
+      >
         <p>Back to home page</p>
       </Button>
       <Button
