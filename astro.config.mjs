@@ -16,7 +16,7 @@ export default defineConfig({
     }
   })],
   adapter: cloudflare(),
-  output: "server",
+  output: "hybrid",
   image: {
     service: {
       entrypoint: "astro/assets/services/noop"
