@@ -3,7 +3,8 @@ import "@fontsource-variable/jetbrains-mono";
 import "@fontsource/noto-sans-tc/chinese-traditional-400.css";
 
 import Nav from "../components/Nav.jsx";
-import { Image } from "astro:assets"
+import { SEO } from "astro-seo";
+import { Image } from "astro:assets";
 
 const { title, desc } = Astro.props;
 ---
@@ -12,47 +13,24 @@ const { title, desc } = Astro.props;
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
-    <link
-      rel="icon"
-      type="image/svg+xml"
-      href="https://www.gravatar.com/avatar/415a2a122d4390914ea08a12034392ef?s=64"
+    <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+    <title>{`${title} - Wolf Yuan`}</title>
+    <SEO
+      description={desc}
+      charset="UTF-8"
+      openGraph={{
+        basic: {
+          title: desc,
+          type: "profile",
+          image: "https://wolf-yuan.dev/logo_512x512.webp"
+        }
+      }}
+      twitter={{
+        title: desc,
+        card: "summary",
+        site: "@wolfyuan1135"
+      }}
     />
-    <title>{title}</title>
-
-    <!-- SEO tag -->
-    <!-- Primary Meta Tags -->
-    <meta name="title" content={title} />
-    <meta
-      name="description"
-      content={desc ?? "My personal website"}
-    />
-
-    <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://wolf-yuan.dev/" />
-    <meta property="og:title" content={title} />
-    <meta
-      property="og:description"
-      content={desc ?? "My personal website"}
-    />
-    <meta
-      property="og:image"
-      content="https://www.gravatar.com/avatar/415a2a122d4390914ea08a12034392ef?s=512"
-    />
-
-    <!-- Twitter -->
-    <meta property="twitter:card" content="summary" />
-    <meta property="twitter:url" content="https://wolf-yuan.dev" />
-    <meta property="twitter:title" content={title} />
-    <meta
-      property="twitter:description"
-      content={desc ?? "My personal website"}
-    />
-    <meta
-      property="twitter:image"
-      content="https://www.gravatar.com/avatar/415a2a122d4390914ea08a12034392ef?s=512"
-    />
-
     <link rel="me" href="https://mastodon.wolf-yuan.dev/@wolf">
   </head>
   <body class="bg-gray-800 text-white">
