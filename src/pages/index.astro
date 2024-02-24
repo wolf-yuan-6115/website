@@ -1,190 +1,138 @@
 ---
 import Base from "../layouts/main.astro";
-import Button from "../components/Button.astro"
+import Button from "../components/Button.astro";
+import Card from "../components/Card.astro";
 
 import { Icon } from "astro-icon/components";
 ---
 
-<Base
-  title="Wolf Yuan"
-  desc="Homepage"
->
-  <div class="mx-7">
-    <div class="grid h-screen">
-      <div>
-        <p class="py-12 text-6xl font-extrabold md:text-7xl">
-          Wolf Yuan
-        </p>
-        <p class="text-xl text-slate-400 py-2">(Not a)</p>
-        <p class="text-2xl text-blue-200 py-2">Software Engineer</p>
-        <p class="text-2xl text-yellow-200 py-2">
-          System Administrators
-        </p>
-        <div class="py-12">
-          <div class="py-4">
-            <Button
-                link="https://gitlab.com/wolf-yuan"
-                target="_blank"
-                className="border-orange-500 hover:bg-orange-500 hover:shadow-orange-500"
-                glow={true}
-            >
-              <div>
-                <p class="inline">Explore my GitLab Profile</p>
-                <Icon name="material-symbols:arrow-forward-rounded" class="inline" />
-              </div>
-            </Button>
-          </div>
-          <div class="py-4">
-            <Button
-                link="https://github.com/wolf-yuan-6115/"
-                target="_blank"
-                className="border-violet-400 hover:bg-violet-400 hover:shadow-violet-400"
-                glow={true}
-            >
-              <div>
-                <p class="inline">Or go to my GitHub Profile</p>
-                <Icon name="material-symbols:arrow-forward-rounded" class="inline" />
-              </div>
-            </Button>
-          </div>
+<Base title="Wolf Yuan" desc="Homepage">
+  <div class="min-h-screen">
+    <div>
+      <p class="py-12 text-5xl font-extrabold md:text-7xl">
+        Wolf Yuan
+      </p>
+      <p class="text-md md:text-xl text-slate-400 py-2">(Not a)</p>
+      <p class="text-xl md:text-2xl text-fuchsia-200 py-2">
+        Frontend / Backend Engineer
+      </p>
+      <p class="text-xl md:text-2xl text-blue-200 py-2">
+        Software Engineer
+      </p>
+      <p class="text-xl md:text-2xl text-yellow-200 py-2">
+        System Administrators
+      </p>
+      <div class="py-12">
+        <div class="py-4">
+          <Button
+            link="https://gitlab.com/wolf-yuan"
+            target="_blank"
+            className="border-orange-400 hover:bg-orange-400 hover:shadow-orange-500"
+            glow={true}
+          >
+            <div>
+              <p class="inline text-sm md:text-md">
+                Explore my GitLab Profile
+              </p>
+              <Icon
+                name="material-symbols:arrow-forward-rounded"
+                class="inline"
+              />
+            </div>
+          </Button>
+        </div>
+        <div class="py-4">
+          <Button
+            link="https://github.com/wolf-yuan-6115/"
+            target="_blank"
+            className="border-violet-400 hover:bg-violet-400 hover:shadow-violet-400"
+            glow={true}
+          >
+            <div>
+              <p class="inline text-sm md:text-md">
+                Or go to my GitHub Profile
+              </p>
+              <Icon
+                name="material-symbols:arrow-forward-rounded"
+                class="inline"
+              />
+            </div>
+          </Button>
         </div>
       </div>
     </div>
-    </div>
+  </div>
 
-    <p>
-    Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-    Nobis assumenda quos commodi repellendus ex accusamus, culpa
-    enim totam. Possimus provident officia adipisci esse minima
-    voluptas hic nemo iusto est quisquam odit dolorum explicabo
-    voluptate quidem error itaque qui dignissimos aliquam
-    consequatur suscipit ad, facilis cum! Doloribus quo aut,
-    perspiciatis iste dolore magni perferendis aspernatur
-    voluptatum expedita assumenda rerum soluta totam. Officia
-    saepe omnis reprehenderit, quasi hic voluptatem dolore est
-    dolorum incidunt quia impedit laudantium rem a blanditiis
-    accusantium sit enim corporis. Ullam assumenda debitis
-    tempore, ut obcaecati, vitae unde velit enim tempora
-    exercitationem odit esse aliquid, dicta molestiae
-    necessitatibus sit incidunt soluta culpa. Atque dicta
-    quaerat necessitatibus itaque magnam nam, sapiente, in eaque
-    eos, unde inventore fugit omnis. Sed officiis dignissimos
-    reprehenderit voluptas suscipit doloremque, adipisci neque
-    aspernatur odit unde nemo fugiat facere commodi nobis velit!
-    Dolor voluptate et temporibus quisquam nostrum quo nisi
-    harum magnam fugit expedita commodi accusantium corrupti
-    dignissimos repellendus tenetur aliquam adipisci quae,
-    voluptatibus illo odio debitis magni aut optio enim. Dolor
-    laboriosam, quas reprehenderit officiis adipisci fugit in
-    dolore a enim consequuntur ullam animi. Itaque, veritatis
-    reprehenderit nesciunt laboriosam et accusamus consequuntur
-    velit aperiam totam sapiente assumenda error praesentium id,
-    explicabo eveniet nemo quam autem deserunt iure. Commodi rem
-    ut officia exercitationem laboriosam quod, quasi ducimus
-    inventore ex deleniti autem. Ullam, est? Sunt rerum dolor
-    aliquam, voluptatibus aspernatur explicabo vero at officiis!
-    Placeat incidunt earum assumenda tenetur porro possimus quia
-    amet itaque nihil doloremque quis, iste aut deserunt
-    suscipit nesciunt omnis architecto, cupiditate enim.
-    Officiis ad rerum quod perferendis. Saepe impedit harum
-    sapiente. Quam autem dignissimos sed quae et sunt cum totam,
-    fugiat repellat at? Eaque officiis sint, amet explicabo
-    nulla odit blanditiis deleniti debitis eum maiores minima
-    consectetur animi earum pariatur nam at quos autem voluptate
-    repellat? Esse molestias doloremque velit explicabo ducimus
-    praesentium ea quibusdam rerum recusandae consectetur.
-    Voluptatibus nobis corrupti reprehenderit similique dolore,
-    iste id delectus exercitationem magnam quod doloribus?
-    Inventore incidunt maiores, soluta quia ea exercitationem
-    optio facilis id molestiae voluptatibus! Molestias, nobis
-    eos. Minus, explicabo at. Quidem molestias libero aliquid
-    non inventore dignissimos quisquam. Facilis eaque aliquid
-    placeat perspiciatis aspernatur laboriosam at ipsa id
-    eligendi, molestias nemo, officia obcaecati? Numquam quam
-    excepturi consequuntur repellat. Molestiae asperiores optio,
-    suscipit blanditiis ex sapiente reiciendis sequi nesciunt
-    minus voluptatem commodi assumenda expedita autem.
-    Recusandae voluptatem expedita tempora quod, officia porro
-    natus, quo sapiente explicabo, quidem iusto. Provident error
-    deleniti perferendis eos impedit tempore porro laudantium
-    debitis delectus incidunt! Molestias quod eos minima
-    quisquam architecto officiis neque magni amet nisi illum,
-    iusto vel distinctio. Nesciunt, architecto consequatur?
-    Soluta est enim, veniam saepe quae aut quam, cumque quisquam
-    ipsam, totam ut debitis architecto inventore repudiandae.
-    Pariatur quas architecto blanditiis sint modi dolore,
-    eveniet commodi? Maiores expedita consequuntur quidem magni,
-    quo harum doloribus ut ipsa eos fuga voluptate nesciunt
-    error, quod accusantium hic? Aut eveniet distinctio rem
-    sequi laborum tempora consectetur laudantium assumenda,
-    harum neque in beatae, est illo, laboriosam corrupti ut ea
-    impedit dignissimos! Est, ullam. Sapiente vero maxime qui
-    omnis ipsa, distinctio vitae repudiandae. Lorem ipsum dolor
-    sit amet consectetur adipisicing elit. Veritatis sequi odio,
-    sapiente culpa mollitia id a fugit! Alias sit ipsum sapiente
-    quidem voluptate. Laboriosam molestiae quod obcaecati eius
-    mollitia inventore, voluptatibus provident unde reiciendis
-    tempora iure ducimus hic quis ratione soluta perferendis
-    laborum facere tenetur atque nemo quam quae autem sequi!
-    Commodi tenetur ullam eius laudantium obcaecati? Ratione
-    dolorem odit nisi ex aut sit, pariatur dignissimos incidunt
-    recusandae esse quasi necessitatibus qui voluptatem
-    quibusdam dolores explicabo cumque voluptatibus beatae
-    voluptas? Porro repellendus quos nostrum similique eaque
-    laudantium, debitis error distinctio, aliquam facere
-    mollitia incidunt quaerat, ducimus adipisci harum itaque
-    perspiciatis iste aspernatur sed a vero veniam culpa
-    accusantium ipsa! Praesentium sequi debitis maiores
-    veritatis quisquam maxime, illum dicta officiis architecto
-    sapiente, dolores ratione aspernatur quia omnis
-    exercitationem minus? Perferendis libero odio eligendi sit
-    repellat debitis mollitia esse! Similique eius unde
-    inventore accusantium quia, doloremque voluptates a quas
-    quis ipsum accusamus consectetur, et explicabo nostrum ipsa,
-    quae exercitationem natus quidem aut iusto. Rerum, sapiente
-    quidem molestiae voluptas nulla alias cum sequi quas tempore
-    impedit? Deserunt vitae doloribus dicta iusto voluptas!
-    Tempora veniam pariatur sapiente perspiciatis quas, soluta a
-    aperiam officia nemo quis sed illo explicabo placeat nihil
-    repellat, eligendi eos culpa itaque saepe quo. Maxime
-    laborum, ducimus iusto nostrum dicta laboriosam fugit harum
-    sed quasi ipsa dolores quia accusantium incidunt a delectus,
-    expedita eius commodi ipsam sequi ipsum magnam. Nesciunt
-    corrupti excepturi voluptate. Voluptatibus beatae suscipit
-    vero ex dolor illo tempora rem non sit. Est illum corrupti,
-    magnam commodi dolore aliquid porro saepe aliquam ratione
-    sit voluptatem recusandae illo fuga pariatur sint assumenda
-    dolorum architecto deleniti id dolores? Quos at repellat
-    illum culpa iure perspiciatis veritatis praesentium numquam
-    eligendi eaque, doloremque modi fugiat mollitia voluptatem
-    aspernatur repudiandae? Facere deleniti accusantium commodi
-    perspiciatis corrupti sit, tempora culpa aliquam vero ex,
-    recusandae aut minus, optio voluptatibus. Atque expedita
-    suscipit rerum delectus fugit nostrum quam laborum.
-    Quibusdam autem qui, totam adipisci doloremque magnam ab
-    fugit aliquam! Laborum eius earum sed architecto consequatur
-    necessitatibus qui id at corrupti officia perferendis
-    assumenda beatae voluptatem, blanditiis quo eum saepe
-    pariatur iure deserunt, aut temporibus quos. Doloribus
-    cupiditate accusamus suscipit, ipsum maiores magnam nam!
-    Quisquam iste nostrum repellat temporibus, esse cum et
-    accusantium inventore reiciendis dicta! Neque, eos! Quasi,
-    dolores! Aspernatur eaque laudantium voluptatum repellendus
-    vero quaerat autem fugit, nisi corrupti quas, quibusdam
-    debitis. Iste minima ipsa aliquid impedit soluta
-    voluptatibus natus modi autem sit, quia, quaerat voluptatem
-    corrupti dignissimos veniam enim molestiae rem? Nihil
-    aperiam porro nesciunt ipsa. Tempore quos, quaerat corporis
-    possimus adipisci est ipsum quasi debitis et aspernatur
-    ducimus a ratione, eligendi deleniti illum enim iure sed eum
-    explicabo at sint! Pariatur illum odio cupiditate, aliquam
-    blanditiis officia? Dolor dolorum velit repellendus dolore
-    sint eos, laborum doloribus exercitationem explicabo aut.
-    Facere consequatur impedit deleniti veniam sed
-    exercitationem facilis quia totam, veritatis atque vero qui
-    quo velit nulla sint autem quod cumque animi, earum ad
-    voluptatibus laudantium blanditiis magni maiores. Inventore
-    consequatur, vero voluptatem cum qui optio odit. Fugit
-    soluta, hic harum necessitatibus iusto ipsum esse?
-  </p>
+  <div>
+    <p class="py-12 text-3xl font-extrabold md:text-4xl">Projects</p>
+
+    <div
+      class="grid grid-cols-1 md:grid-cols-2 grid-flow-row content-start gap-7"
+    >
+      <Card
+        title="Yeecord Website"
+        desc="Yeecord is a multi function Discord bot, serving more than 250,000 Discord servers."
+        link="https://yeecord.com"
+        linkName="yeecord.com"
+        className="border-[#9cca95] hover:bg-[#9cca95]"
+        target="_blank"
+        icons={[
+          {
+            icon: "simple-icons:typescript",
+          },
+          {
+            icon: "simple-icons:nextdotjs",
+          },
+        ]}
+      />
+      <Card
+        title="Dolphin Container"
+        desc="Dolphin container image is a container image that helps you to deploy your code to vaiorus hosting provider with ease."
+        link="https://gitlab.com/wolf-yuan/dolphin"
+        linkName="gitlab.com/wolf-yuan/dolphin"
+        className="border-cyan-400 hover:bg-cyan-400"
+        target="_blank"
+        icons={[
+          {
+            icon: "simple-icons:docker",
+          },
+        ]}
+      />
+      <Card
+        title="Black Cat"
+        desc="Black cat is a Discord music bot written in TypeScript and Discord.js"
+        link="https://gitlab.com/wolf-yuan/blackcat"
+        linkName="gitlab.com/wolf-yuan/blackcat"
+        className="border-gray-50  hover:bg-gray-50 hover:text-gray-600"
+        target="_blank"
+        icons={[
+          {
+            icon: "simple-icons:nodedotjs",
+          },
+          {
+            icon: "simple-icons:typescript",
+          },
+          {
+            icon: "simple-icons:discord",
+          },
+        ]}
+      />
+      <Card
+        title="Rep0rter"
+        desc="Rep0rter is a g0v project, it collects information and sends weekly newsletter."
+        link="https://github.com/rep0rter"
+        linkName="github.com/rep0rter"
+        className="border-red-400  hover:bg-red-400 "
+        target="_blank"
+        icons={[
+          {
+            icon: "simple-icons:nodedotjs",
+          },
+          {
+            icon: "simple-icons:typescript",
+          },
+        ]}
+      />
+    </div>
+  </div>
 </Base>

@@ -22,32 +22,23 @@ const { title, desc } = Astro.props;
         basic: {
           title: desc,
           type: "profile",
-          image: "https://wolf-yuan.dev/logo_512x512.webp"
-        }
+          image: "https://wolf-yuan.dev/logo_512x512.webp",
+        },
       }}
       twitter={{
         title: desc,
         card: "summary",
-        site: "@wolfyuan1135"
+        site: "@wolfyuan1135",
       }}
     />
-    <link rel="me" href="https://mastodon.wolf-yuan.dev/@wolf">
+    <link rel="me" href="https://mastodon.wolf-yuan.dev/@wolf" />
   </head>
   <body class="bg-gray-800 text-white">
-    <Nav client:load>
-      <a href="/">
-        <Image
-          src="/transparent_64x64.webp"
-          alt="My avatar"
-          width={40}
-          height={40}
-          class="rounded-md object-fill w-10 h-10"
-        />
-        <p class="sr-only">Click here to go back to the home page of this website</p>
-      </a>
-    </Nav>
-    <div class="max-w-4xl mx-auto my-0">
-      <slot />
+    <Nav client:load />
+    <div class="max-w-6xl mx-auto my-0">
+      <div class="mx-7">
+        <slot />
+      </div>
     </div>
   </body>
 </html>
