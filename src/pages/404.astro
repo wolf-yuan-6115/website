@@ -1,6 +1,6 @@
 ---
 import Base from "../layouts/main.astro";
-import Button from "../components/Button.astro";
+import Button from "../components/Button";
 ---
 
 <Base title="404 Not found" desc="Are you lost?">
@@ -11,10 +11,7 @@ import Button from "../components/Button.astro";
       <p class="text-6xl font-extrabold md:text-7xl">404 Not Found</p>
     </div>
     <div class="grid grid-cols-2 gap-x-4">
-      <Button
-        link="/"
-        glow={true}
-      >
+      <Button link="/" glow={true}>
         <p>Back to home page</p>
       </Button>
       <Button

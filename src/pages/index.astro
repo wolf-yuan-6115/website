@@ -1,7 +1,7 @@
 ---
 import Base from "../layouts/main.astro";
-import Button from "../components/Button.astro";
-import Card from "../components/Card.astro";
+import Button from "../components/Button";
+import Card from "../components/Card";
 
 import { Icon } from "astro-icon/components";
 ---
@@ -72,22 +72,6 @@ import { Icon } from "astro-icon/components";
       class="grid grid-cols-1 md:grid-cols-2 grid-flow-row content-start gap-7"
     >
       <Card
-        title="Yeecord Website"
-        desc="Yeecord is a multi function Discord bot, serving more than 250,000 Discord servers."
-        link="https://yeecord.com"
-        linkName="yeecord.com"
-        className="border-[#9cca95] hover:bg-[#9cca95]"
-        target="_blank"
-        icons={[
-          {
-            icon: "simple-icons:typescript",
-          },
-          {
-            icon: "simple-icons:nextdotjs",
-          },
-        ]}
-      />
-      <Card
         title="Dolphin Container"
         desc="Dolphin container image is a container image that helps you to deploy your code to vaiorus hosting provider with ease."
         link="https://gitlab.com/wolf-yuan/dolphin"
@@ -99,6 +83,7 @@ import { Icon } from "astro-icon/components";
             icon: "simple-icons:docker",
           },
         ]}
+        client:visible
       />
       <Card
         title="Black Cat"
@@ -118,6 +103,7 @@ import { Icon } from "astro-icon/components";
             icon: "simple-icons:discord",
           },
         ]}
+        client:visible
       />
       <Card
         title="Rep0rter"
@@ -134,6 +120,34 @@ import { Icon } from "astro-icon/components";
             icon: "simple-icons:typescript",
           },
         ]}
+        client:visible
+      />
+    </div>
+  </div>
+  <div>
+    <p class="py-12 text-3xl font-extrabold md:text-4xl">
+      Contribution
+    </p>
+
+    <div
+      class="grid grid-cols-1 md:grid-cols-2 grid-flow-row content-start gap-7"
+    >
+      <Card
+        title="Yeecord Website"
+        desc="Yeecord is a multi function Discord bot, serving more than 250,000 Discord servers."
+        link="https://yeecord.com"
+        linkName="yeecord.com"
+        className="border-[#9cca95] hover:bg-[#9cca95]"
+        target="_blank"
+        icons={[
+          {
+            icon: "simple-icons:typescript",
+          },
+          {
+            icon: "simple-icons:nextdotjs",
+          },
+        ]}
+        client:visible
       />
     </div>
   </div>

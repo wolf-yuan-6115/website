@@ -1,4 +1,4 @@
-import { SiGitlab, SiYoutube } from "@icons-pack/react-simple-icons";
+import { Icon } from "@iconify/react";
 import { useEffect, useState } from "react";
 import { twMerge } from "tailwind-merge";
 
@@ -64,7 +64,7 @@ export default function Nav() {
                   className="hover:text-gray-400 duration-300"
                 >
                   <div className="flex justify-between items-center md:gap-2">
-                    <SiGitlab />
+                    <Icon icon="simple-icons:gitlab" />
                     <p className="sr-only md:not-sr-only">GitLab</p>
                   </div>
                 </a>
@@ -76,7 +76,7 @@ export default function Nav() {
                   className="hover:text-gray-400 duration-300"
                 >
                   <div className="flex justify-between items-center md:gap-2">
-                    <SiYoutube />
+                    <Icon icon="simple-icons:youtube" />
                     <p className="sr-only md:not-sr-only">YouTube</p>
                   </div>
                 </a>
