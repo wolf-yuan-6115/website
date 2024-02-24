@@ -17,4 +17,5 @@ export default defineConfig({
       entrypoint: "astro/assets/services/noop",
     },
   },
+  prefetch: true
 });
