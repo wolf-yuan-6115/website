@@ -3,6 +3,7 @@ import "@fontsource-variable/jetbrains-mono";
 import "@fontsource/noto-sans-tc/chinese-traditional-400.css";
 
 import Nav from "../components/Nav";
+import Footer from "../components/Footer.astro";
 import { SEO } from "astro-seo";
 import { Image } from "astro:assets";
 
@@ -66,5 +67,6 @@ const { title, desc } = Astro.props;
         </div>
       </div>
     </noscript>
+    <Footer />
   </body>
 </html>

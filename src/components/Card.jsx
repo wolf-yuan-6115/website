@@ -6,16 +6,34 @@ export default function Card({
   title,
   desc,
   link,
-  linkName,
+  linkDesc,
   target,
   icons,
 }) {
   return (
-    <div>
+    <div
+      className="duration-150"
+      onMouseMove={(element) => {
+        let rect = element.currentTarget.getBoundingClientRect();
+
+        let x = element.clientX - rect.left;
+        let y = element.clientY - rect.top;
+
+        let dX = (x - rect.width / 2) / (rect.width / 2);
+        let dY = (y - rect.height / 2) / (rect.height / 2);
+
+        element.currentTarget.style.transform = `perspective(500px) rotateY(${
+          dX * 4
+        }deg) rotateX(${-dY * 4}deg)`;
+      }}
+      onMouseLeave={(element) => {
+        element.currentTarget.style.transform = "";
+      }}
+    >
       <a href={link} target={target ?? "_self"} className="w-fit">
         <div
           className={twMerge(
-            "px-5 py-5 w-fit bg-gray-800 border-2 border-emerald-200 border-solid hover:bg-emerald-200 hover:text-gray-800 duration-300",
+            "px-5 py-5 w-fit bg-gray-800 border-2 border-emerald-200 border-solid hover:bg-emerald-200 hover:text-gray-800 !duration-300",
             className,
           )}
         >
@@ -39,7 +57,7 @@ export default function Card({
             </div>
             <div className="place-self-end w-full text-sm">
               Click here to go to{" "}
-              <span className="font-bold">{linkName}</span>
+              <span className="font-bold">{linkDesc}</span>
               <Icon
                 icon="material-symbols:arrow-forward-rounded"
                 className="mx-2 inline"
