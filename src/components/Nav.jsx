@@ -13,7 +13,7 @@ export default function Nav() {
   return (
     <nav
       className={twMerge(
-        "sticky top-0 backdrop-blur-lg duration-300",
+        "sticky top-0 z-10 backdrop-blur-lg duration-300",
         scroll && "backdrop-brightness-75",
       )}
     >
