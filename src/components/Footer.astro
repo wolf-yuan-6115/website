@@ -3,7 +3,7 @@ import { Icon } from "astro-icon/components";
 ---
 
 <footer class="bg-gray-950 mt-8">
-  <div class="mx-auto max-w-6xl py-6 px-4 md:px-0">
+  <div class="mx-auto max-w-6xl py-6 px-6 lg:px-4">
     <div class="grid grid-flow-row grid-cols-1 md:grid-cols-2">
       <div>
         <p class="text-2xl md:text-3xl font-bold pt-2 pb-7">
@@ -12,24 +12,41 @@ import { Icon } from "astro-icon/components";
             target="_blank"
           >
             <Icon name="simple-icons:gitlab" class="inline" />
-             wolf-yuan/website
+            wolf-yuan/website
           </a>
         </p>
         <p class="text-lg font-bold text-gray-400">
-          Made with ❤️, <a
-            class="underline underline-offset-4 decoration-wavy decoration-2 decoration-transparent hover:decoration-gray-300 duration-300"
-            href="https://astro.build"
-            target="_blank">Astro.js</a
-          >,
+          Made with
           <a
-            class="underline underline-offset-4 decoration-wavy decoration-2 decoration-transparent hover:decoration-gray-300 duration-300"
+            class="hover:text-gray-400"
+            href="https://astro.build"
+            target="_blank"
+            ><Icon
+              name="simple-icons:astro"
+              class="inline text-[#BC52EE]"
+            />
+            <span class="sr-only">Astro</span>
+          </a>
+          <a
+            class="hover:text-gray-400"
             href="https://react.dev"
-            target="_blank">React.js</a
-          > and <a
-            class="underline underline-offset-4 decoration-wavy decoration-2 decoration-transparent hover:decoration-gray-300 duration-300"
+            target="_blank"
+            ><Icon
+              name="simple-icons:react"
+              class="inline text-[#61DAFB]"
+            />
+          </a>
+          <a
+            class="hover:text-gray-400"
             href="https://tailwindcss.com"
-            target="_blank">TailwindCSS</a
-          >
+            target="_blank"
+            ><Icon
+              name="simple-icons:tailwindcss"
+              class="inline text-[#06B6D4]"
+            />
+          </a>
+          and
+          <Icon name="fa6-solid:heart" class="inline text-red-500" />️
         </p>
       </div>
       <p class="sr-only">Socials</p>
