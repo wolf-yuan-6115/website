@@ -6,7 +6,7 @@ export default function Card({
   title,
   desc,
   link,
-  linkDesc,
+  linkName,
   target,
   icons,
 }) {
@@ -57,7 +57,7 @@ export default function Card({
             </div>
             <div className="place-self-end w-full text-sm">
               Click here to go to{" "}
-              <span className="font-bold">{linkDesc}</span>
+              <span className="font-bold">{linkName}</span>
               <Icon
                 icon="material-symbols:arrow-forward-rounded"
                 className="mx-2 inline"
