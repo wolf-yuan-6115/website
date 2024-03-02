@@ -19,8 +19,6 @@
     "@astrojs/tailwind": "^5.1.0",
     "@fontsource-variable/jetbrains-mono": "^5.0.19",
     "@fontsource/noto-sans-tc": "^5.0.17",
-    "@iconify-json/material-symbols": "^1.1.73",
-    "@iconify-json/simple-icons": "^1.1.92",
     "@iconify/react": "^4.1.1",
     "astro": "^4.4.4",
     "astro-icon": "^1.1.0",
@@ -34,6 +32,9 @@
     "tailwindcss": "^3.4.1"
   },
   "devDependencies": {
+    "@iconify-json/fa6-solid": "^1.1.20",
+    "@iconify-json/material-symbols": "^1.1.73",
+    "@iconify-json/simple-icons": "^1.1.92",
     "@trivago/prettier-plugin-sort-imports": "^4.3.0",
     "prettier": "^3.2.5",
     "prettier-plugin-astro": "^0.13.0"

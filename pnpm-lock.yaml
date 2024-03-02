@@ -26,12 +26,6 @@ dependencies:
   '@fontsource/noto-sans-tc':
     specifier: ^5.0.17
     version: 5.0.17
-  '@iconify-json/material-symbols':
-    specifier: ^1.1.73
-    version: 1.1.73
-  '@iconify-json/simple-icons':
-    specifier: ^1.1.92
-    version: 1.1.92
   '@iconify/react':
     specifier: ^4.1.1
     version: 4.1.1(react@18.2.0)
@@ -67,6 +61,15 @@ dependencies:
     version: 3.4.1
 
 devDependencies:
+  '@iconify-json/fa6-solid':
+    specifier: ^1.1.20
+    version: 1.1.20
+  '@iconify-json/material-symbols':
+    specifier: ^1.1.73
+    version: 1.1.73
+  '@iconify-json/simple-icons':
+    specifier: ^1.1.92
+    version: 1.1.92
   '@trivago/prettier-plugin-sort-imports':
     specifier: ^4.3.0
     version: 4.3.0(prettier@3.2.5)
@@ -865,17 +868,23 @@ packages:
     resolution: {integrity: sha512-trnsAYxU3xnS1gPHPyU961coFyLkh4gAD/0zQ5mymY4yOZ+CYvsPqUbOFSw0aDM4y0tV7tiFxL/1XfXPNC6IPg==}
     dev: false
 
+  /@iconify-json/fa6-solid@1.1.20:
+    resolution: {integrity: sha512-99P9zOacNS56MNNT7Mzih2Loe3jzwNFKFBOiVh+kF+4D+AHW5zyksyvMizIgGu2cizFz6npaATlCtl3E5Zfjbw==}
+    dependencies:
+      '@iconify/types': 2.0.0
+    dev: true
+
   /@iconify-json/material-symbols@1.1.73:
     resolution: {integrity: sha512-3ioEMQvxUR0eWg3jCxeydowS7xlqJzUHqeKJg29Z5HN15ZBYniQhHYrDCRpmFjopgwxox9OIsoonBiBSLV4EMA==}
     dependencies:
       '@iconify/types': 2.0.0
-    dev: false
+    dev: true
 
   /@iconify-json/simple-icons@1.1.92:
     resolution: {integrity: sha512-y92iNGu31r/rCHOJfjLLx8UJxMxit1XLKKPlDZZOZMUwWwnsZv2jm1WEzqiN30BVP+Nr4/dcAT5qTvaoGR+HQQ==}
     dependencies:
       '@iconify/types': 2.0.0
-    dev: false
+    dev: true
 
   /@iconify/react@4.1.1(react@18.2.0):
     resolution: {integrity: sha512-jed14EjvKjee8mc0eoscGxlg7mSQRkwQG3iX3cPBCO7UlOjz0DtlvTqxqEcHUJGh+z1VJ31Yhu5B9PxfO0zbdg==}
@@ -905,7 +914,6 @@ packages:
 
   /@iconify/types@2.0.0:
     resolution: {integrity: sha512-+wluvCrRhXrhyOmRDJ3q8mux9JkKy5SJ/v8ol2tu4FVjyYvtEzkc/3pK15ET6RKg4b4w4BmTk1+gsCUhf21Ykg==}
-    dev: false
 
   /@iconify/utils@2.1.22:
     resolution: {integrity: sha512-6UHVzTVXmvO8uS6xFF+L/QTSpTzA/JZxtgU+KYGFyDYMEObZ1bu/b5l+zNJjHy+0leWjHI+C0pXlzGvv3oXZMA==}
