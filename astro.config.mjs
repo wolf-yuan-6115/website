@@ -4,18 +4,18 @@ import react from "@astrojs/react";
 import sitemap from "@astrojs/sitemap";
 import tailwind from "@astrojs/tailwind";
 import icon from "astro-icon";
+import compress from "astro-compress";
 import { defineConfig } from "astro/config";
 
-// https://astro.build/config
 export default defineConfig({
   site: "https://wolf-yuan.dev",
-  integrations: [mdx(), tailwind(), react(), sitemap(), icon()],
+  integrations: [mdx(), tailwind(), react(), sitemap(), icon(), compress()],
   adapter: cloudflare(),
   output: "hybrid",
   image: {
     service: {
-      entrypoint: "astro/assets/services/noop",
-    },
+      entrypoint: "astro/assets/services/noop"
+    }
   },
   prefetch: true
 });
