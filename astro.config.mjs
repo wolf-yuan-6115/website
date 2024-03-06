@@ -9,7 +9,9 @@ import { defineConfig } from "astro/config";
 
 export default defineConfig({
   site: "https://wolf-yuan.dev",
-  integrations: [mdx(), tailwind(), react(), sitemap(), icon(), compress()],
+  integrations: [mdx(), tailwind(), react(), sitemap(), icon(), compress({
+    Exclude: ["_routes.json", "_worker.js"]
+  })],
   adapter: cloudflare(),
   output: "hybrid",
   image: {
