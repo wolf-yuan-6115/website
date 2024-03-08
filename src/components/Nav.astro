@@ -1,0 +1,111 @@
+---
+import { Icon } from "astro-icon/components";
+import { twMerge } from "tailwind-merge";
+---
+
+<nav
+  class="sticky top-0 z-10 backdrop-blur-lg duration-300 js:nav-container"
+>
+  <div class="px-5 mx-auto max-w-6xl duration-300 js:nav-padding">
+    <div class="grid grid-cols-2">
+      <div class="col-start-1 col-end-2">
+        <div class="flex flex-row items-center gap-4">
+          <a href="/">
+            <div class="basis-1/8">
+              <img
+                src="/transparent_64x64.webp"
+                alt="My avatar"
+                width="40"
+                height="40"
+                class="rounded-md object-fill w-10 h-10"
+              />
+              <p class="sr-only">
+                Click here to go back to the homepage
+              </p>
+            </div>
+          </a>
+          <a href="/">
+            <div
+              class="basis-1/8 font-bold text-xl transition-opacity duration-300 opacity-0 js:nav-title"
+            >
+              Wolf Yuan
+            </div>
+            <p class="sr-only">
+              Click here to go back to the homepage
+            </p>
+          </a>
+        </div>
+      </div>
+      <div class="col-start-2 col-end-3">
+        <div class="flex justify-end items-center gap-6 text-lg h-10">
+          <div class="basis-1/8">
+            <a
+              href="https://gitlab.com/wolf-yuan"
+              target="_blank"
+              class="hover:text-gray-400 duration-300"
+            >
+              <div class="flex justify-between items-center md:gap-2">
+                <Icon name="simple-icons:gitlab" />
+                <p class="sr-only md:not-sr-only">GitLab</p>
+              </div>
+            </a>
+          </div>
+          <div class="basis-1/10">
+            <a
+              href="https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+              target="_blank"
+              class="hover:text-gray-400 duration-300"
+            >
+              <div class="flex justify-between items-center md:gap-2">
+                <Icon name="simple-icons:youtube" />
+                <p class="sr-only md:not-sr-only">YouTube</p>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<script>
+  let navContainer = document.getElementsByClassName(
+    "js:nav-container",
+  )[0];
+  let navPaddingArea =
+    document.getElementsByClassName("js:nav-padding")[0];
+  let navTitleElement =
+    document.getElementsByClassName("js:nav-title")[0];
+  let currentState = false;
+
+  let handelScroll = (state) => {
+    if (state) {
+      navContainer.classList.add("backdrop-brightness-75");
+
+      navPaddingArea.classList.add("py-4");
+      navPaddingArea.classList.remove("py-6");
+
+      navTitleElement.classList.add("sm:opacity-100");
+      navTitleElement.classList.remove("sm:opacity-0");
+    } else {
+      navContainer.classList.remove("backdrop-brightness-75");
+
+      navPaddingArea.classList.add("py-6");
+      navPaddingArea.classList.remove("py-4");
+
+      navTitleElement.classList.add("sm:opacity-0");
+      navTitleElement.classList.remove("sm:opacity-100");
+    }
+  };
+
+  window.addEventListener("scroll", function () {
+    if (window.scrollY > 52) {
+      if (currentState) return;
+      currentState = true;
+      handelScroll(true);
+    } else if (currentState) {
+      currentState = false;
+      handelScroll(false);
+    }
+  });
+</script>

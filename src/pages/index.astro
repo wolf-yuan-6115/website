@@ -1,7 +1,7 @@
 ---
 import Base from "../layouts/main.astro";
-import Button from "../components/Button";
-import Card from "../components/Card";
+import Button from "../components/Button.astro";
+import Card from "../components/Card.astro";
 
 import { Icon } from "astro-icon/components";
 ---
@@ -73,9 +73,9 @@ import { Icon } from "astro-icon/components";
     >
       <Card
         title="Dolphin Container"
-        desc="Dolphin container image is a container image that helps you to deploy your code to vaiorus hosting provider with ease."
+        description="Dolphin container image is a container image that helps you to deploy your code to vaiorus hosting provider with ease."
         link="https://gitlab.com/wolf-yuan/dolphin"
-        linkName="gitlab.com/wolf-yuan/dolphin"
+        linkDescription="gitlab.com/wolf-yuan/dolphin"
         className="border-cyan-400 hover:bg-cyan-400"
         target="_blank"
         icons={[
@@ -83,13 +83,12 @@ import { Icon } from "astro-icon/components";
             icon: "simple-icons:docker",
           },
         ]}
-        client:load
       />
       <Card
         title="Black Cat"
-        desc="Black cat is a Discord music bot written in TypeScript and Discord.js"
+        description="Black cat is a Discord music bot written in TypeScript and Discord.js"
         link="https://gitlab.com/wolf-yuan/blackcat"
-        linkName="gitlab.com/wolf-yuan/blackcat"
+        linkDescription="gitlab.com/wolf-yuan/blackcat"
         className="border-gray-50  hover:bg-gray-50 hover:text-gray-600"
         target="_blank"
         icons={[
@@ -103,13 +102,12 @@ import { Icon } from "astro-icon/components";
             icon: "simple-icons:discord",
           },
         ]}
-        client:load
       />
       <Card
         title="Rep0rter"
-        desc="Rep0rter is a g0v project, it collects information and sends weekly newsletter."
+        description="Rep0rter is a g0v project, it collects information and sends weekly newsletter."
         link="https://github.com/rep0rter"
-        linkName="github.com/rep0rter"
+        linkDescription="github.com/rep0rter"
         className="border-red-400  hover:bg-red-400 "
         target="_blank"
         icons={[
@@ -120,7 +118,6 @@ import { Icon } from "astro-icon/components";
             icon: "simple-icons:typescript",
           },
         ]}
-        client:load
       />
     </div>
   </div>
@@ -134,9 +131,9 @@ import { Icon } from "astro-icon/components";
     >
       <Card
         title="Yeecord Website"
-        desc="Yeecord is a multi function Discord bot, serving more than 250,000 Discord servers."
+        description="Yeecord is a multi function Discord bot, serving more than 250,000 Discord servers."
         link="https://yeecord.com"
-        linkName="yeecord.com"
+        linkDescription="yeecord.com"
         className="border-[#9cca95] hover:bg-[#9cca95]"
         target="_blank"
         icons={[
@@ -147,7 +144,6 @@ import { Icon } from "astro-icon/components";
             icon: "simple-icons:nextdotjs",
           },
         ]}
-        client:load
       />
     </div>
   </div>
