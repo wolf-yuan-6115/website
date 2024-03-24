@@ -36,11 +36,14 @@ const { title, desc } = Astro.props;
   </head>
   <body class="bg-gray-800 text-white">
     <Nav />
+    
     <div class="max-w-6xl mx-auto my-0">
       <div class="mx-7">
         <slot />
       </div>
     </div>
+
+    <Footer />
     <noscript>
       <div
         class="fixed bottom-0 w-full bg-gray-800 border-2 border-indigo-400 hover:opacity-40 duration-300"
@@ -67,6 +70,5 @@ const { title, desc } = Astro.props;
         </div>
       </div>
     </noscript>
-    <Footer />
   </body>
 </html>
