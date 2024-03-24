@@ -33,6 +33,7 @@
     "@iconify-json/simple-icons": "^1.1.92",
     "@trivago/prettier-plugin-sort-imports": "^4.3.0",
     "prettier": "^3.2.5",
-    "prettier-plugin-astro": "^0.13.0"
+    "prettier-plugin-astro": "^0.13.0",
+    "typescript": "^5.4.3"
   }
 }
