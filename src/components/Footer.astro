@@ -1,5 +1,8 @@
 ---
 import { Icon } from "astro-icon/components";
+import strings from "../i18n/strings.js";
+
+const t = strings.footer[Astro.currentLocale]
 ---
 
 <footer class="bg-gray-950 mt-8">
@@ -16,7 +19,7 @@ import { Icon } from "astro-icon/components";
           </a>
         </p>
         <p class="text-lg font-bold text-gray-400">
-          Made with
+          {t.madewith}
           <a
             class="hover:text-gray-400"
             href="https://astro.build"
@@ -37,11 +40,11 @@ import { Icon } from "astro-icon/components";
             />
             <span class="sr-only">Tailwind CSS</span>
           </a>
-          and
+          {t.and}
           <Icon name="fa6-solid:heart" class="inline text-red-500" />️
+          {t.following}
         </p>
       </div>
-      <p class="sr-only">Socials</p>
       <div
         class="text-3xl flex flex-row justify-center md:justify-end items-center gap-6 h-fit mx-6 pt-4 md:pt-0"
       >
@@ -61,6 +64,15 @@ import { Icon } from "astro-icon/components";
               class="inline hover:text-[#E4405F] duration-300"
             />
             <p class="sr-only">Instagram</p>
+          </a>
+        </div>
+        <div class="w-fit">
+          <a class="w-fit" href={Astro.currentLocale == "zh-tw" ? "/" : "/zh-tw"}>
+            <Icon
+              name="material-symbols:translate-rounded"
+              class="inline hover:text-indigo-400 duration-300"
+            />
+            <p class="sr-only">Switch language 切換語言</p>
           </a>
         </div>
       </div>

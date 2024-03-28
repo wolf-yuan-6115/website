@@ -21,7 +21,7 @@ dependencies:
     specifier: ^5.0.19
     version: 5.0.20
   '@fontsource/noto-sans-tc':
-    specifier: ^5.0.17
+    specifier: ^5.0.18
     version: 5.0.18
   astro:
     specifier: ^4.4.4

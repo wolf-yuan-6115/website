@@ -1,7 +1,9 @@
 ---
 import { Icon } from "astro-icon/components";
 import { twMerge } from "tailwind-merge";
+import strings from "../i18n/strings.js";
 
+const t = strings.card[Astro.currentLocale];
 const {
   className,
   title,
@@ -11,7 +13,7 @@ const {
   target,
   icons,
   pointerClass,
-} = Astro.props;
+} = Astro.props
 ---
 
 <div>
@@ -45,7 +47,7 @@ const {
             <p class="text-md md:text-xl py-4">{description}</p>
           </div>
           <div class="place-self-end w-full text-sm">
-            Click here to go to{" "}
+            {t.link}{" "}
             <span class="font-bold">{linkDescription}</span>
             <Icon
               name="material-symbols:arrow-forward-rounded"

@@ -1,0 +1,150 @@
+---
+import Base from "../../layouts/main.astro";
+import Button from "../../components/Button.astro";
+import Card from "../../components/Card.astro";
+
+import { Icon } from "astro-icon/components";
+---
+
+<Base title="首頁" desc="Wolf Yuan - 首頁">
+  <div class="min-h-screen">
+    <div>
+      <p class="text-2xl md:text-3xl pt-10">嗨，我是</p>
+      <p class="py-6 text-5xl font-extrabold md:text-7xl">
+        Wolf Yuan
+      </p>
+      <p class="pb-10 text-xl md:text-2xl text-slate-300">
+        一名來自台灣 🇹🇼 的學生
+      </p>
+      <p class="text-md md:text-xl text-slate-200 pt-2 pb-5">
+        我也是一名
+      </p>
+      <p class="text-xl md:text-2xl text-green-200 py-2">
+        前後端程式設計師
+      </p>
+      <p class="text-xl md:text-2xl text-blue-200 py-2">
+        JavaScript 程式設計師
+      </p>
+      <p class="text-xl md:text-2xl text-yellow-200 py-2">
+        伺服器管理員
+      </p>
+      <div class="py-12">
+        <div class="py-4">
+          <Button
+            link="https://w.wolf-yuan.dev/gitlab"
+            target="_blank"
+            className="border-orange-400 hover:bg-orange-400 hover:shadow-orange-500"
+            glow={true}
+          >
+            <p class="inline text-sm md:text-lg">
+              看看我的 GitLab 個人檔案
+            </p>
+            <Icon
+              name="material-symbols:arrow-forward-rounded"
+              class="inline"
+            />
+          </Button>
+        </div>
+        <div class="py-4">
+          <Button
+            link="https://w.wolf-yuan.dev/github"
+            target="_blank"
+            className="border-violet-400 hover:bg-violet-400 hover:shadow-violet-400"
+            glow={true}
+          >
+            <p class="inline text-sm md:text-lg">
+              或是去看看我的 GitHub 個人檔案
+            </p>
+            <Icon
+              name="material-symbols:arrow-forward-rounded"
+              class="inline"
+            />
+          </Button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div>
+    <p class="py-12 text-3xl font-extrabold md:text-4xl">專案</p>
+
+    <div
+      class="grid grid-cols-1 md:grid-cols-2 grid-flow-row content-start gap-7"
+    >
+      <Card
+        title="Dolphin Container"
+        description="Dolphin 是一個 Docker 映像檔，讓你以輕鬆的方式部署您的程式至各大託管商"
+        link="https://w.wolf-yuan.dev/projects/dolphin"
+        linkDescription="gitlab.com/wolf-yuan/dolphin"
+        className="border-cyan-400 hover:bg-cyan-400"
+        target="_blank"
+        icons={[
+          {
+            icon: "simple-icons:docker",
+          },
+        ]}
+      />
+      <Card
+        title="Black Cat"
+        description="黑貓是一個以 TypeScript 與 Discord.js 撰寫而成的 Discord 音樂機器人"
+        link="https://w.wolf-yuan.dev/projects/blackcat"
+        linkDescription="gitlab.com/wolf-yuan/blackcat"
+        className="border-gray-50  hover:bg-gray-50 hover:text-gray-600"
+        target="_blank"
+        icons={[
+          {
+            icon: "simple-icons:nodedotjs",
+          },
+          {
+            icon: "simple-icons:typescript",
+          },
+          {
+            icon: "simple-icons:discord",
+          },
+        ]}
+      />
+      <Card
+        title="Rep0rter"
+        description="Rep0rter 是一個 g0v 可以收集各大平臺的動態並傳送每週電子報的專案"
+        link="https://w.wolf-yuan.dev/projects/rep0rter"
+        linkDescription="github.com/rep0rter"
+        className="border-red-400  hover:bg-red-400 "
+        target="_blank"
+        icons={[
+          {
+            icon: "simple-icons:nodedotjs",
+          },
+          {
+            icon: "simple-icons:typescript",
+          },
+        ]}
+      />
+    </div>
+  </div>
+  <div>
+    <p class="py-12 text-3xl font-extrabold md:text-4xl">
+      貢獻專案
+    </p>
+
+    <div
+      class="grid grid-cols-1 md:grid-cols-2 grid-flow-row content-start gap-7"
+    >
+      <Card
+        title="Yeecord 網頁"
+        description="Yeecord 是一個多功能的 Discord 機器人，目前在超過 250,000 個伺服器中服務"
+        link="https://yeecord.com"
+        linkDescription="yeecord.com"
+        className="border-[#9cca95] hover:bg-[#9cca95]"
+        target="_blank"
+        icons={[
+          {
+            icon: "simple-icons:typescript",
+          },
+          {
+            icon: "simple-icons:nextdotjs",
+          },
+        ]}
+      />
+    </div>
+  </div>
+</Base>

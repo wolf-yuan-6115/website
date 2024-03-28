@@ -11,7 +11,7 @@ export default defineConfig({
   site: "https://wolf-yuan.dev",
   integrations: [mdx(), tailwind(), sitemap(), icon({
     include: {
-      "material-symbols": ["arrow-forward-rounded"],
+      "material-symbols": ["arrow-forward-rounded", "translate-rounded"],
       "simple-icons": ["*"]
     }
   }), compress({
@@ -22,6 +22,13 @@ export default defineConfig({
   image: {
     service: {
       entrypoint: "astro/assets/services/noop"
+    }
+  },
+  i18n: {
+    defaultLocale: "en",
+    locales: ["en", "zh-tw"],
+    routing: {
+      prefixDefaultLocale: false
     }
   },
   prefetch: true
