@@ -1,0 +1,7 @@
+---
+import { twMerge } from "tailwind-merge";
+const props = Astro.props;
+---
+
+<a class={twMerge(props.class, "underline decoration-wavy decoration-gray-400 decoration-1")} {...props}><slot /></a>
+

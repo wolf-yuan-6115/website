@@ -23,6 +23,12 @@ dependencies:
   '@fontsource/noto-sans-tc':
     specifier: ^5.0.18
     version: 5.0.18
+  '@fontsource/space-mono':
+    specifier: ^5.0.19
+    version: 5.0.19
+  add:
+    specifier: ^2.0.6
+    version: 2.0.6
   astro:
     specifier: ^4.4.4
     version: 4.5.9(typescript@5.4.3)
@@ -38,6 +44,9 @@ dependencies:
   autoprefixer:
     specifier: ^10.4.17
     version: 10.4.19(postcss@8.4.38)
+  pnpm:
+    specifier: ^8.15.5
+    version: 8.15.5
   postcss:
     specifier: ^8.4.35
     version: 8.4.38
@@ -58,6 +67,9 @@ devDependencies:
   '@iconify-json/simple-icons':
     specifier: ^1.1.92
     version: 1.1.96
+  '@shikijs/transformers':
+    specifier: ^1.2.2
+    version: 1.2.2
   '@trivago/prettier-plugin-sort-imports':
     specifier: ^4.3.0
     version: 4.3.0(prettier@3.2.5)
@@ -1113,6 +1125,10 @@ packages:
     resolution: {integrity: sha512-pHCH3NL+SUIaCMRtao0eomfIVl7Lrg8cF3zbwukQBXM1hbgt82qXbVdmZbo96XCrvjDVwh/3QSlU7ZuGEIjFDQ==}
     dev: false
 
+  /@fontsource/space-mono@5.0.19:
+    resolution: {integrity: sha512-gz9yaKtXCY+HutNvQ4APc15xwZ1f6pWXve5N55x5m/hOoGqgB9Auf3l7CitHNhNJkSKEmaM45M29b0rFeudXlg==}
+    dev: false
+
   /@iarna/toml@2.2.5:
     resolution: {integrity: sha512-trnsAYxU3xnS1gPHPyU961coFyLkh4gAD/0zQ5mymY4yOZ+CYvsPqUbOFSw0aDM4y0tV7tiFxL/1XfXPNC6IPg==}
     dev: false
@@ -1567,6 +1583,16 @@ packages:
     resolution: {integrity: sha512-OlFvx+nyr5C8zpcMBnSGir0YPD6K11uYhouqhNmm1qLiis4GA7SsGtu07r9gKS9omks8RtQqHrJL4S+lqWK01A==}
     dev: false
 
+  /@shikijs/core@1.2.2:
+    resolution: {integrity: sha512-GXbTyNP6HlxpyWMR4eirW54Cxp84nVuivcV5hGVBgKnIl+UmD4AJgCX1uXuNRcFFAw58lB3HqryuezIc0iCLgw==}
+    dev: true
+
+  /@shikijs/transformers@1.2.2:
+    resolution: {integrity: sha512-GL03TlMh9oBeBLU5pcYBKpZnZZVdXSJ4ec7EQ/uw9+NrVaHs6qTjVN8F/0mvKd+sXLbBga8XZWDdob5F5tx5lw==}
+    dependencies:
+      shiki: 1.2.2
+    dev: true
+
   /@trivago/prettier-plugin-sort-imports@4.3.0(prettier@3.2.5):
     resolution: {integrity: sha512-r3n0onD3BTOVUNPhR4lhVK4/pABGpbA7bW3eumZnYdKaHkf1qEC+Mag6DPbGNuuh0eG8AaYj+YqmVHSiGslaTQ==}
     peerDependencies:
@@ -1837,6 +1863,10 @@ packages:
     resolution: {integrity: sha512-Y9rRfJG5jcKOE0CLisYbojUjIrIEE7AGMzA/Sm4BslANhbS+cDMpgBdcPT91oJ7OuJ9hYJBx59RjbhxVnrF8Xg==}
     engines: {node: '>=0.4.0'}
     hasBin: true
+    dev: false
+
+  /add@2.0.6:
+    resolution: {integrity: sha512-j5QzrmsokwWWp6kUcJQySpbG+xfOBqqKnup3OIk1pz+kB/80SLorZ9V8zHFLO92Lcd+hbvq8bT+zOGoPkmBV0Q==}
     dev: false
 
   /ansi-align@3.0.1:
@@ -4755,6 +4785,12 @@ packages:
       pathe: 1.1.2
     dev: false
 
+  /pnpm@8.15.5:
+    resolution: {integrity: sha512-sFGjLH5pWDO4SSbTspuMylclS1ifBknYmcbp0O22cLkex+KkNFm65zdZu1zmGcMmbxFr+THOItHvF1mn5Fqpbw==}
+    engines: {node: '>=16.14'}
+    hasBin: true
+    dev: false
+
   /postcss-import@15.1.0(postcss@8.4.38):
     resolution: {integrity: sha512-hpr+J05B2FVYUAXHeK1YyI267J/dDDhMU6B6civm8hSY1jYJnBXxzKDKDswzJmtLHryrjhnDjqqp/49t8FALew==}
     engines: {node: '>=14.0.0'}
@@ -5240,6 +5276,12 @@ packages:
     dependencies:
       '@shikijs/core': 1.2.0
     dev: false
+
+  /shiki@1.2.2:
+    resolution: {integrity: sha512-nqazfFgrU+DBLqk4+WjmGQz8sVWkcUcGriHqSM2zGk0GhjirVz4FyJ3AABEx91OpjGiKpuKBg2diYfRfQG3Fbg==}
+    dependencies:
+      '@shikijs/core': 1.2.2
+    dev: true
 
   /signal-exit@3.0.7:
     resolution: {integrity: sha512-wnD2ZE+l+SPC/uoS0vXeE9L1+0wuaMqKlfz9AMUo38JsyLSBWSFcHR1Rri62LZc12vLr1gb3jl7iwQhgwpAbGQ==}

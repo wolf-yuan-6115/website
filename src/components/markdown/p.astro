@@ -1,0 +1,6 @@
+---
+import { twMerge } from "tailwind-merge";
+const props = Astro.props;
+---
+
+<p class={twMerge(props.class, "leading-loose")} {...props}><slot /></p>

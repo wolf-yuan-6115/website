@@ -1,0 +1,23 @@
+---
+import Base from "../../layouts/main.astro";
+
+import { getCollection } from "astro:content";
+const posts = await getCollection("blog");
+---
+
+<Base title="Blog posts" desc="Some posts written by me">
+  <p class="text-4xl font-extrabold py-4">Posts</p>
+
+  <div
+      class="grid grid-cols-1 md:grid-cols-2 grid-flow-row content-start gap-7"
+    >
+    {
+    posts.map((item) => (
+    <div class="w-full max-h-xl border-indigo-400 border-2 p-4">
+      <p class="text-xl font-bold">{item.data.title}</p>
+      <img src={item.data.image} alt={`og image for ${item.data.title}`} class="w-full p-[40%]" />
+    </div>
+    ))
+    }
+  </div>
+</Base>

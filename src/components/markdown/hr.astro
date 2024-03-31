@@ -1,0 +1,7 @@
+---
+import { twMerge } from "tailwind-merge";
+const props = Astro.props;
+---
+
+<span class={twMerge(props.class, "block rounded-[999px] mx-auto my-6 w-[95%] h-[2px] bg-gray-700")} {...props}><slot /></span>
+

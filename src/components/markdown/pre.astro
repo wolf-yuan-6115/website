@@ -1,0 +1,8 @@
+---
+import { twMerge } from "tailwind-merge";
+const props = Astro.props;
+---
+
+<pre class={twMerge(props.class, "mx-auto my-3 p-4 w-[95%] rounded-lg font-['Space_Mono']")} {...props}><slot /></pre>
+
+
