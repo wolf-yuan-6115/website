@@ -1,4 +1,5 @@
 ---
+import { getRelativeLocaleUrl } from "astro:i18n";
 import { Icon } from "astro-icon/components";
 import strings from "../i18n/strings.js";
 
@@ -40,7 +41,7 @@ const t = strings.footer[Astro.currentLocale]
             />
             <span class="sr-only">Tailwind CSS</span>
           </a>
-          {t.and}
+         {t.and}
           <Icon name="fa6-solid:heart" class="inline text-red-500" />️
           {t.following}
         </p>
@@ -67,7 +68,7 @@ const t = strings.footer[Astro.currentLocale]
           </a>
         </div>
         <div class="w-fit">
-          <a class="w-fit" href={Astro.currentLocale == "zh-tw" ? "/" : "/zh-tw"}>
+          <a class="w-fit" href={getRelativeLocaleUrl(Astro.currentLocale === "en" ? "zh-tw" : "en", Astro.url.pathname.replace("/zh-tw", ""))}>
             <Icon
               name="material-symbols:translate-rounded"
               class="inline hover:text-indigo-400 duration-300"

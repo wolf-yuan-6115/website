@@ -1,8 +1,12 @@
 ---
 import { Icon } from "astro-icon/components";
 import strings from "../i18n/strings.js";
+import { getRelativeLocaleUrl } from "astro:i18n";
 
 const t = strings.nav[Astro.currentLocale]
+
+const blogRegex = /^\/(?:zh-tw\/)?blog\/.*\/?$/;
+console.log(blogRegex.test(Astro.url.pathname),Astro.url.pathname)
 ---
 
 <nav
@@ -14,7 +18,7 @@ const t = strings.nav[Astro.currentLocale]
     <div class="grid grid-cols-2">
       <div class="col-start-1 col-end-2">
         <div class="flex flex-row items-center gap-4">
-          <a href="/">
+          <a href={getRelativeLocaleUrl(Astro.currentLocale, "/")}>
             <div class="basis-1/8">
               <img
                 src="/transparent_64x64.webp"
@@ -28,14 +32,14 @@ const t = strings.nav[Astro.currentLocale]
               </p>
             </div>
           </a>
-          <a href="/">
+          <a href={getRelativeLocaleUrl(Astro.currentLocale, "/")}>
             <div
               class="basis-1/8 font-bold text-xl transition-opacity duration-300 opacity-0 sm:opacity-0 js:nav-title"
             >
               Wolf Yuan
             </div>
             <p class="sr-only">
-              Click here to go back to the homepage
+              {t["image-alt"]}
             </p>
           </a>
         </div>
@@ -46,7 +50,7 @@ const t = strings.nav[Astro.currentLocale]
             <a
               href="https://w.wolf-yuan.dev/gitlab"
               target="_blank"
-              class="hover:text-gray-400 duration-300"
+              class="text-gray-300 hover:text-white duration-300"
             >
               <div class="flex justify-between items-center md:gap-2">
                 <Icon name="simple-icons:gitlab" />
@@ -58,7 +62,7 @@ const t = strings.nav[Astro.currentLocale]
             <a
               href="https://w.wolf-yuan.dev/youtube"
               target="_blank"
-              class="hover:text-gray-400 duration-300"
+              class="text-gray-300 hover:text-white duration-300"
             >
               <div class="flex justify-between items-center md:gap-2">
                 <Icon name="simple-icons:youtube" />

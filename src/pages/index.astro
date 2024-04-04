@@ -4,6 +4,9 @@ import Button from "../components/Button.astro";
 import Card from "../components/Card.astro";
 
 import { Icon } from "astro-icon/components";
+import { getRelativeLocaleUrl } from "astro:i18n";
+
+const locale = Astro.currentLocale;
 ---
 
 <Base title="Homepage" desc="Wolf Yuan - Homepage">
@@ -54,6 +57,21 @@ import { Icon } from "astro-icon/components";
           >
             <p class="inline text-sm md:text-lg">
               Or go to my GitHub Profile
+            </p>
+            <Icon
+              name="material-symbols:arrow-forward-rounded"
+              class="inline"
+            />
+          </Button>
+        </div>
+        <div class="py-4">
+          <Button
+            link={getRelativeLocaleUrl(locale, "/blog")}
+            className="border-indigo-400 hover:bg-indigo-400 hover:shadow-indigo-400"
+            glow={true}
+          >
+            <p class="inline text-sm md:text-lg">
+              Take a look at my blog
             </p>
             <Icon
               name="material-symbols:arrow-forward-rounded"

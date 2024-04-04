@@ -4,6 +4,9 @@ import Button from "../../components/Button.astro";
 import Card from "../../components/Card.astro";
 
 import { Icon } from "astro-icon/components";
+import { getRelativeLocaleUrl } from "astro:i18n";
+
+const locale = Astro.currentLocale;;
 ---
 
 <Base title="首頁" desc="Wolf Yuan - 首頁">
@@ -54,6 +57,21 @@ import { Icon } from "astro-icon/components";
           >
             <p class="inline text-sm md:text-lg">
               或是去看看我的 GitHub 個人檔案
+            </p>
+            <Icon
+              name="material-symbols:arrow-forward-rounded"
+              class="inline"
+            />
+          </Button>
+        </div>
+        <div class="py-4">
+          <Button
+            link={getRelativeLocaleUrl(locale, "/blog")}
+            className="border-indigo-400 hover:bg-indigo-400 hover:shadow-indigo-400"
+            glow={true}
+          >
+            <p class="inline text-sm md:text-lg">
+              來逛逛我的部落格
             </p>
             <Icon
               name="material-symbols:arrow-forward-rounded"
@@ -130,7 +148,7 @@ import { Icon } from "astro-icon/components";
       class="grid grid-cols-1 md:grid-cols-2 grid-flow-row content-start gap-7"
     >
       <Card
-        title="Yeecord 網頁"
+        title="Yeecord 網站"
         description="Yeecord 是一個多功能的 Discord 機器人，目前在超過 250,000 個伺服器中服務"
         link="https://yeecord.com"
         linkDescription="yeecord.com"

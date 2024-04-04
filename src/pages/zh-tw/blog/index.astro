@@ -1,0 +1,28 @@
+---
+import Base from "../../../layouts/main.astro";
+
+import { getRelativeLocaleUrl } from "astro:i18n";
+import { getCollection } from "astro:content";
+const posts = await getCollection("zh");
+const locale = Astro.currentLocale;
+---
+
+<Base title="部落格" desc="一些我寫的文章">
+  <p class="text-4xl font-extrabold py-4">貼文</p>
+
+  <div
+      class="grid grid-cols-1 md:grid-cols-2 grid-flow-row content-start gap-7"
+    >
+    {
+    posts.map((item) => (
+    <a href={getRelativeLocaleUrl(locale, `/blog/${item.slug}`)}>
+      <div class="w-full max-h-xl border-emerald-400 hover:bg-emerald-400 hover:text-gray-800 border-2 p-4 duration-300">
+        <p class="text-2xl font-bold">{item.data.title}</p>
+        <p class="text-lg pt-4">{item.data.description}</p>
+        <img src={item.data.image} alt={`og image for ${item.data.title}`} class="max-h-80 w-auto h-auto mx-auto pt-4 rounded-md" />
+      </div>
+    </a>
+    ))
+    }
+  </div>
+</Base>
