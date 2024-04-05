@@ -1,12 +1,12 @@
 ---
+import { Image } from "astro:assets";
+import { getRelativeLocaleUrl } from "astro:i18n";
 import { Icon } from "astro-icon/components";
 import strings from "../i18n/strings.js";
-import { getRelativeLocaleUrl } from "astro:i18n";
+
+import avatarImage from "../assets/logo_64x64.webp";
 
 const t = strings.nav[Astro.currentLocale]
-
-const blogRegex = /^\/(?:zh-tw\/)?blog\/.*\/?$/;
-console.log(blogRegex.test(Astro.url.pathname),Astro.url.pathname)
 ---
 
 <nav
@@ -20,9 +20,9 @@ console.log(blogRegex.test(Astro.url.pathname),Astro.url.pathname)
         <div class="flex flex-row items-center gap-4">
           <a href={getRelativeLocaleUrl(Astro.currentLocale, "/")}>
             <div class="basis-1/8">
-              <img
-                src="/transparent_64x64.webp"
-                alt="My avatar"
+              <Image
+                src={avatarImage}
+                alt="Wolf Yuan avatar"
                 width="40"
                 height="40"
                 class="rounded-md object-fill w-10 h-10"
