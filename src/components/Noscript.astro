@@ -1,0 +1,25 @@
+---
+import strings from "../i18n/strings.js";
+
+const t = strings["noscript"][Astro.currentLocale];
+---
+
+<noscript>
+  <div
+    class="fixed bottom-0 w-full bg-gray-800 border-2 border-indigo-400 hover:opacity-40 duration-300"
+  >
+    <div class="max-w-7xl mx-auto select-none">
+      <div class="w-full p-4">
+        <p class="text-xl font-extrabold py-4">
+          {t["title"]}
+        </p>
+        <p class="py-4 md:py-0">
+          {t["description"]}
+        </p>
+        <p class="hidden md:block">
+          {t["addtional"]}
+        </p>
+      </div>
+    </div>
+  </div>
+</noscript>
