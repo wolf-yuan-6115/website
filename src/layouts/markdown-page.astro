@@ -44,20 +44,22 @@ const postImages = import.meta.glob("/src/assets/blog/**/*.{jpeg,jpg,png,gif,web
   </head>
   <body class="bg-gray-800 text-white">
     <Nav />
-    
-    <div class="max-w-6xl mx-auto my-0">
-      <div class="mx-7">
-        <div class="relative block rounded-xl bg-center bg-no-repeat bg-cover mx-auto w-full pt-[70%] sm:pt-[30%] z-[5] my-4 before:rounded-xl before:content-[''] before:absolute before:inset-0 before:block before:bg-gradient-to-t before:from-black before:to-transparent before:z-[-5]" style={`background-image: url('${(await postImages[frontmatter.image]()).default.src}')`}>
-          <div class="px-8 py-6">
-            <h1 class="py-4 text-3xl font-extrabold md:text-4xl">
-              {frontmatter.title}
-            </h1>
-            <p class="py-2 text-lg text-gray-300 md:text-xl">
-              {frontmatter.description}
-            </p>
-          </div>
-        </div>
 
+    <div class="sm:max-w-6xl mx-auto sm:px-7">
+      <div class="relative block sm:rounded-xl bg-center bg-no-repeat bg-cover mx-auto w-full pt-[50%] sm:pt-[30%] z-[5] my-4 before:sm:rounded-xl before:content-[''] before:absolute before:inset-0 before:block before:bg-gradient-to-t before:from-black before:from-30% before:opacity-80 before:to-transparent before:z-[-5]" style={`background-image: url('${(await postImages[frontmatter.image]()).default.src}')`}>
+        <div class="px-8 py-6">
+          <h1 class="py-4 text-3xl font-extrabold md:text-4xl">
+            {frontmatter.title}
+          </h1>
+          <p class="py-2 text-lg text-gray-300 md:text-xl">
+            {frontmatter.description}
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="max-w-6xl mx-auto">
+      <div class="mx-7">
         <slot />
       </div>
     </div>
