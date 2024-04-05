@@ -47,7 +47,7 @@ const postImages = import.meta.glob("/src/assets/blog/**/*.{jpeg,jpg,png,gif,web
     <Nav />
 
     <div class="sm:max-w-6xl mx-auto sm:px-7">
-      <div class="relative block sm:rounded-xl bg-center bg-no-repeat bg-cover mx-auto w-full pt-[50%] sm:pt-[30%] z-[5] my-4 before:sm:rounded-xl before:content-[''] before:absolute before:inset-0 before:block before:bg-gradient-to-t before:from-black before:from-30% before:opacity-80 before:to-transparent before:z-[-5]" style={`background-image: url('${(await postImages[frontmatter.image]()).default.src}')`}>
+      <div class="relative block sm:rounded-xl bg-center bg-no-repeat bg-cover mx-auto w-full pt-[50%] sm:pt-[30%] z-[5] my-4 before:sm:rounded-xl before:content-[''] before:absolute before:inset-0 before:block before:bg-gradient-to-t before:from-gray-900 before:from-30% before:opacity-90 before:to-transparent before:z-[-5]" style={`background-image: url('${(await postImages[frontmatter.image]()).default.src}')`}>
         <div class="px-8 py-6">
           <h1 class="py-4 text-3xl font-extrabold md:text-4xl">
             {frontmatter.title}
