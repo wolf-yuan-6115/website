@@ -2,6 +2,7 @@ import cloudflare from "@astrojs/cloudflare";
 import mdx from "@astrojs/mdx";
 import sitemap from "@astrojs/sitemap";
 import tailwind from "@astrojs/tailwind";
+import subfont from "@ernxst/subfont/astro";
 import icon from "astro-icon";
 import compress from "astro-compress";
 import { transformerNotationFocus } from "@shikijs/transformers"
@@ -9,7 +10,7 @@ import { defineConfig } from "astro/config";
 
 export default defineConfig({
   site: "https://wolf-yuan.dev",
-  integrations: [tailwind(), sitemap(), icon({
+  integrations: [tailwind(), sitemap(), subfont(), icon({
     include: {
       "material-symbols": ["arrow-forward-rounded", "translate-rounded"],
       "simple-icons": ["*"]
