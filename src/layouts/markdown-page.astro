@@ -6,6 +6,7 @@ import "@fontsource/noto-sans-tc/chinese-traditional-700.css";
 
 import Nav from "../components/Nav.astro";
 import Footer from "../components/Footer.astro";
+import Noscript from "../components/Noscript.astro";
 import { SEO } from "astro-seo";
 
 let frontmatter = Astro.props.frontmatter;
@@ -65,31 +66,6 @@ const postImages = import.meta.glob("/src/assets/blog/**/*.{jpeg,jpg,png,gif,web
     </div>
 
     <Footer />
-    <noscript>
-      <div
-        class="fixed bottom-0 w-full bg-gray-800 border-2 border-indigo-400 hover:opacity-40 duration-300"
-      >
-        <div class="max-w-7xl mx-auto select-none">
-          <div class="w-full p-4">
-            <p class="text-xl font-extrabold py-4">
-              JavaScript is disabled
-            </p>
-            <p class="py-4 md:py-0">
-              JavaScript is disabled on this site, some feature and
-              styling on this page might break.
-            </p>
-            <p class="hidden md:block">
-              This site uses Google Analysis with Cloudflare Zaraz,
-              please consider installing uBlock Origin instead of
-              blocking JavaScript.
-            </p>
-            <p class="hidden text-sm py-4 text-gray-500 md:block">
-              You can't dismiss this alert, how can I let it disappear
-              dynamically if you disabled JavaScript :)
-            </p>
-          </div>
-        </div>
-      </div>
-    </noscript>
+    <Noscript />
   </body>
 </html>
