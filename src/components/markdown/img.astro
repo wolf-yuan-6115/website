@@ -5,7 +5,14 @@ const props = Astro.props;
 ---
 
 <div class="py-4">
-  <Image class={twMerge(props.class, "mx-auto max-w-[85%] md:max-w-[90%] w-auto h-auto rounded-md")} {...props}><slot /></Image>
+  <Image
+    class={twMerge(
+      props.class,
+      "mx-auto max-w-[85%] md:max-w-[90%] w-auto h-auto rounded-md",
+    )}
+    {...props}
+  >
+    <slot />
+  </Image>
   <p class="italic text-sm text-center mt-4">{props.alt}</p>
 </div>
-

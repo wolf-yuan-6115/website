@@ -3,4 +3,12 @@ import { twMerge } from "tailwind-merge";
 const props = Astro.props;
 ---
 
-<ol class={twMerge(props.class, "list-decimal leading-loose list-inside my-2")} {...props}><slot /></ol>
+<ol
+  class={twMerge(
+    props.class,
+    "list-decimal leading-loose list-inside my-2",
+  )}
+  {...props}
+>
+  <slot />
+</ol>

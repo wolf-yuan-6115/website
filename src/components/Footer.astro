@@ -3,7 +3,7 @@ import { getRelativeLocaleUrl } from "astro:i18n";
 import { Icon } from "astro-icon/components";
 import strings from "../i18n/strings.js";
 
-const t = strings.footer[Astro.currentLocale]
+const t = strings.footer[Astro.currentLocale];
 ---
 
 <footer class="bg-gray-950 mt-8">
@@ -21,26 +21,23 @@ const t = strings.footer[Astro.currentLocale]
         </p>
         <p class="text-lg font-bold text-gray-400">
           {t.madewith}
-          <a
-            href="https://astro.build"
-            target="_blank"
-            ><Icon
+          <a href="https://astro.build" target="_blank">
+            <Icon
               name="simple-icons:astro"
               class="inline text-[#BC52EE]"
             />
             <span class="sr-only">Astro</span>
           </a>
-          <a
-            href="https://tailwindcss.com"
-            target="_blank"
-            ><Icon
+          <a href="https://tailwindcss.com" target="_blank">
+            <Icon
               name="simple-icons:tailwindcss"
               class="inline text-[#06B6D4]"
             />
             <span class="sr-only">Tailwind CSS</span>
           </a>
-         {t.and}
-          <Icon name="fa6-solid:heart" class="inline text-red-500" />️
+          {t.and}
+          <Icon name="fa6-solid:heart" class="inline text-red-500" />
+          ️
           {t.following}
         </p>
       </div>
@@ -66,7 +63,13 @@ const t = strings.footer[Astro.currentLocale]
           </a>
         </div>
         <div class="w-fit">
-          <a class="w-fit" href={getRelativeLocaleUrl(Astro.currentLocale === "en" ? "zh-tw" : "en", Astro.url.pathname.replace("/zh-tw", ""))}>
+          <a
+            class="w-fit"
+            href={getRelativeLocaleUrl(
+              Astro.currentLocale === "en" ? "zh-tw" : "en",
+              Astro.url.pathname.replace("/zh-tw", ""),
+            )}
+          >
             <Icon
               name="material-symbols:translate-rounded"
               class="inline hover:text-indigo-400 duration-300"

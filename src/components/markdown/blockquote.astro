@@ -3,5 +3,9 @@ import { twMerge } from "tailwind-merge";
 const props = Astro.props;
 ---
 
-<blockquote class={twMerge(props.class, "border-l-4 pl-3 border-l-gray-700")} {...props}><slot /></blockquote>
-
+<blockquote
+  class={twMerge(props.class, "border-l-4 pl-3 border-l-gray-700")}
+  {...props}
+>
+  <slot />
+</blockquote>

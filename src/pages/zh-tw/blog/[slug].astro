@@ -1,11 +1,12 @@
 ---
-import { getCollection } from 'astro:content';
-import MarkdownPostLayout from '../../../layouts/markdown-page.astro';
+import { getCollection } from "astro:content";
+import MarkdownPostLayout from "../../../layouts/markdown-page.astro";
 
 export async function getStaticPaths() {
   const blogEntries = await getCollection("zh");
-  return blogEntries.map(entry => ({
-    params: { slug: entry.slug }, props: { entry },
+  return blogEntries.map((entry) => ({
+    params: { slug: entry.slug },
+    props: { entry },
   }));
 }
 
@@ -24,9 +25,10 @@ import P from "../../../components/markdown/p.astro";
 import Pre from "../../../components/markdown/pre.astro";
 import Ul from "../../../components/markdown/ul.astro";
 ---
+
 <MarkdownPostLayout frontmatter={entry.data}>
-  <Content components={
-    {
+  <Content
+    components={{
       a: A,
       blockquote: Blockqoute,
       code: Code,
@@ -37,7 +39,7 @@ import Ul from "../../../components/markdown/ul.astro";
       ol: Ol,
       p: P,
       pre: Pre,
-      ul: Ul
-    }
-  } />
+      ul: Ul,
+    }}
+  />
 </MarkdownPostLayout>
