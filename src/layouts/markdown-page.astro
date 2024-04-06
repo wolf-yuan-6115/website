@@ -27,7 +27,7 @@ const postImages = import.meta.glob(
         basic: {
           title: frontmatter.description,
           type: "article",
-          image: (await postImages[frontmatter.image]()).default.src,
+          image: frontmatter.ogImage,
         },
         article: {
           publishedTime: frontmatter.publish,
