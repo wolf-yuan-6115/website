@@ -7,6 +7,7 @@ import "@fontsource/noto-sans-tc/chinese-traditional-700.css";
 import Nav from "../components/Nav.astro";
 import Footer from "../components/Footer.astro";
 import Noscript from "../components/Noscript.astro";
+import { Image } from "astro:assets";
 import { SEO } from "astro-seo";
 
 let frontmatter = Astro.props.frontmatter;
@@ -15,7 +16,7 @@ const postImages = import.meta.glob(
 );
 ---
 
-<html lang="en">
+<html lang={Astro.currentLocale === "en" ? "en" : "zh-Hant"}>
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
@@ -48,11 +49,17 @@ const postImages = import.meta.glob(
   <body class="bg-gray-800 text-white">
     <Nav />
 
+    <!-- -->
     <div class="sm:max-w-6xl mx-auto sm:px-7">
       <div
-        class="relative block sm:rounded-xl bg-center bg-no-repeat bg-cover mx-auto w-full pt-[40%] sm:pt-[30%] z-[5] mb-4 before:sm:rounded-xl before:content-[''] before:absolute before:inset-0 before:block before:bg-gradient-to-t before:from-gray-900 before:from-30% before:opacity-90 before:to-transparent before:z-[-5]"
-        style={`background-image: url('${(await postImages[frontmatter.image]()).default.src}')`}
+        class="relative overflow-hidden sm:rounded-xl bg-center bg-no-repeat bg-cover mx-auto w-full pt-[40%] sm:pt-[30%] z-[5] mb-4 before:sm:rounded-xl before:content-[''] before:absolute before:inset-0 before:block before:bg-gradient-to-t before:from-gray-900 before:from-20% before:to-transparent before:opacity-80 before:z-[-5]"
       >
+        <Image
+          src={postImages[frontmatter.image]()}
+          alt={`Cover for article ${frontmatter.title}`}
+          class="absolute top-0 left-0 w-full h-full z-[-10] pointer-events-none object-cover"
+          loading="eager"
+        />
         <div class="px-8 py-6">
           <h1 class="py-4 text-3xl font-extrabold md:text-4xl">
             {frontmatter.title}

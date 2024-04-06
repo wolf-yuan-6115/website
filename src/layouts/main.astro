@@ -11,7 +11,7 @@ import { SEO } from "astro-seo";
 const { title, desc } = Astro.props;
 ---
 
-<html lang="en">
+<html lang={Astro.currentLocale === "en" ? "en" : "zh-Hant"}>
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
