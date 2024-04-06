@@ -6,7 +6,6 @@ import subfont from "@ernxst/subfont/astro";
 import { transformerNotationFocus } from "@shikijs/transformers";
 import compress from "astro-compress";
 import icon from "astro-icon";
-import lighthouse from "astro-lighthouse";
 import { defineConfig } from "astro/config";
 
 // https://astro.build/config
