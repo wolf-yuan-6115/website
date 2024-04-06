@@ -9,6 +9,7 @@ This projects contains source code of my personal website, you can visit it at h
 ### Tech stack
 
 This website uses:
+
 - Astro
 - Tailwind
 - React
