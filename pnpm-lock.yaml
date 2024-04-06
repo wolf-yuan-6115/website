@@ -20,9 +20,6 @@ dependencies:
   '@fontsource-variable/jetbrains-mono':
     specifier: ^5.0.20
     version: 5.0.20
-  '@fontsource/noto-sans-tc':
-    specifier: ^5.0.18
-    version: 5.0.18
   '@fontsource/space-mono':
     specifier: ^5.0.19
     version: 5.0.19
@@ -1230,10 +1227,6 @@ packages:
 
   /@fontsource-variable/jetbrains-mono@5.0.20:
     resolution: {integrity: sha512-IWJnmY9vT5Olcac1vzA7FMdnojCrZWMq+g7SqC2jsFpY0LQTjIgp9gBjjw9kUOkNbLw37/evZO4w6rdPeMA68A==}
-    dev: false
-
-  /@fontsource/noto-sans-tc@5.0.18:
-    resolution: {integrity: sha512-pHCH3NL+SUIaCMRtao0eomfIVl7Lrg8cF3zbwukQBXM1hbgt82qXbVdmZbo96XCrvjDVwh/3QSlU7ZuGEIjFDQ==}
     dev: false
 
   /@fontsource/space-mono@5.0.19:

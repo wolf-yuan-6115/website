@@ -9,7 +9,14 @@ export default {
       fontFamily: {
         sans: [
           "'JetBrains Mono Variable'",
-          "'Noto Sans TC'",
+          "Lato",
+          "'PingFang TC'",
+          "'Helvetica Neue'",
+          "Helvetica",
+          "微軟正黑體",
+          "新細明體",
+          "Arial",
+          "sans-serif",
           ...defaultTheme.fontFamily.sans,
         ],
       },
