@@ -1,6 +1,11 @@
 ---
 import { twMerge } from "tailwind-merge";
 const { className, link, target, glow } = Astro.props;
+
+let prefetch = {};
+if (Astro.props.prefetch) {
+  prefetch = { "data-astro-prefetch": Astro.props.prefetch };
+}
 ---
 
 <div
@@ -14,6 +19,7 @@ const { className, link, target, glow } = Astro.props;
     href={link}
     target={target ?? "_self"}
     class="inline w-max h-max"
+    {...prefetch}
   >
     <div class="px-5 py-3">
       <slot />

@@ -69,6 +69,7 @@ const locale = Astro.currentLocale;
             link={getRelativeLocaleUrl(locale, "/blog")}
             className="border-indigo-400 hover:bg-indigo-400 hover:shadow-indigo-400"
             glow={true}
+            prefetch="load"
           >
             <p class="inline text-sm md:text-lg">來逛逛我的部落格</p>
             <Icon

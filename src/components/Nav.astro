@@ -33,7 +33,10 @@ const t = strings.nav[Astro.currentLocale];
               </p>
             </div>
           </a>
-          <a href={getRelativeLocaleUrl(Astro.currentLocale, "/")}>
+          <a
+            href={getRelativeLocaleUrl(Astro.currentLocale, "/")}
+            data-astro-prefetch
+          >
             <div
               class="basis-1/8 font-bold text-xl transition-opacity duration-300 opacity-0 sm:opacity-0 js:nav-title"
             >
