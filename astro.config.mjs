@@ -3,8 +3,8 @@ import mdx from "@astrojs/mdx";
 import sitemap from "@astrojs/sitemap";
 import tailwind from "@astrojs/tailwind";
 import subfont from "@ernxst/subfont/astro";
+import compress from "@playform/compress";
 import { transformerNotationFocus } from "@shikijs/transformers";
-import compress from "astro-compress";
 import icon from "astro-icon";
 import { defineConfig } from "astro/config";
 
