@@ -2,7 +2,6 @@ import cloudflare from "@astrojs/cloudflare";
 import mdx from "@astrojs/mdx";
 import sitemap from "@astrojs/sitemap";
 import tailwind from "@astrojs/tailwind";
-import subfont from "@ernxst/subfont/astro";
 import compress from "@playform/compress";
 import { transformerNotationFocus } from "@shikijs/transformers";
 import icon from "astro-icon";
@@ -14,7 +13,6 @@ export default defineConfig({
   integrations: [
     tailwind(),
     sitemap(),
-    subfont(),
     icon({
       include: {
         "material-symbols": [

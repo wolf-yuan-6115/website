@@ -9,8 +9,7 @@
     "start": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro",
-    "cloudflare-build": "pip install fonttools && astro build"
+    "astro": "astro"
   },
   "dependencies": {
     "@astrojs/cloudflare": "^10.0.2",
@@ -30,13 +29,11 @@
     "tailwindcss": "^3.4.3"
   },
   "devDependencies": {
-    "@ernxst/subfont": "^0.1.4",
     "@iconify-json/fa6-solid": "^1.1.21",
     "@iconify-json/material-symbols": "^1.1.76",
     "@iconify-json/simple-icons": "^1.1.98",
     "@shikijs/transformers": "^1.2.4",
     "@trivago/prettier-plugin-sort-imports": "^4.3.0",
-    "glyphhanger": "^5.0.0",
     "prettier": "^3.2.5",
     "prettier-plugin-astro": "^0.13.0",
     "typescript": "^5.4.4"
