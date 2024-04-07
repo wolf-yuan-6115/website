@@ -5,6 +5,7 @@ import "@fontsource/space-mono";
 import Nav from "../components/Nav.astro";
 import Footer from "../components/Footer.astro";
 import Noscript from "../components/Noscript.astro";
+import { ViewTransitions } from "astro:transitions";
 import { Image } from "astro:assets";
 import { SEO } from "astro-seo";
 
@@ -14,7 +15,10 @@ const postImages = import.meta.glob(
 );
 ---
 
-<html lang={Astro.currentLocale === "en" ? "en" : "zh-Hant"}>
+<html
+  lang={Astro.currentLocale === "en" ? "en" : "zh-Hant"}
+  transition:animate="fade"
+>
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
@@ -43,14 +47,17 @@ const postImages = import.meta.glob(
       }}
     />
     <link rel="me" href="https://mastodon.wolf-yuan.dev/@wolf" />
+
+    <ViewTransitions />
   </head>
   <body class="bg-gray-800 text-white">
     <Nav />
 
-    <!-- -->
     <div class="sm:max-w-6xl mx-auto sm:px-7">
       <div
         class="relative overflow-hidden sm:rounded-xl bg-center bg-no-repeat bg-cover mx-auto w-full pt-[40%] sm:pt-[30%] z-[5] mb-4 before:sm:rounded-xl before:content-[''] before:absolute before:inset-0 before:block before:bg-gradient-to-t before:from-gray-900 before:from-20% before:to-transparent before:opacity-80 before:z-[-5]"
+        transition:name={`${frontmatter.image} container`}
+        transition:animate="none"
       >
         <Image
           src={postImages[frontmatter.image]()}

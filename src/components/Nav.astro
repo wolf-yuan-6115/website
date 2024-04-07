@@ -10,11 +10,10 @@ const t = strings.nav[Astro.currentLocale];
 ---
 
 <nav
-  class="sticky top-0 z-10 backdrop-blur-lg duration-300 js:nav-container"
+  class="flex justify-center sticky top-0 z-10 backdrop-blur-lg duration-300 js:nav-container"
+  transition:persist="navbar"
 >
-  <div
-    class="px-5 py-6 mx-auto max-w-6xl duration-300 js:nav-padding"
-  >
+  <div class="px-5 py-6 w-[72rem] duration-300 js:nav-padding">
     <div class="grid grid-cols-2">
       <div class="col-start-1 col-end-2">
         <div class="flex flex-row items-center gap-4">
@@ -81,43 +80,45 @@ const t = strings.nav[Astro.currentLocale];
 </nav>
 
 <script>
-  let navContainer = document.getElementsByClassName(
-    "js:nav-container",
-  )[0];
-  let navPaddingArea =
-    document.getElementsByClassName("js:nav-padding")[0];
-  let navTitleElement =
-    document.getElementsByClassName("js:nav-title")[0];
-  let currentState = false;
+  document.addEventListener("astro:page-load", () => {
+    let navContainer = document.getElementsByClassName(
+      "js:nav-container",
+    )[0];
+    let navPaddingArea =
+      document.getElementsByClassName("js:nav-padding")[0];
+    let navTitleElement =
+      document.getElementsByClassName("js:nav-title")[0];
+    let currentState = false;
 
-  let handelScroll = (state) => {
-    if (state) {
-      navContainer.classList.add("backdrop-brightness-75");
+    let handelScroll = (state) => {
+      if (state) {
+        navContainer.classList.add("backdrop-brightness-75");
 
-      navPaddingArea.classList.add("py-4");
-      navPaddingArea.classList.remove("py-6");
+        navPaddingArea.classList.add("py-4");
+        navPaddingArea.classList.remove("py-6");
 
-      navTitleElement.classList.add("sm:opacity-100");
-      navTitleElement.classList.remove("sm:opacity-0");
-    } else {
-      navContainer.classList.remove("backdrop-brightness-75");
+        navTitleElement.classList.add("sm:opacity-100");
+        navTitleElement.classList.remove("sm:opacity-0");
+      } else {
+        navContainer.classList.remove("backdrop-brightness-75");
 
-      navPaddingArea.classList.add("py-6");
-      navPaddingArea.classList.remove("py-4");
+        navPaddingArea.classList.add("py-6");
+        navPaddingArea.classList.remove("py-4");
 
-      navTitleElement.classList.add("sm:opacity-0");
-      navTitleElement.classList.remove("sm:opacity-100");
-    }
-  };
+        navTitleElement.classList.add("sm:opacity-0");
+        navTitleElement.classList.remove("sm:opacity-100");
+      }
+    };
 
-  window.addEventListener("scroll", function () {
-    if (window.scrollY > 52) {
-      if (currentState) return;
-      currentState = true;
-      handelScroll(true);
-    } else if (currentState) {
-      currentState = false;
-      handelScroll(false);
-    }
+    window.addEventListener("scroll", function () {
+      if (window.scrollY > 52) {
+        if (currentState) return;
+        currentState = true;
+        handelScroll(true);
+      } else if (currentState) {
+        currentState = false;
+        handelScroll(false);
+      }
+    });
   });
 </script>

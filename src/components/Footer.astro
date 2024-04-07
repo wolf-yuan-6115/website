@@ -6,7 +6,11 @@ import strings from "../i18n/strings.js";
 const t = strings.footer[Astro.currentLocale];
 ---
 
-<footer class="bg-gray-950 mt-8">
+<footer
+  class="bg-gray-950 mt-8"
+  transition:name="footer"
+  transition:animate="none"
+>
   <div class="mx-auto max-w-6xl py-6 px-6 lg:px-4">
     <div class="grid grid-flow-row grid-cols-1 md:grid-cols-2">
       <div>

@@ -4,12 +4,16 @@ import "@fontsource-variable/jetbrains-mono";
 import Nav from "../components/Nav.astro";
 import Footer from "../components/Footer.astro";
 import Noscript from "../components/Noscript.astro";
+import { ViewTransitions } from "astro:transitions";
 import { SEO } from "astro-seo";
 
 const { title, desc } = Astro.props;
 ---
 
-<html lang={Astro.currentLocale === "en" ? "en" : "zh-Hant"}>
+<html
+  lang={Astro.currentLocale === "en" ? "en" : "zh-Hant"}
+  transition:animate="fade"
+>
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
@@ -32,6 +36,8 @@ const { title, desc } = Astro.props;
       }}
     />
     <link rel="me" href="https://mastodon.wolf-yuan.dev/@wolf" />
+
+    <ViewTransitions />
   </head>
   <body class="bg-gray-800 text-white">
     <Nav />
