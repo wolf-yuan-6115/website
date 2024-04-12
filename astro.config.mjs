@@ -1,4 +1,3 @@
-import cloudflare from "@astrojs/cloudflare";
 import mdx from "@astrojs/mdx";
 import sitemap from "@astrojs/sitemap";
 import tailwind from "@astrojs/tailwind";
@@ -38,13 +37,7 @@ export default defineConfig({
       },
     }),
   ],
-  adapter: cloudflare(),
-  output: "hybrid",
-  image: {
-    service: {
-      entrypoint: "astro/assets/services/noop",
-    },
-  },
+  output: "static",
   i18n: {
     defaultLocale: "en",
     locales: ["en", "zh-tw"],
