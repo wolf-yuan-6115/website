@@ -12,6 +12,7 @@ export default defineConfig({
   integrations: [
     tailwind(),
     sitemap(),
+    compress(),
     icon({
       include: {
         "material-symbols": [
@@ -20,15 +21,7 @@ export default defineConfig({
         ],
         "simple-icons": ["*"],
       },
-    }),
-    compress({
-      Exclude: [
-        "_routes.json",
-        "_worker.mjs",
-        "_noop-middleware.mjs",
-        "renderers.mjs",
-      ],
-    }),
+    }),,
     mdx({
       shikiConfig: {
         theme: "catppuccin-mocha",
