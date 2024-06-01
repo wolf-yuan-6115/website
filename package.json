@@ -18,7 +18,7 @@
     "@astrojs/tailwind": "^5.1.0",
     "@fontsource-variable/jetbrains-mono": "^5.0.20",
     "@fontsource/space-mono": "^5.0.19",
-    "@playform/compress": "^0.0.3",
+    "@playform/compress": "^0.0.10",
     "astro": "^4.5.16",
     "astro-icon": "^1.1.0",
     "astro-seo": "^0.8.3",
@@ -34,7 +34,7 @@
     "@shikijs/transformers": "^1.2.4",
     "@trivago/prettier-plugin-sort-imports": "^4.3.0",
     "prettier": "^3.2.5",
-    "prettier-plugin-astro": "^0.13.0",
+    "prettier-plugin-astro": "^0.14.0",
     "typescript": "^5.4.4"
   }
 }
