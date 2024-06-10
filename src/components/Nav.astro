@@ -4,7 +4,7 @@ import { getRelativeLocaleUrl } from "astro:i18n";
 import { Icon } from "astro-icon/components";
 import strings from "../i18n/strings.js";
 
-import avatarImage from "../assets/logo_64x64.webp";
+import avatarImage from "../assets/transparent_64x64.png";
 
 const t = strings.nav[Astro.currentLocale];
 ---
@@ -24,7 +24,7 @@ const t = strings.nav[Astro.currentLocale];
                 alt="Wolf Yuan avatar"
                 width="40"
                 height="40"
-                class="rounded-md object-fill w-10 h-10"
+                class="object-fill w-10 h-10"
                 loading="eager"
               />
               <p class="sr-only">

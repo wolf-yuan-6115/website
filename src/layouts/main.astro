@@ -39,10 +39,10 @@ const { title, desc } = Astro.props;
 
     <ViewTransitions />
   </head>
-  <body class="bg-gray-800 text-white">
+  <body class="bg-gray-800 text-white flex flex-col h-screen">
     <Nav />
 
-    <div class="max-w-6xl mx-auto my-0">
+    <div class="max-w-6xl mx-auto my-0 mb-auto">
       <div class="mx-7">
         <slot />
       </div>
