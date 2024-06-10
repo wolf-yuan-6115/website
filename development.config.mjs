@@ -29,7 +29,7 @@ export default defineConfig({
       },
     }),
     compress({
-      CSS: false
+      CSS: { lightningcss: {}, csso: null },
     }),
   ],
   output: "static",
