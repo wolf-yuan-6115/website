@@ -13,7 +13,6 @@ export default defineConfig({
   integrations: [
     tailwind(),
     sitemap(),
-    compress(),
     icon({
       include: {
         "material-symbols": [
@@ -29,6 +28,9 @@ export default defineConfig({
         wrap: false,
         transformers: [transformerNotationFocus],
       },
+    }),
+    compress({
+      CSS: false
     }),
   ],
   adapter: cloudflare(),
