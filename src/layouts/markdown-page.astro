@@ -1,6 +1,5 @@
 ---
 import "@fontsource-variable/jetbrains-mono";
-import "@fontsource/space-mono";
 
 import Nav from "../components/Nav.astro";
 import Footer from "../components/Footer.astro";
@@ -50,7 +49,7 @@ const postImages = import.meta.glob(
 
     <ViewTransitions />
   </head>
-  <body class="bg-gray-800 text-white">
+  <body class="bg-gray-800 text-gray-50 flex flex-col h-full">
     <Nav />
 
     <div class="sm:max-w-6xl mx-auto sm:px-7">
@@ -76,7 +75,7 @@ const postImages = import.meta.glob(
       </div>
     </div>
 
-    <div class="max-w-6xl mx-auto">
+    <div class="max-w-6xl mx-auto my-0 mb-auto">
       <div class="mx-7">
         <slot />
       </div>

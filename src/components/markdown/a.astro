@@ -6,9 +6,7 @@ const props = Astro.props;
 <a
   class={twMerge(
     props.class,
-    "underline decoration-wavy decoration-gray-400 decoration-1",
+    "underline underline-offset-4 decoration-dotted hover:decoration-solid decoration-gray-400 decoration-1",
   )}
-  {...props}
+  {...props}><slot /></a
 >
-  <slot />
-</a>
