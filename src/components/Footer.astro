@@ -7,7 +7,7 @@ const t = strings.footer[Astro.currentLocale];
 ---
 
 <footer
-  class="bg-gray-950 mt-8 relative clear-both"
+  class="bg-gray-950 mt-8"
   transition:name="footer"
   transition:animate="none"
 >
@@ -73,6 +73,7 @@ const t = strings.footer[Astro.currentLocale];
               Astro.currentLocale === "en" ? "zh-tw" : "en",
               Astro.url.pathname.replace("/zh-tw", ""),
             )}
+            data-astro-reload
           >
             <Icon
               name="material-symbols:translate-rounded"
