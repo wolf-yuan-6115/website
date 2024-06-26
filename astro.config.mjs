@@ -21,7 +21,8 @@ export default defineConfig({
         ],
         "simple-icons": ["*"],
       },
-    }),,
+    }),
+    ,
     mdx({
       shikiConfig: {
         theme: "catppuccin-mocha",
@@ -33,7 +34,9 @@ export default defineConfig({
       CSS: { lightningcss: {}, csso: null },
     }),
   ],
-  adapter: cloudflare(),
+  adapter: cloudflare({
+    imageService: "passthrough",
+  }),
   output: "hybrid",
   image: {
     service: {
