@@ -26,7 +26,9 @@ export default defineConfig({
         transformers: [transformerNotationFocus],
       },
     }),
-    compress(),
+    compress({
+      CSS: { lightningcss: {}, csso: null },
+    }),
   ],
   output: "static",
   image: {
