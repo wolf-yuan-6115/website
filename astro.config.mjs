@@ -1,4 +1,3 @@
-import cloudflare from "@astrojs/cloudflare";
 import mdx from "@astrojs/mdx";
 import sitemap from "@astrojs/sitemap";
 import tailwind from "@astrojs/tailwind";
@@ -15,10 +14,7 @@ export default defineConfig({
     sitemap(),
     icon({
       include: {
-        "material-symbols": [
-          "arrow-forward-rounded",
-          "translate-rounded",
-        ],
+        "material-symbols": ["*"],
         "simple-icons": ["*"],
       },
     }),
@@ -32,10 +28,7 @@ export default defineConfig({
     }),
     compress(),
   ],
-  adapter: cloudflare({
-    imageService: "passthrough",
-  }),
-  output: "hybrid",
+  output: "static",
   image: {
     service: {
       entrypoint: "astro/assets/services/noop",
