@@ -30,9 +30,7 @@ export default defineConfig({
         transformers: [transformerNotationFocus],
       },
     }),
-    compress({
-      CSS: { lightningcss: {}, csso: null },
-    }),
+    compress(),
   ],
   adapter: cloudflare({
     imageService: "passthrough",
