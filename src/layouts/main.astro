@@ -1,6 +1,5 @@
 ---
 import "@fontsource-variable/jetbrains-mono";
-import "../styles/ScrollBarFix.css";
 
 import Nav from "../components/Nav.astro";
 import Footer from "../components/Footer.astro";
@@ -64,5 +63,12 @@ const t = strings.seo[Astro.currentLocale];
 
     <Footer />
     <Noscript />
+
+    {/* Hacky way to fix scrollbar theme */}
+    <style>
+      :root {
+        color-scheme: dark;
+      }
+    </style>
   </body>
 </html>

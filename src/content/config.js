@@ -9,7 +9,6 @@ const enBlogCollection = defineCollection({
     modify: z.date(),
     image: z.string(),
     ogImage: z.string(),
-    authors: z.array(z.string()),
     tags: z.array(z.string()),
   }),
 });
@@ -22,7 +21,6 @@ const zhBlogCollection = defineCollection({
     modify: z.date(),
     image: z.string(),
     ogImage: z.string(),
-    authors: z.array(z.string()),
     tags: z.array(z.string()),
   }),
 });
