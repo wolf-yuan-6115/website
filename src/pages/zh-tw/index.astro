@@ -34,9 +34,23 @@ const locale = Astro.currentLocale;
       <div class="py-12">
         <div class="py-4">
           <Button
+            link={getRelativeLocaleUrl(locale, "/blog")}
+            className="border-indigo-400 hover:bg-indigo-400 hover:shadow-indigo-400 md:hover:scale-105 md:hover:translate-x-2"
+            glow={true}
+            prefetch="load"
+          >
+            <p class="inline text-sm md:text-lg">來逛逛我的部落格</p>
+            <Icon
+              name="material-symbols:arrow-forward-rounded"
+              class="inline"
+            />
+          </Button>
+        </div>
+        <div class="py-4">
+          <Button
             link="https://w.wolf-yuan.dev/gitlab"
             target="_blank"
-            className="border-orange-400 hover:bg-orange-400 hover:shadow-orange-500"
+            className="border-orange-400 hover:bg-orange-400 hover:shadow-orange-500 md:hover:scale-105 md:hover:translate-x-2"
             glow={true}
           >
             <p class="inline text-sm md:text-lg">
@@ -52,26 +66,12 @@ const locale = Astro.currentLocale;
           <Button
             link="https://w.wolf-yuan.dev/github"
             target="_blank"
-            className="border-violet-400 hover:bg-violet-400 hover:shadow-violet-400"
+            className="border-violet-400 hover:bg-violet-400 hover:shadow-violet-400 md:hover:scale-105 md:hover:translate-x-2"
             glow={true}
           >
             <p class="inline text-sm md:text-lg">
               或是去看看我的 GitHub 個人檔案
             </p>
-            <Icon
-              name="material-symbols:arrow-forward-rounded"
-              class="inline"
-            />
-          </Button>
-        </div>
-        <div class="py-4">
-          <Button
-            link={getRelativeLocaleUrl(locale, "/blog")}
-            className="border-indigo-400 hover:bg-indigo-400 hover:shadow-indigo-400"
-            glow={true}
-            prefetch="load"
-          >
-            <p class="inline text-sm md:text-lg">來逛逛我的部落格</p>
             <Icon
               name="material-symbols:arrow-forward-rounded"
               class="inline"
