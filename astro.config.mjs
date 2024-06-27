@@ -12,13 +12,7 @@ export default defineConfig({
   integrations: [
     tailwind(),
     sitemap(),
-    icon({
-      include: {
-        "material-symbols": ["*"],
-        "simple-icons": ["*"],
-      },
-    }),
-    ,
+    icon(),
     mdx({
       shikiConfig: {
         theme: "catppuccin-mocha",

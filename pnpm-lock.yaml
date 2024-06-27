@@ -45,9 +45,6 @@ importers:
         specifier: ^3.4.4
         version: 3.4.4
     devDependencies:
-      '@iconify-json/fa6-solid':
-        specifier: ^1.1.21
-        version: 1.1.21
       '@iconify-json/material-symbols':
         specifier: ^1.1.82
         version: 1.1.82
@@ -564,9 +561,6 @@ packages:
 
   '@fontsource-variable/jetbrains-mono@5.0.21':
     resolution: {integrity: sha512-LL/57KBbM3r0UMuN6tSeYExiBObt0QuGq49m1FyoDFIv1GAcuKU0EQ/GAKJ/yt3R8onOCD3f5X9Dln//G6uzRQ==}
-
-  '@iconify-json/fa6-solid@1.1.21':
-    resolution: {integrity: sha512-+C6F3dFjNdqj8S83ggIXZFsX2CwecFErJKk9dVEZNd0XpNx2iNCNS+K/fl1HLFhYRhS4lb2Rgfi8yVV4MQU7yA==}
 
   '@iconify-json/material-symbols@1.1.82':
     resolution: {integrity: sha512-E67LgMFiAbEVF7rE38ulZU6NeXcPvayFF4hUUqt3g33tWrLsDNqEFTSsPt03l34rH5uGGtHIakTqtBlZ+/hRkw==}
@@ -3421,10 +3415,6 @@ snapshots:
     optional: true
 
   '@fontsource-variable/jetbrains-mono@5.0.21': {}
-
-  '@iconify-json/fa6-solid@1.1.21':
-    dependencies:
-      '@iconify/types': 2.0.0
 
   '@iconify-json/material-symbols@1.1.82':
     dependencies:
