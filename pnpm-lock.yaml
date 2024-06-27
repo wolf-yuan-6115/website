@@ -51,9 +51,6 @@ importers:
       '@iconify-json/simple-icons':
         specifier: ^1.1.105
         version: 1.1.105
-      '@shikijs/transformers':
-        specifier: ^1.6.3
-        version: 1.6.3
       '@trivago/prettier-plugin-sort-imports':
         specifier: ^4.3.0
         version: 4.3.0(prettier@3.3.1)
@@ -833,9 +830,6 @@ packages:
 
   '@shikijs/core@1.6.3':
     resolution: {integrity: sha512-QnJKHFUW95GnlJLJGP6QLx4M69HM0KlXk+R2Y8lr/x4nAx1Yb/lsuxq4XwybuUjTxbJk+BT0g/kvn0bcsjGGHg==}
-
-  '@shikijs/transformers@1.6.3':
-    resolution: {integrity: sha512-ptBuP/IIeqCzK3zZO/knFICZWs58uZWzbv7ND+bKOewe5NcCjZfSiMyzFwOyl23ewPJ1APjRBwLi6Asrodmmxw==}
 
   '@trivago/prettier-plugin-sort-imports@4.3.0':
     resolution: {integrity: sha512-r3n0onD3BTOVUNPhR4lhVK4/pABGpbA7bW3eumZnYdKaHkf1qEC+Mag6DPbGNuuh0eG8AaYj+YqmVHSiGslaTQ==}
@@ -3688,10 +3682,6 @@ snapshots:
     optional: true
 
   '@shikijs/core@1.6.3': {}
-
-  '@shikijs/transformers@1.6.3':
-    dependencies:
-      shiki: 1.6.3
 
   '@trivago/prettier-plugin-sort-imports@4.3.0(prettier@3.3.1)':
     dependencies:
