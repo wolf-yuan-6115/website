@@ -12,6 +12,8 @@ let frontmatter = Astro.props.frontmatter;
 const postImages = import.meta.glob(
   "/src/assets/blog/**/*.{jpeg,jpg,png,gif,webp}",
 );
+
+const localeCode = Astro.currentLocale === "en" ? "en_US" : "zh_Hant";
 ---
 
 <html
@@ -32,6 +34,10 @@ const postImages = import.meta.glob(
           type: "article",
           image: frontmatter.ogImage,
         },
+        optional: {
+          locale: localeCode,
+          localeAlternate: ["en_US", "zh_Hant"],
+        },
         article: {
           publishedTime: frontmatter.publish,
           modifiedTime: frontmatter.modify,
@@ -41,7 +47,7 @@ const postImages = import.meta.glob(
       }}
       twitter={{
         title: frontmatter.description,
-        card: "summary",
+        card: "summary_large_image",
         site: "@wolfyuan1135",
       }}
     />

@@ -44,4 +44,12 @@ export default {
         "我的網站使用 Cloudflare Zaraz 與 Google Analysis，您可以嘗試使用類似 uBlock Origin 的擴充功能封鎖追蹤，而不是停用 JavaScript",
     },
   },
+  seo: {
+    en: {
+      imageAlt: "Profile picture of Wolf Yuan",
+    },
+    "zh-tw": {
+      imageAlt: "Wolf Yuan 的頭貼",
+    },
+  },
 };

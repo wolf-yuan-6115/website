@@ -3,10 +3,12 @@ import { Image } from "astro:assets";
 import { getRelativeLocaleUrl } from "astro:i18n";
 import { Icon } from "astro-icon/components";
 import strings from "../i18n/strings.js";
+import { getRelativeLocaleUrl } from "astro:i18n";
 
 import avatarImage from "../assets/transparent_64x64.png";
 
 const t = strings.nav[Astro.currentLocale];
+const locale = Astro.currentLocale;
 ---
 
 <nav
@@ -48,7 +50,19 @@ const t = strings.nav[Astro.currentLocale];
       </div>
       <div class="col-start-2 col-end-3">
         <div class="flex justify-end items-center gap-6 text-lg h-10">
-          <div class="basis-1/8">
+          <div class="basis-1/10">
+            <a
+              href={getRelativeLocaleUrl(locale, "/blog")}
+              target="_blank"
+              class="text-gray-300 hover:text-gray-50 duration-300"
+            >
+              <div class="flex justify-between items-center md:gap-2">
+                <Icon name="material-symbols:newspaper-rounded" />
+                <p class="sr-only md:not-sr-only">Blog</p>
+              </div>
+            </a>
+          </div>
+          <div class="basis-1/10">
             <a
               href="https://w.wolf-yuan.dev/gitlab"
               target="_blank"
@@ -57,18 +71,6 @@ const t = strings.nav[Astro.currentLocale];
               <div class="flex justify-between items-center md:gap-2">
                 <Icon name="simple-icons:gitlab" />
                 <p class="sr-only md:not-sr-only">GitLab</p>
-              </div>
-            </a>
-          </div>
-          <div class="basis-1/10">
-            <a
-              href="https://w.wolf-yuan.dev/youtube"
-              target="_blank"
-              class="text-gray-300 hover:text-gray-50 duration-300"
-            >
-              <div class="flex justify-between items-center md:gap-2">
-                <Icon name="simple-icons:youtube" />
-                <p class="sr-only md:not-sr-only">YouTube</p>
               </div>
             </a>
           </div>

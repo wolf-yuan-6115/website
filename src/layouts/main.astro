@@ -7,8 +7,12 @@ import Footer from "../components/Footer.astro";
 import Noscript from "../components/Noscript.astro";
 import { ViewTransitions } from "astro:transitions";
 import { SEO } from "astro-seo";
+import strings from "../i18n/strings";
 
-const { title, desc } = Astro.props;
+const { title, desc, image } = Astro.props;
+
+const localeCode = Astro.currentLocale === "en" ? "en_US" : "zh_Hant";
+const t = strings.seo[Astro.currentLocale];
 ---
 
 <html
@@ -26,14 +30,23 @@ const { title, desc } = Astro.props;
       openGraph={{
         basic: {
           title: desc,
-          type: "profile",
-          image: "https://wolf-yuan.dev/logo_512x512.webp",
+          type: "website",
+          image: image ?? "https://wolf-yuan.dev/logo_512x512.webp",
+        },
+        optional: {
+          locale: localeCode,
+          localeAlternate: ["en_US", "zh_Hant"],
+        },
+        image: {
+          alt: t.imageAlt,
         },
       }}
       twitter={{
         title: desc,
         card: "summary",
         site: "@wolfyuan1135",
+        image: image ?? "https://wolf-yuan.dev/logo_512x512.webp",
+        imageAlt: t.imageAlt,
       }}
     />
     <link rel="me" href="https://mastodon.wolf-yuan.dev/@wolf" />
