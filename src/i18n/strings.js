@@ -52,4 +52,12 @@ export default {
       imageAlt: "Wolf Yuan 的頭貼",
     },
   },
+  blog: {
+    en: {
+      modified: "Last modified: ",
+    },
+    "zh-tw": {
+      modified: "最後編輯: ",
+    },
+  },
 };

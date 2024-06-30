@@ -1,3 +1,5 @@
+import { remarkCreatedTime } from "./src/utils/remarkCreatedTime.js";
+import { remarkModifiedTime } from "./src/utils/remarkMofifiedTime.js";
 import mdx from "@astrojs/mdx";
 import sitemap from "@astrojs/sitemap";
 import tailwind from "@astrojs/tailwind";
@@ -36,4 +38,7 @@ export default defineConfig({
     },
   },
   prefetch: true,
+  markdown: {
+    remarkPlugins: [remarkModifiedTime, remarkCreatedTime],
+  },
 });

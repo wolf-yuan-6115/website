@@ -3,12 +3,10 @@ import { Image } from "astro:assets";
 import { getRelativeLocaleUrl } from "astro:i18n";
 import { Icon } from "astro-icon/components";
 import strings from "../i18n/strings.js";
-import { getRelativeLocaleUrl } from "astro:i18n";
 
 import avatarImage from "../assets/transparent_64x64.png";
 
 const t = strings.nav[Astro.currentLocale];
-const locale = Astro.currentLocale;
 ---
 
 <nav
@@ -54,7 +52,10 @@ const locale = Astro.currentLocale;
         <div class="flex justify-end items-center gap-6 text-lg h-10">
           <div class="basis-1/10">
             <a
-              href={getRelativeLocaleUrl(locale, "/blog")}
+              href={getRelativeLocaleUrl(
+                Astro.currentLocale,
+                "/blog",
+              )}
               class="text-gray-300 hover:text-gray-50 duration-300"
             >
               <div class="flex justify-between items-center md:gap-2">

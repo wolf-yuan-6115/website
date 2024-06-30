@@ -5,8 +5,6 @@ const enBlogCollection = defineCollection({
   schema: z.object({
     title: z.string(),
     description: z.string(),
-    publish: z.date(),
-    modify: z.date(),
     image: z.string(),
     ogImage: z.string(),
     tags: z.array(z.string()),
@@ -17,8 +15,6 @@ const zhBlogCollection = defineCollection({
   schema: z.object({
     title: z.string(),
     description: z.string(),
-    publish: z.date(),
-    modify: z.date(),
     image: z.string(),
     ogImage: z.string(),
     tags: z.array(z.string()),

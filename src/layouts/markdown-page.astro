@@ -1,19 +1,33 @@
 ---
 import "@fontsource-variable/jetbrains-mono";
 
+import dayjs from "dayjs";
+import utc from "dayjs/plugin/utc";
+import timezone from "dayjs/plugin/timezone";
 import Nav from "../components/Nav.astro";
 import Footer from "../components/Footer.astro";
 import Noscript from "../components/Noscript.astro";
 import { ViewTransitions } from "astro:transitions";
 import { Image } from "astro:assets";
 import { SEO } from "astro-seo";
+import strings from "../i18n/strings";
 
-let frontmatter = Astro.props.frontmatter;
+dayjs.extend(utc);
+dayjs.extend(timezone);
+
+let frontmatter = Astro.props.frontmatter,
+  pluginFrontmatter = Astro.props.pluginFrontmatter;
+
+const lastModified = dayjs(pluginFrontmatter.lastModified)
+  .tz("Asia/Taipei")
+  .format("YYYY/MM/DD hh:mm A");
+
 const postImages = import.meta.glob(
   "/src/assets/blog/**/*.{jpeg,jpg,png,gif,webp}",
 );
 
 const localeCode = Astro.currentLocale === "en" ? "en_US" : "zh_Hant";
+const t = strings.blog[Astro.currentLocale];
 ---
 
 <html
@@ -39,8 +53,8 @@ const localeCode = Astro.currentLocale === "en" ? "en_US" : "zh_Hant";
           localeAlternate: ["en_US", "zh_Hant"],
         },
         article: {
-          publishedTime: frontmatter.publish,
-          modifiedTime: frontmatter.modify,
+          publishedTime: pluginFrontmatter.createdTime,
+          modifiedTime: pluginFrontmatter.lastModified,
           authors: frontmatter.authors,
           tags: frontmatter.tags,
         },
@@ -57,12 +71,9 @@ const localeCode = Astro.currentLocale === "en" ? "en_US" : "zh_Hant";
   </head>
   <body class="bg-gray-900 text-gray-50 flex flex-col h-full">
     <Nav />
-
     <div class="sm:max-w-6xl mx-auto sm:px-7">
       <div
         class="relative overflow-hidden sm:rounded-xl bg-center bg-no-repeat bg-cover mx-auto w-full pt-[40%] sm:pt-[30%] z-[5] mb-4 before:sm:rounded-xl before:content-[''] before:absolute before:inset-0 before:block before:bg-gradient-to-t before:from-gray-900 before:from-20% before:to-transparent before:opacity-80 before:z-[-5]"
-        transition:name={`${frontmatter.image} container`}
-        transition:animate="none"
       >
         <Image
           src={postImages[frontmatter.image]()}
@@ -76,6 +87,9 @@ const localeCode = Astro.currentLocale === "en" ? "en_US" : "zh_Hant";
           </h1>
           <p class="py-2 text-lg text-gray-300 md:text-xl">
             {frontmatter.description}
+          </p>
+          <p class="py-2 text-md text-gray-400 md:text-lg">
+            {t["modified"]}{lastModified}
           </p>
         </div>
       </div>
