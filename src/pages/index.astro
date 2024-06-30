@@ -10,7 +10,7 @@ const locale = Astro.currentLocale;
 ---
 
 <Base title="Homepage" desc="Homepage of my personal website.">
-  <div class="min-h-screen">
+  <div>
     <div>
       <p class="text-2xl md:text-3xl pt-10">Hello, I'm</p>
       <p class="py-6 text-5xl font-extrabold md:text-7xl">
@@ -257,5 +257,24 @@ const locale = Astro.currentLocale;
         ]}
       />
     </div>
+  </div>
+
+  <div>
+    <p
+      class="pt-12 pb-4 text-xl font-semibold text-center md:text-2xl"
+    >
+      Having ideas?
+    </p>
+    <p
+      class="text-lg font-semibold text-gray-400 text-center md:text-xl"
+    >
+      Chat with me via email at
+      <a
+        href="mailto:wolf@wolf-yuan.dev?subject=I%20have%20some%20ideas!"
+        class="underline decoration-dotted decoration-gray-500 hover:decoration-white transition-colors duration-100"
+      >
+        wolf@wolf-yuan.dev
+      </a>
+    </p>
   </div>
 </Base>
