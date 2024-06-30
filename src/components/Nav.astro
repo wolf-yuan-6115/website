@@ -13,6 +13,8 @@ const locale = Astro.currentLocale;
 
 <nav
   class="flex justify-center sticky top-0 z-10 backdrop-blur-lg duration-300 js:nav-container"
+  transition:animate="none"
+  transition:persist="navbar"
 >
   <div class="px-5 py-6 w-[72rem] duration-300 js:nav-padding">
     <div class="grid grid-cols-2">
