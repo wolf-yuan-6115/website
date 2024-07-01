@@ -10,173 +10,169 @@ const locale = Astro.currentLocale;
 ---
 
 <Base title="首頁" desc="Wolf Yuan - 首頁">
-  <div class="min-h-screen">
-    <div>
-      <p class="pt-10 text-2xl md:text-3xl">嗨，我是</p>
-      <p class="py-6 text-5xl font-extrabold md:text-7xl">
-        Wolf Yuan
-      </p>
-      <p class="pb-10 text-xl text-slate-300 md:text-2xl">
-        一名來自台灣 🇹🇼 的學生
-      </p>
-      <p class="text-md pb-5 pt-2 text-slate-200 md:text-xl">
-        我也是一名
-      </p>
-      <p class="py-2 text-xl text-green-200 md:text-2xl">
-        前後端程式設計師
-      </p>
-      <p class="py-2 text-xl text-blue-200 md:text-2xl">
-        JavaScript 程式設計師
-      </p>
-      <p class="py-2 text-xl text-yellow-200 md:text-2xl">
-        伺服器管理員
-      </p>
-      <div class="py-12">
-        <div class="py-4">
-          <Button
-            link={getRelativeLocaleUrl(locale, "/blog")}
-            className="border-indigo-400 hover:bg-indigo-400 hover:shadow-indigo-400 md:hover:translate-x-2 md:hover:scale-105"
-            glow={true}
-            prefetch="load"
-          >
-            <p class="inline text-sm md:text-lg">來逛逛我的部落格</p>
-            <Icon
-              name="material-symbols:arrow-forward-rounded"
-              class="inline"
-            />
-          </Button>
-        </div>
-        <div class="py-4">
-          <Button
-            link="https://w.wolf-yuan.dev/gitlab"
-            target="_blank"
-            className="border-orange-400 hover:bg-orange-400 hover:shadow-orange-500 md:hover:translate-x-2 md:hover:scale-105"
-            glow={true}
-          >
-            <p class="inline text-sm md:text-lg">
-              看看我的 GitLab 個人檔案
-            </p>
-            <Icon
-              name="material-symbols:arrow-forward-rounded"
-              class="inline"
-            />
-          </Button>
-        </div>
-        <div class="py-4">
-          <Button
-            link="https://w.wolf-yuan.dev/github"
-            target="_blank"
-            className="border-violet-400 hover:bg-violet-400 hover:shadow-violet-400 md:hover:translate-x-2 md:hover:scale-105"
-            glow={true}
-          >
-            <p class="inline text-sm md:text-lg">
-              或是去看看我的 GitHub 個人檔案
-            </p>
-            <Icon
-              name="material-symbols:arrow-forward-rounded"
-              class="inline"
-            />
-          </Button>
-        </div>
+  <section class="h-screen">
+    <p class="text-xl md:text-2xl pt-6">嗨，我是</p>
+    <p class="py-6 text-5xl font-extrabold md:text-6xl">Wolf Yuan</p>
+    <p class="pt-4 pb-10 text-xl md:text-2xl text-slate-300">
+      一名來自台灣 🇹🇼 的學生
+    </p>
+    <p class="text-md md:text-lg text-slate-200 pt-2 pb-5">
+      我也是一名
+    </p>
+    <p class="text-lg md:text-xl text-green-200 py-2">
+      前後端程式設計師
+    </p>
+    <p class="text-lg md:text-xl text-blue-200 py-2">
+      JavaScript 程式設計師
+    </p>
+    <p class="text-lg md:text-xl text-yellow-200 py-2">
+      伺服器管理員
+    </p>
+    <div class="py-12">
+      <div class="py-4">
+        <Button
+          link={getRelativeLocaleUrl(locale, "/blog")}
+          className="border-indigo-400 hover:bg-indigo-400 hover:shadow-indigo-400 md:hover:translate-x-2 md:hover:scale-105"
+          glow={true}
+          prefetch="load"
+        >
+          <p class="inline text-sm md:text-md">來逛逛我的部落格</p>
+          <Icon
+            name="material-symbols:arrow-forward-rounded"
+            class="inline"
+          />
+        </Button>
+      </div>
+      <div class="py-4">
+        <Button
+          link="https://w.wolf-yuan.dev/gitlab"
+          target="_blank"
+          className="border-orange-400 hover:bg-orange-400 hover:shadow-orange-500 md:hover:translate-x-2 md:hover:scale-105"
+          glow={true}
+        >
+          <p class="inline text-sm md:text-md">
+            看看我的 GitLab 個人檔案
+          </p>
+          <Icon
+            name="material-symbols:arrow-forward-rounded"
+            class="inline"
+          />
+        </Button>
+      </div>
+      <div class="py-4">
+        <Button
+          link="https://w.wolf-yuan.dev/github"
+          target="_blank"
+          className="border-violet-400 hover:bg-violet-400 hover:shadow-violet-400 md:hover:translate-x-2 md:hover:scale-105"
+          glow={true}
+        >
+          <p class="inline text-sm md:text-md">
+            或是去看看我的 GitHub 個人檔案
+          </p>
+          <Icon
+            name="material-symbols:arrow-forward-rounded"
+            class="inline"
+          />
+        </Button>
       </div>
     </div>
-  </div>
+  </section>
 
-  <div>
-    <p class="py-12 text-3xl font-extrabold md:text-4xl">技能樹</p>
+  <section>
+    <p class="py-12 text-2xl font-bold md:text-3xl">技能樹</p>
     <div class="grid grid-flow-row grid-cols-1 gap-6">
-      <div class="rounded-md bg-violet-400 px-2 py-4 text-gray-900">
-        <p class="px-4 pb-4 text-2xl font-bold">我會</p>
+      <div class="rounded-md border-2 border-violet-400 px-2 py-4">
+        <p class="px-4 pb-4 text-xl font-bold">我會</p>
         <div
           class="flex flex-row items-center overflow-x-auto [&>div]:flex [&>div]:flex-row [&>div]:items-center [&>div]:gap-4 [&>div]:px-4"
         >
           <div>
             <Icon
               name="simple-icons:fedora"
-              class="text-xl md:text-2xl"
+              class="text-lg md:text-xl"
             />
-            <p class="text-nowrap text-lg md:text-xl">Fedora</p>
+            <p class="text-md md:text-lg text-nowrap">Fedora</p>
           </div>
           <div>
             <Icon
               name="simple-icons:javascript"
-              class="text-xl md:text-2xl"
+              class="text-lg md:text-xl"
             />
-            <p class="text-nowrap text-lg md:text-xl">JavaScript</p>
+            <p class="text-md md:text-lg text-nowrap">JavaScript</p>
           </div>
           <div>
             <Icon
               name="simple-icons:nodedotjs"
-              class="text-xl md:text-2xl"
+              class="text-lg md:text-xl"
             />
-            <p class="text-nowrap text-lg md:text-xl">Node.js</p>
+            <p class="text-md md:text-lg text-nowrap">Node.js</p>
           </div>
           <div>
             <Icon
               name="simple-icons:docker"
-              class="text-xl md:text-2xl"
+              class="text-lg md:text-xl"
             />
-            <p class="text-nowrap text-lg md:text-xl">Docker</p>
+            <p class="text-md md:text-lg text-nowrap">Docker</p>
           </div>
         </div>
       </div>
-      <div class="rounded-md bg-amber-400 px-2 py-4 text-gray-900">
-        <p class="px-4 pb-4 text-2xl font-bold">正在學</p>
+      <div class="rounded-md border-2 border-amber-400 px-2 py-4">
+        <p class="px-4 pb-4 text-xl font-bold">正在學</p>
         <div
           class="flex flex-row items-center overflow-x-auto [&>div]:flex [&>div]:flex-row [&>div]:items-center [&>div]:gap-4 [&>div]:px-4"
         >
           <div>
             <Icon
               name="simple-icons:typescript"
-              class="text-xl md:text-2xl"
+              class="text-lg md:text-xl"
             />
-            <p class="text-nowrap text-lg md:text-xl">TypeScript</p>
+            <p class="text-md md:text-lg text-nowrap">TypeScript</p>
           </div>
           <div>
             <Icon
               name="simple-icons:react"
-              class="text-xl md:text-2xl"
+              class="text-lg md:text-xl"
             />
-            <p class="text-nowrap text-lg md:text-xl">React</p>
+            <p class="text-md md:text-lg text-nowrap">React</p>
           </div>
           <div>
             <Icon
               name="simple-icons:cplusplus"
-              class="text-xl md:text-2xl"
+              class="text-lg md:text-xl"
             />
-            <p class="text-nowrap text-lg md:text-xl">C++</p>
+            <p class="text-md md:text-lg text-nowrap">C++</p>
           </div>
         </div>
       </div>
-      <div class="rounded-md bg-red-400 px-2 py-4 text-gray-900">
-        <p class="px-4 pb-4 text-2xl font-bold">想學</p>
+      <div class="rounded-md border-2 border-red-400 px-2 py-4">
+        <p class="px-4 pb-4 text-xl font-bold">想學</p>
         <div
           class="flex flex-row items-center overflow-x-auto [&>div]:flex [&>div]:flex-row [&>div]:items-center [&>div]:gap-4 [&>div]:px-4"
         >
           <div>
             <Icon
               name="simple-icons:rust"
-              class="text-xl md:text-2xl"
+              class="text-lg md:text-xl"
             />
-            <p class="text-nowrap text-lg md:text-xl">Rust</p>
+            <p class="text-md md:text-lg text-nowrap">Rust</p>
           </div>
           <div>
             <Icon
               name="simple-icons:kubernetes"
-              class="text-xl md:text-2xl"
+              class="text-lg md:text-xl"
             />
-            <p class="text-nowrap text-lg md:text-xl">Kubernetes</p>
+            <p class="text-md md:text-lg text-nowrap">Kubernetes</p>
           </div>
         </div>
       </div>
     </div>
-  </div>
+  </section>
 
-  <div>
-    <p class="py-12 text-3xl font-extrabold md:text-4xl">專案</p>
+  <section>
+    <p class="py-12 text-2xl font-bold md:text-3xl">專案</p>
 
     <div
-      class="grid grid-flow-row grid-cols-1 content-start gap-7 md:grid-cols-2"
+      class="grid grid-cols-1 md:grid-cols-2 grid-flow-row content-start gap-8 md:gap-6"
     >
       <Card
         title="Dolphin Container"
@@ -210,9 +206,10 @@ const locale = Astro.currentLocale;
         icons={["simple-icons:nodedotjs", "simple-icons:typescript"]}
       />
     </div>
-  </div>
-  <div>
-    <p class="py-12 text-3xl font-extrabold md:text-4xl">貢獻專案</p>
+  </section>
+
+  <section>
+    <p class="py-12 text-2xl font-bold md:text-3xl">貢獻專案</p>
 
     <div
       class="grid grid-flow-row grid-cols-1 content-start gap-7 md:grid-cols-2"
@@ -227,9 +224,9 @@ const locale = Astro.currentLocale;
         icons={["simple-icons:typescript", "simple-icons:nextdotjs"]}
       />
     </div>
-  </div>
+  </section>
 
-  <div>
+  <section>
     <p
       class="pb-4 pt-12 text-center text-xl font-semibold md:text-2xl"
     >
@@ -247,5 +244,5 @@ const locale = Astro.currentLocale;
       >
       吧
     </p>
-  </div>
+  </section>
 </Base>
