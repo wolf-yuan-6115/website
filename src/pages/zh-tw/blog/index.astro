@@ -21,24 +21,24 @@ const postImages = import.meta.glob(
 ---
 
 <Base title="部落格" desc="一些我寫的文章">
-  <p class="pt-4 pb-6 text-3xl font-extrabold md:text-4xl">貼文</p>
+  <p class="pb-6 pt-4 text-3xl font-extrabold md:text-4xl">貼文</p>
 
   <a href={getRelativeLocaleUrl(locale, `/blog/${latestPost.slug}`)}>
     <div
-      class="flex flex-col md:flex-row gap-6 border rounded-lg border-gray-600 hover:border-gray-200 bg-gray-800 p-5 transition-colors duration-200"
+      class="flex flex-col gap-6 rounded-lg border border-gray-600 bg-gray-800 p-5 transition-colors duration-200 hover:border-gray-200 md:flex-row"
     >
       <div class="md:basis-5/12 md:py-4">
         <Image
           src={postImages[latestPost.data.image]()}
           alt={`給 ${latestPost.data.title} 這篇文章的封面圖片`}
-          class="h-72 min-w-full mx-auto rounded-md object-cover"
+          class="mx-auto h-72 min-w-full rounded-md object-cover"
         />
       </div>
-      <div class="md:basis-7/12 py-4">
-        <p class="text-md md:text-lg text-gray-300/85 pb-1">
+      <div class="py-4 md:basis-7/12">
+        <p class="text-md pb-1 text-gray-300/85 md:text-lg">
           最新的貼文:
         </p>
-        <p class="text-2xl md:text-3xl font-bold pb-3">
+        <p class="pb-3 text-2xl font-bold md:text-3xl">
           {latestPost.data.title}
         </p>
         <p class="text-md md:text-lg">
@@ -49,7 +49,7 @@ const postImages = import.meta.glob(
   </a>
 
   <div
-    class="grid grid-cols-1 md:grid-cols-2 grid-flow-row content-start gap-7"
+    class="grid grid-flow-row grid-cols-1 content-start gap-7 md:grid-cols-2"
   >
     {
       posts.map((item) => (
@@ -58,16 +58,16 @@ const postImages = import.meta.glob(
           data-astro-prefetch
         >
           <div
-            class="w-full max-h-xl bg-gray-800 border-emerald-400 hover:bg-emerald-400 hover:text-gray-800 border-2 p-4 duration-300 rounded-md"
+            class="max-h-xl w-full rounded-md border-2 border-emerald-400 bg-gray-800 p-4 duration-300 hover:bg-emerald-400 hover:text-gray-800"
             transition:name={`${item.data.title} container`}
             transition:animate="none"
           >
             <p class="text-2xl font-bold">{item.data.title}</p>
-            <p class="text-lg pt-4">{item.data.description}</p>
+            <p class="pt-4 text-lg">{item.data.description}</p>
             <Image
               src={postImages[item.data.image]()}
               alt={`給 ${item.data.title} 這篇文章的封面圖片`}
-              class="max-h-80 w-auto h-auto mx-auto mt-4 rounded-lg"
+              class="mx-auto mt-4 h-auto max-h-80 w-auto rounded-lg"
             />
           </div>
         </a>

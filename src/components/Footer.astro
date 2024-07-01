@@ -7,14 +7,14 @@ const t = strings.footer[Astro.currentLocale];
 ---
 
 <footer
-  class="bg-gray-950 mt-8"
+  class="mt-8 bg-gray-950"
   transition:name="footer"
   transition:animate="none"
 >
-  <div class="mx-auto max-w-6xl py-6 px-6 lg:px-4">
+  <div class="mx-auto max-w-6xl px-6 py-6 lg:px-4">
     <div class="grid grid-flow-row grid-cols-1 md:grid-cols-2">
       <div>
-        <p class="text-xl md:text-2xl font-bold pt-2 md:pt-0 pb-7">
+        <p class="pb-7 pt-2 text-xl font-bold md:pt-0 md:text-2xl">
           <a
             href="https://w.wolf-yuan.dev/projects/website"
             target="_blank"
@@ -48,13 +48,13 @@ const t = strings.footer[Astro.currentLocale];
         </p>
       </div>
       <div
-        class="text-xl md:text-2xl flex flex-row text-gray-400 md:text-gray-50 justify-start md:justify-end items-center gap-6 h-fit md:mx-6 pt-4 md:pt-0"
+        class="flex h-fit flex-row items-center justify-start gap-6 pt-4 text-xl text-gray-400 md:mx-6 md:justify-end md:pt-0 md:text-2xl md:text-gray-50"
       >
         <div class="w-fit">
           <a href="https://w.wolf-yuan.dev/facebook" class="w-fit">
             <Icon
               name="simple-icons:facebook"
-              class="inline hover:text-[#0866FF] duration-300"
+              class="inline duration-300 hover:text-[#0866FF]"
             />
             <p class="sr-only">Facebook</p>
           </a>
@@ -63,7 +63,7 @@ const t = strings.footer[Astro.currentLocale];
           <a href="https://w.wolf-yuan.dev/instagram" class="w-fit">
             <Icon
               name="simple-icons:instagram"
-              class="inline hover:text-[#E4405F] duration-300"
+              class="inline duration-300 hover:text-[#E4405F]"
             />
             <p class="sr-only">Instagram</p>
           </a>
@@ -79,7 +79,7 @@ const t = strings.footer[Astro.currentLocale];
           >
             <Icon
               name="material-symbols:translate-rounded"
-              class="inline hover:text-indigo-400 duration-300"
+              class="inline duration-300 hover:text-indigo-400"
             />
             <p class="sr-only">Switch language 切換語言</p>
           </a>

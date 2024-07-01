@@ -69,16 +69,16 @@ const t = strings.blog[Astro.currentLocale];
 
     <ViewTransitions />
   </head>
-  <body class="bg-gray-900 text-gray-50 flex flex-col h-full">
+  <body class="flex h-full flex-col bg-gray-900 text-gray-50">
     <Nav />
-    <div class="sm:max-w-6xl mx-auto sm:px-7">
+    <div class="mx-auto sm:max-w-6xl sm:px-7">
       <div
-        class="relative overflow-hidden sm:rounded-xl bg-center bg-no-repeat bg-cover mx-auto w-full pt-[40%] sm:pt-[30%] z-[5] mb-4 before:sm:rounded-xl before:content-[''] before:absolute before:inset-0 before:block before:bg-gradient-to-t before:from-gray-900 before:from-20% before:to-transparent before:opacity-80 before:z-[-5]"
+        class="relative z-[5] mx-auto mb-4 w-full overflow-hidden bg-cover bg-center bg-no-repeat pt-[40%] before:absolute before:inset-0 before:z-[-5] before:block before:bg-gradient-to-t before:from-gray-900 before:from-20% before:to-transparent before:opacity-80 before:content-[''] sm:rounded-xl sm:pt-[30%] before:sm:rounded-xl"
       >
         <Image
           src={postImages[frontmatter.image]()}
           alt={`Cover for article ${frontmatter.title}`}
-          class="absolute top-0 left-0 w-full h-full z-[-10] pointer-events-none object-cover"
+          class="pointer-events-none absolute left-0 top-0 z-[-10] h-full w-full object-cover"
           loading="eager"
         />
         <div class="px-8 py-6">
@@ -88,14 +88,14 @@ const t = strings.blog[Astro.currentLocale];
           <p class="py-2 text-lg text-gray-300 md:text-xl">
             {frontmatter.description}
           </p>
-          <p class="py-2 text-md text-gray-400 md:text-lg">
+          <p class="text-md py-2 text-gray-400 md:text-lg">
             {t["modified"]}{lastModified}
           </p>
         </div>
       </div>
     </div>
 
-    <div class="max-w-6xl mx-auto my-0 mb-auto">
+    <div class="mx-auto my-0 mb-auto max-w-6xl">
       <div class="mx-7">
         <slot />
       </div>

@@ -25,11 +25,11 @@ const {
           className,
         )}
       >
-        <div class="min-h-60 md:min-h-64 grid">
+        <div class="grid min-h-60 md:min-h-64">
           <div>
             <div class="grid grid-flow-col">
               <p
-                class="text-lg place-self-start font-semibold my-auto md:text-xl"
+                class="my-auto place-self-start text-lg font-semibold md:text-xl"
               >
                 {title}
               </p>
@@ -38,15 +38,15 @@ const {
                   icons.map((i) => (
                     <Icon
                       name={i}
-                      class={twMerge("inline mx-2", className)}
+                      class={twMerge("mx-2 inline", className)}
                     />
                   ))
                 }
               </div>
             </div>
-            <p class="text-md md:text-lg py-4">{description}</p>
+            <p class="text-md py-4 md:text-lg">{description}</p>
           </div>
-          <div class="place-self-end w-full text-sm">
+          <div class="w-full place-self-end text-sm">
             {t.link}{" "}
             <span class="font-bold">{linkDescription}</span>
             <Icon

@@ -11,32 +11,32 @@ const locale = Astro.currentLocale;
 
 <Base title="Homepage" desc="Homepage of my personal website.">
   <section class="h-screen">
-    <p class="text-xl md:text-2xl pt-6">Hello, I'm</p>
+    <p class="pt-6 text-xl md:text-2xl">Hello, I'm</p>
     <p class="py-6 text-5xl font-extrabold md:text-6xl">Wolf Yuan</p>
-    <p class="pt-4 pb-10 text-xl md:text-2xl text-slate-300">
+    <p class="pb-10 pt-4 text-xl text-slate-300 md:text-2xl">
       A student from Taiwan 🇹🇼
     </p>
-    <p class="text-md md:text-lg text-slate-200 pt-2 pb-5">
+    <p class="text-md pb-5 pt-2 text-slate-200 md:text-lg">
       I'm also a
     </p>
-    <p class="text-lg md:text-xl text-green-200 py-2">
+    <p class="py-2 text-lg text-green-200 md:text-xl">
       Frontend / Backend Engineer
     </p>
-    <p class="text-lg md:text-xl text-blue-200 py-2">
+    <p class="py-2 text-lg text-blue-200 md:text-xl">
       JavaScript Developer
     </p>
-    <p class="text-lg md:text-xl text-yellow-200 py-2">
+    <p class="py-2 text-lg text-yellow-200 md:text-xl">
       System Administrator
     </p>
     <div class="py-12">
       <div class="py-4">
         <Button
           link={getRelativeLocaleUrl(locale, "/blog")}
-          className="border-indigo-400 hover:bg-indigo-400 hover:shadow-indigo-400 md:hover:scale-105 md:hover:translate-x-2"
+          className="border-indigo-400 hover:bg-indigo-400 hover:shadow-indigo-400 md:hover:translate-x-2 md:hover:scale-105"
           glow={true}
           prefetch="load"
         >
-          <p class="inline text-sm md:text-md">
+          <p class="md:text-md inline text-sm">
             Take a look at my blog
           </p>
           <Icon
@@ -49,10 +49,10 @@ const locale = Astro.currentLocale;
         <Button
           link="https://w.wolf-yuan.dev/gitlab"
           target="_blank"
-          className="border-orange-400 hover:bg-orange-400 hover:shadow-orange-500 md:hover:scale-105 md:hover:translate-x-2"
+          className="border-orange-400 hover:bg-orange-400 hover:shadow-orange-500 md:hover:translate-x-2 md:hover:scale-105"
           glow={true}
         >
-          <p class="inline text-sm md:text-md">
+          <p class="md:text-md inline text-sm">
             Explore my GitLab Profile
           </p>
           <Icon
@@ -65,10 +65,10 @@ const locale = Astro.currentLocale;
         <Button
           link="https://w.wolf-yuan.dev/github"
           target="_blank"
-          className="border-violet-400 hover:bg-violet-400 hover:shadow-violet-400 md:hover:scale-105 md:hover:translate-x-2"
+          className="border-violet-400 hover:bg-violet-400 hover:shadow-violet-400 md:hover:translate-x-2 md:hover:scale-105"
           glow={true}
         >
-          <p class="inline text-sm md:text-md">
+          <p class="md:text-md inline text-sm">
             Or go to my GitHub Profile
           </p>
           <Icon
@@ -82,88 +82,88 @@ const locale = Astro.currentLocale;
 
   <section>
     <p class="py-12 text-2xl font-bold md:text-3xl">Tech cookies</p>
-    <div class="grid grid-cols-1 grid-flow-row gap-6">
+    <div class="grid grid-flow-row grid-cols-1 gap-6">
       <div class="rounded-md border-2 border-violet-400 px-2 py-4">
         <p class="px-4 pb-4 text-xl font-bold">Using</p>
         <div
-          class="flex flex-row items-center [&>div]:px-4 [&>div]:flex [&>div]:flex-row [&>div]:items-center [&>div]:gap-4 overflow-x-auto"
+          class="flex flex-row items-center overflow-x-auto [&>div]:flex [&>div]:flex-row [&>div]:items-center [&>div]:gap-4 [&>div]:px-4"
         >
           <div>
             <Icon
               name="simple-icons:fedora"
               class="text-lg md:text-xl"
             />
-            <p class="text-md md:text-lg text-nowrap">Fedora</p>
+            <p class="text-md text-nowrap md:text-lg">Fedora</p>
           </div>
           <div>
             <Icon
               name="simple-icons:javascript"
               class="text-lg md:text-xl"
             />
-            <p class="text-md md:text-lg text-nowrap">JavaScript</p>
+            <p class="text-md text-nowrap md:text-lg">JavaScript</p>
           </div>
           <div>
             <Icon
               name="simple-icons:nodedotjs"
               class="text-lg md:text-xl"
             />
-            <p class="text-md md:text-lg text-nowrap">Node.js</p>
+            <p class="text-md text-nowrap md:text-lg">Node.js</p>
           </div>
           <div>
             <Icon
               name="simple-icons:docker"
               class="text-lg md:text-xl"
             />
-            <p class="text-md md:text-lg text-nowrap">Docker</p>
+            <p class="text-md text-nowrap md:text-lg">Docker</p>
           </div>
         </div>
       </div>
       <div class="rounded-md border-2 border-amber-400 px-2 py-4">
         <p class="px-4 pb-4 text-xl font-bold">Learning</p>
         <div
-          class="flex flex-row items-center [&>div]:px-4 [&>div]:flex [&>div]:flex-row [&>div]:items-center [&>div]:gap-4 overflow-x-auto"
+          class="flex flex-row items-center overflow-x-auto [&>div]:flex [&>div]:flex-row [&>div]:items-center [&>div]:gap-4 [&>div]:px-4"
         >
           <div>
             <Icon
               name="simple-icons:typescript"
               class="text-lg md:text-xl"
             />
-            <p class="text-md md:text-lg text-nowrap">TypeScript</p>
+            <p class="text-md text-nowrap md:text-lg">TypeScript</p>
           </div>
           <div>
             <Icon
               name="simple-icons:react"
               class="text-lg md:text-xl"
             />
-            <p class="text-md md:text-lg text-nowrap">React</p>
+            <p class="text-md text-nowrap md:text-lg">React</p>
           </div>
           <div>
             <Icon
               name="simple-icons:cplusplus"
               class="text-lg md:text-xl"
             />
-            <p class="text-md md:text-lg text-nowrap">C++</p>
+            <p class="text-md text-nowrap md:text-lg">C++</p>
           </div>
         </div>
       </div>
       <div class="rounded-md border-2 border-red-400 px-2 py-4">
         <p class="px-4 pb-4 text-xl font-bold">Want to learn</p>
         <div
-          class="flex flex-row items-center [&>div]:px-4 [&>div]:flex [&>div]:flex-row [&>div]:items-center [&>div]:gap-4 overflow-x-auto"
+          class="flex flex-row items-center overflow-x-auto [&>div]:flex [&>div]:flex-row [&>div]:items-center [&>div]:gap-4 [&>div]:px-4"
         >
           <div>
             <Icon
               name="simple-icons:rust"
               class="text-lg md:text-xl"
             />
-            <p class="text-md md:text-lg text-nowrap">Rust</p>
+            <p class="text-md text-nowrap md:text-lg">Rust</p>
           </div>
           <div>
             <Icon
               name="simple-icons:kubernetes"
               class="text-lg md:text-xl"
             />
-            <p class="text-md md:text-lg text-nowrap">Kubernetes</p>
+            <p class="text-md text-nowrap md:text-lg">Kubernetes</p>
           </div>
         </div>
       </div>
@@ -174,7 +174,7 @@ const locale = Astro.currentLocale;
     <p class="py-12 text-2xl font-bold md:text-3xl">Projects</p>
 
     <div
-      class="grid grid-cols-1 md:grid-cols-2 grid-flow-row content-start gap-8 md:gap-6"
+      class="grid grid-flow-row grid-cols-1 content-start gap-8 md:grid-cols-2 md:gap-6"
     >
       <Card
         title="Dolphin Container"
@@ -190,7 +190,7 @@ const locale = Astro.currentLocale;
         description="Black cat is a Discord music bot written in TypeScript and Discord.js"
         link="https://w.wolf-yuan.dev/projects/blackcat"
         linkDescription="gitlab.com/wolf-yuan/blackcat"
-        className="border-gray-50  hover:bg-gray-50 hover:text-gray-600"
+        className="border-gray-50 hover:bg-gray-50 hover:text-gray-600"
         target="_blank"
         icons={[
           "simple-icons:nodedotjs",
@@ -203,7 +203,7 @@ const locale = Astro.currentLocale;
         description="Rep0rter is a g0v project, it collects information and sends weekly newsletter."
         link="https://w.wolf-yuan.dev/projects/rep0rter"
         linkDescription="github.com/rep0rter"
-        className="border-red-400  hover:bg-red-400 "
+        className="border-red-400 hover:bg-red-400"
         target="_blank"
         icons={["simple-icons:nodedotjs", "simple-icons:typescript"]}
       />
@@ -214,7 +214,7 @@ const locale = Astro.currentLocale;
     <p class="py-12 text-2xl font-bold md:text-3xl">Contribution</p>
 
     <div
-      class="grid grid-cols-1 md:grid-cols-2 grid-flow-row content-start gap-7"
+      class="grid grid-flow-row grid-cols-1 content-start gap-7 md:grid-cols-2"
     >
       <Card
         title="Yeecord Website"
@@ -230,17 +230,17 @@ const locale = Astro.currentLocale;
 
   <section>
     <p
-      class="pt-12 pb-4 text-xl font-semibold text-center md:text-2xl"
+      class="pb-4 pt-12 text-center text-xl font-semibold md:text-2xl"
     >
       Having ideas?
     </p>
     <p
-      class="text-lg font-semibold text-gray-400 text-center md:text-xl"
+      class="text-center text-lg font-semibold text-gray-400 md:text-xl"
     >
       Chat with me via email at
       <a
         href="mailto:wolf@wolf-yuan.dev?subject=I%20have%20some%20ideas!"
-        class="underline decoration-dotted decoration-gray-500 hover:decoration-white transition-colors duration-100"
+        class="underline decoration-gray-500 decoration-dotted transition-colors duration-100 hover:decoration-white"
       >
         wolf@wolf-yuan.dev
       </a>

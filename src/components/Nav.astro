@@ -10,11 +10,11 @@ const t = strings.nav[Astro.currentLocale];
 ---
 
 <nav
-  class="flex justify-center sticky top-0 z-10 backdrop-blur-lg duration-300 js:nav-container"
+  class="js:nav-container sticky top-0 z-10 flex justify-center backdrop-blur-lg duration-300"
   transition:animate="none"
   transition:persist="navbar"
 >
-  <div class="px-5 py-6 w-[72rem] duration-300 js:nav-padding">
+  <div class="js:nav-padding w-[72rem] px-5 py-6 duration-300">
     <div class="grid grid-cols-2">
       <div class="col-start-1 col-end-2">
         <div class="flex flex-row items-center gap-4">
@@ -25,7 +25,7 @@ const t = strings.nav[Astro.currentLocale];
                 alt="Wolf Yuan avatar"
                 width="36"
                 height="36"
-                class="object-fill w-9 h-9"
+                class="h-9 w-9 object-fill"
                 loading="eager"
               />
               <p class="sr-only">
@@ -38,7 +38,7 @@ const t = strings.nav[Astro.currentLocale];
             data-astro-prefetch
           >
             <div
-              class="basis-1/8 font-bold text-lg transition-opacity duration-300 opacity-0 sm:opacity-0 js:nav-title"
+              class="basis-1/8 js:nav-title text-lg font-bold opacity-0 transition-opacity duration-300 sm:opacity-0"
             >
               Wolf Yuan
             </div>
@@ -49,16 +49,16 @@ const t = strings.nav[Astro.currentLocale];
         </div>
       </div>
       <div class="col-start-2 col-end-3">
-        <div class="flex justify-end items-center gap-6 text-md h-10">
+        <div class="text-md flex h-10 items-center justify-end gap-6">
           <div class="basis-1/10">
             <a
               href={getRelativeLocaleUrl(
                 Astro.currentLocale,
                 "/blog",
               )}
-              class="text-gray-300 hover:text-gray-50 duration-300"
+              class="text-gray-300 duration-300 hover:text-gray-50"
             >
-              <div class="flex justify-between items-center md:gap-2">
+              <div class="flex items-center justify-between md:gap-2">
                 <Icon name="material-symbols:newspaper-rounded" />
                 <p class="sr-only md:not-sr-only">Blog</p>
               </div>
@@ -68,9 +68,9 @@ const t = strings.nav[Astro.currentLocale];
             <a
               href="https://w.wolf-yuan.dev/gitlab"
               target="_blank"
-              class="text-gray-300 hover:text-gray-50 duration-300"
+              class="text-gray-300 duration-300 hover:text-gray-50"
             >
-              <div class="flex justify-between items-center md:gap-2">
+              <div class="flex items-center justify-between md:gap-2">
                 <Icon name="simple-icons:gitlab" />
                 <p class="sr-only md:not-sr-only">GitLab</p>
               </div>
