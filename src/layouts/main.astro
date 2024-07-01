@@ -8,7 +8,7 @@ import { ViewTransitions } from "astro:transitions";
 import { SEO } from "astro-seo";
 import strings from "../i18n/strings";
 
-const { title, desc, image } = Astro.props;
+const { title, openGraphTitle, description, image } = Astro.props;
 
 const localeCode = Astro.currentLocale === "en" ? "en_US" : "zh_Hant";
 const t = strings.seo[Astro.currentLocale];
@@ -21,11 +21,11 @@ const t = strings.seo[Astro.currentLocale];
     <link rel="icon" href="/favicon.ico" type="image/x-icon" />
     <title>{`${title} - Wolf Yuan`}</title>
     <SEO
-      description={desc}
+      description={description}
       charset="UTF-8"
       openGraph={{
         basic: {
-          title: title,
+          title: openGraphTitle ?? title,
           type: "website",
           image: image ?? "https://wolf-yuan.dev/logo_512x512.webp",
         },
@@ -35,8 +35,8 @@ const t = strings.seo[Astro.currentLocale];
         },
       }}
       twitter={{
-        title: title,
-        description: desc,
+        title: openGraphTitle ?? title,
+        description: description,
         card: "summary",
         site: "@wolfyuan1135",
         image: image ?? "https://wolf-yuan.dev/logo_512x512.webp",

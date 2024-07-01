@@ -20,7 +20,11 @@ const postImages = import.meta.glob(
 );
 ---
 
-<Base title="Blog posts" desc="Some posts written by me">
+<Base
+  title="Blog posts"
+  openGraphTitle="My blog posts"
+  description="I will share what I see happening, some programming tips, and a bit of my perspective on the world."
+>
   <p class="py-6 text-2xl font-bold md:text-3xl">Posts</p>
 
   <a href={getRelativeLocaleUrl(locale, `/blog/${latestPost.slug}`)}>
