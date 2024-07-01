@@ -14,10 +14,7 @@ const localeCode = Astro.currentLocale === "en" ? "en_US" : "zh_Hant";
 const t = strings.seo[Astro.currentLocale];
 ---
 
-<html
-  lang={Astro.currentLocale === "en" ? "en" : "zh-Hant"}
-  transition:animate="fade"
->
+<html lang={Astro.currentLocale === "en" ? "en" : "zh-Hant"}>
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
@@ -52,7 +49,7 @@ const t = strings.seo[Astro.currentLocale];
   <body class="flex h-full flex-col bg-gray-900 text-gray-50">
     <Nav />
 
-    <div class="mx-auto mb-auto max-w-6xl">
+    <div class="mx-auto mb-auto max-w-6xl" transition:animate="fade">
       <div class="mx-7">
         <slot />
       </div>

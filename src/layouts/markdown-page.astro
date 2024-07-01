@@ -30,10 +30,7 @@ const localeCode = Astro.currentLocale === "en" ? "en_US" : "zh_Hant";
 const t = strings.blog[Astro.currentLocale];
 ---
 
-<html
-  lang={Astro.currentLocale === "en" ? "en" : "zh-Hant"}
-  transition:animate="fade"
->
+<html lang={Astro.currentLocale === "en" ? "en" : "zh-Hant"}>
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
@@ -72,33 +69,36 @@ const t = strings.blog[Astro.currentLocale];
   </head>
   <body class="flex h-full flex-col bg-gray-900 text-gray-50">
     <Nav />
-    <div class="mx-auto sm:max-w-6xl sm:px-7">
-      <div
-        class="relative z-[5] mx-auto mb-4 w-full overflow-hidden bg-cover bg-center bg-no-repeat pt-[40%] before:absolute before:inset-0 before:z-[-5] before:block before:bg-gradient-to-t before:from-gray-900 before:from-20% before:to-transparent before:opacity-80 before:content-[''] sm:rounded-xl sm:pt-[30%] before:sm:rounded-xl"
-      >
-        <Image
-          src={postImages[frontmatter.image]()}
-          alt={`Cover for article ${frontmatter.title}`}
-          class="pointer-events-none absolute left-0 top-0 z-[-10] h-full w-full object-cover"
-          loading="eager"
-        />
-        <div class="px-8 py-6">
-          <h1 class="py-4 text-3xl font-extrabold md:text-4xl">
-            {frontmatter.title}
-          </h1>
-          <p class="py-2 text-lg text-gray-300 md:text-xl">
-            {frontmatter.description}
-          </p>
-          <p class="text-md py-2 text-gray-400 md:text-lg">
-            {t["modified"]}{lastModified}
-          </p>
+
+    <div transition:animate="fade">
+      <div class="mx-auto sm:max-w-6xl sm:px-7">
+        <div
+          class="relative z-[5] mx-auto mb-4 w-full overflow-hidden bg-cover bg-center bg-no-repeat pt-[40%] before:absolute before:inset-0 before:z-[-5] before:block before:bg-gradient-to-t before:from-gray-900 before:from-20% before:to-transparent before:opacity-80 before:content-[''] sm:rounded-xl sm:pt-[30%] before:sm:rounded-xl"
+        >
+          <Image
+            src={postImages[frontmatter.image]()}
+            alt={`Cover for article ${frontmatter.title}`}
+            class="pointer-events-none absolute left-0 top-0 z-[-10] h-full w-full object-cover"
+            loading="eager"
+          />
+          <div class="px-8 py-6">
+            <h1 class="py-4 text-3xl font-extrabold md:text-4xl">
+              {frontmatter.title}
+            </h1>
+            <p class="py-2 text-lg text-gray-300 md:text-xl">
+              {frontmatter.description}
+            </p>
+            <p class="text-md py-2 text-gray-400 md:text-lg">
+              {t["modified"]}{lastModified}
+            </p>
+          </div>
         </div>
       </div>
-    </div>
 
-    <div class="mx-auto my-0 mb-auto max-w-6xl">
-      <div class="mx-7">
-        <slot />
+      <div class="mx-auto my-0 mb-auto max-w-6xl">
+        <div class="mx-7">
+          <slot />
+        </div>
       </div>
     </div>
 
