@@ -28,7 +28,7 @@ const t = strings.seo[Astro.currentLocale];
       charset="UTF-8"
       openGraph={{
         basic: {
-          title: desc,
+          title: title,
           type: "website",
           image: image ?? "https://wolf-yuan.dev/logo_512x512.webp",
         },
@@ -36,16 +36,13 @@ const t = strings.seo[Astro.currentLocale];
           locale: localeCode,
           localeAlternate: ["en_US", "zh_Hant"],
         },
-        image: {
-          alt: t.imageAlt,
-        },
       }}
       twitter={{
-        title: desc,
+        title: title,
+        description: desc,
         card: "summary",
         site: "@wolfyuan1135",
         image: image ?? "https://wolf-yuan.dev/logo_512x512.webp",
-        imageAlt: t.imageAlt,
       }}
     />
     <link rel="me" href="https://mastodon.wolf-yuan.dev/@wolf" />

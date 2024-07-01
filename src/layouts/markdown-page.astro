@@ -44,7 +44,7 @@ const t = strings.blog[Astro.currentLocale];
       charset="UTF-8"
       openGraph={{
         basic: {
-          title: frontmatter.description,
+          title: frontmatter.title,
           type: "article",
           image: frontmatter.ogImage,
         },
@@ -60,7 +60,8 @@ const t = strings.blog[Astro.currentLocale];
         },
       }}
       twitter={{
-        title: frontmatter.description,
+        title: frontmatter.title,
+        description: frontmatter.description,
         card: "summary_large_image",
         site: "@wolfyuan1135",
       }}
