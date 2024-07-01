@@ -7,13 +7,46 @@ import { getCollection } from "astro:content";
 const posts = await getCollection("zh");
 const locale = Astro.currentLocale;
 
+posts.sort(
+  (a, b) =>
+    Date.parse(b.frontmatter.createdTime) -
+    Date.parse(a.frontmatter.createdTime),
+);
+
+const latestPost = posts.shift();
+
 const postImages = import.meta.glob(
   `/src/assets/blog/**/*.{jpeg,jpg,png,gif,webp}`,
 );
 ---
 
 <Base title="部落格" desc="一些我寫的文章">
-  <p class="text-4xl font-extrabold py-4">貼文</p>
+  <p class="pt-4 pb-6 text-3xl font-extrabold md:text-4xl">貼文</p>
+
+  <a href={getRelativeLocaleUrl(locale, `/blog/${latestPost.slug}`)}>
+    <div
+      class="flex flex-col md:flex-row gap-6 border rounded-lg border-gray-600 hover:border-gray-200 bg-gray-800 p-5 transition-colors duration-200"
+    >
+      <div class="md:basis-5/12 md:py-4">
+        <Image
+          src={postImages[latestPost.data.image]()}
+          alt={`給 ${latestPost.data.title} 這篇文章的封面圖片`}
+          class="h-72 min-w-full mx-auto rounded-md object-cover"
+        />
+      </div>
+      <div class="md:basis-7/12 py-4">
+        <p class="text-md md:text-lg text-gray-300/85 pb-1">
+          最新的貼文:
+        </p>
+        <p class="text-2xl md:text-3xl font-bold pb-3">
+          {latestPost.data.title}
+        </p>
+        <p class="text-md md:text-lg">
+          {latestPost.data.description}
+        </p>
+      </div>
+    </div>
+  </a>
 
   <div
     class="grid grid-cols-1 md:grid-cols-2 grid-flow-row content-start gap-7"
@@ -33,7 +66,7 @@ const postImages = import.meta.glob(
             <p class="text-lg pt-4">{item.data.description}</p>
             <Image
               src={postImages[item.data.image]()}
-              alt={`Cover for post ${item.data.title}, read this post for more information`}
+              alt={`給 ${item.data.title} 這篇文章的封面圖片`}
               class="max-h-80 w-auto h-auto mx-auto mt-4 rounded-lg"
             />
           </div>
