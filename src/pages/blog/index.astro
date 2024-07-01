@@ -21,7 +21,7 @@ const postImages = import.meta.glob(
 ---
 
 <Base title="Blog posts" desc="Some posts written by me">
-  <p class="pb-6 pt-4 text-3xl font-extrabold md:text-4xl">Posts</p>
+  <p class="py-6 text-2xl font-bold md:text-3xl">Posts</p>
 
   <a href={getRelativeLocaleUrl(locale, `/blog/${latestPost.slug}`)}>
     <div
@@ -35,7 +35,7 @@ const postImages = import.meta.glob(
         />
       </div>
       <div class="py-4 md:basis-7/12">
-        <p class="text-md pb-1 text-gray-300/85 md:text-lg">
+        <p class="text-md pb-2 text-gray-300/85 md:text-lg">
           Latest Post:
         </p>
         <p class="pb-3 text-2xl font-bold md:text-3xl">
