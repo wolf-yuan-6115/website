@@ -10,177 +10,171 @@ const locale = Astro.currentLocale;
 ---
 
 <Base title="Homepage" desc="Homepage of my personal website.">
-  <div>
-    <div>
-      <p class="text-2xl md:text-3xl pt-10">Hello, I'm</p>
-      <p class="py-6 text-5xl font-extrabold md:text-7xl">
-        Wolf Yuan
-      </p>
-      <p class="pb-10 text-xl md:text-2xl text-slate-300">
-        A student from Taiwan 🇹🇼
-      </p>
-      <p class="text-md md:text-xl text-slate-200 pt-2 pb-5">
-        I'm also a
-      </p>
-      <p class="text-xl md:text-2xl text-green-200 py-2">
-        Frontend / Backend Engineer
-      </p>
-      <p class="text-xl md:text-2xl text-blue-200 py-2">
-        JavaScript Developer
-      </p>
-      <p class="text-xl md:text-2xl text-yellow-200 py-2">
-        System Administrator
-      </p>
-      <div class="py-12">
-        <div class="py-4">
-          <Button
-            link={getRelativeLocaleUrl(locale, "/blog")}
-            className="border-indigo-400 hover:bg-indigo-400 hover:shadow-indigo-400 md:hover:scale-105 md:hover:translate-x-2"
-            glow={true}
-            prefetch="load"
-          >
-            <p class="inline text-sm md:text-lg">
-              Take a look at my blog
-            </p>
-            <Icon
-              name="material-symbols:arrow-forward-rounded"
-              class="inline"
-            />
-          </Button>
-        </div>
-        <div class="py-4">
-          <Button
-            link="https://w.wolf-yuan.dev/gitlab"
-            target="_blank"
-            className="border-orange-400 hover:bg-orange-400 hover:shadow-orange-500 md:hover:scale-105 md:hover:translate-x-2"
-            glow={true}
-          >
-            <p class="inline text-sm md:text-lg">
-              Explore my GitLab Profile
-            </p>
-            <Icon
-              name="material-symbols:arrow-forward-rounded"
-              class="inline"
-            />
-          </Button>
-        </div>
-        <div class="py-4">
-          <Button
-            link="https://w.wolf-yuan.dev/github"
-            target="_blank"
-            className="border-violet-400 hover:bg-violet-400 hover:shadow-violet-400 md:hover:scale-105 md:hover:translate-x-2"
-            glow={true}
-          >
-            <p class="inline text-sm md:text-lg">
-              Or go to my GitHub Profile
-            </p>
-            <Icon
-              name="material-symbols:arrow-forward-rounded"
-              class="inline"
-            />
-          </Button>
-        </div>
+  <section class="h-screen">
+    <p class="text-xl md:text-2xl pt-6">Hello, I'm</p>
+    <p class="py-6 text-5xl font-extrabold md:text-6xl">Wolf Yuan</p>
+    <p class="pt-4 pb-10 text-xl md:text-2xl text-slate-300">
+      A student from Taiwan 🇹🇼
+    </p>
+    <p class="text-md md:text-lg text-slate-200 pt-2 pb-5">
+      I'm also a
+    </p>
+    <p class="text-lg md:text-xl text-green-200 py-2">
+      Frontend / Backend Engineer
+    </p>
+    <p class="text-lg md:text-xl text-blue-200 py-2">
+      JavaScript Developer
+    </p>
+    <p class="text-lg md:text-xl text-yellow-200 py-2">
+      System Administrator
+    </p>
+    <div class="py-12">
+      <div class="py-4">
+        <Button
+          link={getRelativeLocaleUrl(locale, "/blog")}
+          className="border-indigo-400 hover:bg-indigo-400 hover:shadow-indigo-400 md:hover:scale-105 md:hover:translate-x-2"
+          glow={true}
+          prefetch="load"
+        >
+          <p class="inline text-sm md:text-md">
+            Take a look at my blog
+          </p>
+          <Icon
+            name="material-symbols:arrow-forward-rounded"
+            class="inline"
+          />
+        </Button>
+      </div>
+      <div class="py-4">
+        <Button
+          link="https://w.wolf-yuan.dev/gitlab"
+          target="_blank"
+          className="border-orange-400 hover:bg-orange-400 hover:shadow-orange-500 md:hover:scale-105 md:hover:translate-x-2"
+          glow={true}
+        >
+          <p class="inline text-sm md:text-md">
+            Explore my GitLab Profile
+          </p>
+          <Icon
+            name="material-symbols:arrow-forward-rounded"
+            class="inline"
+          />
+        </Button>
+      </div>
+      <div class="py-4">
+        <Button
+          link="https://w.wolf-yuan.dev/github"
+          target="_blank"
+          className="border-violet-400 hover:bg-violet-400 hover:shadow-violet-400 md:hover:scale-105 md:hover:translate-x-2"
+          glow={true}
+        >
+          <p class="inline text-sm md:text-md">
+            Or go to my GitHub Profile
+          </p>
+          <Icon
+            name="material-symbols:arrow-forward-rounded"
+            class="inline"
+          />
+        </Button>
       </div>
     </div>
-  </div>
+  </section>
 
-  <div>
-    <p class="py-12 text-3xl font-extrabold md:text-4xl">
-      Tech cookies
-    </p>
+  <section>
+    <p class="py-12 text-2xl font-bold md:text-3xl">Tech cookies</p>
     <div class="grid grid-cols-1 grid-flow-row gap-6">
-      <div class="rounded-md bg-violet-400 px-2 py-4 text-gray-900">
-        <p class="px-4 pb-4 text-2xl font-bold">Using</p>
+      <div class="rounded-md border-2 border-violet-400 px-2 py-4">
+        <p class="px-4 pb-4 text-xl font-bold">Using</p>
         <div
           class="flex flex-row items-center [&>div]:px-4 [&>div]:flex [&>div]:flex-row [&>div]:items-center [&>div]:gap-4 overflow-x-auto"
         >
           <div>
             <Icon
               name="simple-icons:fedora"
-              class="text-xl md:text-2xl"
+              class="text-lg md:text-xl"
             />
-            <p class="text-lg md:text-xl text-nowrap">Fedora</p>
+            <p class="text-md md:text-lg text-nowrap">Fedora</p>
           </div>
           <div>
             <Icon
               name="simple-icons:javascript"
-              class="text-xl md:text-2xl"
+              class="text-lg md:text-xl"
             />
-            <p class="text-lg md:text-xl text-nowrap">JavaScript</p>
+            <p class="text-md md:text-lg text-nowrap">JavaScript</p>
           </div>
           <div>
             <Icon
               name="simple-icons:nodedotjs"
-              class="text-xl md:text-2xl"
+              class="text-lg md:text-xl"
             />
-            <p class="text-lg md:text-xl text-nowrap">Node.js</p>
+            <p class="text-md md:text-lg text-nowrap">Node.js</p>
           </div>
           <div>
             <Icon
               name="simple-icons:docker"
-              class="text-xl md:text-2xl"
+              class="text-lg md:text-xl"
             />
-            <p class="text-lg md:text-xl text-nowrap">Docker</p>
+            <p class="text-md md:text-lg text-nowrap">Docker</p>
           </div>
         </div>
       </div>
-      <div class="rounded-md bg-amber-400 px-2 py-4 text-gray-900">
-        <p class="px-4 pb-4 text-2xl font-bold">Learning</p>
+      <div class="rounded-md border-2 border-amber-400 px-2 py-4">
+        <p class="px-4 pb-4 text-xl font-bold">Learning</p>
         <div
           class="flex flex-row items-center [&>div]:px-4 [&>div]:flex [&>div]:flex-row [&>div]:items-center [&>div]:gap-4 overflow-x-auto"
         >
           <div>
             <Icon
               name="simple-icons:typescript"
-              class="text-xl md:text-2xl"
+              class="text-lg md:text-xl"
             />
-            <p class="text-lg md:text-xl text-nowrap">TypeScript</p>
+            <p class="text-md md:text-lg text-nowrap">TypeScript</p>
           </div>
           <div>
             <Icon
               name="simple-icons:react"
-              class="text-xl md:text-2xl"
+              class="text-lg md:text-xl"
             />
-            <p class="text-lg md:text-xl text-nowrap">React</p>
+            <p class="text-md md:text-lg text-nowrap">React</p>
           </div>
           <div>
             <Icon
               name="simple-icons:cplusplus"
-              class="text-xl md:text-2xl"
+              class="text-lg md:text-xl"
             />
-            <p class="text-lg md:text-xl text-nowrap">C++</p>
+            <p class="text-md md:text-lg text-nowrap">C++</p>
           </div>
         </div>
       </div>
-      <div class="rounded-md bg-red-400 px-2 py-4 text-gray-900">
-        <p class="px-4 pb-4 text-2xl font-bold">Want to learn</p>
+      <div class="rounded-md border-2 border-red-400 px-2 py-4">
+        <p class="px-4 pb-4 text-xl font-bold">Want to learn</p>
         <div
           class="flex flex-row items-center [&>div]:px-4 [&>div]:flex [&>div]:flex-row [&>div]:items-center [&>div]:gap-4 overflow-x-auto"
         >
           <div>
             <Icon
               name="simple-icons:rust"
-              class="text-xl md:text-2xl"
+              class="text-lg md:text-xl"
             />
-            <p class="text-lg md:text-xl text-nowrap">Rust</p>
+            <p class="text-md md:text-lg text-nowrap">Rust</p>
           </div>
           <div>
             <Icon
               name="simple-icons:kubernetes"
-              class="text-xl md:text-2xl"
+              class="text-lg md:text-xl"
             />
-            <p class="text-lg md:text-xl text-nowrap">Kubernetes</p>
+            <p class="text-md md:text-lg text-nowrap">Kubernetes</p>
           </div>
         </div>
       </div>
     </div>
-  </div>
+  </section>
 
-  <div>
-    <p class="py-12 text-3xl font-extrabold md:text-4xl">Projects</p>
+  <section>
+    <p class="py-12 text-2xl font-bold md:text-3xl">Projects</p>
 
     <div
-      class="grid grid-cols-1 md:grid-cols-2 grid-flow-row content-start gap-7"
+      class="grid grid-cols-1 md:grid-cols-2 grid-flow-row content-start gap-8 md:gap-6"
     >
       <Card
         title="Dolphin Container"
@@ -189,11 +183,7 @@ const locale = Astro.currentLocale;
         linkDescription="gitlab.com/wolf-yuan/dolphin"
         className="border-cyan-400 hover:bg-cyan-400"
         target="_blank"
-        icons={[
-          {
-            icon: "simple-icons:docker",
-          },
-        ]}
+        icons={["simple-icons:docker"]}
       />
       <Card
         title="Black Cat"
@@ -203,15 +193,9 @@ const locale = Astro.currentLocale;
         className="border-gray-50  hover:bg-gray-50 hover:text-gray-600"
         target="_blank"
         icons={[
-          {
-            icon: "simple-icons:nodedotjs",
-          },
-          {
-            icon: "simple-icons:typescript",
-          },
-          {
-            icon: "simple-icons:discord",
-          },
+          "simple-icons:nodedotjs",
+          "simple-icons:typescript",
+          "simple-icons:discord",
         ]}
       />
       <Card
@@ -221,21 +205,13 @@ const locale = Astro.currentLocale;
         linkDescription="github.com/rep0rter"
         className="border-red-400  hover:bg-red-400 "
         target="_blank"
-        icons={[
-          {
-            icon: "simple-icons:nodedotjs",
-          },
-          {
-            icon: "simple-icons:typescript",
-          },
-        ]}
+        icons={["simple-icons:nodedotjs", "simple-icons:typescript"]}
       />
     </div>
-  </div>
-  <div>
-    <p class="py-12 text-3xl font-extrabold md:text-4xl">
-      Contribution
-    </p>
+  </section>
+
+  <section>
+    <p class="py-12 text-2xl font-bold md:text-3xl">Contribution</p>
 
     <div
       class="grid grid-cols-1 md:grid-cols-2 grid-flow-row content-start gap-7"
@@ -247,19 +223,12 @@ const locale = Astro.currentLocale;
         linkDescription="yeecord.com"
         className="border-[#9cca95] hover:bg-[#9cca95]"
         target="_blank"
-        icons={[
-          {
-            icon: "simple-icons:typescript",
-          },
-          {
-            icon: "simple-icons:nextdotjs",
-          },
-        ]}
+        icons={["simple-icons:typescript", "simple-icons:nextdotjs"]}
       />
     </div>
-  </div>
+  </section>
 
-  <div>
+  <section>
     <p
       class="pt-12 pb-4 text-xl font-semibold text-center md:text-2xl"
     >
@@ -276,5 +245,5 @@ const locale = Astro.currentLocale;
         wolf@wolf-yuan.dev
       </a>
     </p>
-  </div>
+  </section>
 </Base>

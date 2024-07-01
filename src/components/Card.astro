@@ -25,26 +25,26 @@ const {
           className,
         )}
       >
-        <div class="min-h-72 md:min-h-64 grid">
+        <div class="min-h-60 md:min-h-64 grid">
           <div>
             <div class="grid grid-flow-col">
               <p
-                class="text-xl place-self-start font-bold my-auto md:text-2xl"
+                class="text-lg place-self-start font-semibold my-auto md:text-xl"
               >
                 {title}
               </p>
-              <div class="place-self-end text-xl md:text-3xl">
+              <div class="place-self-end text-xl md:text-2xl">
                 {
                   icons.map((i) => (
                     <Icon
-                      name={i.icon}
+                      name={i}
                       class={twMerge("inline mx-2", className)}
                     />
                   ))
                 }
               </div>
             </div>
-            <p class="text-md md:text-xl py-4">{description}</p>
+            <p class="text-md md:text-lg py-4">{description}</p>
           </div>
           <div class="place-self-end w-full text-sm">
             {t.link}{" "}
