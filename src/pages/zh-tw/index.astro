@@ -15,21 +15,21 @@ const locale = Astro.currentLocale;
   description="我是一名來自台灣的學生開發者，專精於 JavaScript 開發。我也擅長前端、後端程式設計和伺服器管理。"
 >
   <section class="h-screen">
-    <p class="text-xl md:text-2xl pt-6">嗨，我是</p>
+    <p class="pt-6 text-xl md:text-2xl">嗨，我是</p>
     <p class="py-6 text-5xl font-extrabold md:text-6xl">Wolf Yuan</p>
-    <p class="pt-4 pb-10 text-xl md:text-2xl text-slate-300">
+    <p class="pb-10 pt-4 text-xl text-slate-300 md:text-2xl">
       一名來自台灣 🇹🇼 的學生
     </p>
-    <p class="text-md md:text-lg text-slate-200 pt-2 pb-5">
+    <p class="text-md pb-5 pt-2 text-slate-200 md:text-lg">
       我也是一名
     </p>
-    <p class="text-lg md:text-xl text-green-200 py-2">
+    <p class="py-2 text-lg text-green-200 md:text-xl">
       前後端程式設計師
     </p>
-    <p class="text-lg md:text-xl text-blue-200 py-2">
+    <p class="py-2 text-lg text-blue-200 md:text-xl">
       JavaScript 程式設計師
     </p>
-    <p class="text-lg md:text-xl text-yellow-200 py-2">
+    <p class="py-2 text-lg text-yellow-200 md:text-xl">
       伺服器管理員
     </p>
     <div class="py-12">
@@ -40,7 +40,7 @@ const locale = Astro.currentLocale;
           glow={true}
           prefetch="load"
         >
-          <p class="inline text-sm md:text-md">來逛逛我的部落格</p>
+          <p class="md:text-md inline text-sm">來逛逛我的部落格</p>
           <Icon
             name="material-symbols:arrow-forward-rounded"
             class="inline"
@@ -54,7 +54,7 @@ const locale = Astro.currentLocale;
           className="border-orange-400 hover:bg-orange-400 hover:shadow-orange-500 md:hover:translate-x-2 md:hover:scale-105"
           glow={true}
         >
-          <p class="inline text-sm md:text-md">
+          <p class="md:text-md inline text-sm">
             看看我的 GitLab 個人檔案
           </p>
           <Icon
@@ -70,7 +70,7 @@ const locale = Astro.currentLocale;
           className="border-violet-400 hover:bg-violet-400 hover:shadow-violet-400 md:hover:translate-x-2 md:hover:scale-105"
           glow={true}
         >
-          <p class="inline text-sm md:text-md">
+          <p class="md:text-md inline text-sm">
             或是去看看我的 GitHub 個人檔案
           </p>
           <Icon
@@ -95,28 +95,28 @@ const locale = Astro.currentLocale;
               name="simple-icons:fedora"
               class="text-lg md:text-xl"
             />
-            <p class="text-md md:text-lg text-nowrap">Fedora</p>
+            <p class="text-md text-nowrap md:text-lg">Fedora</p>
           </div>
           <div>
             <Icon
               name="simple-icons:javascript"
               class="text-lg md:text-xl"
             />
-            <p class="text-md md:text-lg text-nowrap">JavaScript</p>
+            <p class="text-md text-nowrap md:text-lg">JavaScript</p>
           </div>
           <div>
             <Icon
               name="simple-icons:nodedotjs"
               class="text-lg md:text-xl"
             />
-            <p class="text-md md:text-lg text-nowrap">Node.js</p>
+            <p class="text-md text-nowrap md:text-lg">Node.js</p>
           </div>
           <div>
             <Icon
               name="simple-icons:docker"
               class="text-lg md:text-xl"
             />
-            <p class="text-md md:text-lg text-nowrap">Docker</p>
+            <p class="text-md text-nowrap md:text-lg">Docker</p>
           </div>
         </div>
       </div>
@@ -130,21 +130,21 @@ const locale = Astro.currentLocale;
               name="simple-icons:typescript"
               class="text-lg md:text-xl"
             />
-            <p class="text-md md:text-lg text-nowrap">TypeScript</p>
+            <p class="text-md text-nowrap md:text-lg">TypeScript</p>
           </div>
           <div>
             <Icon
               name="simple-icons:react"
               class="text-lg md:text-xl"
             />
-            <p class="text-md md:text-lg text-nowrap">React</p>
+            <p class="text-md text-nowrap md:text-lg">React</p>
           </div>
           <div>
             <Icon
               name="simple-icons:cplusplus"
               class="text-lg md:text-xl"
             />
-            <p class="text-md md:text-lg text-nowrap">C++</p>
+            <p class="text-md text-nowrap md:text-lg">C++</p>
           </div>
         </div>
       </div>
@@ -158,14 +158,14 @@ const locale = Astro.currentLocale;
               name="simple-icons:rust"
               class="text-lg md:text-xl"
             />
-            <p class="text-md md:text-lg text-nowrap">Rust</p>
+            <p class="text-md text-nowrap md:text-lg">Rust</p>
           </div>
           <div>
             <Icon
               name="simple-icons:kubernetes"
               class="text-lg md:text-xl"
             />
-            <p class="text-md md:text-lg text-nowrap">Kubernetes</p>
+            <p class="text-md text-nowrap md:text-lg">Kubernetes</p>
           </div>
         </div>
       </div>
@@ -176,7 +176,7 @@ const locale = Astro.currentLocale;
     <p class="py-12 text-2xl font-bold md:text-3xl">專案</p>
 
     <div
-      class="grid grid-cols-1 md:grid-cols-2 grid-flow-row content-start gap-8 md:gap-6"
+      class="grid grid-flow-row grid-cols-1 content-start gap-8 md:grid-cols-2 md:gap-6"
     >
       <Card
         title="Dolphin Container"
@@ -244,7 +244,7 @@ const locale = Astro.currentLocale;
         href="mailto:wolf@wolf-yuan.dev?subject=I%20have%20some%20ideas!"
         class="underline decoration-gray-500 decoration-dotted transition-colors duration-100 hover:decoration-white"
       >
-        wolf@wolf-yuan.dev</a
+        me@wolf-yuan.dev</a
       >
       吧
     </p>
