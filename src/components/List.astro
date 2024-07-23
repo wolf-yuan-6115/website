@@ -1,0 +1,66 @@
+---
+import { Icon } from "astro-icon/components";
+import { twMerge } from "tailwind-merge";
+import strings from "../i18n/strings.js";
+
+const {
+  className,
+  title,
+  description,
+  link,
+  icons,
+  pointerClass,
+  changed,
+} = Astro.props;
+---
+
+<div>
+  <div>
+    <a href={link} target="_blank">
+      <div
+        class={twMerge(
+          "px-5 py-5 bg-gray-800 border-2 border-emerald-200 border-solid hover:bg-emerald-200 hover:text-gray-800 md:hover:scale-105 transform-gpu duration-300 rounded-md",
+          className,
+        )}
+      >
+        <div class="grid grid-flow-col">
+          <p
+            class="my-auto place-self-start text-lg font-semibold md:text-xl"
+          >
+            {title}
+          </p>
+          <div class="place-self-end text-xl md:text-2xl">
+            {
+              icons.map((i) => (
+                <Icon
+                  name={i}
+                  class={twMerge("mx-2 inline", className)}
+                />
+              ))
+            }
+          </div>
+        </div>
+        <p class="md:text-md pt-4 text-sm">{description}</p>
+        {
+          changed && (
+            <p class="md:text-md pt-2 text-sm">
+              <Icon
+                name="material-symbols:bolt-rounded"
+                class="inline"
+              />
+              <span class="font-bold">{changed}</span>
+            </p>
+          )
+        }
+      </div>
+    </a>
+  </div>
+
+  <div
+    class={twMerge(
+      "hidden w-32 h-32 bg-emerald-400 rounded-full blur-2xl -z-10",
+      pointerClass,
+    )}
+  >
+  </div>
+</div>
