@@ -185,7 +185,10 @@ const locale = Astro.currentLocale;
         linkDescription="gitlab.com/wolf-yuan/dolphin"
         className="border-cyan-400 hover:bg-cyan-400"
         target="_blank"
-        icons={["simple-icons:docker"]}
+        icons={[
+          "simple-icons:docker",
+          "material-symbols:construction-rounded",
+        ]}
       />
       <Card
         title="Black Cat"
@@ -198,6 +201,7 @@ const locale = Astro.currentLocale;
           "simple-icons:nodedotjs",
           "simple-icons:typescript",
           "simple-icons:discord",
+          "material-symbols:construction-rounded",
         ]}
       />
       <Card
@@ -207,7 +211,42 @@ const locale = Astro.currentLocale;
         linkDescription="github.com/rep0rter"
         className="border-red-400 hover:bg-red-400"
         target="_blank"
-        icons={["simple-icons:nodedotjs", "simple-icons:typescript"]}
+        appearedIn="g0v sch001 4th"
+        icons={[
+          "simple-icons:nodedotjs",
+          "simple-icons:googlegemini",
+          "simple-icons:typescript",
+          "material-symbols:construction-rounded",
+        ]}
+      />
+      <Card
+        title="Droppler"
+        description="Droppler 是一個使用 Google Gemini 的 LINE 事實查核機器人，它可以即時的在 LINE 群組中提醒其他成員此訊息可能為假訊息"
+        link="https://w.wolf-yuan.dev/projects/droppler"
+        linkDescription="github.com/LanCoCafe/droppler"
+        className="border-green-400 hover:bg-green-400"
+        target="_blank"
+        appearedIn="SITCON Hackathon 2024"
+        icons={[
+          "simple-icons:python",
+          "simple-icons:googlegemini",
+          "simple-icons:line",
+          "material-symbols:construction-rounded",
+        ]}
+      />
+      <Card
+        title="Busify"
+        description="Busify 是一個 Telegram 機器人，它可以提供公車將在何時到達，並發送通知提醒您"
+        link="https://w.wolf-yuan.dev/projects/busify"
+        linkDescription="gitlab.com/wolf-yuan/busify"
+        className="border-blue-400 hover:bg-blue-400"
+        target="_blank"
+        appearedIn="SITCON Camp 2024"
+        icons={[
+          "simple-icons:python",
+          "simple-icons:telegram",
+          "material-symbols:construction-rounded",
+        ]}
       />
     </div>
   </section>
