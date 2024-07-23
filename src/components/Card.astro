@@ -13,6 +13,7 @@ const {
   target,
   icons,
   pointerClass,
+  appearedIn,
 } = Astro.props;
 ---
 
@@ -45,13 +46,25 @@ const {
               </div>
             </div>
             <p class="text-md py-4 md:text-lg">{description}</p>
+            {
+              appearedIn && (
+                <p class="md:text-md text-sm">
+                  <Icon
+                    name="material-symbols:bolt-rounded"
+                    class="inline"
+                  />
+                  Appeared in
+                  <span class="font-bold">{appearedIn}</span>
+                </p>
+              )
+            }
           </div>
           <div class="w-full place-self-end text-sm">
-            {t.link}{" "}
+            {t.link}
             <span class="font-bold">{linkDescription}</span>
             <Icon
               name="material-symbols:arrow-forward-rounded"
-              class="mx-2 inline"
+              class="inline"
             />
           </div>
         </div>
