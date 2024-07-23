@@ -2,6 +2,7 @@
 import Base from "../layouts/main.astro";
 import Button from "../components/Button.astro";
 import Card from "../components/Card.astro";
+import List from "../components/List.astro";
 
 import { Icon } from "astro-icon/components";
 import { getRelativeLocaleUrl } from "astro:i18n";
@@ -284,17 +285,50 @@ const locale = Astro.currentLocale;
   <section>
     <p class="py-12 text-2xl font-bold md:text-3xl">Contribution</p>
 
-    <div
-      class="grid grid-flow-row grid-cols-1 content-start gap-7 md:grid-cols-2"
-    >
-      <Card
+    <div class="grid gap-6">
+      <List
         title="Yeecord Website"
         description="Yeecord is a multi function Discord bot, serving more than 250,000 Discord servers."
         link="https://yeecord.com"
-        linkDescription="yeecord.com"
         className="border-[#9cca95] hover:bg-[#9cca95]"
-        target="_blank"
+        changed="Fixed several UI glitches"
         icons={["simple-icons:typescript", "simple-icons:nextdotjs"]}
+      />
+      <List
+        title="Lava"
+        description="Lava is a open source Discord music bot driven by Lavalink. "
+        link="https://github.com/Nat1anWasTaken/Lava"
+        className="border-red-400 hover:bg-red-400"
+        changed="Docker support, introduced Docker bake file, s6overlay support"
+        icons={[
+          "simple-icons:python",
+          "simple-icons:docker",
+          "simple-icons:discord",
+        ]}
+      />
+      <List
+        title="Easy Effects"
+        description="Audio effects for Pipewire applications."
+        link="https://github.com/wwmm/easyeffects"
+        className="border-blue-400 hover:bg-blue-400"
+        changed="Added Chinese Traditional translation"
+        icons={["simple-icons:cplusplus", "simple-icons:linux"]}
+      />
+      <List
+        title="Cavalier"
+        description="Visualize audio with CAVA."
+        link="https://github.com/NickvisionApps/Cavalier"
+        className="border-orange-500 hover:bg-orange-500"
+        changed="Added Chinese Traditional translation"
+        icons={["simple-icons:csharp", "simple-icons:linux"]}
+      />
+      <List
+        title="EvoBot"
+        description="EvoBot is a Discord music bot written in TypeScript and Discord.js."
+        link="https://github.com/eritislami/evobot"
+        className="border-zinc-400 hover:border-zinc-600 hover:bg-zinc-600 hover:text-zinc-100"
+        changed="Contributed to the project at project early stage"
+        icons={["simple-icons:typescript", "simple-icons:discord"]}
       />
     </div>
   </section>

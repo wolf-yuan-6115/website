@@ -2,6 +2,7 @@
 import Base from "../../layouts/main.astro";
 import Button from "../../components/Button.astro";
 import Card from "../../components/Card.astro";
+import List from "../../components/List.astro";
 
 import { Icon } from "astro-icon/components";
 import { getRelativeLocaleUrl } from "astro:i18n";
@@ -282,10 +283,8 @@ const locale = Astro.currentLocale;
   <section>
     <p class="py-12 text-2xl font-bold md:text-3xl">貢獻專案</p>
 
-    <div
-      class="grid grid-flow-row grid-cols-1 content-start gap-7 md:grid-cols-2"
-    >
-      <Card
+    <div class="grid gap-6">
+      <!-- <Card
         title="Yeecord 網站"
         description="Yeecord 是一個多功能的 Discord 機器人，目前在超過 250,000 個伺服器中服務"
         link="https://yeecord.com"
@@ -293,6 +292,50 @@ const locale = Astro.currentLocale;
         className="border-[#9cca95] hover:bg-[#9cca95]"
         target="_blank"
         icons={["simple-icons:typescript", "simple-icons:nextdotjs"]}
+      /> -->
+      <List
+        title="Yeecord 網站"
+        description="Yeecord 是一個多功能的 Discord 機器人，目前在超過 250,000 個伺服器中服務"
+        link="https://yeecord.com"
+        className="border-[#9cca95] hover:bg-[#9cca95]"
+        changed="修復了數個 UI 問題"
+        icons={["simple-icons:typescript", "simple-icons:nextdotjs"]}
+      />
+      <List
+        title="Lava"
+        description="Lava 是一個使用 Lavalink 的 Discord 音樂機器人"
+        link="https://github.com/Nat1anWasTaken/Lava"
+        className="border-red-400 hover:bg-red-400"
+        changed="新增 Docker 支援，使用 Docker bake 檔案，使用 s6overlay 來管理容器"
+        icons={[
+          "simple-icons:python",
+          "simple-icons:docker",
+          "simple-icons:discord",
+        ]}
+      />
+      <List
+        title="Easy Effects"
+        description="給 PipeWire 應用程式使用的音效程式"
+        link="https://github.com/wwmm/easyeffects"
+        className="border-blue-400 hover:bg-blue-400"
+        changed="新增中文繁體翻譯"
+        icons={["simple-icons:cplusplus", "simple-icons:linux"]}
+      />
+      <List
+        title="Cavalier"
+        description="使用 CAVA 的音樂視覺化程式"
+        link="https://github.com/NickvisionApps/Cavalier"
+        className="border-orange-500 hover:bg-orange-500"
+        changed="新增中文繁體翻譯"
+        icons={["simple-icons:csharp", "simple-icons:linux"]}
+      />
+      <List
+        title="EvoBot"
+        description="EvoBot 是一個使用 TypeScript 和 Discord.js 撰寫的 Discord 音樂機器人"
+        link="https://github.com/eritislami/evobot"
+        className="border-zinc-400 hover:border-zinc-600 hover:bg-zinc-600 hover:text-zinc-100"
+        changed="於專案早期階段貢獻"
+        icons={["simple-icons:typescript", "simple-icons:discord"]}
       />
     </div>
   </section>
