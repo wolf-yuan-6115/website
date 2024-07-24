@@ -25,14 +25,14 @@ const postImages = import.meta.glob(
   openGraphTitle="我的部落格"
   description="我會分享我看到的事務，一些寫程式的技巧，還有一點我對世界的看法"
 >
-  <p class="pb-4 text-2xl font-bold md:text-3xl">貼文</p>
+  <p class="py-6 text-2xl font-bold md:text-3xl">貼文</p>
   <p class="pb-4 text-gray-300">
     我會分享我看到的事務，一些寫程式的技巧，還有一點我對世界的看法
   </p>
 
   <a href={getRelativeLocaleUrl(locale, `/blog/${latestPost.slug}`)}>
     <div
-      class="flex flex-col gap-6 rounded-lg border border-gray-600 bg-gray-800 p-5 transition-colors duration-200 hover:border-gray-200 md:flex-row"
+      class="flex flex-col gap-6 rounded-lg border-2 border-gray-600 bg-gray-800 p-5 transition-colors duration-200 hover:border-gray-400 md:flex-row"
     >
       <div class="md:basis-5/12 md:py-4">
         <Image
