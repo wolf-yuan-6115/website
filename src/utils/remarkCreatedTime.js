@@ -6,6 +6,7 @@ export function remarkCreatedTime() {
     const result = execSync(
       `git log --diff-filter=A --follow --format=%cI -1 "${filepath}"`,
     );
-    file.data.astro.frontmatter.createdTime = result.toString();
+    file.data.astro.frontmatter.createdTime =
+      result.toString() || Date.now();
   };
 }

@@ -7,12 +7,6 @@ import { getCollection } from "astro:content";
 const posts = await getCollection("zh");
 const locale = Astro.currentLocale;
 
-posts.sort(
-  (a, b) =>
-    Date.parse(b.frontmatter.createdTime) -
-    Date.parse(a.frontmatter.createdTime),
-);
-
 const latestPost = posts.shift();
 
 const postImages = import.meta.glob(

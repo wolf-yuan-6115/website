@@ -6,6 +6,7 @@ export function remarkModifiedTime() {
     const result = execSync(
       `git log -1 --pretty="format:%cI" "${filepath}"`,
     );
-    file.data.astro.frontmatter.lastModified = result.toString();
+    file.data.astro.frontmatter.lastModified =
+      result.toString() || Date.now();
   };
 }
