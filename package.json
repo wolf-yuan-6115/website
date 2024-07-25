@@ -4,7 +4,7 @@
   "engines": {
     "node": ">=20"
   },
-  "packageManager": "pnpm@9.4.0",
+  "packageManager": "pnpm@9.6.0",
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
@@ -17,7 +17,7 @@
     "@astrojs/sitemap": "^3.1.6",
     "@astrojs/tailwind": "^5.1.0",
     "@fontsource-variable/jetbrains-mono": "^5.0.21",
-    "@playform/compress": "^0.0.12",
+    "@playform/compress": "^0.1.0",
     "astro": "^4.12.2",
     "astro-icon": "^1.1.0",
     "astro-seo": "^0.8.4",
