@@ -91,8 +91,8 @@ const locale = Astro.currentLocale;
       >
         <p class="pb-4 pt-2 text-xl font-bold md:text-2xl">現今</p>
         <ul class="list-inside list-disc px-3 leading-loose">
-          <li>Yeecord 社群支援</li>
-          <li>SCINT 技術組</li>
+          <li>YEE 式機器龍社群管理群</li>
+          <li>SCINT 北台灣學生資訊社群 技術組</li>
         </ul>
       </div>
       <div
@@ -131,17 +131,54 @@ const locale = Astro.currentLocale;
   <section>
     <p class="py-12 text-2xl font-bold md:text-3xl">技能樹</p>
     <div class="grid grid-flow-row grid-cols-1 gap-6">
-      <div class="rounded-md border-2 border-violet-400 px-2 py-4">
-        <p class="px-4 pb-4 text-xl font-bold">我會</p>
+      <div
+        class="rounded-md border-2 border-teal-400 bg-gray-800 px-2 py-4"
+      >
+        <p class="px-4 pb-4 text-xl font-bold">每天使用</p>
         <div
           class="flex flex-row items-center overflow-x-auto [&>div]:flex [&>div]:flex-row [&>div]:items-center [&>div]:gap-4 [&>div]:px-4"
         >
+          <div>
+            <Icon
+              name="simple-icons:archlinux"
+              class="text-lg md:text-xl"
+            />
+            <p class="text-md text-nowrap md:text-lg">Arch</p>
+          </div>
           <div>
             <Icon
               name="simple-icons:fedora"
               class="text-lg md:text-xl"
             />
             <p class="text-md text-nowrap md:text-lg">Fedora</p>
+          </div>
+          <div>
+            <Icon
+              name="simple-icons:hyprland"
+              class="text-lg md:text-xl"
+            />
+            <p class="text-md text-nowrap md:text-lg">Hyprland</p>
+          </div>
+          <div>
+            <Icon
+              name="simple-icons:gnome"
+              class="text-lg md:text-xl"
+            />
+            <p class="text-md text-nowrap md:text-lg">Gnome</p>
+          </div>
+        </div>
+      </div>
+      <div class="rounded-md border-2 border-violet-400 bg-gray-800 px-2 py-4">
+        <p class="px-4 pb-4 text-xl font-bold">我會</p>
+        <div
+          class="flex flex-row items-center overflow-x-auto [&>div]:flex [&>div]:flex-row [&>div]:items-center [&>div]:gap-4 [&>div]:px-4"
+        >
+          <div>
+            <Icon
+              name="simple-icons:astro"
+              class="text-lg md:text-xl"
+            />
+            <p class="text-md text-nowrap md:text-lg">Astro</p>
           </div>
           <div>
             <Icon
@@ -159,6 +196,13 @@ const locale = Astro.currentLocale;
           </div>
           <div>
             <Icon
+              name="simple-icons:python"
+              class="text-lg md:text-xl"
+            />
+            <p class="text-md text-nowrap md:text-lg">Python</p>
+          </div>
+          <div>
+            <Icon
               name="simple-icons:docker"
               class="text-lg md:text-xl"
             />
@@ -166,11 +210,18 @@ const locale = Astro.currentLocale;
           </div>
         </div>
       </div>
-      <div class="rounded-md border-2 border-amber-400 px-2 py-4">
+      <div class="rounded-md border-2 border-amber-400 bg-gray-800 px-2 py-4">
         <p class="px-4 pb-4 text-xl font-bold">正在學</p>
         <div
           class="flex flex-row items-center overflow-x-auto [&>div]:flex [&>div]:flex-row [&>div]:items-center [&>div]:gap-4 [&>div]:px-4"
         >
+          <div>
+            <Icon
+              name="simple-icons:rust"
+              class="text-lg md:text-xl"
+            />
+            <p class="text-md text-nowrap md:text-lg">Rust</p>
+          </div>
           <div>
             <Icon
               name="simple-icons:typescript"
@@ -194,18 +245,11 @@ const locale = Astro.currentLocale;
           </div>
         </div>
       </div>
-      <div class="rounded-md border-2 border-red-400 px-2 py-4">
+      <div class="rounded-md border-2 border-red-400 bg-gray-800 px-2 py-4">
         <p class="px-4 pb-4 text-xl font-bold">想學</p>
         <div
           class="flex flex-row items-center overflow-x-auto [&>div]:flex [&>div]:flex-row [&>div]:items-center [&>div]:gap-4 [&>div]:px-4"
         >
-          <div>
-            <Icon
-              name="simple-icons:rust"
-              class="text-lg md:text-xl"
-            />
-            <p class="text-md text-nowrap md:text-lg">Rust</p>
-          </div>
           <div>
             <Icon
               name="simple-icons:kubernetes"
