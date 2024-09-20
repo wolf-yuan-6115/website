@@ -28,7 +28,7 @@ export default {
     "zh-tw": {
       link: "點選這裡來前往",
       appeared: "在",
-      appearedAfter: "中出現",
+      appearedAfter: "中發表",
     },
   },
   noscript: {
@@ -57,9 +57,11 @@ export default {
   },
   blog: {
     en: {
+      created: "Created at: ",
       modified: "Last modified: ",
     },
     "zh-tw": {
+      created: "建立於: ",
       modified: "最後編輯: ",
     },
   },
