@@ -18,6 +18,18 @@ export default defineConfig({
       shikiConfig: {
         theme: "catppuccin-mocha",
         wrap: false,
+        transformers: [
+          {
+            preprocess(code) {
+              if (code.endsWith("\n")) {
+                code = code.slice(0, -1);
+              }
+              code = code.trim();
+
+              return code;
+            },
+          },
+        ],
       },
     }),
     compress({
