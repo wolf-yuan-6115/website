@@ -18,6 +18,9 @@ dayjs.extend(timezone);
 let frontmatter = Astro.props.frontmatter,
   pluginFrontmatter = Astro.props.pluginFrontmatter;
 
+const created = dayjs(pluginFrontmatter.createdTime)
+  .tz("Asia/Taipei")
+  .format("YYYY/MM/DD");
 const lastModified = dayjs(pluginFrontmatter.lastModified)
   .tz("Asia/Taipei")
   .format("YYYY/MM/DD hh:mm A");
@@ -82,20 +85,23 @@ const t = strings.blog[Astro.currentLocale];
             loading="eager"
           />
           <div class="px-8 py-6">
-            <h1 class="py-4 text-3xl font-extrabold md:text-4xl">
+            <h1 class="py-4 text-2xl font-extrabold md:text-4xl">
               {frontmatter.title}
             </h1>
-            <p class="py-2 text-lg text-gray-300 md:text-xl">
+            <p class="text-md py-2 text-gray-300 md:text-xl">
               {frontmatter.description}
             </p>
-            <p class="text-md py-2 text-gray-400 md:text-lg">
+            <p class="py-2 text-sm text-gray-400 md:text-lg">
               {t["modified"]}{lastModified}
+            </p>
+            <p class="md:text-md text-sm text-gray-500">
+              {t["created"]}{created}
             </p>
           </div>
         </div>
       </div>
 
-      <div class="mx-auto my-0 mb-auto max-w-6xl">
+      <div class="max-w-blog mx-auto my-0 mb-auto">
         <div class="mx-7">
           <slot />
         </div>
