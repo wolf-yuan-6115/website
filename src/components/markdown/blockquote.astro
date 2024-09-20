@@ -4,7 +4,10 @@ const props = Astro.props;
 ---
 
 <blockquote
-  class={twMerge(props.class, "border-l-4 pl-3 border-l-gray-700")}
+  class={twMerge(
+    props.class,
+    "border-l-4 my-4 pl-3 border-l-gray-600 [&>p]:py-2 bg-[#1e1e2e] rounded-md",
+  )}
   {...props}
 >
   <slot />

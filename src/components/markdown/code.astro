@@ -3,6 +3,10 @@ import { twMerge } from "tailwind-merge";
 const props = Astro.props;
 ---
 
-<code class={twMerge(props.class, "font-mono")} {...props}
-  ><slot /></code
+<code
+  class={twMerge(
+    props.class,
+    "font-mono text-catppuccin-blue rounded",
+  )}
+  {...props}><slot /></code
 >
