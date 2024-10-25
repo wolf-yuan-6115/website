@@ -168,7 +168,9 @@ const locale = Astro.currentLocale;
           </div>
         </div>
       </div>
-      <div class="rounded-md border-2 border-violet-400 bg-gray-800 px-2 py-4">
+      <div
+        class="rounded-md border-2 border-violet-400 bg-gray-800 px-2 py-4"
+      >
         <p class="px-4 pb-4 text-xl font-bold">我會</p>
         <div
           class="flex flex-row items-center overflow-x-auto [&>div]:flex [&>div]:flex-row [&>div]:items-center [&>div]:gap-4 [&>div]:px-4"
@@ -210,7 +212,9 @@ const locale = Astro.currentLocale;
           </div>
         </div>
       </div>
-      <div class="rounded-md border-2 border-amber-400 bg-gray-800 px-2 py-4">
+      <div
+        class="rounded-md border-2 border-amber-400 bg-gray-800 px-2 py-4"
+      >
         <p class="px-4 pb-4 text-xl font-bold">正在學</p>
         <div
           class="flex flex-row items-center overflow-x-auto [&>div]:flex [&>div]:flex-row [&>div]:items-center [&>div]:gap-4 [&>div]:px-4"
@@ -245,7 +249,9 @@ const locale = Astro.currentLocale;
           </div>
         </div>
       </div>
-      <div class="rounded-md border-2 border-red-400 bg-gray-800 px-2 py-4">
+      <div
+        class="rounded-md border-2 border-red-400 bg-gray-800 px-2 py-4"
+      >
         <p class="px-4 pb-4 text-xl font-bold">想學</p>
         <div
           class="flex flex-row items-center overflow-x-auto [&>div]:flex [&>div]:flex-row [&>div]:items-center [&>div]:gap-4 [&>div]:px-4"
@@ -268,6 +274,21 @@ const locale = Astro.currentLocale;
     <div
       class="grid grid-flow-row grid-cols-1 content-start gap-8 md:grid-cols-2 md:gap-6"
     >
+      <Card
+        title="Ordersphere"
+        description="Ordersphere 是一個訂單管理系統，它可以讓您輕鬆的管理您的訂單"
+        link="https://w.wolf-yuan.dev/project/ordersphere"
+        linkDescription="gitlab.com/wolf-yuan/ordersphere"
+        className="border-yellow-400 hover:bg-yellow-400"
+        target="_blank"
+        appearedIn="中壢高中第 84 屆校慶"
+        icons={[
+          "simple-icons:nextdotjs",
+          "simple-icons:typescript",
+          "simple-icons:supabase",
+          "simple-icons:shadcnui",
+        ]}
+      />
       <Card
         title="Dolphin Container"
         description="Dolphin 是一個 Docker 映像檔，讓你以輕鬆的方式部署您的程式至各大託管商"

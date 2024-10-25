@@ -23,12 +23,12 @@ export default {
   card: {
     en: {
       link: "Click here to go to",
-      appeared: "Appeared in"
+      appeared: "Appeared in",
     },
     "zh-tw": {
       link: "點選這裡來前往",
       appeared: "在",
-      appearedAfter: "中發表"
+      appearedAfter: "中出現",
     },
   },
   noscript: {
