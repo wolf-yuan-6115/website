@@ -50,7 +50,7 @@ const postImages = import.meta.glob(
   </a>
 
   <div
-    class="grid grid-flow-row grid-cols-1 content-start gap-7 md:grid-cols-2"
+    class="mt-6 grid grid-flow-row grid-cols-1 content-start gap-7 md:grid-cols-2"
   >
     {
       posts.map((item) => (
@@ -59,7 +59,7 @@ const postImages = import.meta.glob(
           data-astro-prefetch
         >
           <div
-            class="max-h-xl w-full rounded-md border-2 border-emerald-400 bg-gray-800 p-4 duration-300 hover:bg-emerald-400 hover:text-gray-800"
+            class="max-h-xl w-full rounded-md border-2 border-gray-600 bg-gray-800 p-4 duration-300 hover:border-gray-400"
             transition:name={`${item.data.title} container`}
             transition:animate="none"
           >

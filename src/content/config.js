@@ -8,6 +8,7 @@ const enBlogCollection = defineCollection({
     image: z.string(),
     ogImage: z.string(),
     tags: z.array(z.string()),
+    sorting: z.number(),
   }),
 });
 const zhBlogCollection = defineCollection({
@@ -18,6 +19,7 @@ const zhBlogCollection = defineCollection({
     image: z.string(),
     ogImage: z.string(),
     tags: z.array(z.string()),
+    sorting: z.number(),
   }),
 });
 

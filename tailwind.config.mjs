@@ -12,6 +12,12 @@ export default {
           ...defaultTheme.fontFamily.mono,
         ],
       },
+      maxWidth: {
+        blog: "68rem",
+      },
+      colors: {
+        "catppuccin-blue": "#89b4fa",
+      },
     },
   },
   plugins: [],

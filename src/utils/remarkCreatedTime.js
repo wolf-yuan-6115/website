@@ -7,6 +7,6 @@ export function remarkCreatedTime() {
       `git log --diff-filter=A --follow --format=%cI -1 "${filepath}"`,
     );
     file.data.astro.frontmatter.createdTime =
-      result.toString() || Date.now();
+      result.toString().trim() || Date.now();
   };
 }

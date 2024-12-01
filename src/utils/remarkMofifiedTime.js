@@ -7,6 +7,6 @@ export function remarkModifiedTime() {
       `git log -1 --pretty="format:%cI" "${filepath}"`,
     );
     file.data.astro.frontmatter.lastModified =
-      result.toString() || Date.now();
+      result.toString().trim() || Date.now();
   };
 }
