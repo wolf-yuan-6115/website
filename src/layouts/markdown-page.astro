@@ -101,7 +101,7 @@ const t = strings.blog[Astro.currentLocale];
         </div>
       </div>
 
-      <div class="mx-auto my-0 mb-auto max-w-blog">
+      <div class="max-w-blog mx-auto my-0 mb-auto">
         <div class="mx-7">
           <slot />
         </div>
@@ -153,10 +153,12 @@ const t = strings.blog[Astro.currentLocale];
         background-color: rgba(243, 139, 168, 0.3);
         opacity: 0.8;
         transition: opacity 0.3s;
+        text-decoration: line-through;
       }
 
       .diff.remove:hover {
         opacity: 1;
+        text-decoration: none;
       }
     </style>
   </body>
