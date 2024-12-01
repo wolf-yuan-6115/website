@@ -159,11 +159,29 @@ sudo pacman -S wofi
 paru -S swayosd-git
 ```
 
+讓 `swayosd-server` 在你開啟 hyprland 時自動啟動：
+
+```diff
++ exec-once = swayosd-server
+```
+
+並並將音量按鈕和亮度按鈕綁定到 `SwayOSD`，打開 `~/.config/hypr/hyprland.conf` 並加入這幾串文字：
+
+```diff
++ bindl = ,XF86AudioMute, exec, swayosd-client --output-volume mute-toggle
++ bindle =, XF86AudioRaiseVolume, exec, swayosd-client --output-volume raise
++ bindle =, XF86AudioLowerVolume, exec, swayosd-client --output-volume lower
++ bindle =, XF86MonBrightnessUp, exec, swayosd-client --brightness +3
++ bindle =, XF86MonBrightnessDown, exec, swayosd-client --brightness -3
+```
+
+這會讓 SwayOSD 在你按下音量或亮度按鈕時顯示酷酷的 OSD，就像 Gnome 一樣
+
 > `swayosd-git` 被儲存於 [AUR](https://aur.archlinux.org/packages/swayosd-git) 中，因此您可以將 `paru` 換成 `yay` 或是任何您熟悉的 AUR 助手。
 >
 > 我撰寫這篇文章時，SwayOSD 並沒有有版本標記的 AUR 套件，只有 `-git` 版本。
 
-# 為什麼在選擇 Hyprland 小工具時 Wayland 很重要？
+## 為什麼在選擇 Hyprland 小工具時 Wayland 很重要？
 
 Hyprland 是基於 Wayland 協議的，這是一個比 X11 更安全和現代的顯示協議。因此，舊有的 X11 應用程式無法在 Wayland 上原生運行。
 

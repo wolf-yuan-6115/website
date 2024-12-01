@@ -169,6 +169,24 @@ To install SwayOSD, you can run:
 paru -S swayosd-git
 ```
 
+Make `swayosd-server` start when you logged into hyprland:
+
+```diff
++ exec-once = swayosd-server
+```
+
+And bind volume button, brightness button to SwayOSD in `~/.config/hypr/hyprland.conf`:
+
+```diff
++ bindl = ,XF86AudioMute, exec, swayosd-client --output-volume mute-toggle
++ bindle =, XF86AudioRaiseVolume, exec, swayosd-client --output-volume raise
++ bindle =, XF86AudioLowerVolume, exec, swayosd-client --output-volume lower
++ bindle =, XF86MonBrightnessUp, exec, swayosd-client --brightness +3
++ bindle =, XF86MonBrightnessDown, exec, swayosd-client --brightness -3
+```
+
+This will let swayosd to show OSD when press volume or brightness button on your keyboard.
+
 > `swayosd-git` is in [AUR](https://aur.archlinux.org/packages/swayosd-git). You can replace `paru` with `yay` or any other AUR helper you prefer.
 >
 > As the time I write this post, SwayOSD does not has a tagged AUR package, there is only `-git` version available.
