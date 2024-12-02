@@ -4,7 +4,7 @@ import Base from "../../../layouts/main.astro";
 import { getRelativeLocaleUrl } from "astro:i18n";
 import { Image } from "astro:assets";
 import { getCollection } from "astro:content";
-const posts = (await getCollection("en")).sort(
+const posts = (await getCollection("zh")).sort(
   (a, b) => b.data.sorting - a.data.sorting,
 );
 
