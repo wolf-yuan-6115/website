@@ -31,7 +31,7 @@
     "@iconify-json/material-symbols": "^1.1.82",
     "@iconify-json/simple-icons": "^1.1.105",
     "@shikijs/transformers": "^1.18.0",
-    "@trivago/prettier-plugin-sort-imports": "^4.3.0",
+    "@trivago/prettier-plugin-sort-imports": "^5.0.0",
     "prettier": "^3.3.1",
     "prettier-plugin-astro": "^0.14.0",
     "prettier-plugin-tailwindcss": "^0.6.5",
