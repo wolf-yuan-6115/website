@@ -27,7 +27,7 @@ const postImages = import.meta.glob(
     我會分享我看到的事務，一些寫程式的技巧，還有一點我對世界的看法
   </p>
 
-  <a href={getRelativeLocaleUrl(locale, `/blog/${latestPost.slug}`)}>
+  <a href={getRelativeLocaleUrl(locale, `/blog/${latestPost.slug}`)} transition:name={latestPost.data.title}>
     <div
       class="flex flex-col gap-6 rounded-lg border-2 border-gray-600 bg-gray-800 p-5 transition-colors duration-200 hover:border-gray-400 md:flex-row"
     >
@@ -42,10 +42,10 @@ const postImages = import.meta.glob(
         <p class="text-md pb-2 text-gray-300/85 md:text-lg">
           最新的貼文:
         </p>
-        <p class="pb-3 text-2xl font-bold md:text-3xl">
+        <p class="pb-3 text-2xl font-bold md:text-3xl" transition:name={latestPost.data.title + "t"}>
           {latestPost.data.title}
         </p>
-        <p class="text-md md:text-lg">
+        <p class="text-md md:text-lg" transition:name={latestPost.data.title + "d"}>
           {latestPost.data.description}
         </p>
       </div>
@@ -59,6 +59,7 @@ const postImages = import.meta.glob(
       posts.map((item) => (
         <a
           href={getRelativeLocaleUrl(locale, `/blog/${item.slug}`)}
+          transition:name={item.data.title}
           data-astro-prefetch
         >
           <div
@@ -66,8 +67,8 @@ const postImages = import.meta.glob(
             transition:name={`${item.data.title} container`}
             transition:animate="none"
           >
-            <p class="text-2xl font-bold">{item.data.title}</p>
-            <p class="pt-4 text-lg">{item.data.description}</p>
+            <p class="text-2xl font-bold" transition:name={item.data.title + "t"}>{item.data.title}</p>
+            <p class="pt-4 text-lg" transition:name={item.data.title + "d"}>{item.data.description}</p>
             <Image
               src={postImages[item.data.image]()}
               alt={`給 ${item.data.title} 這篇文章的封面圖片`}

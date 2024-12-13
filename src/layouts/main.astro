@@ -14,7 +14,7 @@ const localeCode = Astro.currentLocale === "en" ? "en_US" : "zh_Hant";
 const t = strings.seo[Astro.currentLocale];
 ---
 
-<html lang={Astro.currentLocale === "en" ? "en" : "zh-Hant"}>
+<html lang={Astro.currentLocale === "en" ? "en" : "zh-Hant"} transition:name="root" transition:animate="none">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
@@ -49,7 +49,7 @@ const t = strings.seo[Astro.currentLocale];
   <body class="bg-gray-900 text-gray-50">
     <Nav />
 
-    <div class="mx-auto mb-auto max-w-6xl" transition:animate="fade">
+    <div class="mx-auto mb-auto max-w-6xl" transition:name="content" transition:animate="fade">
       <div class="mx-7">
         <slot />
       </div>
@@ -62,6 +62,24 @@ const t = strings.seo[Astro.currentLocale];
     <style>
       :root {
         color-scheme: dark;
+      }
+
+      {/* https://github.com/withastro/astro/issues/12720 */}
+      @keyframes astroFadeIn {
+          from {
+              opacity: 0;
+          }
+          to {
+              opacity: 1;
+          }
+      }
+      @keyframes astroFadeOut {
+          from {
+              opacity: 1;
+          }
+          to {
+              opacity: 0;
+          }
       }
     </style>
   </body>

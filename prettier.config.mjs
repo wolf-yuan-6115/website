@@ -12,7 +12,7 @@ export default {
   proseWrap: "never",
   plugins: [
     "prettier-plugin-astro",
-    "@trivago/prettier-plugin-sort-imports",
+    "prettier-plugin-organize-imports",
     "prettier-plugin-tailwindcss",
   ],
   overrides: [
