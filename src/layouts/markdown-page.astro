@@ -33,7 +33,11 @@ const localeCode = Astro.currentLocale === "en" ? "en_US" : "zh_Hant";
 const t = strings.blog[Astro.currentLocale];
 ---
 
-<html lang={Astro.currentLocale === "en" ? "en" : "zh-Hant"} transition:name="root" transition:animate="none">
+<html
+  lang={Astro.currentLocale === "en" ? "en" : "zh-Hant"}
+  transition:name="root"
+  transition:animate="none"
+>
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
@@ -74,7 +78,11 @@ const t = strings.blog[Astro.currentLocale];
     <Nav />
 
     <div transition:animate="fade">
-      <div class="mx-auto sm:max-w-6xl sm:px-7" transition:name={frontmatter.title} transition:animate="fade">
+      <div
+        class="mx-auto sm:max-w-6xl sm:px-7"
+        transition:name={frontmatter.title}
+        transition:animate="fade"
+      >
         <div
           class="relative z-[5] mx-auto mb-4 w-full overflow-hidden bg-cover bg-center bg-no-repeat pt-[40%] before:absolute before:inset-0 before:z-[-5] before:block before:bg-gradient-to-t before:from-gray-900 before:from-20% before:to-transparent before:opacity-80 before:content-[''] sm:rounded-xl sm:pt-[30%] before:sm:rounded-xl"
         >
@@ -85,10 +93,16 @@ const t = strings.blog[Astro.currentLocale];
             loading="eager"
           />
           <div class="px-8 py-6">
-            <h1 class="py-4 text-2xl font-extrabold md:text-4xl" transition:name={frontmatter.title + "t"}>
+            <h1
+              class="py-4 text-2xl font-extrabold md:text-4xl"
+              transition:name={frontmatter.title + "t"}
+            >
               {frontmatter.title}
             </h1>
-            <p class="text-md py-2 text-gray-300 md:text-xl" transition:name={frontmatter.title + "d"}>
+            <p
+              class="text-md py-2 text-gray-300 md:text-xl"
+              transition:name={frontmatter.title + "d"}
+            >
               {frontmatter.description}
             </p>
             <p class="py-2 text-sm text-gray-400 md:text-lg">
@@ -101,7 +115,7 @@ const t = strings.blog[Astro.currentLocale];
         </div>
       </div>
 
-      <div class="max-w-blog mx-auto my-0 mb-auto">
+      <div class="mx-auto my-0 mb-auto max-w-blog">
         <div class="mx-7">
           <slot />
         </div>
@@ -116,22 +130,21 @@ const t = strings.blog[Astro.currentLocale];
         color-scheme: dark;
       }
 
-      {/* https://github.com/withastro/astro/issues/12720 */}
       @keyframes astroFadeIn {
-          from {
-              opacity: 0;
-          }
-          to {
-              opacity: 1;
-          }
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
       }
       @keyframes astroFadeOut {
-          from {
-              opacity: 1;
-          }
-          to {
-              opacity: 0;
-          }
+        from {
+          opacity: 1;
+        }
+        to {
+          opacity: 0;
+        }
       }
 
       pre.has-focused {
