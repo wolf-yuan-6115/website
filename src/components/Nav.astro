@@ -10,7 +10,7 @@ const t = strings.nav[Astro.currentLocale];
 ---
 
 <nav
-  class="js:nav-container sticky top-0 z-10 flex justify-center backdrop-blur-lg duration-300"
+  class="js:nav-container sticky top-0 z-10 flex justify-center backdrop-blur-sm duration-300"
 >
   <div class="js:nav-padding w-[72rem] px-5 py-6 duration-300">
     <div class="grid grid-cols-2">
@@ -93,7 +93,12 @@ const t = strings.nav[Astro.currentLocale];
 
     let handelScroll = (state) => {
       if (state) {
-        navContainer.classList.add("backdrop-brightness-75");
+        navContainer.classList.add(
+          "bg-gradient-to-b",
+          "from-gray-950/90",
+          "to-transparent",
+          "to-80%",
+        );
 
         navPaddingArea.classList.add("py-4");
         navPaddingArea.classList.remove("py-6");
@@ -101,7 +106,12 @@ const t = strings.nav[Astro.currentLocale];
         navTitleElement.classList.add("sm:opacity-100");
         navTitleElement.classList.remove("sm:opacity-0");
       } else {
-        navContainer.classList.remove("backdrop-brightness-75");
+        navContainer.classList.remove(
+          "bg-gradient-to-b",
+          "from-gray-950/90",
+          "to-transparent",
+          "to-80%",
+        );
 
         navPaddingArea.classList.add("py-6");
         navPaddingArea.classList.remove("py-4");
