@@ -6,9 +6,8 @@ import {
   transformerNotationDiff,
   transformerNotationFocus,
 } from "@shikijs/transformers";
-import { imageService } from "@unpic/astro/service";
 import icon from "astro-icon";
-import { defineConfig } from "astro/config";
+import { defineConfig, passthroughImageService } from "astro/config";
 import { remarkCreatedTime } from "./src/utils/remarkCreatedTime.js";
 import { remarkModifiedTime } from "./src/utils/remarkMofifiedTime.js";
 
@@ -44,10 +43,7 @@ export default defineConfig({
   ],
   output: "static",
   image: {
-    service: imageService({
-      fallbackService: "cloudflare",
-      placeholder: "blurhash",
-    }),
+    service: passthroughImageService(),
   },
   i18n: {
     defaultLocale: "en",
