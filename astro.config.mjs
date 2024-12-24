@@ -7,7 +7,7 @@ import {
   transformerNotationFocus,
 } from "@shikijs/transformers";
 import icon from "astro-icon";
-import { defineConfig, passthroughImageService } from "astro/config";
+import { defineConfig } from "astro/config";
 import { remarkCreatedTime } from "./src/utils/remarkCreatedTime.js";
 import { remarkModifiedTime } from "./src/utils/remarkMofifiedTime.js";
 
@@ -42,9 +42,6 @@ export default defineConfig({
     }),
   ],
   output: "static",
-  image: {
-    service: passthroughImageService(),
-  },
   i18n: {
     defaultLocale: "en",
     locales: ["en", "zh-tw"],
