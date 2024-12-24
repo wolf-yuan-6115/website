@@ -1,5 +1,3 @@
-import { remarkCreatedTime } from "./src/utils/remarkCreatedTime.js";
-import { remarkModifiedTime } from "./src/utils/remarkMofifiedTime.js";
 import mdx from "@astrojs/mdx";
 import sitemap from "@astrojs/sitemap";
 import tailwind from "@astrojs/tailwind";
@@ -8,8 +6,11 @@ import {
   transformerNotationDiff,
   transformerNotationFocus,
 } from "@shikijs/transformers";
+import { imageService } from "@unpic/astro/service";
 import icon from "astro-icon";
 import { defineConfig } from "astro/config";
+import { remarkCreatedTime } from "./src/utils/remarkCreatedTime.js";
+import { remarkModifiedTime } from "./src/utils/remarkMofifiedTime.js";
 
 export default defineConfig({
   site: "https://wolf-yuan.dev",
@@ -43,9 +44,10 @@ export default defineConfig({
   ],
   output: "static",
   image: {
-    service: {
-      entrypoint: "astro/assets/services/noop",
-    },
+    service: imageService({
+      fallbackService: "cloudflare",
+      placeholder: "blurhash",
+    }),
   },
   i18n: {
     defaultLocale: "en",
