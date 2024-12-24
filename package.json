@@ -24,6 +24,7 @@
     "autoprefixer": "^10.4.20",
     "dayjs": "^1.11.13",
     "postcss": "^8.4.49",
+    "sharp": "^0.33.5",
     "tailwind-merge": "^2.5.5",
     "tailwindcss": "^3.4.16"
   },

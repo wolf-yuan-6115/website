@@ -38,6 +38,7 @@ const postImages = import.meta.glob(
         <Image
           src={postImages[latestPost.data.image]()}
           alt={`Cover for post ${latestPost.data.title}, read this post for more infomation`}
+          densities={[1, 1.5, 2, 2.5]}
           class="mx-auto h-72 min-w-full rounded-md object-cover"
         />
       </div>
@@ -51,7 +52,10 @@ const postImages = import.meta.glob(
         >
           {latestPost.data.title}
         </p>
-        <p class="text-md md:text-lg" transition:name={latestPost.data.title + "d"}>
+        <p
+          class="text-md md:text-lg"
+          transition:name={latestPost.data.title + "d"}
+        >
           {latestPost.data.description}
         </p>
       </div>
@@ -73,11 +77,22 @@ const postImages = import.meta.glob(
             transition:name={`${item.data.title} container`}
             transition:animate="none"
           >
-            <p class="text-2xl font-bold" transition:name={item.data.title + "t"}>{item.data.title}</p>
-            <p class="pt-4 text-lg" transition:name={item.data.title + "d"}>{item.data.description}</p>
+            <p
+              class="text-2xl font-bold"
+              transition:name={item.data.title + "t"}
+            >
+              {item.data.title}
+            </p>
+            <p
+              class="pt-4 text-lg"
+              transition:name={item.data.title + "d"}
+            >
+              {item.data.description}
+            </p>
             <Image
               src={postImages[item.data.image]()}
               alt={`Cover for post ${item.data.title}, read this post for more infomation`}
+              densities={[1, 1.5, 2, 2.5]}
               class="mx-auto mt-4 h-auto max-h-80 w-auto rounded-md"
             />
           </div>
