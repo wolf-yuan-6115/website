@@ -7,8 +7,15 @@ import Noscript from "../components/Noscript.astro";
 import { ClientRouter } from "astro:transitions";
 import { SEO } from "astro-seo";
 import strings from "../i18n/strings";
+import { twMerge } from "tailwind-merge";
 
-const { title, openGraphTitle, description, image } = Astro.props;
+const {
+  title,
+  openGraphTitle,
+  description,
+  image,
+  fullPage = false,
+} = Astro.props;
 
 const localeCode = Astro.currentLocale === "en" ? "en_US" : "zh_Hant";
 const t = strings.seo[Astro.currentLocale];
@@ -51,20 +58,25 @@ const t = strings.seo[Astro.currentLocale];
     <ClientRouter />
   </head>
   <body class="bg-gray-900 text-gray-50">
-    <Nav />
+    <div class="flex h-screen flex-col">
+      <Nav />
 
-    <div
-      class="mx-auto mb-auto max-w-6xl"
-      transition:name="content"
-      transition:animate="fade"
-    >
-      <div class="mx-7">
-        <slot />
+      <div
+        class={twMerge(
+          "mx-auto mb-auto max-w-6xl",
+          fullPage && "h-full",
+        )}
+        transition:name="content"
+        transition:animate="fade"
+      >
+        <div class={twMerge("mx-7", fullPage && "h-full")}>
+          <slot />
+        </div>
       </div>
-    </div>
 
-    <Footer class="place-self-end" />
-    <Noscript />
+      <Footer class="place-self-end" />
+      <Noscript />
+    </div>
 
     <style>
       :root {

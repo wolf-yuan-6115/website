@@ -3,10 +3,8 @@ import Base from "../../layouts/main.astro";
 import Button from "../../components/Button.astro";
 ---
 
-<Base title="404 找不到" description="你迷路了嗎？">
-  <div
-    class="grid h-screen place-items-center content-center gap-y-12"
-  >
+<Base title="404 找不到" description="你迷路了嗎？" fullPage={true}>
+  <div class="grid h-full place-items-center content-center gap-y-12">
     <div>
       <p class="text-6xl font-extrabold md:text-7xl">404 找不到</p>
     </div>
