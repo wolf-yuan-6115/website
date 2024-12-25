@@ -1,7 +1,6 @@
 import mdx from "@astrojs/mdx";
 import sitemap from "@astrojs/sitemap";
 import tailwind from "@astrojs/tailwind";
-import compress from "@playform/compress";
 import {
   transformerNotationDiff,
   transformerNotationFocus,
@@ -36,9 +35,6 @@ export default defineConfig({
           },
         ],
       },
-    }),
-    compress({
-      CSS: { lightningcss: {}, csso: null },
     }),
   ],
   output: "static",
