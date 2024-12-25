@@ -1,19 +1,20 @@
 ---
-import { Image } from "astro:assets";
+import { Picture } from "astro:assets";
 import { twMerge } from "tailwind-merge";
 const props = Astro.props;
 ---
 
 <div class="py-4">
-  <Image
+  <Picture
     class={twMerge(
       props.class,
       "mx-auto max-w-[85%] md:max-w-[90%] w-auto h-auto rounded",
     )}
-    densities={[1, 1.5, 2, 2.5]}
+    densities={[0.3, 0.5, 1, 1.5, 2, 2.5, 3]}
+    formats={["avif", "webp"]}
     {...props}
   >
     <slot />
-  </Image>
+  </Picture>
   <p class="mt-4 text-center text-sm italic">{props.alt}</p>
 </div>

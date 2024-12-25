@@ -38,7 +38,7 @@ const postImages = import.meta.glob(
         <Image
           src={postImages[latestPost.data.image]()}
           alt={`Cover for post ${latestPost.data.title}, read this post for more infomation`}
-          densities={[1, 1.5, 2, 2.5]}
+          densities={[0.3, 0.5, 1, 1.5, 2, 2.5, 3]}
           class="mx-auto h-72 min-w-full rounded-md object-cover"
         />
       </div>
@@ -92,7 +92,7 @@ const postImages = import.meta.glob(
             <Image
               src={postImages[item.data.image]()}
               alt={`Cover for post ${item.data.title}, read this post for more infomation`}
-              densities={[1, 1.5, 2, 2.5]}
+              densities={[0.3, 0.5, 1, 1.5, 2, 2.5, 3]}
               class="mx-auto mt-4 h-auto max-h-80 w-auto rounded-md"
             />
           </div>
