@@ -18,11 +18,9 @@ if (Astro.props.prefetch) {
   <a
     href={link}
     target={target ?? "_self"}
-    class="inline h-max w-max"
+    class="inline-flex h-max w-max place-items-center space-x-3 px-5 py-3"
     {...prefetch}
   >
-    <div class="px-5 py-3">
-      <slot />
-    </div>
+    <slot />
   </a>
 </div>
