@@ -1,6 +1,5 @@
 ---
 import "@fontsource-variable/jetbrains-mono/wght.css";
-import "../styles/common.css";
 
 import Nav from "../components/Nav.astro";
 import Footer from "../components/Footer.astro";
@@ -84,5 +83,28 @@ const t = strings.seo[Astro.currentLocale];
       <Footer class="place-self-end" />
       <Noscript />
     </div>
+
+    <style is:global>
+      :root {
+        color-scheme: dark;
+      }
+
+      @keyframes astroFadeIn {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+      @keyframes astroFadeOut {
+        from {
+          opacity: 1;
+        }
+        to {
+          opacity: 0;
+        }
+      }
+    </style>
   </body>
 </html>

@@ -1,7 +1,5 @@
 ---
 import "@fontsource-variable/jetbrains-mono/wght.css";
-import "../styles/common.css";
-import "../styles/markdown.css";
 
 import dayjs from "dayjs";
 import utc from "dayjs/plugin/utc";
@@ -130,5 +128,72 @@ const t = strings.blog[Astro.currentLocale];
         <Noscript />
       </div>
     </div>
+
+    <style is:global>
+      :root {
+        color-scheme: dark;
+      }
+
+      @keyframes astroFadeIn {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+      @keyframes astroFadeOut {
+        from {
+          opacity: 1;
+        }
+        to {
+          opacity: 0;
+        }
+      }
+
+      pre.has-focused {
+        --blur: 2px;
+        --opacity: 0.6;
+      }
+
+      pre.has-focused:hover {
+        --blur: 0;
+        --opacity: 1;
+      }
+
+      .line:not(.focused) {
+        transition:
+          filter 0.3s,
+          opacity 0.3s;
+        filter: blur(var(--blur));
+        opacity: var(--opacity);
+      }
+
+      .diff.add::before {
+        content: "+ ";
+        color: #a6adc8;
+      }
+
+      .diff.remove::before {
+        content: "- ";
+        color: #a6adc8;
+      }
+
+      .diff.add {
+        background-color: rgb(166, 227, 161, 0.3);
+      }
+
+      .diff.remove {
+        background-color: rgba(243, 139, 168, 0.3);
+        opacity: 0.8;
+        transition: opacity 0.3s;
+        text-decoration: line-through;
+      }
+
+      .diff.remove:hover {
+        opacity: 1;
+        text-decoration: none;
+      }
+    </style>
   </body>
 </html>
