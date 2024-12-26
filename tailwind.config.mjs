@@ -19,9 +19,6 @@ export default {
           "微軟正黑體",
         ],
       },
-      maxWidth: {
-        blog: "68rem",
-      },
       colors: {
         "catppuccin-blue": "#89b4fa",
       },
