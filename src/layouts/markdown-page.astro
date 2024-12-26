@@ -86,7 +86,8 @@ const t = strings.blog[Astro.currentLocale];
         >
           <div>
             <div
-              class="relative z-[5] mx-auto mb-4 w-full overflow-hidden bg-cover bg-center bg-no-repeat pt-[40%] before:absolute before:inset-0 before:z-[-5] before:block before:bg-gradient-to-t before:from-gray-900 before:from-20% before:to-transparent before:opacity-80 before:content-[''] sm:rounded-xl sm:pt-[30%] before:sm:rounded-xl"
+              class="relative z-[5] mx-auto mb-4 w-full overflow-hidden bg-cover bg-center bg-no-repeat pt-[40%] before:absolute before:inset-0 before:z-[-5] before:block before:bg-gradient-to-t before:from-black before:from-20% before:to-transparent before:opacity-80 before:content-[''] sm:rounded-xl sm:pt-[30%] before:sm:rounded-xl"
+              transition:name={frontmatter.title + "i"}
             >
               <Image
                 src={postImages[frontmatter.image]()}
@@ -117,10 +118,8 @@ const t = strings.blog[Astro.currentLocale];
             </div>
           </div>
 
-          <div class="mx-auto my-0 mb-auto max-w-7xl">
-            <div class="mx-7">
-              <slot />
-            </div>
+          <div class="mt-8 max-w-7xl">
+            <slot />
           </div>
         </div>
 

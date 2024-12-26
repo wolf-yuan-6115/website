@@ -27,22 +27,21 @@ const postImages = import.meta.glob(
     我會分享我看到的事務，一些寫程式的技巧，還有一點我對世界的看法
   </p>
 
-  <a
-    href={getRelativeLocaleUrl(locale, `/blog/${latestPost.slug}`)}
-    transition:name={latestPost.data.title}
-  >
+  <a href={getRelativeLocaleUrl(locale, `/blog/${latestPost.slug}`)}>
     <div
-      class="flex flex-col gap-6 rounded-lg border-2 border-gray-600 bg-gray-800 p-5 transition-colors duration-200 hover:border-gray-400 md:flex-row"
+      class="flex flex-col rounded-lg border-2 border-gray-600 bg-gray-800 transition-colors duration-200 hover:border-gray-400 md:flex-row"
+      transition:name={latestPost.data.title}
     >
-      <div class="md:basis-5/12 md:py-4">
+      <div class="md:basis-5/12">
         <Image
           src={postImages[latestPost.data.image]()}
           alt={`給 ${latestPost.data.title} 這篇文章的封面圖片`}
           densities={[1, 1.5, 2, 2.5]}
-          class="mx-auto h-72 min-w-full rounded-md object-cover"
+          class="h-80 rounded-tl-md rounded-tr-md object-cover md:rounded-bl-md md:rounded-tr-none"
+          transition:name={latestPost.data.title + "i"}
         />
       </div>
-      <div class="py-4 md:basis-7/12">
+      <div class="px-6 py-8 md:basis-7/12">
         <p class="text-md pb-2 text-gray-300/85 md:text-lg">
           最新的貼文:
         </p>
@@ -63,8 +62,12 @@ const postImages = import.meta.glob(
   </a>
 
   <div
-    class="mt-6 grid grid-flow-row grid-cols-1 content-start gap-7 md:grid-cols-2"
+    class="mx-auto mb-2 mt-12 h-0.5 w-full rounded-full bg-gray-500"
   >
+  </div>
+
+  <p class="pt-6 text-xl text-gray-300 md:text-2xl">較舊的貼文：</p>
+  <div class="mt-6">
     {
       posts.map((item) => (
         <a
@@ -72,29 +75,32 @@ const postImages = import.meta.glob(
           transition:name={item.data.title}
           data-astro-prefetch
         >
-          <div
-            class="max-h-xl w-full rounded-md border-2 border-gray-600 bg-gray-800 p-4 duration-300 hover:border-gray-400"
-            transition:name={`${item.data.title} container`}
-            transition:animate="none"
-          >
-            <p
-              class="text-2xl font-bold"
-              transition:name={item.data.title + "t"}
+          <div class="flex w-full flex-col rounded-md border-2 border-gray-600 bg-gray-800 duration-300 hover:border-gray-400 md:flex-row">
+            <div
+              class="md:basis-5/12"
+              transition:name={item.data.title + "i"}
             >
-              {item.data.title}
-            </p>
-            <p
-              class="pt-4 text-lg"
-              transition:name={item.data.title + "d"}
-            >
-              {item.data.description}
-            </p>
-            <Image
-              src={postImages[item.data.image]()}
-              alt={`給 ${item.data.title} 這篇文章的封面圖片`}
-              densities={[1, 1.5, 2, 2.5]}
-              class="mx-auto mt-4 h-auto max-h-80 w-auto rounded-lg"
-            />
+              <Image
+                src={postImages[item.data.image]()}
+                alt={`給 ${item.data.title} 這篇文章的封面圖片`}
+                densities={[1, 1.5, 2, 2.5]}
+                class="h-64 rounded-tl-md rounded-tr-md object-cover md:rounded-bl-md md:rounded-tr-none"
+              />
+            </div>
+            <div class="px-6 py-8 md:basis-7/12">
+              <p
+                class="text-xl font-bold md:text-2xl"
+                transition:name={item.data.title + "t"}
+              >
+                {item.data.title}
+              </p>
+              <p
+                class="text-md pt-4 md:text-lg"
+                transition:name={item.data.title + "d"}
+              >
+                {item.data.description}
+              </p>
+            </div>
           </div>
         </a>
       ))
