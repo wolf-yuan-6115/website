@@ -1,0 +1,43 @@
+pre.has-focused {
+    --blur: 2px;
+    --opacity: 0.6;
+}
+
+pre.has-focused:hover {
+    --blur: 0;
+    --opacity: 1;
+}
+
+.line:not(.focused) {
+    transition:
+            filter 0.3s,
+            opacity 0.3s;
+    filter: blur(var(--blur));
+    opacity: var(--opacity);
+}
+
+.diff.add::before {
+    content: "+ ";
+    color: #a6adc8;
+}
+
+.diff.remove::before {
+    content: "- ";
+    color: #a6adc8;
+}
+
+.diff.add {
+    background-color: rgb(166, 227, 161, 0.3);
+}
+
+.diff.remove {
+    background-color: rgba(243, 139, 168, 0.3);
+    opacity: 0.8;
+    transition: opacity 0.3s;
+    text-decoration: line-through;
+}
+
+.diff.remove:hover {
+    opacity: 1;
+    text-decoration: none;
+}
