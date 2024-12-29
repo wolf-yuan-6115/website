@@ -12,72 +12,61 @@ const {
   linkDescription,
   target,
   icons,
-  pointerClass,
   appearedIn,
 } = Astro.props;
 ---
 
 <div>
-  <div>
-    <a href={link} target={target ?? "_self"} class="w-fit">
-      <div
-        class={twMerge(
-          "px-5 py-5 w-fit bg-gray-800 border-2 border-emerald-200 border-solid hover:bg-emerald-200 hover:text-gray-800 md:hover:scale-105 transform-gpu duration-300 rounded-md",
-          className,
-        )}
-      >
-        <div class="grid min-h-72 md:min-h-64">
-          <div>
-            <div class="grid grid-flow-col">
-              <p
-                class="my-auto place-self-start text-lg font-semibold md:text-xl"
-              >
-                {title}
-              </p>
-              <div class="place-self-end text-xl md:text-2xl">
-                {
-                  icons.map((i) => (
-                    <Icon
-                      name={i}
-                      class={twMerge("mx-2 inline", className)}
-                    />
-                  ))
-                }
-              </div>
-            </div>
-            <p class="text-md py-4 md:text-lg">{description}</p>
-            {
-              appearedIn && (
-                <p class="md:text-md text-sm">
+  <a href={link} target={target ?? "_self"} class="w-fit">
+    <div
+      class={twMerge(
+        "px-5 py-5 w-fit bg-gray-800 border-2 border-emerald-200 border-solid hover:bg-emerald-200 hover:text-gray-800 md:hover:scale-105 transform-gpu duration-300 rounded-md",
+        className,
+      )}
+    >
+      <div class="grid min-h-72 md:min-h-64">
+        <div>
+          <div class="grid grid-flow-col">
+            <p
+              class="my-auto place-self-start text-lg font-semibold md:text-xl"
+            >
+              {title}
+            </p>
+            <div class="place-self-end text-xl md:text-2xl">
+              {
+                icons.map((i) => (
                   <Icon
-                    name="material-symbols:bolt-rounded"
-                    class="inline"
+                    name={i}
+                    class={twMerge("mx-2 inline", className)}
                   />
-                  {t.appeared}
-                  <span class="font-bold">{appearedIn}</span>
-                  {t.appearedAfter}
-                </p>
-              )
-            }
+                ))
+              }
+            </div>
           </div>
-          <div class="w-full place-self-end text-sm">
-            {t.link}
-            <span class="font-bold">{linkDescription}</span>
-            <Icon
-              name="material-symbols:arrow-forward-rounded"
-              class="inline"
-            />
-          </div>
+          <p class="text-md py-4 md:text-lg">{description}</p>
+          {
+            appearedIn && (
+              <p class="md:text-md text-sm">
+                <Icon
+                  name="material-symbols:bolt-rounded"
+                  class="inline"
+                />
+                {t.appeared}
+                <span class="font-bold">{appearedIn}</span>
+                {t.appearedAfter}
+              </p>
+            )
+          }
+        </div>
+        <div class="w-full place-self-end text-sm">
+          {t.link}
+          <span class="font-bold">{linkDescription}</span>
+          <Icon
+            name="material-symbols:arrow-forward-rounded"
+            class="inline"
+          />
         </div>
       </div>
-    </a>
-  </div>
-
-  <div
-    class={twMerge(
-      "hidden w-32 h-32 bg-emerald-400 rounded-full blur-2xl -z-10",
-      pointerClass,
-    )}
-  >
-  </div>
+    </div>
+  </a>
 </div>
