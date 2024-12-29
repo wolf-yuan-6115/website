@@ -5,12 +5,18 @@ import { Icon } from "astro-icon/components";
 import strings from "../i18n/strings.js";
 
 import avatarImage from "../assets/transparent_512x512.png";
+import { twMerge } from "tailwind-merge";
 
 const t = strings.nav[Astro.currentLocale];
+
+const { fullPage = false } = Astro.props;
 ---
 
 <nav
-  class="js:nav-container sticky top-0 z-10 flex justify-center backdrop-blur-sm duration-300"
+  class={twMerge(
+    "js:nav-container top-0 z-10 flex justify-center backdrop-blur-sm duration-300",
+    fullPage ? "fixed w-full xl:sticky" : "sticky",
+  )}
 >
   <div class="js:nav-padding w-full max-w-7xl px-5 py-6 duration-300">
     <div class="grid grid-cols-2">
