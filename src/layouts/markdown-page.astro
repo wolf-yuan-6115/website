@@ -11,6 +11,7 @@ import { ClientRouter } from "astro:transitions";
 import { Image } from "astro:assets";
 import { SEO } from "astro-seo";
 import strings from "../i18n/strings";
+import { ClassNameValue, twMerge } from "tailwind-merge";
 
 dayjs.extend(utc);
 dayjs.extend(timezone);
@@ -31,12 +32,27 @@ const postImages = import.meta.glob(
 
 const localeCode = Astro.currentLocale === "en" ? "en_US" : "zh_Hant";
 const t = strings.blog[Astro.currentLocale];
+
+const colorArray: {
+  circleColor: ClassNameValue;
+  border: ClassNameValue;
+}[] = [
+  { circleColor: "bg-blue-300", border: "border-blue-300" },
+  { circleColor: "bg-green-300", border: "border-green-300" },
+  { circleColor: "bg-yellow-300", border: "border-yellow-300" },
+  { circleColor: "bg-red-300", border: "border-red-300" },
+  { circleColor: "bg-indigo-300", border: "border-indigo-300" },
+  { circleColor: "bg-purple-300", border: "border-purple-300" },
+  { circleColor: "bg-pink-300", border: "border-pink-300" },
+  { circleColor: "bg-fuchsia-300", border: "border-fuchsia-300" },
+];
 ---
 
 <html
   lang={Astro.currentLocale === "en" ? "en" : "zh-Hant"}
   transition:name="root"
   transition:animate="none"
+  class="overflow-y-auto scrollbar-stable"
 >
   <head>
     <meta charset="utf-8" />
@@ -70,19 +86,17 @@ const t = strings.blog[Astro.currentLocale];
         site: "@wolfyuan1135",
       }}
     />
-    <link rel="me" href="https://mastodon.wolf-yuan.dev/@wolf" />
 
     <ClientRouter />
   </head>
   <body class="flex h-full flex-col bg-gray-900 text-gray-50">
     <div class="flex min-h-screen flex-col">
-      <Nav fullPage={true} />
+      <Nav fullPage={true} transition:persist />
 
       <div transition:animate="fade">
         <div
           class="mx-auto max-w-7xl"
           transition:name={frontmatter.title}
-          transition:animate="fade"
         >
           <div class="sm:px7">
             <div
@@ -114,6 +128,30 @@ const t = strings.blog[Astro.currentLocale];
                 <p class="md:text-md text-sm text-gray-500">
                   {t["created"]}{created}
                 </p>
+
+                <div
+                  class="flex place-items-center space-x-3 pt-4 text-sm"
+                  transition:name={frontmatter.title + "k"}
+                >
+                  {
+                    frontmatter.tags.map((tag, index) => (
+                      <div
+                        class={twMerge(
+                          "flex place-items-center gap-2 rounded-md border-2 px-3 py-1",
+                          colorArray[index % 8].border,
+                        )}
+                      >
+                        <div
+                          class={twMerge(
+                            "h-2 w-2 rounded-full",
+                            colorArray[index % 8].circleColor,
+                          )}
+                        />
+                        {tag.trim()}
+                      </div>
+                    ))
+                  }
+                </div>
               </div>
             </div>
           </div>
@@ -123,7 +161,7 @@ const t = strings.blog[Astro.currentLocale];
           </div>
         </div>
 
-        <Footer />
+        <Footer transition:persist />
         <Noscript />
       </div>
     </div>

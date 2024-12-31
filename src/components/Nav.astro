@@ -23,7 +23,7 @@ const { fullPage = false } = Astro.props;
       <div class="col-start-1 col-end-2">
         <div class="flex flex-row items-center gap-4">
           <a href={getRelativeLocaleUrl(Astro.currentLocale, "/")}>
-            <div class="basis-1/8">
+            <div>
               <Image
                 src={avatarImage}
                 alt="Wolf Yuan avatar"
@@ -42,7 +42,7 @@ const { fullPage = false } = Astro.props;
             data-astro-prefetch
           >
             <div
-              class="basis-1/8 js:nav-title text-lg font-bold opacity-0 transition-opacity duration-300 sm:opacity-0"
+              class="js:nav-title text-lg font-bold opacity-0 transition-opacity duration-300 sm:opacity-0"
             >
               Wolf Yuan
             </div>

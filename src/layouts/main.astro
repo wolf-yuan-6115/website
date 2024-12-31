@@ -25,6 +25,7 @@ const t = strings.seo[Astro.currentLocale];
   lang={Astro.currentLocale === "en" ? "en" : "zh-Hant"}
   transition:name="root"
   transition:animate="none"
+  class="overflow-y-auto scrollbar-stable"
 >
   <head>
     <meta charset="utf-8" />
@@ -53,7 +54,6 @@ const t = strings.seo[Astro.currentLocale];
         image: image ?? "https://wolf-yuan.dev/logo_512x512.webp",
       }}
     />
-    <link rel="me" href="https://mastodon.wolf-yuan.dev/@wolf" />
 
     <ClientRouter />
   </head>
@@ -65,7 +65,7 @@ const t = strings.seo[Astro.currentLocale];
         !fullPage && "min-h-screen",
       )}
     >
-      <Nav />
+      <Nav transition:persist />
 
       <div
         class={twMerge(
@@ -80,7 +80,7 @@ const t = strings.seo[Astro.currentLocale];
         </div>
       </div>
 
-      <Footer class="place-self-end" />
+      <Footer class="place-self-end" transition:persist />
       <Noscript />
     </div>
 

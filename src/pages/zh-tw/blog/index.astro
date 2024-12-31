@@ -4,6 +4,7 @@ import Base from "../../../layouts/main.astro";
 import { getRelativeLocaleUrl } from "astro:i18n";
 import { Image, Picture } from "astro:assets";
 import { getCollection } from "astro:content";
+import { ClassNameValue, twMerge } from "tailwind-merge";
 const posts = (await getCollection("zh")).sort(
   (a, b) => b.data.sorting - a.data.sorting,
 );
@@ -15,6 +16,20 @@ const latestPost = posts.shift();
 const postImages = import.meta.glob(
   `/src/assets/blog/**/*.{jpeg,jpg,png,gif,webp}`,
 );
+
+const colorArray: {
+  circleColor: ClassNameValue;
+  border: ClassNameValue;
+}[] = [
+  { circleColor: "bg-blue-300", border: "border-blue-300" },
+  { circleColor: "bg-green-300", border: "border-green-300" },
+  { circleColor: "bg-yellow-300", border: "border-yellow-300" },
+  { circleColor: "bg-red-300", border: "border-red-300" },
+  { circleColor: "bg-indigo-300", border: "border-indigo-300" },
+  { circleColor: "bg-purple-300", border: "border-purple-300" },
+  { circleColor: "bg-pink-300", border: "border-pink-300" },
+  { circleColor: "bg-fuchsia-300", border: "border-fuchsia-300" },
+];
 ---
 
 <Base
@@ -41,7 +56,7 @@ const postImages = import.meta.glob(
           transition:name={latestPost.data.title + "i"}
         />
       </div>
-      <div class="px-6 py-8 md:basis-7/12">
+      <div class="flex flex-col px-6 py-8 md:basis-7/12">
         <p class="text-md pb-2 text-gray-300/85 md:text-lg">
           最新的貼文:
         </p>
@@ -57,6 +72,30 @@ const postImages = import.meta.glob(
         >
           {latestPost.data.description}
         </p>
+
+        <div
+          class="mt-auto flex space-x-3 pt-4 text-sm"
+          transition:name={latestPost.data.title + "k"}
+        >
+          {
+            latestPost.data.tags.map((tag, index) => (
+              <div
+                class={twMerge(
+                  "flex place-items-center gap-2 rounded-md border-2 px-3 py-1",
+                  colorArray[index % 8].border,
+                )}
+              >
+                <div
+                  class={twMerge(
+                    "h-2 w-2 rounded-full",
+                    colorArray[index % 8].circleColor,
+                  )}
+                />
+                {tag.trim()}
+              </div>
+            ))
+          }
+        </div>
       </div>
     </div>
   </a>
@@ -87,7 +126,7 @@ const postImages = import.meta.glob(
                 class="h-64 rounded-tl-md rounded-tr-md object-cover md:rounded-bl-md md:rounded-tr-none"
               />
             </div>
-            <div class="px-6 py-8 md:basis-7/12">
+            <div class="flex flex-col px-6 py-8 md:basis-7/12">
               <p
                 class="text-xl font-bold md:text-2xl"
                 transition:name={item.data.title + "t"}
@@ -100,6 +139,28 @@ const postImages = import.meta.glob(
               >
                 {item.data.description}
               </p>
+
+              <div
+                class="mt-auto flex space-x-3 pt-4 text-sm"
+                transition:name={item.data.title + "k"}
+              >
+                {item.data.tags.map((tag, index) => (
+                  <div
+                    class={twMerge(
+                      "flex place-items-center gap-2 rounded-md border-2 px-3 py-1",
+                      colorArray[index % 8].border,
+                    )}
+                  >
+                    <div
+                      class={twMerge(
+                        "h-2 w-2 rounded-full",
+                        colorArray[index % 8].circleColor,
+                      )}
+                    />
+                    {tag.trim()}
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         </a>
