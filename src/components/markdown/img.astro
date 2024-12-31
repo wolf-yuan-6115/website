@@ -1,20 +1,18 @@
 ---
-import { Picture } from "astro:assets";
+import OptimizePicture from "../OptimizePicture.astro";
 import { twMerge } from "tailwind-merge";
 const props = Astro.props;
 ---
 
 <div class="py-4">
-  <Picture
+  <OptimizePicture
     class={twMerge(
       props.class,
       "mx-auto max-w-[85%] md:max-w-[90%] w-auto h-auto rounded",
     )}
-    densities={[1, 1.5, 2, 2.5]}
-    formats={["avif", "webp"]}
     {...props}
   >
     <slot />
-  </Picture>
+  </OptimizePicture>
   <p class="mt-4 text-center text-sm italic">{props.alt}</p>
 </div>

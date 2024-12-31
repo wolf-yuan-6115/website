@@ -1,0 +1,43 @@
+---
+import { object } from "astro/zod";
+import { Picture, inferRemoteSize } from "astro:assets";
+
+const props = Astro.props;
+
+let width;
+if (typeof props.src === "object") {
+  width = parseInt(props.src.width);
+} else if (typeof props.src === "string") {
+  const size = await inferRemoteSize(props.src);
+  width = size.width;
+}
+
+const widths = [];
+let currentWidth = 240;
+
+while (true) {
+  if (currentWidth > width) break;
+
+  widths.push({
+    width: currentWidth,
+    viewport: Math.floor(currentWidth / 0.8),
+  });
+  currentWidth += 240;
+}
+---
+
+<Picture
+  format="webp"
+  widths={widths.map(({ width }) => width)}
+  sizes={widths
+    .map(
+      ({ viewport, width }) =>
+        `(max-width: ${viewport}px) ${width}px`,
+    )
+    .concat(`${width}px`)
+    .join(", ")
+    .trim()}
+  {...props}
+>
+  <slot />
+</Picture>
