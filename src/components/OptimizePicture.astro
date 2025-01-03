@@ -1,5 +1,4 @@
 ---
-import { object } from "astro/zod";
 import { Picture, inferRemoteSize } from "astro:assets";
 
 const props = Astro.props;
@@ -13,23 +12,23 @@ if (typeof props.src === "object") {
 }
 
 const widths = [];
-let currentWidth = 240;
+const ratioMultiplier = props.maxWidth / props.maxViewport;
+let currentViewport = props.maxViewport;
 
-while (true) {
-  if (currentWidth > width) break;
-
+while (currentViewport >= 240) {
   widths.push({
-    width: currentWidth,
-    viewport: Math.floor(currentWidth / 0.6),
+    viewport: currentViewport,
+    width: Math.round(currentViewport * ratioMultiplier),
   });
-  currentWidth += 240;
+  currentViewport -= 320;
 }
 ---
 
 <Picture
-  format="webp"
+  formats={["avif"]}
   widths={widths.map(({ width }) => width)}
   sizes={widths
+    .reverse()
     .map(
       ({ viewport, width }) =>
         `(max-width: ${viewport}px) ${width}px`,
@@ -37,6 +36,7 @@ while (true) {
     .concat(`${width}px`)
     .join(", ")
     .trim()}
+  quality={100}
   {...props}
 >
   <slot />
