@@ -1,24 +1,26 @@
 ---
-import { getCollection } from "astro:content";
+import { getCollection, render } from "astro:content";
 import MarkdownPostLayout from "../../../layouts/markdown-page.astro";
 
 export async function getStaticPaths() {
-  const blogEntries = await getCollection("zh");
+  const blogEntries = await getCollection("en");
   return blogEntries.map((entry) => ({
-    params: { slug: entry.slug },
+    params: { slug: entry.id },
     props: { entry },
   }));
 }
 
 const { entry } = Astro.props;
-const { Content, remarkPluginFrontmatter } = await entry.render();
+const { Content } = await render(entry);
 
 import A from "../../../components/markdown/a.astro";
 import Blockqoute from "../../../components/markdown/blockquote.astro";
 import Code from "../../../components/markdown/code.astro";
+import H1 from "../../../components/markdown/h1.astro";
 import H2 from "../../../components/markdown/h2.astro";
 import H3 from "../../../components/markdown/h3.astro";
 import Hr from "../../../components/markdown/hr.astro";
+``;
 import Img from "../../../components/markdown/img.astro";
 import Ol from "../../../components/markdown/ol.astro";
 import P from "../../../components/markdown/p.astro";
@@ -26,15 +28,13 @@ import Pre from "../../../components/markdown/pre.astro";
 import Ul from "../../../components/markdown/ul.astro";
 ---
 
-<MarkdownPostLayout
-  frontmatter={entry.data}
-  pluginFrontmatter={remarkPluginFrontmatter}
->
+<MarkdownPostLayout frontmatter={entry.data}>
   <Content
     components={{
       a: A,
       blockquote: Blockqoute,
       code: Code,
+      h1: H1,
       h2: H2,
       h3: H3,
       hr: Hr,
