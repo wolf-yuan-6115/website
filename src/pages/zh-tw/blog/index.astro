@@ -42,7 +42,7 @@ const colorArray: {
     我會分享我看到的事務，一些寫程式的技巧，還有一點我對世界的看法
   </p>
 
-  <a href={getRelativeLocaleUrl(locale, `/blog/${latestPost.slug}`)}>
+  <a href={getRelativeLocaleUrl(locale, `/blog/${latestPost.id}`)}>
     <div
       class="flex flex-col rounded-lg border-2 border-gray-600 bg-gray-800 transition-colors duration-200 hover:border-gray-400 md:flex-row"
       transition:name={latestPost.data.title}
@@ -110,7 +110,7 @@ const colorArray: {
     {
       posts.map((item) => (
         <a
-          href={getRelativeLocaleUrl(locale, `/blog/${item.slug}`)}
+          href={getRelativeLocaleUrl(locale, `/blog/${item.id}`)}
           transition:name={item.data.title}
           data-astro-prefetch
         >
