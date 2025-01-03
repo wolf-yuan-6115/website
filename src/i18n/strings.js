@@ -61,7 +61,7 @@ export default {
       modified: "Last modified: ",
     },
     "zh-tw": {
-      created: "建立於: ",
+      created: "最初建立於: ",
       modified: "最後編輯: ",
     },
   },

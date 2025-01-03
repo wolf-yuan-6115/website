@@ -7,8 +7,6 @@ import {
 } from "@shikijs/transformers";
 import icon from "astro-icon";
 import { defineConfig } from "astro/config";
-import { remarkCreatedTime } from "./src/utils/remarkCreatedTime.js";
-import { remarkModifiedTime } from "./src/utils/remarkMofifiedTime.js";
 
 export default defineConfig({
   site: "https://wolf-yuan.dev",
@@ -46,7 +44,4 @@ export default defineConfig({
     },
   },
   prefetch: true,
-  markdown: {
-    remarkPlugins: [remarkModifiedTime, remarkCreatedTime],
-  },
 });

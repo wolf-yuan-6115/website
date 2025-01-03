@@ -19,10 +19,10 @@ dayjs.extend(timezone);
 let frontmatter = Astro.props.frontmatter,
   pluginFrontmatter = Astro.props.pluginFrontmatter;
 
-const created = dayjs(pluginFrontmatter.createdTime)
+const created = dayjs(pluginFrontmatter.publishDate)
   .tz("Asia/Taipei")
   .format("YYYY/MM/DD");
-const lastModified = dayjs(pluginFrontmatter.lastModified)
+const lastModified = dayjs(pluginFrontmatter.modifiedDate)
   .tz("Asia/Taipei")
   .format("YYYY/MM/DD hh:mm A");
 
