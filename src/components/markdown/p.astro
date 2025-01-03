@@ -3,6 +3,6 @@ import { twMerge } from "tailwind-merge";
 const props = Astro.props;
 ---
 
-<p class={twMerge(props.class, "leading-loose py-3")} {...props}>
+<p {...props}>
   <slot />
 </p>
