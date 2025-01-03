@@ -11,7 +11,7 @@ export async function getStaticPaths() {
 }
 
 const { entry } = Astro.props;
-const { Content, remarkPluginFrontmatter } = await entry.render();
+const { Content } = await entry.render();
 
 import A from "../../components/markdown/a.astro";
 import Blockqoute from "../../components/markdown/blockquote.astro";
@@ -27,10 +27,7 @@ import Pre from "../../components/markdown/pre.astro";
 import Ul from "../../components/markdown/ul.astro";
 ---
 
-<MarkdownPostLayout
-  frontmatter={entry.data}
-  pluginFrontmatter={remarkPluginFrontmatter}
->
+<MarkdownPostLayout frontmatter={entry.data}>
   <Content
     components={{
       a: A,

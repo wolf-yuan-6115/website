@@ -17,13 +17,12 @@ import OptimizePicture from "../components/OptimizePicture.astro";
 dayjs.extend(utc);
 dayjs.extend(timezone);
 
-let frontmatter = Astro.props.frontmatter,
-  pluginFrontmatter = Astro.props.pluginFrontmatter;
+let frontmatter = Astro.props.frontmatter;
 
-const created = dayjs(pluginFrontmatter.publishDate)
+const created = dayjs(frontmatter.publishDate)
   .tz("Asia/Taipei")
   .format("YYYY/MM/DD");
-const lastModified = dayjs(pluginFrontmatter.modifiedDate)
+const lastModified = dayjs(frontmatter.modifiedDate)
   .tz("Asia/Taipei")
   .format("YYYY/MM/DD hh:mm A");
 
@@ -74,8 +73,8 @@ const colorArray: {
           localeAlternate: ["en_US", "zh_Hant"],
         },
         article: {
-          publishedTime: pluginFrontmatter.createdTime,
-          modifiedTime: pluginFrontmatter.lastModified,
+          publishedTime: frontmatter.createdTime,
+          modifiedTime: frontmatter.lastModified,
           authors: frontmatter.authors,
           tags: frontmatter.tags,
         },
