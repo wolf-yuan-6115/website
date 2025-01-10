@@ -3,6 +3,7 @@ import Base from "../layouts/main.astro";
 import Button from "../components/Button.astro";
 import Card from "../components/Card.astro";
 import List from "../components/List.astro";
+import InlineLink from "../components/InlineLink.astro";
 
 import { Icon } from "astro-icon/components";
 import { getRelativeLocaleUrl } from "astro:i18n";
@@ -88,13 +89,17 @@ const locale = Astro.currentLocale;
       <div
         class="rounded-md border-2 border-indigo-400 bg-gray-800 px-6 py-4"
       >
-        <p class="pb-4 pt-2 text-xl font-bold md:text-2xl">Present</p>
+        <p class="pb-4 pt-2 text-xl font-bold md:text-2xl">
+          Currently:
+        </p>
         <ul class="list-inside list-disc px-3 leading-loose">
           <li>~6 years in backend development</li>
-          <li>~6 years in web development</li>
+          <li>~6 years in Discord bot development</li>
+          <li>~6 years in frontend development</li>
           <li>~5 years being a Linux user</li>
           <li>~3 years of Linux server management</li>
           <li>~2 years of self hosting experience</li>
+          <li>Club leader @ Hack Club</li>
           <li>Moderator @ Yeecord Community</li>
           <li>Technical Team @ SCINT</li>
         </ul>
