@@ -74,7 +74,7 @@ const colorArray: {
         </p>
 
         <div
-          class="mt-auto flex space-x-3 pt-4 text-sm"
+          class="mt-auto flex flex-wrap gap-3 pt-4 text-sm"
           transition:name={latestPost.data.title + "k"}
         >
           {
@@ -141,7 +141,7 @@ const colorArray: {
               </p>
 
               <div
-                class="mt-auto flex space-x-3 pt-4 text-sm"
+                class="mt-auto flex flex-wrap gap-3 pt-4 text-sm"
                 transition:name={item.data.title + "k"}
               >
                 {item.data.tags.map((tag, index) => (
