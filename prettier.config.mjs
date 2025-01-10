@@ -15,6 +15,7 @@ export default {
     "prettier-plugin-organize-imports",
     "prettier-plugin-tailwindcss",
   ],
+  htmlWhitespaceSensitivity: "strict",
   overrides: [
     {
       files: "*.astro",
