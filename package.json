@@ -32,7 +32,7 @@
     "@iconify-json/flagpack": "^1.2.2",
     "@iconify-json/material-symbols": "^1.2.12",
     "@iconify-json/simple-icons": "^1.2.17",
-    "@shikijs/transformers": "^1.24.4",
+    "@shikijs/transformers": "^2.0.0",
     "prettier": "^3.4.2",
     "prettier-plugin-astro": "^0.14.1",
     "prettier-plugin-organize-imports": "^4.1.0",
