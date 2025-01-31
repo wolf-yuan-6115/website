@@ -15,8 +15,8 @@
   "dependencies": {
     "@astrojs/mdx": "^4.0.5",
     "@astrojs/sitemap": "^3.2.1",
-    "@astrojs/tailwind": "^5.1.4",
     "@fontsource-variable/jetbrains-mono": "^5.1.1",
+    "@tailwindcss/vite": "^4.0.1",
     "astro": "^5.1.5",
     "astro-icon": "^1.1.4",
     "astro-seo": "^0.8.4",
@@ -26,7 +26,7 @@
     "sharp": "^0.33.5",
     "tailwind-merge": "^2.6.0",
     "tailwind-scrollbar-utilities": "^0.2.0",
-    "tailwindcss": "^3.4.17"
+    "tailwindcss": "^4.0.1"
   },
   "devDependencies": {
     "@iconify-json/flagpack": "^1.2.2",
@@ -36,7 +36,7 @@
     "prettier": "^3.4.2",
     "prettier-plugin-astro": "^0.14.1",
     "prettier-plugin-organize-imports": "^4.1.0",
-    "prettier-plugin-tailwindcss": "^0.6.9",
+    "prettier-plugin-tailwindcss": "^0.6.11",
     "typescript": "^5.7.2"
   }
 }

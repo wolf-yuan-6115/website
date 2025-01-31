@@ -1,5 +1,6 @@
 ---
 import "@fontsource-variable/jetbrains-mono/wght.css";
+import "../styles/global.css";
 
 import dayjs from "dayjs";
 import utc from "dayjs/plugin/utc";
@@ -52,7 +53,7 @@ const colorArray: {
   lang={Astro.currentLocale === "en" ? "en" : "zh-Hant"}
   transition:name="root"
   transition:animate="none"
-  class="overflow-y-auto scrollbar-stable"
+  class="scrollbar-stable overflow-y-auto"
 >
   <head>
     <meta charset="utf-8" />
@@ -100,13 +101,13 @@ const colorArray: {
         >
           <div class="sm:px7">
             <div
-              class="relative z-[5] mx-auto mb-4 w-full overflow-hidden bg-cover bg-center bg-no-repeat pt-[50%] before:absolute before:inset-0 before:z-[-5] before:block before:bg-gradient-to-t before:from-black before:from-20% before:to-transparent before:opacity-80 before:content-[''] xl:rounded-xl xl:pt-[30%] before:xl:rounded-xl"
+              class="relative z-5 mx-auto mb-4 w-full overflow-hidden bg-cover bg-center bg-no-repeat pt-[50%] before:absolute before:inset-0 before:z-[-5] before:block before:bg-linear-to-t before:from-black before:from-20% before:to-transparent before:opacity-80 before:content-[''] xl:rounded-xl xl:pt-[30%] xl:before:rounded-xl"
               transition:name={frontmatter.title + "i"}
             >
               <OptimizePicture
                 src={postImages[frontmatter.image]()}
                 alt={`Cover for article ${frontmatter.title}`}
-                class="pointer-events-none absolute left-0 top-0 z-[-10] h-full w-full object-cover"
+                class="pointer-events-none absolute top-0 left-0 z-[-10] h-full w-full object-cover"
                 maxViewport="1280"
                 maxWidth="1280"
                 loading="eager"

@@ -1,17 +1,16 @@
 import mdx from "@astrojs/mdx";
 import sitemap from "@astrojs/sitemap";
-import tailwind from "@astrojs/tailwind";
 import {
   transformerNotationDiff,
   transformerNotationFocus,
 } from "@shikijs/transformers";
+import tailwindcss from "@tailwindcss/vite";
 import icon from "astro-icon";
 import { defineConfig } from "astro/config";
 
 export default defineConfig({
   site: "https://wolf-yuan.dev",
   integrations: [
-    tailwind(),
     sitemap(),
     icon(),
     mdx({
@@ -42,6 +41,9 @@ export default defineConfig({
     routing: {
       prefixDefaultLocale: false,
     },
+  },
+  vite: {
+    plugins: [tailwindcss()],
   },
   prefetch: true,
 });

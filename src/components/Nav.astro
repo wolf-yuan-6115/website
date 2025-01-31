@@ -14,7 +14,7 @@ const { fullPage = false } = Astro.props;
 
 <nav
   class={twMerge(
-    "js:nav-container top-0 z-10 flex justify-center backdrop-blur-sm duration-300",
+    "js:nav-container top-0 z-10 flex justify-center backdrop-blur-xs duration-300",
     fullPage ? "fixed w-full xl:sticky" : "sticky",
   )}
 >
@@ -100,7 +100,7 @@ const { fullPage = false } = Astro.props;
     let handelScroll = (state) => {
       if (state) {
         navContainer.classList.add(
-          "bg-gradient-to-b",
+          "bg-linear-to-b",
           "from-gray-950/90",
           "to-transparent",
         );
@@ -112,7 +112,7 @@ const { fullPage = false } = Astro.props;
         navTitleElement.classList.remove("sm:opacity-0");
       } else {
         navContainer.classList.remove(
-          "bg-gradient-to-b",
+          "bg-linear-to-b",
           "from-gray-950/90",
           "to-transparent",
         );
