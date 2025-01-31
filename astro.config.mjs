@@ -18,8 +18,8 @@ export default defineConfig({
         theme: "catppuccin-mocha",
         wrap: false,
         transformers: [
-          transformerNotationDiff(),
-          transformerNotationFocus(),
+          transformerNotationDiff({ matchAlgorithm: "v3" }),
+          transformerNotationFocus({ matchAlgorithm: "v3" }),
         ],
       },
     }),

@@ -17,6 +17,9 @@ importers:
       '@fontsource-variable/jetbrains-mono':
         specifier: ^5.1.2
         version: 5.1.2
+      '@shikijs/transformers':
+        specifier: ^2.2.0
+        version: 2.2.0
       '@tailwindcss/vite':
         specifier: ^4.0.1
         version: 4.0.1(vite@6.0.11(@types/node@22.12.0)(jiti@2.4.2)(lightningcss@1.29.1)(terser@5.37.0)(yaml@2.7.0))
@@ -57,9 +60,6 @@ importers:
       '@iconify-json/simple-icons':
         specifier: ^1.2.22
         version: 1.2.22
-      '@shikijs/transformers':
-        specifier: ^2.2.0
-        version: 2.2.0
       prettier:
         specifier: ^3.4.2
         version: 3.4.2
