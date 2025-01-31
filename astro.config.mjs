@@ -20,16 +20,6 @@ export default defineConfig({
         transformers: [
           transformerNotationDiff(),
           transformerNotationFocus(),
-          {
-            preprocess(code) {
-              if (code.endsWith("\n")) {
-                code = code.slice(0, -1);
-              }
-              code = code.trim();
-
-              return code;
-            },
-          },
         ],
       },
     }),
