@@ -1,4 +1,7 @@
+@import "tailwind-scrollbar-utilities";
 @import 'tailwindcss';
+
+@source "../";
 
 @theme {
   --color-catppuccin-blue: "#89b4fa";
