@@ -16,24 +16,28 @@ const locale = Astro.currentLocale;
   description="我是一名來自台灣的學生開發者，專精於 JavaScript 開發。我也擅長前端、後端程式設計和伺服器管理。"
 >
   <section class="h-screen">
-    <p class="pt-6 text-xl md:text-2xl">嗨，我是</p>
-    <p class="py-6 text-5xl font-extrabold md:text-6xl">Wolf Yuan</p>
-    <p class="pb-10 pt-4 text-xl text-slate-300 md:text-2xl">
+    <p class="pt-6 text-lg md:text-xl lg:text-2xl">嗨，我是</p>
+    <p class="py-6 text-4xl font-extrabold md:text-5xl lg:text-6xl"
+      >Wolf Yuan</p
+    >
+    <p
+      class="text-md pt-4 pb-10 text-slate-300 md:text-xl lg:text-2xl"
+    >
       一名來自台灣 <Icon name="flagpack:tw" class="inline" /> 的學生
     </p>
-    <p class="text-md pb-5 pt-2 text-slate-200 md:text-lg">
+    <p class="md:text-md pt-2 pb-5 text-sm text-slate-200 lg:text-lg">
       我也是一名
     </p>
-    <p class="py-2 text-lg text-green-200 md:text-xl">
+    <p class="text-md py-2 text-green-200 md:text-lg lg:text-xl">
       全端程式設計師
     </p>
-    <p class="py-2 text-lg text-blue-200 md:text-xl">
+    <p class="text-md py-2 text-blue-200 md:text-lg lg:text-xl">
       JavaScript 愛好者
     </p>
-    <p class="py-2 text-lg text-orange-200 md:text-xl">
+    <p class="text-md py-2 text-blue-200 md:text-lg lg:text-xl">
       <i>半個</i> 網頁設計師
     </p>
-    <p class="py-2 text-lg text-yellow-200 md:text-xl">
+    <p class="text-md py-2 text-blue-200 md:text-lg lg:text-xl">
       <i>應該算是</i> 音樂的發燒友
     </p>
     <div class="py-12">
@@ -44,11 +48,14 @@ const locale = Astro.currentLocale;
           glow={true}
           prefetch="load"
         >
-          <Icon name="material-symbols:newspaper-rounded" />
+          <Icon
+            name="material-symbols:newspaper-rounded"
+            class="md:text-md text-sm"
+          />
           <p class="md:text-md inline text-sm">來逛逛我的部落格</p>
           <Icon
             name="material-symbols:arrow-forward-rounded"
-            class="inline"
+            class="md:text-md text-sm"
           />
         </Button>
       </div>
@@ -59,12 +66,17 @@ const locale = Astro.currentLocale;
           className="border-orange-400 hover:bg-orange-400 hover:shadow-orange-500 md:hover:translate-x-2 md:hover:scale-105"
           glow={true}
         >
-          <Icon name="simple-icons:gitlab" />
-
+          <Icon
+            name="simple-icons:gitlab"
+            class="md:text-md text-sm"
+          />
           <p class="md:text-md inline text-sm">
             看看我的 GitLab 個人檔案
           </p>
-          <Icon name="material-symbols:arrow-forward-rounded" />
+          <Icon
+            name="material-symbols:arrow-forward-rounded"
+            class="md:text-md text-sm"
+          />
         </Button>
       </div>
       <div class="py-4">
@@ -74,25 +86,32 @@ const locale = Astro.currentLocale;
           className="border-violet-400 hover:bg-violet-400 hover:shadow-violet-400 md:hover:translate-x-2 md:hover:scale-105"
           glow={true}
         >
-          <Icon name="simple-icons:github" />
-
+          <Icon
+            name="simple-icons:github"
+            class="md:text-md text-sm"
+          />
           <p class="md:text-md inline text-sm">
             或是去看看我的 GitHub 個人檔案
           </p>
-          <Icon name="material-symbols:arrow-forward-rounded" />
+          <Icon
+            name="material-symbols:arrow-forward-rounded"
+            class="md:text-md text-sm"
+          />
         </Button>
       </div>
     </div>
   </section>
 
   <section>
-    <p class="py-12 text-2xl font-bold md:text-3xl">經驗</p>
+    <p claclass="py-12 text-2xl font-bold lg:text-3xl">經驗</p>
     <div class="grid gap-5">
       <div
         class="rounded-md border-2 border-indigo-400 bg-gray-800 px-6 py-4"
       >
-        <p class="pb-4 pt-2 text-xl font-bold md:text-2xl">現今</p>
-        <ul class="list-inside list-disc px-3 leading-loose">
+        <p class="pt-2 pb-4 text-lg font-bold md:text-xl">現今</p>
+        <ul
+          class="md:text-md list-inside list-disc px-3 text-sm leading-loose"
+        >
           <li>約 6 年的後端開發經驗</li>
           <li>約 6 年的 Discord 機器人開發經驗</li>
           <li>約 6 年的前端開發經驗</li>
@@ -107,8 +126,10 @@ const locale = Astro.currentLocale;
       <div
         class="rounded-md border-2 border-gray-500 bg-gray-800 px-6 py-4"
       >
-        <p class="pb-4 pt-2 text-xl font-bold md:text-2xl">2024</p>
-        <ul class="list-inside list-disc px-3 leading-loose">
+        <p class="pt-2 pb-4 text-lg font-bold md:text-xl">2024</p>
+        <ul
+          class="md:text-md list-inside list-disc px-3 text-sm leading-loose"
+        >
           <li>SITCON Camp 2024 學員</li>
           <li>SITCON Hackathon 2024 參賽團隊</li>
           <li>SITCON 2024 聽眾</li>
@@ -120,8 +141,10 @@ const locale = Astro.currentLocale;
       <div
         class="rounded-md border-2 border-gray-500 bg-gray-800 px-6 py-4"
       >
-        <p class="pb-4 pt-2 text-xl font-bold md:text-2xl">2023</p>
-        <ul class="list-inside list-disc px-3 leading-loose">
+        <p class="pt-2 pb-4 text-lg font-bold md:text-xl">2023</p>
+        <ul
+          class="md:text-md list-inside list-disc px-3 text-sm leading-loose"
+        >
           <li>COSCUP 2023 聽眾</li>
           <li>參與 g0v hackath59n</li>
         </ul>
@@ -129,8 +152,10 @@ const locale = Astro.currentLocale;
       <div
         class="rounded-md border-2 border-gray-500 bg-gray-800 px-6 py-4"
       >
-        <p class="pb-4 pt-2 text-xl font-bold md:text-2xl">2020</p>
-        <ul class="list-inside list-disc px-3 leading-loose">
+        <p class="pt-2 pb-4 text-lg font-bold md:text-xl">2020</p>
+        <ul
+          class="md:text-md list-inside list-disc px-3 text-sm leading-loose"
+        >
           <li>建立黑貓 Discord 音樂機器人 (~2022)</li>
         </ul>
       </div>
@@ -138,9 +163,8 @@ const locale = Astro.currentLocale;
   </section>
 
   <section>
-    <p class="pt-12 text-2xl font-bold md:text-3xl">經驗值</p><p
-      class="text-md pb-6 pt-2 text-gray-400 md:text-lg"
-    >
+    <p class="pt-12 text-2xl font-bold lg:text-3xl">經驗值</p>
+    <p class="text-md pt-4 pb-6 text-gray-400 md:text-lg">
       經驗太多了...
       所以有些超出了頁面，別忘了你可以用手去滑動它。在電腦上，你可以按住
       SHIFT 並滾動你的滑鼠滾輪來滑動。
@@ -149,11 +173,11 @@ const locale = Astro.currentLocale;
       <div
         class="rounded-md border-2 border-teal-400 bg-gray-800 px-2 py-4"
       >
-        <p class="px-4 pb-4 pt-2 text-lg font-bold md:text-xl">
+        <p class="px-4 pt-2 pb-4 text-lg font-bold md:text-xl">
           電腦類
         </p>
         <div
-          class="relative before:absolute before:left-0 before:h-9 before:w-6 before:bg-linear-to-r before:from-gray-800 before:to-transparent before:content-[''] after:absolute after:right-0 after:top-0 after:inline-block after:h-9 after:w-6 after:bg-linear-to-l after:from-gray-800 after:to-transparent after:content-['']"
+          class="relative before:absolute before:left-0 before:h-9 before:w-6 before:bg-linear-to-r before:from-gray-800 before:to-transparent before:content-[''] after:absolute after:top-0 after:right-0 after:inline-block after:h-9 after:w-6 after:bg-linear-to-l after:from-gray-800 after:to-transparent after:content-['']"
         >
           <div
             class="flex flex-row items-center overflow-x-auto py-2 [&>div]:flex [&>div]:flex-row [&>div]:items-center [&>div]:gap-4 [&>div]:px-4"
@@ -161,28 +185,28 @@ const locale = Astro.currentLocale;
             <div>
               <Icon
                 name="simple-icons:archlinux"
-                class="text-lg md:text-xl"
+                class="text-md md:text-lg"
               />
               <p class="text-md text-nowrap md:text-lg">Arch</p>
             </div>
             <div>
               <Icon
                 name="simple-icons:fedora"
-                class="text-lg md:text-xl"
+                class="text-md md:text-lg"
               />
               <p class="text-md text-nowrap md:text-lg">Fedora</p>
             </div>
             <div>
               <Icon
                 name="simple-icons:hyprland"
-                class="text-lg md:text-xl"
+                class="text-md md:text-lg"
               />
               <p class="text-md text-nowrap md:text-lg">Hyprland</p>
             </div>
             <div>
               <Icon
                 name="simple-icons:gnome"
-                class="text-lg md:text-xl"
+                class="text-md md:text-lg"
               />
               <p class="text-md text-nowrap md:text-lg">Gnome</p>
             </div>
@@ -192,11 +216,11 @@ const locale = Astro.currentLocale;
       <div
         class="rounded-md border-2 border-violet-400 bg-gray-800 px-2 py-4"
       >
-        <p class="px-4 pb-4 pt-2 text-lg font-bold md:text-xl">
+        <p class="px-4 pt-2 pb-4 text-lg font-bold md:text-xl">
           程式語言與框架
         </p>
         <div
-          class="relative before:absolute before:left-0 before:h-9 before:w-6 before:bg-linear-to-r before:from-gray-800 before:to-transparent before:content-[''] after:absolute after:right-0 after:top-0 after:inline-block after:h-9 after:w-6 after:bg-linear-to-l after:from-gray-800 after:to-transparent after:content-['']"
+          class="relative before:absolute before:left-0 before:h-9 before:w-6 before:bg-linear-to-r before:from-gray-800 before:to-transparent before:content-[''] after:absolute after:top-0 after:right-0 after:inline-block after:h-9 after:w-6 after:bg-linear-to-l after:from-gray-800 after:to-transparent after:content-['']"
         >
           <div
             class="flex flex-row items-center overflow-x-auto py-2 [&>div]:flex [&>div]:flex-row [&>div]:items-center [&>div]:gap-4 [&>div]:px-4"
@@ -204,42 +228,42 @@ const locale = Astro.currentLocale;
             <div>
               <Icon
                 name="simple-icons:astro"
-                class="text-lg md:text-xl"
+                class="text-md md:text-lg"
               />
               <p class="text-md text-nowrap md:text-lg">Astro</p>
             </div>
             <div>
               <Icon
                 name="simple-icons:javascript"
-                class="text-lg md:text-xl"
+                class="text-md md:text-lg"
               />
               <p class="text-md text-nowrap md:text-lg">JavaScript</p>
             </div>
             <div>
               <Icon
                 name="simple-icons:typescript"
-                class="text-lg md:text-xl"
+                class="text-md md:text-lg"
               />
               <p class="text-md text-nowrap md:text-lg">TypeScript</p>
             </div>
             <div>
               <Icon
                 name="simple-icons:nodedotjs"
-                class="text-lg md:text-xl"
+                class="text-md md:text-lg"
               />
               <p class="text-md text-nowrap md:text-lg">Node.js</p>
             </div>
             <div>
               <Icon
                 name="simple-icons:python"
-                class="text-lg md:text-xl"
+                class="text-md md:text-lg"
               />
               <p class="text-md text-nowrap md:text-lg">Python</p>
             </div>
             <div>
               <Icon
                 name="simple-icons:html5"
-                class="text-lg md:text-xl"
+                class="text-md md:text-lg"
               />
               <p class="text-md text-nowrap md:text-lg">
                 HTML5 & CSS & JS
@@ -247,7 +271,7 @@ const locale = Astro.currentLocale;
             </div><div>
               <Icon
                 name="simple-icons:gnubash"
-                class="text-lg md:text-xl"
+                class="text-md md:text-lg"
               />
               <p class="text-md text-nowrap md:text-lg">
                 Bash Script
@@ -259,11 +283,11 @@ const locale = Astro.currentLocale;
       <div
         class="rounded-md border-2 border-cyan-400 bg-gray-800 px-2 py-4"
       >
-        <p class="px-4 pb-4 pt-2 text-lg font-bold md:text-xl">
+        <p class="px-4 pt-2 pb-4 text-lg font-bold md:text-xl">
           應用與網路類
         </p>
         <div
-          class="relative before:absolute before:left-0 before:h-9 before:w-6 before:bg-linear-to-r before:from-gray-800 before:to-transparent before:content-[''] after:absolute after:right-0 after:top-0 after:inline-block after:h-9 after:w-6 after:bg-linear-to-l after:from-gray-800 after:to-transparent after:content-['']"
+          class="relative before:absolute before:left-0 before:h-9 before:w-6 before:bg-linear-to-r before:from-gray-800 before:to-transparent before:content-[''] after:absolute after:top-0 after:right-0 after:inline-block after:h-9 after:w-6 after:bg-linear-to-l after:from-gray-800 after:to-transparent after:content-['']"
         >
           <div
             class="flex flex-row items-center overflow-x-auto py-2 [&>div]:flex [&>div]:flex-row [&>div]:items-center [&>div]:gap-4 [&>div]:px-4"
@@ -271,7 +295,7 @@ const locale = Astro.currentLocale;
             <div>
               <Icon
                 name="simple-icons:docker"
-                class="text-lg md:text-xl"
+                class="text-md md:text-lg"
               />
               <p class="text-md text-nowrap md:text-lg">
                 Docker & Podman
@@ -280,14 +304,14 @@ const locale = Astro.currentLocale;
             <div>
               <Icon
                 name="simple-icons:nginx"
-                class="text-lg md:text-xl"
+                class="text-md md:text-lg"
               />
               <p class="text-md text-nowrap md:text-lg">nginx</p>
             </div>
             <div>
               <Icon
                 name="simple-icons:cloudflare"
-                class="text-lg md:text-xl"
+                class="text-md md:text-lg"
               />
               <p class="text-md text-nowrap md:text-lg">
                 Cloudflare & Pages
@@ -299,11 +323,11 @@ const locale = Astro.currentLocale;
       <div
         class="rounded-md border-2 border-amber-400 bg-gray-800 px-2 py-4"
       >
-        <p class="px-4 pb-4 pt-2 text-lg font-bold md:text-xl">
+        <p class="px-4 pt-2 pb-4 text-lg font-bold md:text-xl">
           正在學習 :L
         </p>
         <div
-          class="relative before:absolute before:left-0 before:h-9 before:w-6 before:bg-linear-to-r before:from-gray-800 before:to-transparent before:content-[''] after:absolute after:right-0 after:top-0 after:inline-block after:h-9 after:w-6 after:bg-linear-to-l after:from-gray-800 after:to-transparent after:content-['']"
+          class="relative before:absolute before:left-0 before:h-9 before:w-6 before:bg-linear-to-r before:from-gray-800 before:to-transparent before:content-[''] after:absolute after:top-0 after:right-0 after:inline-block after:h-9 after:w-6 after:bg-linear-to-l after:from-gray-800 after:to-transparent after:content-['']"
         >
           <div
             class="flex flex-row items-center overflow-x-auto py-2 [&>div]:flex [&>div]:flex-row [&>div]:items-center [&>div]:gap-4 [&>div]:px-4"
@@ -311,21 +335,21 @@ const locale = Astro.currentLocale;
             <div>
               <Icon
                 name="simple-icons:rust"
-                class="text-lg md:text-xl"
+                class="text-md md:text-lg"
               />
               <p class="text-md text-nowrap md:text-lg">Rust</p>
             </div>
             <div>
               <Icon
                 name="simple-icons:react"
-                class="text-lg md:text-xl"
+                class="text-md md:text-lg"
               />
               <p class="text-md text-nowrap md:text-lg">React</p>
             </div>
             <div>
               <Icon
                 name="simple-icons:cplusplus"
-                class="text-lg md:text-xl"
+                class="text-md md:text-lg"
               />
               <p class="text-md text-nowrap md:text-lg">C++</p>
             </div>
@@ -336,7 +360,7 @@ const locale = Astro.currentLocale;
   </section>
 
   <section>
-    <p class="py-12 text-2xl font-bold md:text-3xl">專案</p>
+    <p class="py-12 text-2xl font-bold lg:text-3xl">專案</p>
 
     <div
       class="grid grid-flow-row grid-cols-1 content-start gap-8 md:grid-cols-2 md:gap-6"
@@ -445,7 +469,7 @@ const locale = Astro.currentLocale;
   </section>
 
   <section>
-    <p class="py-12 text-2xl font-bold md:text-3xl">貢獻專案</p>
+    <p class="py-12 text-2xl font-bold lg:text-3xl">貢獻專案</p>
 
     <div class="grid gap-6">
       <List
