@@ -1,7 +1,22 @@
 ---
 import { getRelativeLocaleUrl } from "astro:i18n";
+import { Image } from "astro:assets";
 import { Icon } from "astro-icon/components";
 import strings from "../i18n/strings.js";
+import notDevelopedByEnglish from "../assets/not_developed_ai_english.svg";
+import notDevelopedByAIChinese from "../assets/not_developed_ai_chinese.svg";
+import notWrittenByEnglish from "../assets/not_written_ai_english.svg";
+import notWrittenByAIChinese from "../assets/not_written_ai_chinese.svg";
+
+const notByAIImage =
+  Astro.url.pathname.startsWith("/blog") ||
+  Astro.url.pathname.startsWith("/zh-tw/blog")
+    ? Astro.currentLocale === "en"
+      ? notWrittenByEnglish
+      : notWrittenByAIChinese
+    : Astro.currentLocale === "en"
+      ? notDevelopedByEnglish
+      : notDevelopedByAIChinese;
 
 const t = strings.footer[Astro.currentLocale];
 ---
@@ -13,8 +28,8 @@ const t = strings.footer[Astro.currentLocale];
 >
   <div class="mx-auto max-w-7xl px-6 py-6 lg:px-4">
     <div class="grid grid-flow-row grid-cols-1 md:grid-cols-2">
-      <div>
-        <p class="pb-7 pt-2 text-xl font-bold md:pt-0 md:text-2xl">
+      <div class="flex flex-col justify-between">
+        <p class="pt-2 text-xl font-bold md:pt-0 md:text-2xl">
           <a
             href="https://w.wolf-yuan.dev/projects/website"
             target="_blank"
@@ -49,41 +64,49 @@ const t = strings.footer[Astro.currentLocale];
         </p>
       </div>
       <div
-        class="flex h-fit flex-row items-center justify-start gap-6 pt-4 text-xl text-gray-400 md:mx-6 md:justify-end md:pt-0 md:text-2xl md:text-gray-50"
+        class="flex h-fit flex-col justify-between gap-6 text-xl text-gray-400 md:mx-6 md:text-2xl md:text-gray-50"
       >
-        <div class="w-fit">
-          <a href="https://w.wolf-yuan.dev/facebook" class="w-fit">
-            <Icon
-              name="simple-icons:facebook"
-              class="inline duration-300 hover:text-[#0866FF]"
-            />
-            <p class="sr-only">Facebook</p>
-          </a>
+        <div class="flex items-center gap-4 md:justify-end">
+          <div class="w-fit">
+            <a href="https://w.wolf-yuan.dev/facebook" class="w-fit">
+              <Icon
+                name="simple-icons:facebook"
+                class="inline duration-300 hover:text-[#0866FF]"
+              />
+              <p class="sr-only">Facebook</p>
+            </a>
+          </div>
+          <div class="w-fit">
+            <a href="https://w.wolf-yuan.dev/instagram" class="w-fit">
+              <Icon
+                name="simple-icons:instagram"
+                class="inline duration-300 hover:text-[#E4405F]"
+              />
+              <p class="sr-only">Instagram</p>
+            </a>
+          </div>
+          <div class="w-fit">
+            <a
+              class="w-fit"
+              href={getRelativeLocaleUrl(
+                Astro.currentLocale === "en" ? "zh-tw" : "en",
+                Astro.url.pathname.replace("/zh-tw", ""),
+              )}
+            >
+              <Icon
+                name="material-symbols:translate-rounded"
+                class="inline duration-300 hover:text-indigo-400"
+              />
+              <p class="sr-only">Switch language 切換語言</p>
+            </a>
+          </div>
         </div>
-        <div class="w-fit">
-          <a href="https://w.wolf-yuan.dev/instagram" class="w-fit">
-            <Icon
-              name="simple-icons:instagram"
-              class="inline duration-300 hover:text-[#E4405F]"
-            />
-            <p class="sr-only">Instagram</p>
-          </a>
-        </div>
-        <div class="w-fit">
-          <a
-            class="w-fit"
-            href={getRelativeLocaleUrl(
-              Astro.currentLocale === "en" ? "zh-tw" : "en",
-              Astro.url.pathname.replace("/zh-tw", ""),
-            )}
-          >
-            <Icon
-              name="material-symbols:translate-rounded"
-              class="inline duration-300 hover:text-indigo-400"
-            />
-            <p class="sr-only">Switch language 切換語言</p>
-          </a>
-        </div>
+
+        <Image
+          src={notByAIImage}
+          alt="Not developed by AI"
+          class="ml-auto"
+        />
       </div>
     </div>
   </div>
