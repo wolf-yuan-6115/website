@@ -21,10 +21,10 @@ dayjs.extend(timezone);
 let frontmatter = Astro.props.frontmatter;
 
 const created = dayjs(frontmatter.publishDate)
-  .tz("Asia/Taipei")
+  .tz("UTC")
   .format("YYYY/MM/DD");
 const lastModified = dayjs(frontmatter.modifiedDate)
-  .tz("Asia/Taipei")
+  .tz("UTC")
   .format("YYYY/MM/DD hh:mm A");
 
 const postImages = import.meta.glob(
