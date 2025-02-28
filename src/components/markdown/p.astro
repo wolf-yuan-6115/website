@@ -3,6 +3,9 @@ import { twMerge } from "tailwind-merge";
 const props = Astro.props;
 ---
 
-<p {...props}>
+<p
+  {...props}
+  class={twMerge(props.class, "text-sm md:text-base leading-loose")}
+>
   <slot />
 </p>

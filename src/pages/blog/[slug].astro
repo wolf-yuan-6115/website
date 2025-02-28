@@ -29,22 +29,24 @@ import Ul from "../../components/markdown/ul.astro";
 ---
 
 <MarkdownPostLayout frontmatter={entry.data}>
-  <Content
-    components={{
-      a: A,
-      blockquote: Blockqoute,
-      code: Code,
-      h1: H1,
-      h2: H2,
-      h3: H3,
-      hr: Hr,
-      img: Img,
-      ol: Ol,
-      p: P,
-      pre: Pre,
-      ul: Ul,
-    }}
-  />
+  <section class="space-y-5">
+    <Content
+      components={{
+        a: A,
+        blockquote: Blockqoute,
+        code: Code,
+        h1: H1,
+        h2: H2,
+        h3: H3,
+        hr: Hr,
+        img: Img,
+        ol: Ol,
+        p: P,
+        pre: Pre,
+        ul: Ul,
+      }}
+    />
+  </section>
 
   <section class="border-t-2 border-gray-600 py-16">
     <p class="pb-4 text-center text-xl font-semibold md:text-2xl">
