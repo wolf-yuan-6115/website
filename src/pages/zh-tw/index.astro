@@ -17,9 +17,7 @@ const locale = Astro.currentLocale;
 >
   <section class="h-screen">
     <p class="pt-6 text-lg md:text-xl lg:text-2xl">嗨，我是</p>
-    <p class="py-6 text-4xl font-extrabold md:text-5xl lg:text-6xl"
-      >Wolf Yuan</p
-    >
+    <p class="py-6 text-5xl font-extrabold lg:text-6xl">Wolf Yuan</p>
     <p
       class="text-md pt-4 pb-10 text-slate-300 md:text-xl lg:text-2xl"
     >
@@ -40,7 +38,7 @@ const locale = Astro.currentLocale;
     <p class="text-md py-2 text-yellow-200 md:text-lg lg:text-xl">
       <i>應該算是</i> 音樂的發燒友
     </p>
-    <div class="py-12">
+    <div class="py-8 md:py-12">
       <div class="py-4">
         <Button
           link={getRelativeLocaleUrl(locale, "/blog")}
