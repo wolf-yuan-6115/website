@@ -21,10 +21,10 @@ dayjs.extend(timezone);
 let frontmatter = Astro.props.frontmatter;
 
 const created = dayjs(frontmatter.publishDate)
-  .tz("Asia/Taipei")
+  .tz("UTC")
   .format("YYYY/MM/DD");
 const lastModified = dayjs(frontmatter.modifiedDate)
-  .tz("Asia/Taipei")
+  .tz("UTC")
   .format("YYYY/MM/DD hh:mm A");
 
 const postImages = import.meta.glob(
@@ -160,9 +160,7 @@ const colorArray: {
             </div>
           </div>
 
-          <div
-            class="mt-8 max-w-7xl space-y-4 px-7 leading-loose 2xl:px-0"
-          >
+          <div class="mt-8 max-w-7xl px-7 2xl:px-0">
             <slot />
           </div>
         </div>
@@ -236,6 +234,11 @@ const colorArray: {
       .diff.remove:hover {
         opacity: 1;
         text-decoration: none;
+      }
+
+      .markdown-content > p > code {
+        padding: 4px 4px 4px 4px;
+        background-color: #2c2c42;
       }
     </style>
   </body></html

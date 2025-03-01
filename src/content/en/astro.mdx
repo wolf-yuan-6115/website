@@ -1,0 +1,232 @@
+---
+title: "Astro: The blazing fast web framework"
+description: "This brand-new web framework caught my attention, and I plan to use it for my future static website."
+image: "/src/assets/blog/astro/cover.jpg"
+ogImage: "/opengraph/images/blog/astro.jpg"
+tags: ["astro", "website", "framework", "frontend"]
+sorting: 2
+publishDate: "2025-03-01T15:00:00.000Z"
+modifiedDate: "2025-03-01T15:00:00.000Z"
+---
+
+It all happened on the day I started wondering how I could build my personal website.
+
+Pulling one template from GitHub surely does the job, but it will look identical to others' websites. Using only HTML surely works, but its downside is you will need to improve your website's performance by yourself. Making the whole development way too focused on performance improvement. The webpage can also be tough to maintenance as your website grows.
+
+## Framework?
+
+So surely I need a web framework to do these works for me. I pulled up my *rusty* frontend development knowledge, thinking what framework I should use.
+
+### Next.js
+
+The first framework is Next.js, which is ideal for building a full-stack website.
+
+With React's huge ecosystem, Next.js got a nearly perfect score in my mind. That's why I considered Next.js first when I was trying to start my website at that time.
+
+A good thing always comes with a downside. For example, without SSR (server-side rendering), the website does not work with JavaScript disabled; the bundled runtime Next.js and React ship to the user is relatively large compared to pure HTML.
+
+### Vue.js
+
+The Second is Vue.js, as the name described, also requires JavaScript to do client-side rendering. And Vue's syntax is not appealing to me. `<script setup>` ? kinda weird, ain't it?
+
+### Angular... does anyone actually use it?
+
+Well well well Angular, long time no see, isn't it? Angular seems got a good reputation in front-end development before, not sure how it's doing recently.
+
+I decided to check it out by looking into Angular's official website. But this example code lets me think for a while before I start digging into it...
+
+```ts
+import { Component } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+import { bootstrapApplication } from '@angular/platform-browser';
+
+@Component({
+  selector: 'app-root',
+  standalone: true,
+  template: `
+    <label for="name">Name:</label>
+    <input type="text" id="name" [(ngModel)]="name" placeholder="Enter a name here" />
+    <hr />
+    <h1>Hello {{ name }}!</h1>
+  `,
+  imports: [FormsModule],
+})
+export class DemoComponent {
+  name = '';
+}
+
+bootstrapApplication(DemoComponent);
+```
+
+Not sure how you think about this snippet, I think it's even worse than Vue does.
+
+### Astro
+
+And I ran into Astro. Some cool bleeding-edge Reddit users said, "Hell yeah, Astro, it's blazing fast. You gotta try it out." Again, I opened Astro's official website and took a look. Here's a small code snippet about the index page of a starter template.
+
+```astro
+---
+import '../styles/global.css';
+// Component Imports
+import Button from '../components/Button.astro';
+
+// Full Astro Component Syntax:
+// https://docs.astro.build/basics/astro-components/
+---
+
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="generator" content={Astro.generator} />
+		<title>Astro + TailwindCSS</title>
+	</head>
+
+	<body>
+		<div class="grid place-items-center h-screen content-center">
+			<Button>Tailwind Button in Astro!</Button>
+			<a href="/markdown-page" class="p-4 underline">Markdown is also supported...</a>
+		</div>
+	</body>
+</html>
+```
+
+Hold up, I'm looking at HTML or a fully fledged web framework's syntax? This simple syntax immediately got me, making me want to try it out.
+
+> Brief stop at here, why I think users without JavaScript is so important?
+>
+> First, most websites relying on JavaScript tend to use more computer resources. Second, a browser that enforces a higher level of security (e.g., Tor browser) will block JavaScript most of the time.
+>
+> I want to make my website accessible to everyone, including the people who don't have a good connection speed, who have a slower smartphone.
+>
+> There is also a plan to make my website *sounds* better for blind people, I'm still working on that.
+
+## Digging into Astro
+
+After deciding to be an astronaut, I initialized a website repository using Astro with the following command:
+
+```bash
+pnpm create astro@latest
+```
+
+Then add TailwindCSS into my project:
+
+```bash
+pnpm astro add tailwind
+```
+
+> Note that TailwindCSS v4 changed how styles work on the webpage. Please check out Astro & TailwindCSS's documentation for more information.
+
+And I just started writing my website. Astro's intuitive syntax is really easy to understand if you previously have written a HTML website before. The framework island is also a great feature if you have existing code that uses React.
+
+## Astronaut's problem
+
+### The JavaScript
+
+Since Astro does not ship JavaScript to user by default, writing an interactive webpage using Astro is not ideal. For example, there is no state management like React does. Take my navigation bar as an example:
+
+Here's what the code will look like when using React:
+
+```ts
+const [scroll, setScroll] = useState(false);
+
+window.addEventListener("scroll", (event) => {
+  // some condition at here
+  setScroll(true);
+});
+
+return (
+  <nav class={twMerge("some-default-style", scroll && "some-special-style")}>
+    {/* ...Something else... */}
+  </nav>
+);
+```
+
+But if I use Astro, which ships with vanilla JavaScript with almost no modification from the framework.
+
+```astro
+<nav class="some-default-style" id="nav">
+  {/* ..Something else... */}
+</nav>
+
+<script>
+  window.addEventListener("scroll", (event) => {
+    // some condition at here
+    document.getElementById("nav").classList.add("special-style");
+    // else
+    document.getElementById("nav").classList.remove("special-style");
+  }
+</script>
+```
+
+At first, it may seem useful because it doesn't apply extra rules from the framework but is relatively inconvenient when writing lots of animations that require pulling and putting classes. This made Astro inconvenient when writing interactive website. You have been warned.
+
+### Image optimization
+
+Astro's built in `astro:assets` modules does provide *some* image optimization, like compressing images when building static output, adding extra properties to `img` tag to improve accessibility.
+
+But Astro doesn't provide a necessary (at least for me) feature: providing multiple `srcset` depending on different screen size. I have to write a custom `OptimizePicture` component that generates multiple `widths` property, a property that `Image` components from `astro:assets` supports: [reference in Astro documentation](https://docs.astro.build/en/reference/modules/astro-assets/#widths)
+
+Here's a code snippet from that component:
+
+```astro
+---
+import { Picture, inferRemoteSize } from "astro:assets";
+
+const props = Astro.props;
+
+let width;
+if (typeof props.src === "object") {
+  width = parseInt(props.src.width);
+} else if (typeof props.src === "string") {
+  const size = await inferRemoteSize(props.src);
+  width = size.width;
+}
+
+const widths = [];
+const ratioMultiplier = props.maxWidth / props.maxViewport;
+let currentViewport = props.maxViewport;
+
+while (currentViewport >= 240) {
+  widths.push({
+    viewport: currentViewport,
+    width: Math.round(currentViewport * ratioMultiplier),
+  });
+  currentViewport -= 320;
+}
+---
+
+<Picture
+  formats={["avif"]}
+  widths={widths.map(({ width }) => width)}
+  sizes={widths
+    .reverse()
+    .map(
+      ({ viewport, width }) =>
+        `(max-width: ${viewport}px) ${width}px`,
+    )
+    .concat(`${width}px`)
+    .join(", ")
+    .trim()}
+  quality={100}
+  {...props}
+>
+  <slot />
+</Picture>
+```
+
+At the time of writing this custom image component, it doesn't look like Astro got a standard way to import images. In `props.src`, some of them are `string`, some of them are `object`. The component only works when the `src` is object, which will happen when using images in Markdown files.
+
+> Hey, did you get a better solution for this? Please write me an email to let me know!
+
+## Conclusion
+
+After reading this article, you might think do you need to use Astro in your website?
+
+If you plan to build a static site, personal blog that doesn't have excessive works on JavaScript, yes, Astro is definitely for you. Who can't resist [good score from PageSpeed Insights](https://pagespeed.web.dev/analysis/https-wolf-yuan-dev/xm8wfbsjxw)?
+
+![Mobile score from PageSpeed Insights](../../assets/blog/astro/mobile-pagespeed.png)
+![Desktop score from PageSpeed Insights](../../assets/blog/astro/desktop-pagespeed.png)
+
+But if you plan to build a website, that's probably an: online office suite, interactive form or webpage to show off a very cool JavaScript animation technique. Considering using other web frameworks.
