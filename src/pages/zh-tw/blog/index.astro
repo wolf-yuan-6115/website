@@ -52,7 +52,7 @@ const colorArray: {
           src={postImages[latestPost.data.image]()}
           alt={`給 ${latestPost.data.title} 這篇文章的封面圖片`}
           densities={[1, 1.5, 2, 2.5]}
-          class="h-80 rounded-tl-md rounded-tr-md object-cover md:rounded-bl-md md:rounded-tr-none"
+          class="h-80 rounded-tl-md rounded-tr-md object-cover md:rounded-tr-none md:rounded-bl-md"
           transition:name={latestPost.data.title + "i"}
         />
       </div>
@@ -101,12 +101,12 @@ const colorArray: {
   </a>
 
   <div
-    class="mx-auto mb-2 mt-12 h-0.5 w-full rounded-full bg-gray-500"
+    class="mx-auto mt-12 mb-2 h-0.5 w-full rounded-full bg-gray-500"
   >
   </div>
 
   <p class="pt-6 text-xl text-gray-300 md:text-2xl">較舊的貼文：</p>
-  <div class="mt-6 space-y-3">
+  <div class="mt-6 flex flex-col gap-8">
     {
       posts.map((item) => (
         <a
@@ -123,7 +123,7 @@ const colorArray: {
                 src={postImages[item.data.image]()}
                 alt={`給 ${item.data.title} 這篇文章的封面圖片`}
                 densities={[1, 1.5, 2, 2.5]}
-                class="h-64 rounded-tl-md rounded-tr-md object-cover md:rounded-bl-md md:rounded-tr-none"
+                class="h-64 rounded-tl-md rounded-tr-md object-cover md:rounded-tr-none md:rounded-bl-md"
               />
             </div>
             <div class="flex flex-col px-6 py-8 md:basis-7/12">
@@ -141,7 +141,7 @@ const colorArray: {
               </p>
 
               <div
-                class="mt-auto flex flex-wrap gap-3 pt-4 text-sm"
+                class="mt-auto flex flex-wrap space-x-3 pt-4 text-sm"
                 transition:name={item.data.title + "k"}
               >
                 {item.data.tags.map((tag, index) => (
