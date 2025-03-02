@@ -5,13 +5,15 @@ const props = Astro.props;
 ---
 
 <div class="py-4">
-  <OptimizePicture
-    class={twMerge(props.class, "mx-auto w-[85%] aspect-auto")}
-    maxViewport="1280"
-    maxWidth="1088"
-    {...props}
+  <a href={props.src.src} target="_blank">
+    <OptimizePicture
+      class={twMerge(props.class, "mx-auto w-[85%] aspect-auto")}
+      maxViewport="1280"
+      maxWidth="1088"
+      {...props}
+    >
+      <slot />
+    </OptimizePicture></a
   >
-    <slot />
-  </OptimizePicture>
   <p class="mt-4 text-center text-sm italic">{props.alt}</p>
 </div>
