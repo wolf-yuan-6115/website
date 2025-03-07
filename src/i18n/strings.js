@@ -3,10 +3,12 @@ export default {
     en: {
       "image-alt": "Click here to go back to the homepage",
       "blog-title": "Blog",
+      "switch-language": "Switch language",
     },
     "zh-tw": {
       "image-alt": "點擊這裡來回到首頁",
       "blog-title": "部落格",
+      "switch-language": "切換語言",
     },
   },
   footer: {

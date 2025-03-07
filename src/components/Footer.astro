@@ -66,9 +66,13 @@ const t = strings.footer[Astro.currentLocale];
       <div
         class="flex h-fit flex-col justify-between gap-6 text-xl text-gray-400 md:mx-6 md:text-2xl md:text-gray-50"
       >
-        <div class="flex items-center gap-4 md:justify-end">
+        <div class="flex items-center gap-5 md:justify-end">
           <div class="w-fit">
-            <a href="https://w.wolf-yuan.dev/facebook" class="w-fit">
+            <a
+              href="https://w.wolf-yuan.dev/facebook"
+              class="w-fit"
+              target="_blank"
+            >
               <Icon
                 name="simple-icons:facebook"
                 class="inline duration-300 hover:text-[#0866FF]"
@@ -77,7 +81,11 @@ const t = strings.footer[Astro.currentLocale];
             </a>
           </div>
           <div class="w-fit">
-            <a href="https://w.wolf-yuan.dev/instagram" class="w-fit">
+            <a
+              href="https://w.wolf-yuan.dev/instagram"
+              class="w-fit"
+              target="_blank"
+            >
               <Icon
                 name="simple-icons:instagram"
                 class="inline duration-300 hover:text-[#E4405F]"
@@ -87,17 +95,15 @@ const t = strings.footer[Astro.currentLocale];
           </div>
           <div class="w-fit">
             <a
+              href="https://w.wolf-yuan.dev/discord"
               class="w-fit"
-              href={getRelativeLocaleUrl(
-                Astro.currentLocale === "en" ? "zh-tw" : "en",
-                Astro.url.pathname.replace("/zh-tw", ""),
-              )}
+              target="_blank"
             >
               <Icon
-                name="material-symbols:translate-rounded"
-                class="inline duration-300 hover:text-indigo-400"
+                name="simple-icons:discord"
+                class="inline duration-300 hover:text-[#5865F2]"
               />
-              <p class="sr-only">Switch language 切換語言</p>
+              <p class="sr-only">Discord</p>
             </a>
           </div>
         </div>

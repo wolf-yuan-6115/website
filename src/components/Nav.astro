@@ -19,8 +19,8 @@ const { fullPage = false } = Astro.props;
   )}
 >
   <div class="js:nav-padding w-full max-w-7xl px-5 py-6 duration-300">
-    <div class="grid grid-cols-2">
-      <div class="col-start-1 col-end-2">
+    <div class="flex justify-between">
+      <div>
         <div class="flex flex-row items-center gap-4">
           <a href={getRelativeLocaleUrl(Astro.currentLocale, "/")}>
             <div>
@@ -52,9 +52,9 @@ const { fullPage = false } = Astro.props;
           </a>
         </div>
       </div>
-      <div class="col-start-2 col-end-3">
-        <div class="text-md flex h-10 items-center justify-end gap-6">
-          <div class="basis-1/10">
+      <div>
+        <div class="flex h-10 items-center justify-end gap-6">
+          <div>
             <a
               href={getRelativeLocaleUrl(
                 Astro.currentLocale,
@@ -63,20 +63,31 @@ const { fullPage = false } = Astro.props;
               class="text-gray-300 duration-300 hover:text-gray-50"
             >
               <div class="flex items-center justify-between md:gap-2">
-                <Icon name="material-symbols:newspaper-rounded" />
-                <p class="sr-only md:not-sr-only">Blog</p>
+                <Icon
+                  name="material-symbols:newspaper-rounded"
+                  class="text-lg md:text-base"
+                />
+                <p class="sr-only md:not-sr-only">{t["blog-title"]}</p
+                >
               </div>
             </a>
           </div>
-          <div class="basis-1/10">
+          <div>
             <a
-              href="https://w.wolf-yuan.dev/gitlab"
-              target="_blank"
+              href={getRelativeLocaleUrl(
+                Astro.currentLocale === "en" ? "zh-tw" : "en",
+                Astro.url.pathname.replace("/zh-tw", ""),
+              )}
               class="text-gray-300 duration-300 hover:text-gray-50"
             >
               <div class="flex items-center justify-between md:gap-2">
-                <Icon name="simple-icons:gitlab" />
-                <p class="sr-only md:not-sr-only">GitLab</p>
+                <Icon
+                  name="material-symbols:translate-rounded"
+                  class="text-lg md:text-base"
+                />
+                <p class="sr-only inline md:not-sr-only"
+                  >{t["switch-language"]}</p
+                >
               </div>
             </a>
           </div>
