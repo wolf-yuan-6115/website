@@ -11,7 +11,7 @@ export async function getStaticPaths() {
 }
 
 const { entry } = Astro.props;
-const { Content } = await render(entry);
+const { Content, headings } = await render(entry);
 
 import A from "../../components/markdown/a.astro";
 import Blockqoute from "../../components/markdown/blockquote.astro";
@@ -20,7 +20,6 @@ import H1 from "../../components/markdown/h1.astro";
 import H2 from "../../components/markdown/h2.astro";
 import H3 from "../../components/markdown/h3.astro";
 import Hr from "../../components/markdown/hr.astro";
-``;
 import Img from "../../components/markdown/img.astro";
 import Ol from "../../components/markdown/ol.astro";
 import P from "../../components/markdown/p.astro";
@@ -28,7 +27,7 @@ import Pre from "../../components/markdown/pre.astro";
 import Ul from "../../components/markdown/ul.astro";
 ---
 
-<MarkdownPostLayout frontmatter={entry.data}>
+<MarkdownPostLayout frontmatter={entry.data} headings={headings}>
   <section class="markdown-content space-y-5">
     <Content
       components={{
