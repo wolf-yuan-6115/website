@@ -108,7 +108,18 @@ const { fullPage = false } = Astro.props;
       document.getElementsByClassName("js:nav-title")[0];
     let currentState = false;
 
-    let handelScroll = (state) => {
+    let compareScrollDistance = () => {
+      if (window.scrollY > 52) {
+        if (currentState) return;
+        currentState = true;
+        changeState(true);
+      } else if (currentState) {
+        currentState = false;
+        changeState(false);
+      }
+    };
+
+    let changeState = (state) => {
       if (state) {
         navContainer.classList.add(
           "bg-linear-to-b",
@@ -136,15 +147,7 @@ const { fullPage = false } = Astro.props;
       }
     };
 
-    window.addEventListener("scroll", function () {
-      if (window.scrollY > 52) {
-        if (currentState) return;
-        currentState = true;
-        handelScroll(true);
-      } else if (currentState) {
-        currentState = false;
-        handelScroll(false);
-      }
-    });
+    window.addEventListener("scroll", compareScrollDistance);
+    compareScrollDistance();
   });
 </script>
