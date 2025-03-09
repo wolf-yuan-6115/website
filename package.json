@@ -18,6 +18,7 @@
     "@astrojs/mdx": "^4.0.8",
     "@astrojs/sitemap": "^3.2.1",
     "@fontsource-variable/jetbrains-mono": "^5.1.2",
+    "@hbsnow/rehype-sectionize": "^1.0.7",
     "@shikijs/transformers": "^3.0.0",
     "@tailwindcss/vite": "^4.0.9",
     "astro": "^5.3.1",

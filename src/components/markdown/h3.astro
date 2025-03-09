@@ -4,7 +4,10 @@ const props = Astro.props;
 ---
 
 <h3
-  class={twMerge(props.class, "text-lg md:text-xl py-3 font-bold")}
+  class={twMerge(
+    props.class,
+    "text-lg md:text-xl py-3 font-bold scroll-mt-24",
+  )}
   {...props}
 >
   <slot />

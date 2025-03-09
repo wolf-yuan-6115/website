@@ -61,10 +61,12 @@ export default {
     en: {
       created: "Created at: ",
       modified: "Last modified: ",
+      toc: "Table of contents",
     },
     "zh-tw": {
       created: "最初建立於: ",
       modified: "最後編輯: ",
+      toc: "目錄",
     },
   },
 };

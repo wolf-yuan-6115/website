@@ -1,5 +1,6 @@
 import mdx from "@astrojs/mdx";
 import sitemap from "@astrojs/sitemap";
+import sectionize from "@hbsnow/rehype-sectionize";
 import {
   transformerNotationDiff,
   transformerNotationFocus,
@@ -34,6 +35,9 @@ export default defineConfig({
   },
   vite: {
     plugins: [tailwindcss()],
+  },
+  markdown: {
+    rehypePlugins: [sectionize],
   },
   prefetch: true,
 });

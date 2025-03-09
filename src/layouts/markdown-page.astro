@@ -9,16 +9,16 @@ import Nav from "../components/Nav.astro";
 import Footer from "../components/Footer.astro";
 import Noscript from "../components/Noscript.astro";
 import { ClientRouter } from "astro:transitions";
-import { Image } from "astro:assets";
 import { SEO } from "astro-seo";
 import strings from "../i18n/strings";
 import { ClassNameValue, twMerge } from "tailwind-merge";
+import buildHeadings from "../utils/buildHeadings";
 import OptimizePicture from "../components/OptimizePicture.astro";
 
 dayjs.extend(utc);
 dayjs.extend(timezone);
 
-let frontmatter = Astro.props.frontmatter;
+const frontmatter = Astro.props.frontmatter;
 
 const created = dayjs(frontmatter.publishDate)
   .tz("UTC")
@@ -53,7 +53,7 @@ const colorArray: {
   lang={Astro.currentLocale === "en" ? "en" : "zh-Hant"}
   transition:name="root"
   transition:animate="none"
-  class="scrollbar-stable overflow-y-auto"
+  class="scrollbar-stable overflow-y-auto scroll-smooth"
 >
   <head>
     <meta charset="utf-8" />
@@ -159,6 +159,34 @@ const colorArray: {
               </div>
             </div>
           </div>
+
+          {
+            Astro.props.headings.length > 1 && (
+              <div class="mx-6 rounded-xl bg-gray-800">
+                <p class="border-b-2 border-b-gray-600 px-6 py-4 text-2xl font-bold">
+                  {t["toc"]}
+                </p>
+                <ul class="list-inside list-disc space-y-1 px-6 py-4 text-sm sm:text-base">
+                  {Astro.props.headings.map((heading) => {
+                    return (
+                      <li
+                        style={{
+                          paddingLeft: `${(heading.depth - 2) * 4 * 0.25}rem`,
+                        }}
+                      >
+                        <a
+                          href={`#${heading.slug}`}
+                          class="transition-colors hover:text-gray-300"
+                        >
+                          {heading.text}
+                        </a>
+                      </li>
+                    );
+                  })}
+                </ul>
+              </div>
+            )
+          }
 
           <div class="mt-8 max-w-7xl px-7 2xl:px-0">
             <slot />
