@@ -4,7 +4,7 @@ import { getRelativeLocaleUrl } from "astro:i18n";
 import { Icon } from "astro-icon/components";
 import strings from "../i18n/strings.js";
 
-import avatarImage from "../assets/transparent_512x512.png";
+import avatarImage from "../assets/transparent_2000x2000.png";
 import { twMerge } from "tailwind-merge";
 
 const t = strings.nav[Astro.currentLocale];
@@ -27,8 +27,8 @@ const { fullPage = false } = Astro.props;
               <Image
                 src={avatarImage}
                 alt="Wolf Yuan avatar"
-                width="40"
-                height="40"
+                width={56}
+                height={56}
                 class="h-9 w-9 object-fill"
                 loading="eager"
               />
