@@ -57,9 +57,7 @@ const colorArray: {
         />
       </div>
       <div class="flex flex-col px-6 py-8 md:basis-7/12">
-        <p class="text-md pb-2 text-gray-300/85 md:text-lg">
-          最新的貼文:
-        </p>
+        <p class="pb-2 text-gray-300/85 md:text-lg"> 最新的貼文: </p>
         <p
           class="pb-3 text-2xl font-bold md:text-3xl"
           transition:name={latestPost.data.title + "t"}
@@ -67,7 +65,7 @@ const colorArray: {
           {latestPost.data.title}
         </p>
         <p
-          class="text-md md:text-lg"
+          class="md:text-lg"
           transition:name={latestPost.data.title + "d"}
         >
           {latestPost.data.description}
@@ -134,7 +132,7 @@ const colorArray: {
                 {item.data.title}
               </p>
               <p
-                class="text-md pt-4 md:text-lg"
+                class="pt-4 md:text-lg"
                 transition:name={item.data.title + "d"}
               >
                 {item.data.description}
