@@ -12,8 +12,7 @@ import { ClientRouter } from "astro:transitions";
 import { SEO } from "astro-seo";
 import strings from "../i18n/strings";
 import { ClassNameValue, twMerge } from "tailwind-merge";
-import buildHeadings from "../utils/buildHeadings";
-import OptimizePicture from "../components/OptimizePicture.astro";
+import { Image } from "astro:assets";
 
 dayjs.extend(utc);
 dayjs.extend(timezone);
@@ -105,13 +104,11 @@ const colorArray: {
               class="relative z-5 mx-auto mb-4 w-full overflow-hidden bg-cover bg-center bg-no-repeat pt-[50%] before:absolute before:inset-0 before:z-[-5] before:block before:bg-linear-to-t before:from-black before:from-20% before:to-transparent before:opacity-80 before:content-[''] xl:rounded-xl xl:pt-[30%] xl:before:rounded-xl"
               transition:name={frontmatter.title + "i"}
             >
-              <OptimizePicture
+              <Image
                 src={postImages[frontmatter.image]()}
                 alt={`Cover for article ${frontmatter.title}`}
                 class="pointer-events-none absolute top-0 left-0 z-[-10] h-full w-full object-cover"
-                maxViewport="1280"
-                maxWidth="1280"
-                loading="eager"
+                densities={[1, 2]}
               />
               <div class="px-8 py-6">
                 <h1
