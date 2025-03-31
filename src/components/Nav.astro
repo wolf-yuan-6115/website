@@ -14,11 +14,13 @@ const { fullPage = false } = Astro.props;
 
 <nav
   class={twMerge(
-    "js:nav-container top-0 z-10 flex justify-center backdrop-blur-xs duration-300",
+    "js:nav-container top-0 z-10 flex justify-center duration-300",
     fullPage ? "fixed w-full xl:sticky" : "sticky",
   )}
 >
-  <div class="js:nav-padding w-full max-w-7xl px-5 py-6 duration-300">
+  <div
+    class="js:nav-padding z-30 w-full max-w-7xl px-5 py-6 duration-300"
+  >
     <div class="flex justify-between">
       <div>
         <div class="flex flex-row items-center gap-4">
@@ -95,6 +97,81 @@ const { fullPage = false } = Astro.props;
       </div>
     </div>
   </div>
+
+  <div
+    class="blur-container absolute top-0 left-0 z-20 h-full w-full"
+  >
+    <div class="blur-filter"></div>
+    <div class="blur-filter"></div>
+    <div class="blur-filter"></div>
+    <div class="blur-filter"></div>
+    <div class="blur-filter"></div>
+  </div>
+
+  <style>
+    .blur-filter {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+    }
+
+    /*
+     The blur filter has 5 layers w/ around 20% overlap
+    */
+
+    .blur-container {
+      .blur-filter:nth-child(1) {
+        backdrop-filter: blur(16px);
+        mask: linear-gradient(
+          rgba(0, 0, 0, 1),
+          rgba(0, 0, 0, 1) 20%,
+          rgba(0, 0, 0, 0) 30%
+        );
+      }
+
+      .blur-filter:nth-child(2) {
+        backdrop-filter: blur(8px);
+        mask: linear-gradient(
+          rgba(0, 0, 0, 0) 10%,
+          rgba(0, 0, 0, 1) 20%,
+          rgba(0, 0, 0, 1) 40%,
+          rgba(0, 0, 0, 0) 50%
+        );
+      }
+
+      .blur-filter:nth-child(3) {
+        backdrop-filter: blur(4px);
+        mask: linear-gradient(
+          rgba(0, 0, 0, 0) 30%,
+          rgba(0, 0, 0, 1) 40%,
+          rgba(0, 0, 0, 1) 60%,
+          rgba(0, 0, 0, 0) 70%
+        );
+      }
+
+      .blur-filter:nth-child(4) {
+        backdrop-filter: blur(2px);
+        mask: linear-gradient(
+          rgba(0, 0, 0, 0) 50%,
+          rgba(0, 0, 0, 1) 60%,
+          rgba(0, 0, 0, 1) 80%,
+          rgba(0, 0, 0, 0) 90%
+        );
+      }
+
+      .blur-filter:nth-child(5) {
+        backdrop-filter: blur(1px);
+        mask: linear-gradient(
+          rgba(0, 0, 0, 0) 70%,
+          rgba(0, 0, 0, 1) 80%,
+          rgba(0, 0, 0, 1) 90%,
+          rgba(0, 0, 0, 0) 100%
+        );
+      }
+    }
+  </style>
 </nav>
 
 <script>
