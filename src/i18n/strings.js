@@ -62,11 +62,15 @@ export default {
       created: "Created at: ",
       modified: "Last modified: ",
       toc: "Table of contents",
+      chatWithMe: "Wants to chat with me?",
+      sendAEmail: "Fire an email to",
     },
     "zh-tw": {
       created: "最初建立於: ",
       modified: "最後編輯: ",
       toc: "目錄",
+      chatWithMe: "想跟我聊聊嗎？",
+      sendAEmail: "發一個電子郵件到",
     },
   },
 };

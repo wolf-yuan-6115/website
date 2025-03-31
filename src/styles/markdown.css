@@ -1,0 +1,101 @@
+@import "tailwindcss";
+
+.markdown-content {
+  a {
+    @apply underline decoration-gray-400 decoration-dotted decoration-1 underline-offset-4 transition-colors duration-100 hover:decoration-white;
+  }
+
+  blockquote {
+    @apply my-4 rounded-md border-l-4 border-l-indigo-400 bg-[#1e1e2e] pl-3 [&>p]:py-2;
+  }
+
+  code {
+    @apply rounded-sm font-mono;
+  }
+
+  h1 {
+    @apply scroll-mt-24 border-b border-b-gray-400 p-5 text-3xl font-bold;
+  }
+
+  h2 {
+    @apply mb-4 scroll-mt-24 border-b border-b-gray-400 pt-5 pb-3 text-xl font-semibold md:text-2xl;
+  }
+
+  h2:before {
+    @apply pr-2 text-gray-400;
+    content: "#";
+  }
+
+  h3 {
+    @apply mb-2 scroll-mt-24 border-b border-b-gray-400 pt-5 pb-3 text-lg font-bold md:text-xl;
+  }
+
+  hr {
+    @apply mx-auto my-6 block h-[2px] w-[95%] rounded-[999px] bg-gray-700;
+  }
+
+  ol {
+    @apply my-2 list-inside list-decimal space-y-2 text-sm leading-loose sm:text-base;
+  }
+
+  p {
+    @apply text-sm leading-loose sm:text-base;
+  }
+
+  pre {
+    @apply mx-auto my-3 rounded-lg p-4 font-mono;
+  }
+
+  ul {
+    @apply my-2 list-inside list-disc text-sm leading-loose sm:text-base;
+  }
+
+  pre.has-focused {
+    --blur: 2px;
+    --opacity: 0.6;
+  }
+
+  pre.has-focused:hover {
+    --blur: 0;
+    --opacity: 1;
+  }
+
+  .line:not(.focused) {
+    transition:
+      filter 0.3s,
+      opacity 0.3s;
+    filter: blur(var(--blur));
+    opacity: var(--opacity);
+  }
+
+  .diff.add::before {
+    content: "+ ";
+    color: #a6adc8;
+  }
+
+  .diff.remove::before {
+    content: "- ";
+    color: #a6adc8;
+  }
+
+  .diff.add {
+    background-color: rgb(166, 227, 161, 0.3);
+  }
+
+  .diff.remove {
+    background-color: rgba(243, 139, 168, 0.3);
+    opacity: 0.8;
+    transition: opacity 0.3s;
+    text-decoration: line-through;
+  }
+
+  .diff.remove:hover {
+    opacity: 1;
+    text-decoration: none;
+  }
+
+  .markdown-content > p > code {
+    padding: 4px 4px 4px 4px;
+    background-color: #2c2c42;
+  }
+}

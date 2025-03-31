@@ -13,54 +13,15 @@ export async function getStaticPaths() {
 const { entry } = Astro.props;
 const { Content, headings } = await render(entry);
 
-import A from "../../../components/markdown/a.astro";
-import Blockqoute from "../../../components/markdown/blockquote.astro";
-import Code from "../../../components/markdown/code.astro";
-import H1 from "../../../components/markdown/h1.astro";
-import H2 from "../../../components/markdown/h2.astro";
-import H3 from "../../../components/markdown/h3.astro";
-import Hr from "../../../components/markdown/hr.astro";
 import Img from "../../../components/markdown/img.astro";
-import Ol from "../../../components/markdown/ol.astro";
-import P from "../../../components/markdown/p.astro";
-import Pre from "../../../components/markdown/pre.astro";
-import Ul from "../../../components/markdown/ul.astro";
 ---
 
 <MarkdownPostLayout frontmatter={entry.data} headings={headings}>
   <section class="markdown-content space-y-5">
     <Content
       components={{
-        a: A,
-        blockquote: Blockqoute,
-        code: Code,
-        h1: H1,
-        h2: H2,
-        h3: H3,
-        hr: Hr,
         img: Img,
-        ol: Ol,
-        p: P,
-        pre: Pre,
-        ul: Ul,
       }}
     />
-  </section>
-
-  <section class="mt-6 border-t-2 border-gray-600 py-16">
-    <p class="pb-4 text-center text-xl font-semibold md:text-2xl">
-      想跟我聊聊嗎？
-    </p>
-    <p
-      class="text-center text-lg font-semibold text-gray-400 md:text-xl"
-    >
-      發一個電子郵件到
-      <a
-        href="mailto:me@wolf-yuan.dev?subject=I%20have%20some%20ideas!"
-        class="underline decoration-gray-500 decoration-dotted transition-colors duration-100 hover:decoration-white"
-      >
-        me@wolf-yuan.dev</a
-      > 吧
-    </p>
   </section>
 </MarkdownPostLayout>

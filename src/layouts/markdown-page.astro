@@ -1,6 +1,7 @@
 ---
 import "@fontsource-variable/jetbrains-mono/wght.css";
 import "../styles/global.css";
+import "../styles/markdown.css";
 
 import dayjs from "dayjs";
 import utc from "dayjs/plugin/utc";
@@ -99,7 +100,7 @@ const colorArray: {
           class="mx-auto max-w-7xl"
           transition:name={frontmatter.title}
         >
-          <div class="sm:px7">
+          <div class="xl:mx-7">
             <div
               class="relative z-5 mx-auto mb-4 w-full overflow-hidden bg-cover bg-center bg-no-repeat pt-[50%] before:absolute before:inset-0 before:z-[-5] before:block before:bg-linear-to-t before:from-black before:from-20% before:to-transparent before:opacity-80 before:content-[''] xl:rounded-xl xl:pt-[30%] xl:before:rounded-xl"
               transition:name={frontmatter.title + "i"}
@@ -131,7 +132,7 @@ const colorArray: {
                 </p>
 
                 <div
-                  class="flex flex-wrap place-items-center gap-3 pt-4 text-sm"
+                  class="mt-6 flex flex-wrap place-items-center gap-3 text-sm"
                   transition:name={frontmatter.title + "k"}
                 >
                   {
@@ -157,37 +158,58 @@ const colorArray: {
             </div>
           </div>
 
-          {
-            Astro.props.headings.length > 1 && (
-              <div class="mx-4 rounded-xl bg-gray-800 2xl:mx-0">
-                <p class="border-b-2 border-b-gray-600 px-6 py-4 text-2xl font-bold">
-                  {t["toc"]}
-                </p>
-                <ul class="list-inside list-disc space-y-1 px-6 py-4 text-sm sm:text-base">
-                  {Astro.props.headings.map((heading) => {
-                    return (
-                      <li
-                        style={{
-                          paddingLeft: `${(heading.depth - 2) * 4 * 0.25}rem`,
-                        }}
-                      >
-                        <a
-                          href={`#${heading.slug}`}
-                          class="transition-colors hover:text-gray-300"
+          <div class="mx-7">
+            {
+              Astro.props.headings.length > 1 && (
+                <div class="rounded-xl bg-gray-800">
+                  <p class="border-b-2 border-b-gray-600 px-6 py-4 text-2xl font-bold">
+                    {t["toc"]}
+                  </p>
+                  <ul class="list-inside list-disc space-y-1 px-6 py-4 text-sm sm:text-base">
+                    {Astro.props.headings.map((heading) => {
+                      return (
+                        <li
+                          style={{
+                            paddingLeft: `${(heading.depth - 2) * 4 * 0.25}rem`,
+                          }}
                         >
-                          {heading.text}
-                        </a>
-                      </li>
-                    );
-                  })}
-                </ul>
-              </div>
-            )
-          }
+                          <a
+                            href={`#${heading.slug}`}
+                            class="transition-colors hover:text-gray-300"
+                          >
+                            {heading.text}
+                          </a>
+                        </li>
+                      );
+                    })}
+                  </ul>
+                </div>
+              )
+            }
 
-          <main class="mx-auto mt-8 max-w-7xl px-5 2xl:px-0">
-            <slot />
-          </main>
+            <main class="markdown-content mt-8">
+              <slot />
+            </main>
+
+            <section class="mt-6 border-t-2 border-gray-600 py-16">
+              <p
+                class="pb-4 text-center text-xl font-semibold md:text-2xl"
+              >
+                {t["chatWithMe"]}
+              </p>
+              <p
+                class="text-center text-lg font-semibold text-gray-400 md:text-xl"
+              >
+                {t["sendAEmail"]}
+                <a
+                  href="mailto:me@wolf-yuan.dev?subject=I%20have%20some%20ideas!"
+                  class="underline decoration-gray-500 decoration-dotted transition-colors duration-100 hover:decoration-white"
+                >
+                  me@wolf-yuan.dev</a
+                >!
+              </p>
+            </section>
+          </div>
         </div>
       </div>
 
@@ -215,55 +237,6 @@ const colorArray: {
         to {
           opacity: 0;
         }
-      }
-
-      pre.has-focused {
-        --blur: 2px;
-        --opacity: 0.6;
-      }
-
-      pre.has-focused:hover {
-        --blur: 0;
-        --opacity: 1;
-      }
-
-      .line:not(.focused) {
-        transition:
-          filter 0.3s,
-          opacity 0.3s;
-        filter: blur(var(--blur));
-        opacity: var(--opacity);
-      }
-
-      .diff.add::before {
-        content: "+ ";
-        color: #a6adc8;
-      }
-
-      .diff.remove::before {
-        content: "- ";
-        color: #a6adc8;
-      }
-
-      .diff.add {
-        background-color: rgb(166, 227, 161, 0.3);
-      }
-
-      .diff.remove {
-        background-color: rgba(243, 139, 168, 0.3);
-        opacity: 0.8;
-        transition: opacity 0.3s;
-        text-decoration: line-through;
-      }
-
-      .diff.remove:hover {
-        opacity: 1;
-        text-decoration: none;
-      }
-
-      .markdown-content > p > code {
-        padding: 4px 4px 4px 4px;
-        background-color: #2c2c42;
       }
     </style>
   </body></html
