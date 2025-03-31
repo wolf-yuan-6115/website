@@ -159,7 +159,7 @@ const colorArray: {
 
           {
             Astro.props.headings.length > 1 && (
-              <div class="mx-6 rounded-xl bg-gray-800">
+              <div class="mx-4 rounded-xl bg-gray-800 2xl:mx-0">
                 <p class="border-b-2 border-b-gray-600 px-6 py-4 text-2xl font-bold">
                   {t["toc"]}
                 </p>
@@ -185,9 +185,9 @@ const colorArray: {
             )
           }
 
-          <div class="mx-auto mt-8 max-w-6xl px-6 2xl:px-0">
+          <main class="mx-auto mt-8 max-w-7xl px-5 2xl:px-0">
             <slot />
-          </div>
+          </main>
         </div>
 
         <Footer transition:persist />
