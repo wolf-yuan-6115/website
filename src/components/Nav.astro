@@ -14,7 +14,7 @@ const { fullPage = false } = Astro.props;
 
 <nav
   class={twMerge(
-    "js:nav-container top-0 z-10 flex justify-center duration-300",
+    "js:nav-container bg-linear-to-b from-transparent to-transparent top-0 z-10 flex justify-center duration-300 transition-all",
     fullPage ? "fixed w-full xl:sticky" : "sticky",
   )}
 >
@@ -198,11 +198,8 @@ const { fullPage = false } = Astro.props;
 
     let changeState = (state) => {
       if (state) {
-        navContainer.classList.add(
-          "bg-linear-to-b",
-          "from-gray-950/90",
-          "to-transparent",
-        );
+        navContainer.classList.add("from-gray-950/80");
+        navContainer.classList.remove("from-transparent");
 
         navPaddingArea.classList.add("py-4");
         navPaddingArea.classList.remove("py-6");
@@ -210,11 +207,8 @@ const { fullPage = false } = Astro.props;
         navTitleElement.classList.add("sm:opacity-100");
         navTitleElement.classList.remove("sm:opacity-0");
       } else {
-        navContainer.classList.remove(
-          "bg-linear-to-b",
-          "from-gray-950/90",
-          "to-transparent",
-        );
+        navContainer.classList.add("from-transparent");
+        navContainer.classList.remove("from-gray-950/80");
 
         navPaddingArea.classList.add("py-6");
         navPaddingArea.classList.remove("py-4");
