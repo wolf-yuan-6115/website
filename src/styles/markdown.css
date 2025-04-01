@@ -1,6 +1,10 @@
 @import "tailwindcss";
 
 .markdown-content {
+  :not(:last-child) {
+    @apply my-4;
+  }
+
   a {
     @apply underline decoration-gray-400 decoration-dotted decoration-1 underline-offset-4 transition-colors duration-100 hover:decoration-white;
   }
@@ -48,6 +52,46 @@
 
   ul {
     @apply my-2 list-inside list-disc text-sm leading-loose sm:text-base;
+  }
+
+  table {
+    @apply mx-auto w-fit;
+  }
+
+  thead {
+    @apply bg-indigo-700 text-gray-50;
+  }
+
+  thead > tr > th {
+    @apply px-6 py-3;
+  }
+
+  thead > tr > th:first-child {
+    @apply rounded-tl-md;
+  }
+
+  thead > tr > th:last-child {
+    @apply rounded-tr-md;
+  }
+
+  tbody > tr:last-child > td:first-child {
+    @apply rounded-bl-md;
+  }
+
+  tbody > tr:last-child > td:last-child {
+    @apply rounded-br-md;
+  }
+
+  tbody > tr > td {
+    @apply px-6 py-4;
+  }
+
+  tbody > tr:nth-child(odd) {
+    @apply bg-gray-800;
+  }
+
+  tbody > tr:nth-child(even) {
+    @apply bg-gray-700;
   }
 
   pre.has-focused {
