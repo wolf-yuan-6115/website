@@ -1,0 +1,190 @@
+---
+title: "來玩玩 Docker 多階段建置與 Distroless 吧"
+description: "Docker 的映像檔太大了嗎？多階段建置與 Distroless 基底映像檔可以幫助您減少整體映像檔大小！"
+image: "/src/assets/blog/docker-multistage/cover.png"
+ogImage: "/opengraph/images/blog/docker-multistage.png"
+tags:
+  ["docker", "linux", "container", "server", "multistage", "ci/cd"]
+sorting: 3
+publishDate: "2025-04-01T20:30:00.000Z"
+modifiedDate: "2025-04-01T20:30:00.000Z"
+---
+
+想像你剛剛寫完了你的專案，並且想要將它打包成一個漂亮的 Docker 映像檔。
+
+你大費周章的寫了一個 `Dockerfile`，執行了 `docker build` 指令，過了 1 分鐘。當映像檔建置完成後，你發現這個映像檔**超級大**。就僅僅是一個簡單的 Node.js 程式，完整的容器映像檔竟然來到了快 1GB。
+
+你可能會想問：「有沒有辦法減少映像檔的大小呢？」
+
+## 古老的方法：單階段建置
+
+在 Docker 首次推出時，建立一個 Docker 映像檔的唯一方式是用單一階段的建置。這是一個簡單且直接的方法。你只需寫一個簡單的 `Dockerfile`，然後跑跑指令把它 build 起來。
+
+以下是一個打包 C++ 應用程式的單階段 `Dockerfile` 範例：
+
+```dockerfile
+FROM debian:12
+
+COPY . /app
+RUN apt-get update && apt-get install -y build-essential && \
+  gcc -o /app/donut /app/donut.c
+
+ENTRYPOINT ["/app/donut"]
+```
+
+而 `donut.c` 是什麼呢？就是那個用 C 寫的，會轉圈圈的甜甜圈程式：
+
+```c
+           i,j,k,x,y,o,N;
+        main(){float z[1760],a
+      #define R(t,x,y) f=x;x-=t*y\
+   ;y+=t*f;f=(3-x*x-y*y)/2;x*=f;y*=f;
+  =0,e=1,c=1,d=0,f,g,h,G,H,A,t,D;char
+ b[1760];for(;;){memset(b,32,1760);g=0,
+h=1;memset(z,0,7040);for(j=0;j<90;j++){
+G=0,H=1;for(i=0;i<314;i++){A=h+2,D=1/(G*
+A*a+g*e+5);t=G*A        *e-g*a;x=40+30*D
+*(H*A*d-t*c);y=          12+15*D*(H*A*c+
+t*d);o=x+80*y;N          =8*((g*a-G*h*e)
+*d-G*h*a-g*e-H*h        *c);if(22>y&&y>
+ 0&&x>0&&80>x&&D>z[o]){z[o]=D;b[o]=(N>0
+  ?N:0)[".,-~:;=!*#$@"];}R(.02,H,G);}R(
+  .07,h,g);}for(k=0;1761>k;k++)putchar
+   (k%80?b[k]:10);R(.04,e,a);R(.02,d,
+    c);usleep(15000);printf('\n'+(
+      " donut.c! \x1b[23A"));}}
+        /*3D-spinning-donut */
+```
+
+> 參考 `donut.c`：https://github.com/limiteci/donut.c/blob/main/donut.c
+
+那個 `Dockerfile` 看起來很簡單，對吧？在打包過程中，我們安裝了 `build-essential` 套件，這個套件包含了你在編譯 C 應用程式時所需要的幾乎所有編譯器與工具。然後複製原始碼到容器裡面，編譯它，並且執行了編譯後的二進位檔。
+
+不過這裡好像出了點問題：`/app/donut` 這個已編譯的程式不需要任何來自 `build-essential` 的工具，這些工具只在編譯程式時需要。所以，我們在最終映像檔中**包含了不必要的工具**。
+
+### 移除不必要的小工具
+
+為了解決這個問題，我們需要在編譯過程後移除不必要的工具。底下是一個簡單的範例：
+
+```dockerfile
+FROM debian:12
+
+COPY . /app
+RUN apt-get update && apt-get install -y build-essential && \
+  gcc -o /app/donut /app/donut.c && \
+# [!code ++]
+  apt remove -y build-essential && apt autoremove -y && apt-get clean
+
+ENTRYPOINT ["/app/donut"]
+```
+
+在上面的範例中，我們在編譯過程後移除了 `build-essential` 套件，並且清理了 apt 快取，來減少映像檔的大小。
+
+### 用 Alpine Linux 作為基底映像檔
+
+這裡有另一個選擇，就是使用 Alpine Linux 作為基底映像檔。Alpine Linux 當初就是設計成極度輕量與安全。它只有 5MB 的大小（加上 busybox），比 Debian 小很多。
+
+你可以用下面使用 Alpine Linux 的 `Dockerfile` 來取代上面的 Debian `Dockerfile`：
+
+```dockerfile
+FROM alpine:3
+
+COPY . /app
+RUN apk add --no-cache build-base && \
+  gcc -o /app/donut /app/donut.c && \
+  apk del build-base
+
+ENTRYPOINT ["/app/donut"]
+```
+
+這裡的結果映像檔應該比 Debian 映像檔小很多，差不多是 5 倍的差距。
+
+但是，這裡有個問題：Alpine Linux 使用 `musl` 作為標準 C 函式庫，這與大多數 Linux 發行版使用的 `glibc` 不同。這可能會導致一些 (通常不只一些) C/C++ 應用程式的相容性問題。
+
+特別是如果你有一個來自不知道哪裡的的二進位檔，而且它又需要 `glibc` 才能執行，那麼祝你好運。嘻嘻
+
+## 一個更好的方法：多階段建置
+
+Docker 在 17.05 版本中引入了多階段建置。它允許你在多個階段中建置你的應用程式，並且將前面做出來的程式從一個階段丟到另一個階段。
+
+我們可以這麼想：我們可以有一個大廚房，裡面擺滿了烹飪所需的工具和食材，而送給客戶的只是一個小盒子來盛裝食物。
+
+以下是一個使用多階段建置的 `Dockerfile` 範例：
+
+```dockerfile
+FROM debian:12 AS builder
+
+RUN apt-get update && apt-get install -y build-essential
+
+COPY . /app
+RUN gcc -o /app/donut /app/donut.c
+
+FROM debian:12
+
+COPY --from=builder /app/donut /app/donut
+
+ENTRYPOINT ["/app/donut"]
+```
+
+這個 `Dockerfile` 的作用是在第一階段建置應用程式，然後將編譯後的二進位檔複製到第二階段。第二階段是使用從乾淨的 `debian:12` 映想檔。這個 `Dockerfile` 建置出來的映像檔應該比不使用多階段的小，因為它不包含 `build-essential` 套件。
+
+### 使用 Distroless 映像檔
+
+如果你有嘗試上面的範例，你可能會發現最終跑出來的映像檔還是很大。因為我們只移除了額外安裝的 `build-essential`，基底映像檔 (Debian 的那個) 的大小還是很大。
+
+2017 年，Google 推出了 `distroless` 映像檔，這些映像檔只包含執行應用程式所需必要的工具。也因為只包含最少的工具，它沒有多餘的東西。比純淨還要純淨。
+
+也因為 distroless 映像檔沒有套件管理器，你*基本上*不能在映像檔中安裝額外的套件。你只能從前一階段複製檔案到這個階段。這也是為什麼多階段建置對於 distroless 映像檔來說很重要。
+
+---
+
+要*烹飪*一個 distroless 映像檔，我們需要使用 `debian:12` 當作第一階段，先建置二進位檔，然後將二進位檔複製到 `gcr.io/distroless/static-debian12` 映像檔：
+
+```dockerfile
+FROM debian:12 AS builder
+
+RUN apt-get update && apt-get install -y build-essential
+
+COPY . /app
+RUN gcc -static -o /app/donut /app/donut.c
+
+FROM gcr.io/distroless/static-debian12
+
+COPY --from=builder /app/donut /app/donut
+
+ENTRYPOINT ["/app/donut"]
+```
+
+> 注意一下，這裡我們在 `gcc` 後面加上了 `-static`，如果你不加上這個參數，二進位檔會是動態連結的，這樣就需要 `glibc` 才能執行。 (簡單來說，最終的映像檔會變大)
+>
+> 或是你可以使用有 `glibc` 的 `gcr.io/distroless/base-debian12` 映像檔
+
+這個最終的映像檔應該比之前的 Debian 或 Alpine 映像檔小很多，因為它基本上只有一個 "donut" 二進位檔而已。
+
+## 最終比較
+
+| 基底映像檔                               | 整體大小 |
+| ---------------------------------------- | :------: |
+| Distroless + 多階段建置                  |  2.76MB  |
+| Alpine                                   |  7.4MB   |
+| Debian，使用多階段建置                   |  117MB   |
+| Debian，單階段，移除 `build-essential`   |  140MB   |
+| Debian，單階段，不移除 `build-essential` |  534MB   |
+
+> 以上大小僅供參考，實際大小可能會有所不同。這些映像檔是在我的筆電上使用 Docker `28.0.1` 建置的。
+
+以上數據顯示，Distroless + 多階段建置得到了最小的映像檔大小。Alpine 排在第二，而使用多階段的的 Debian 是第三。最後兩個是使用單階段的的 Debian。
+
+雖然在這個比較中，Alpine 為基底的映像檔不是最小的，但考慮到它只有大約 7MB 的大小，它仍然是一個不錯的選擇。
+
+## 結論
+
+所以你應該選擇什麼呢？Distroless 或是 Alpine 或是 Debian 作為基底映像檔？
+
+我的建議是，如果你的應用程式用了一些特別的執行環境，而且恰恰好做那個環境的人有提供已經建立好的 Alpine 映像檔，那麼請使用 Alpine。
+
+但如果你的執行環境已經被 Google 預先建置在 Distroless 裡面了，那麼請使用 Distroless。目前，Distroless 有 `python3`、`java-{17, 21}` 和 `nodejs-{18, 20, 22}`。這些映像檔包含了這些執行環境，而且*應該*是經過優化的。
+
+> [在 GitHub 上面看看有什麼環境已經做好了](http://github.com/GoogleContainerTools/distroless?tab=readme-ov-file#what-images-are-available)
+
+至於 Debian 呢？除非你有一個非常特殊的使用情況，否則我建議不要使用它作為基底映像檔。
