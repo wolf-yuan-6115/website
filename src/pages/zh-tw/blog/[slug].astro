@@ -17,11 +17,9 @@ import Img from "../../../components/markdown/img.astro";
 ---
 
 <MarkdownPostLayout frontmatter={entry.data} headings={headings}>
-  <section class="markdown-content space-y-5">
-    <Content
-      components={{
-        img: Img,
-      }}
-    />
-  </section>
+  <Content
+    components={{
+      img: Img,
+    }}
+  />
 </MarkdownPostLayout>
