@@ -12,11 +12,15 @@ const t = strings.nav[Astro.currentLocale];
 const { fullPage = false } = Astro.props;
 ---
 
+{
+  /* Setting raw class below, cuz dumb TailwindCSS treat bg-[100%_200%] as background-position*/
+}
 <nav
   class={twMerge(
-    "js:nav-container bg-linear-to-b from-transparent to-transparent top-0 z-10 flex justify-center duration-300 transition-all",
+    "js:nav-container bg-linear-to-b from-gray-950/85 via-transparent to-transparent bg-bottom top-0 z-10 flex justify-center duration-300 transition-all",
     fullPage ? "fixed w-full xl:sticky" : "sticky",
   )}
+  style={{ backgroundSize: "100% 200%" }}
 >
   <div
     class="js:nav-padding z-30 w-full max-w-7xl px-5 py-6 duration-300"
@@ -190,7 +194,7 @@ const { fullPage = false } = Astro.props;
         if (currentState) return;
         currentState = true;
         changeState(true);
-      } else if (currentState) {
+      } else if (window.scrollY < 38) {
         currentState = false;
         changeState(false);
       }
@@ -198,8 +202,8 @@ const { fullPage = false } = Astro.props;
 
     let changeState = (state) => {
       if (state) {
-        navContainer.classList.add("from-gray-950/80");
-        navContainer.classList.remove("from-transparent");
+        navContainer.classList.add("bg-top");
+        navContainer.classList.remove("bg-bottom");
 
         navPaddingArea.classList.add("py-4");
         navPaddingArea.classList.remove("py-6");
@@ -207,8 +211,8 @@ const { fullPage = false } = Astro.props;
         navTitleElement.classList.add("sm:opacity-100");
         navTitleElement.classList.remove("sm:opacity-0");
       } else {
-        navContainer.classList.add("from-transparent");
-        navContainer.classList.remove("from-gray-950/80");
+        navContainer.classList.add("bg-bottom");
+        navContainer.classList.remove("bg-top");
 
         navPaddingArea.classList.add("py-6");
         navPaddingArea.classList.remove("py-4");
