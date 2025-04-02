@@ -1,10 +1,9 @@
 ---
 title: "Get started with Docker multistage & distroless"
-description: "Docker image size too big? Multistage build and Distroless base image can help you reduce the overall image size!"
+description: "Docker image size too big? Multistage build and distroless base image can help you reduce the overall image size!"
 image: "/src/assets/blog/docker-multistage/cover.png"
 ogImage: "/opengraph/images/blog/docker-multistage.png"
-tags:
-  ["docker", "linux", "container", "server", "multistage", "ci/cd"]
+tags: ["docker", "linux", "container", "server", "multistage", "ci/cd"]
 sorting: 3
 publishDate: "2025-04-01T20:30:00.000Z"
 modifiedDate: "2025-04-01T20:30:00.000Z"
@@ -12,13 +11,13 @@ modifiedDate: "2025-04-01T20:30:00.000Z"
 
 Imagine you finally finished your project, and you want to pack it into a beautiful Docker image.
 
-You wrote a `Dockerfile`, ran the `docker build` command, 1 minute passed. After the image is built, you realized that image is **huge**. It's probably taking up 1GB for a simple Node.js application.
+You wrote a `Dockerfile`, ran the `docker build` command, 1 minute passed. After the image is built, you realize that the image is **huge**. It's probably taking up 1GB for a simple Node.js application.
 
-You probably going to ask: "Is there a way to reduce the image size?"
+You are probably wondering: "Is there a way to reduce the image size?"
 
 ## The old school way: single-stage builds
 
-Back in the old days when Docker was first introduced, we only have single-stage builds. It's simple and straightforward. You write a `Dockerfile`, and you build the image.
+Back in the old days when Docker was first introduced, we only had single-stage builds. It's straightforward and easy to work with. You only need to write a `Dockerfile`, and build the image.
 
 Here's an example of a single-stage build that builds a C++ application:
 
@@ -58,9 +57,9 @@ t*d);o=x+80*y;N          =8*((g*a-G*h*e)
 
 > Reference: https://github.com/limiteci/donut.c/blob/main/donut.c
 
-It looks simple, isn't it? This image install `build-essential` package which includes almost every compiler you need to build a C++ application. Then it copies the source code, compiles it, and runs the compiled binary.
+It looks simple, doesn't it? This image install `build-essential` package which includes almost every compiler you need to build a C++ application. Then it copies the source code, compiles it, and runs the compiled binary.
 
-But there's a problem. `build-essential` isn't required to run the `/app/donut` binary. It's only needed during the build process. So, we are **shipping unnecessary dependencies** in the final image.
+But there's a problem. `build-essential` isn't required to run the `/app/donut` binary. It's only necessary during the build process. So, we are **shipping unnecessary dependencies** in the final image.
 
 ### Removing unnecessary dependencies
 
@@ -78,7 +77,7 @@ RUN apt-get update && apt-get install -y build-essential && \
 ENTRYPOINT ["/app/donut"]
 ```
 
-In above example, we removed `build-essential` package after the build process and apt cache to reduce the image size.
+In the above example, we removed `build-essential` package after the build process and apt cache to reduce the image size.
 
 ### Using Alpine Linux
 
@@ -99,13 +98,13 @@ ENTRYPOINT ["/app/donut"]
 
 The result image should be much smaller than the Debian image.
 
-But, here's the catch again: Alpine Linux uses `musl` as the standard C library, which is different from `glibc` used in most Linux distributions. It may cause compatibility issues with some C/C++ applications.
+But here's the catch again: Alpine Linux uses `musl` as the standard C library, which is different from `glibc` used in most Linux distributions. It may cause compatibility issues with some C/C++ applications.
 
-Speifically, if you got a built binary from external source that depends on `glibc`, good luck with that.
+Specifically, if you got a built binary from an external source that depends on `glibc`, good luck with that.
 
 ## The new way: multistage builds
 
-Then Docker introduced multistage builds in version 17.05. It allows you to build your application in multiple stages, and copy the artifacts from one stage to another.
+Then Docker introduced multistage builds in version 17.05. It allows you to build your application in multiple stages and copy the artifacts from one stage to another.
 
 We can think it in this way: We can have a big kitchen full of tools and ingredients to cook a meal, but we only need a small box to serve a meal.
 
@@ -134,7 +133,7 @@ If you managed to try the example above, you may notice that the final image is 
 
 In 2017, Google introduced `distroless` images, which are minimal images that contain only the necessary libraries to run the application. The image only contains dependencies that are required to run the application, nothing more. Purer than pure.
 
-Since distroless images don't have package manager, you can't install additional packages in the image. You can only copy the artifacts from the previous stage. This is the point where multistage is a important part of distroless images.
+Since distroless images don't have a package manager, you can't install additional packages in the image. You can only copy the artifacts from the previous stage. This is the point where multistage is an important part of distroless images.
 
 ---
 
@@ -164,7 +163,7 @@ The final image should be much smaller than the previous Debian based image or A
 ## Final comparison
 
 | Base image                            |  Size  |
-| ------------------------------------- | :----: |
+|---------------------------------------|:------:|
 | Distroless + multistage               | 2.76MB |
 | Alpine                                | 7.4MB  |
 | Debian with multistage                | 117MB  |
@@ -173,7 +172,7 @@ The final image should be much smaller than the previous Debian based image or A
 
 > Real size may vary, the above size is just an example. Image is built on my laptop with Docker `28.0.1`
 
-As the data shown above, distroless + multistage got the smallest image size. Alpine ranked second, and Debian with multistage build process ranked third. The last two is Debian with single stage build process.
+As the data shown above, distroless + multistage got the smallest image size. Alpine ranked second, and Debian with multistage build processes ranked third. The last two is Debian with a single stage build process.
 
 Though in this comparison, alpine is not the smallest one, but it's still a good choice considering it only got around 7MB in size.
 
@@ -183,8 +182,8 @@ So what should you choose? Distroless or Alpine or Debian as base?
 
 My suggestion is, use alpine if you depends on special runtime that provides prebuilt Alpine docker base image.
 
-Use Distroless if your runtime is already prebuilt by Google. Currently, Distrobox got `python3`, `java-{17, 21}` and `nodejs-{18, 20, 22}`. These images includes these runtime that's _probably_ optimized for Distroless base image.
+Use distroless if Google already prebuilds your runtime. Currently, distrobox got `python3`, `java-{17, 21}` and `nodejs-{18, 20, 22}`. These images include these runtimes that are _probably_ optimized for distroless base image.
 
-> [Check avaliable images here on Distroless GitHub readme](http://github.com/GoogleContainerTools/distroless?tab=readme-ov-file#what-images-are-available)
+> [Check available images here on distroless GitHub readme](http://github.com/GoogleContainerTools/distroless?tab=readme-ov-file#what-images-are-available)
 
-What about Debian? Unless you have a very special use case, avoid using it as base.
+What about Debian? Unless you have an exceptional use case, avoid using it as a base image.
