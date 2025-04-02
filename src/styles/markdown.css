@@ -1,6 +1,8 @@
 @import "tailwindcss";
 
 .markdown-content {
+  @apply text-sm sm:text-base;
+
   :not(:last-child) {
     @apply my-4;
   }
@@ -39,11 +41,11 @@
   }
 
   ol {
-    @apply my-2 list-inside list-decimal space-y-2 text-sm leading-loose sm:text-base;
+    @apply my-2 list-inside list-decimal space-y-2 leading-loose;
   }
 
   p {
-    @apply text-sm leading-loose sm:text-base;
+    @apply leading-loose;
   }
 
   pre {
@@ -51,7 +53,7 @@
   }
 
   ul {
-    @apply my-2 list-inside list-disc text-sm leading-loose sm:text-base;
+    @apply my-2 list-inside list-disc leading-loose;
   }
 
   table {
