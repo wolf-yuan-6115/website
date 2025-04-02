@@ -159,12 +159,42 @@ ENTRYPOINT ["/app/donut"]
 >
 > 或是你可以使用有 `glibc` 的 `gcr.io/distroless/base-debian12` 映像檔
 
-這個最終的映像檔應該比之前的 Debian 或 Alpine 映像檔小很多，因為它基本上只有一個 "donut" 二進位檔而已。
+這個最終的映像檔應該比之前的 Debian 或 Alpine 映像檔小很多，因為它基本上只有一個 "donut" 的二進位檔而已。
+
+### 回到最初的起點：scratch
+
+> 哦，不是，我不是在講那隻叫做 Scratch 的橘色福瑞貓
+
+`scratch` 其實是一個很特別的映像檔，老實說他其實只是一個特殊的名字，Docker 會把它視為一個 "建立一個新的空白檔案系統" 的指令。
+
+畢竟是一個空白的檔案系統，它當然也沒有任何系統的函式庫等等的工具，這個讓它變得超級小及安全。
+
+我們可以用這個簡單的範例來看看怎麼用 `scratch` 映像檔：
+
+```dockerfile
+FROM debian:12 AS builder
+
+RUN apt-get update && apt-get install -y build-essential
+
+COPY . /app
+RUN gcc -static -o /app/donut /app/donut.c
+
+FROM scratch
+
+COPY --from=builder /app/donut /app/donut
+
+ENTRYPOINT ["/app/donut"]
+```
+
+> 使用 `scratch` 的映像檔**必須**為靜態連結的二進位檔案，你不能用動態連結的二進位檔，因為 `scratch` 裡面根本沒有東西可以動態連結到。
+
+這個 `Dockerfile` 應該會跑出最小的 docker 映像檔，因為它裡面只有一個 `donut` 執行檔而已。
 
 ## 最終比較
 
 | 基底映像檔                            |  整體大小  |
 |----------------------------------|:------:|
+| Scratch                          | 767kB  |
 | Distroless + 多階段建置               | 2.76MB |
 | Alpine                           | 7.4MB  |
 | Debian，使用多階段建置                   | 117MB  |
@@ -173,18 +203,20 @@ ENTRYPOINT ["/app/donut"]
 
 > 以上大小僅供參考，實際大小可能會有所不同。這些映像檔是在我的筆電上使用 Docker `28.0.1` 建置的。
 
-以上數據顯示，distroless + 多階段建置得到了最小的映像檔大小。Alpine 排在第二，而使用多階段的的 Debian 是第三。最後兩個是使用單階段的的 Debian。
+以上數據顯示，scratch 得到了最小的映像檔大小。distroless 排在第二，而 Alpine 則是第三。
 
-雖然在這個比較中，Alpine 為基底的映像檔不是最小的，但考慮到它只有大約 7MB 的大小，它仍然是一個不錯的選擇。
+雖然在這個比較中，Alpine 和 distroless 沒有跑出最小的映像檔，但考慮到它只有幾 MB 的大小，它仍然是一個不錯的選擇。
 
 ## 結論
 
-所以你應該選擇什麼呢？Distroless 或是 Alpine 或是 Debian 作為基底映像檔？
+所以你應該選擇什麼呢？Scratch 還是 distroless 還是 Alpine 還是 Debian？
 
-我的建議是，如果你的應用程式用了一些特別的執行環境，而且恰恰好做那個環境的人有提供已經建立好的 Alpine 映像檔，那麼請使用 Alpine。
+我的建議是，如果你的程式不需要任何一般 Linux 系統會有的函式庫，請考慮使用 `scratch`。
 
-但如果 Google 已經很好心的幫你做了一個包含你要使用的執行環境的 distroless base image，那麼請使用 distroless。目前，distroless 有 `python3`、`java-{17, 21}` 和 `nodejs-{18, 20, 22}`。這些映像檔包含了這些執行環境，而且*應該*是經過特別優化的。
+而如果 Google 已經很好心的幫你做了一個包含你要使用的執行環境的 distroless base image，那麼請使用 distroless。目前，distroless 有 `python3`、`java-{17, 21}` 和 `nodejs-{18, 20, 22}`。這些映像檔包含了這些執行環境，而且*應該*是經過特別優化的。
 
-> [在 GitHub 上面看看有什麼環境已經做好了](http://github.com/GoogleContainerTools/distroless?tab=readme-ov-file#what-images-are-available)
+> [在 distroless 的 GitHub 上面看看有什麼環境已經做好了](http://github.com/GoogleContainerTools/distroless?tab=readme-ov-file#what-images-are-available)
+
+至於 Alpine，如果你的應用程式用了一些特別的執行環境，而且恰恰好做那個環境的人有提供已經建立好的 Alpine 映像檔，那麼請使用它。
 
 至於 Debian 呢？除非你有一個非常特殊的使用情況，否則我建議不要使用它作為基底映像檔。

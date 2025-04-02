@@ -154,16 +154,46 @@ COPY --from=builder /app/donut /app/donut
 ENTRYPOINT ["/app/donut"]
 ```
 
-> Note that we added a `-static` to `gcc` here, if you don't add it, the binary will be dynamically linked and it will require `glibc` to run. (TL;DR, results larger image size)
+> Note that we added a `-static` to `gcc` here, if you don't add it, the binary will be dynamically linked, and it will require `glibc` to run. (TL;DR, results larger image size)
 >
 > Or you can use `gcr.io/distroless/base-debian12` image
 
-The final image should be much smaller than the previous Debian based image or Alpine based image. Since it's just a "donut" binary and nothing more.
+The final image should be much smaller than the previous Debian-based image or Alpine-based image. Since it's just a "donut" binary and nothing more.
+
+### Going bare bone: from scratch
+
+> No, we aren't talking the orange furry cat Scratch.
+
+`scratch` is an interesting base image, it's actually not a real image. The `scratch` is essentially just a special image name that tells Docker to create a blank filesystem.
+
+It doesn't come with any runtime, only the ability to execute binary files. This made the image extremely compact and secure.
+
+We can use this small example to explore the `scratch` base image:
+
+```dockerfile
+FROM debian:12 AS builder
+
+RUN apt-get update && apt-get install -y build-essential
+
+COPY . /app
+RUN gcc -static -o /app/donut /app/donut.c
+
+FROM scratch
+
+COPY --from=builder /app/donut /app/donut
+
+ENTRYPOINT ["/app/donut"]
+```
+
+> Binary run inside `scratch` bash image MUST be statically linked! Dynamically linked binary won't work at here unless you add those libraries manually.
+
+This `Dockerfile` will build a docker image with only `donut` binary, nothing else.
 
 ## Final comparison
 
 | Base image                            |  Size  |
 |---------------------------------------|:------:|
+| Scratch                               | 767kB  |
 | Distroless + multistage               | 2.76MB |
 | Alpine                                | 7.4MB  |
 | Debian with multistage                | 117MB  |
@@ -172,18 +202,20 @@ The final image should be much smaller than the previous Debian based image or A
 
 > Real size may vary, the above size is just an example. Image is built on my laptop with Docker `28.0.1`
 
-As the data shown above, distroless + multistage got the smallest image size. Alpine ranked second, and Debian with multistage build processes ranked third. The last two is Debian with a single stage build process.
+As the data shown above, scratch one got the smallest image size. Distroless ranked second, and Alpine build processes ranked third.
 
-Though in this comparison, alpine is not the smallest one, but it's still a good choice considering it only got around 7MB in size.
+Though in this comparison, alpine and distroless is not the smallest one, but it's still a good choice considering it only got a few megabytes in size.
 
 ## Conclusion
 
-So what should you choose? Distroless or Alpine or Debian as base?
+So what should you choose? Scratch or distroless or Alpine or Debian as base?
 
-My suggestion is, use alpine if you depends on special runtime that provides prebuilt Alpine docker base image.
+My suggestion is, If you sure your application does not rely on anything else that a normal Linux system will have (eg. generic library and header), consider using `scratch`.
 
 Use distroless if Google already prebuilds your runtime. Currently, distrobox got `python3`, `java-{17, 21}` and `nodejs-{18, 20, 22}`. These images include these runtimes that are _probably_ optimized for distroless base image.
 
-> [Check available images here on distroless GitHub readme](http://github.com/GoogleContainerTools/distroless?tab=readme-ov-file#what-images-are-available)
+> [Check available distroless images on GitHub readme](http://github.com/GoogleContainerTools/distroless?tab=readme-ov-file#what-images-are-available)
+
+Use alpine if you depend on a special runtime that provides a prebuilt Alpine docker base image.
 
 What about Debian? Unless you have an exceptional use case, avoid using it as a base image.
