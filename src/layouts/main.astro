@@ -78,7 +78,10 @@ const t = strings.seo[Astro.currentLocale];
         transition:name="content"
         transition:animate="fade"
       >
-        <div class={twMerge("mx-7", fullPage && "h-full")}>
+        <div
+          class={twMerge("mx-7", fullPage && "h-full")}
+          transition:animate="none"
+        >
           <slot />
         </div>
       </div>
