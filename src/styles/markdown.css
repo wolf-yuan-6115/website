@@ -61,11 +61,11 @@
   }
 
   thead {
-    @apply bg-indigo-700 text-gray-50;
+    @apply text-gray-50;
   }
 
   thead > tr > th {
-    @apply px-6 py-3;
+    @apply px-6 py-4 bg-indigo-700;
   }
 
   thead > tr > th:first-child {
@@ -85,14 +85,14 @@
   }
 
   tbody > tr > td {
-    @apply px-6 py-4;
+    @apply px-6 py-3;
   }
 
-  tbody > tr:nth-child(odd) {
+  tbody > tr:nth-child(odd) > td {
     @apply bg-gray-800;
   }
 
-  tbody > tr:nth-child(even) {
+  tbody > tr:nth-child(even) > td {
     @apply bg-gray-700;
   }
 
