@@ -189,7 +189,7 @@ const { fullPage = false } = Astro.props;
       document.getElementsByClassName("js:nav-title")[0];
     let currentState = false;
 
-    let compareScrollDistance = () => {
+    function compareScrollDistance() {
       if (window.scrollY > 52) {
         if (currentState) return;
         currentState = true;
@@ -198,9 +198,9 @@ const { fullPage = false } = Astro.props;
         currentState = false;
         changeState(false);
       }
-    };
+    }
 
-    let changeState = (state) => {
+    function changeState(state: boolean) {
       if (state) {
         navContainer.classList.add("bg-top");
         navContainer.classList.remove("bg-bottom");
@@ -220,9 +220,9 @@ const { fullPage = false } = Astro.props;
         navTitleElement.classList.add("sm:opacity-0");
         navTitleElement.classList.remove("sm:opacity-100");
       }
-    };
+    }
 
-    window.addEventListener("scroll", compareScrollDistance);
+    if (!window.onscroll) window.onscroll = compareScrollDistance;
     compareScrollDistance();
   });
 </script>
