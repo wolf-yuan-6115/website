@@ -222,7 +222,14 @@ const { fullPage = false } = Astro.props;
       }
     }
 
-    if (!window.onscroll) window.onscroll = compareScrollDistance;
+    function removeListener() {
+      window.removeEventListener("scroll", compareScrollDistance);
+      document.removeEventListener("astro:before-swap", removeListener);
+    }
+
+    window.addEventListener("scroll", compareScrollDistance);
     compareScrollDistance();
+
+    document.addEventListener("astro:before-swap", removeListener);
   });
 </script>
