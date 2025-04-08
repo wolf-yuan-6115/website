@@ -62,6 +62,19 @@ const t = strings.footer[Astro.currentLocale];
           />
           {t.following}
         </p>
+        <span class="text-xs font-semibold text-gray-400">
+          <a
+            href="/sitemap-index.xml"
+            class="underline decoration-gray-400 decoration-dashed decoration-1 underline-offset-4 transition-colors duration-100 hover:decoration-white"
+            >Sitemap</a
+          > •
+          <a
+            class="underline decoration-gray-400 decoration-dashed decoration-1 underline-offset-4 transition-colors duration-100 hover:decoration-white"
+            href={Astro.currentLocale === "en"
+              ? "/rss/blog-en.xml"
+              : "/rss/blog-zh.xml"}>RSS</a
+          >
+        </span>
       </div>
       <div
         class="flex h-fit flex-col justify-between gap-6 text-xl text-gray-400 md:mx-6 md:text-2xl md:text-gray-50"
