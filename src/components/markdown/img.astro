@@ -4,7 +4,7 @@ import { twMerge } from "tailwind-merge";
 const props = Astro.props;
 ---
 
-<div class="py-4">
+<figure class="py-4">
   <a href={props.src.src} target="_blank">
     <OptimizePicture
       class={twMerge(props.class, "mx-auto w-[85%] aspect-auto")}
@@ -15,5 +15,7 @@ const props = Astro.props;
       <slot />
     </OptimizePicture></a
   >
-  <p class="mt-4 text-center text-sm italic">{props.alt}</p>
-</div>
+  <figcaption class="mt-4 text-center text-sm italic"
+    >{props.alt}</figcaption
+  >
+</figure>
