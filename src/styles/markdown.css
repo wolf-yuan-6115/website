@@ -8,7 +8,7 @@
   }
 
   a {
-    @apply underline decoration-gray-400 decoration-dotted decoration-1 underline-offset-4 transition-colors duration-100 hover:decoration-white;
+    @apply underline decoration-gray-400 decoration-dashed decoration-1 underline-offset-4 transition-colors duration-100 hover:decoration-white;
   }
 
   blockquote {
