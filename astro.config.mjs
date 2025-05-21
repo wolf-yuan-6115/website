@@ -12,7 +12,13 @@ import { defineConfig } from "astro/config";
 export default defineConfig({
   site: "https://wolf-yuan.dev",
   integrations: [
-    sitemap(),
+    sitemap({
+      filter: (page) => !page.endsWith("404/"),
+      i18n: {
+        defaultLocale: "en",
+        locales: { en: "en", "zh-tw": "zh-TW" },
+      },
+    }),
     icon(),
     mdx({
       shikiConfig: {
