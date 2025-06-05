@@ -1,5 +1,9 @@
 import rss from "@astrojs/rss";
 import { getCollection } from "astro:content";
+import MarkdownIt from "markdown-it";
+import sanitize from "sanitize-html";
+
+const parser = new MarkdownIt();
 
 export async function GET(context) {
   const posts = await getCollection("zh");
@@ -18,6 +22,11 @@ export async function GET(context) {
           pubDate: post.data.publishDate,
           categories: post.data.tags,
           link: `/zh-tw/blog/${post.id}`,
+          content: sanitize(parser.render(post.body), {
+            allowedTags: sanitize.defaults.allowedTags.concat([
+              "img",
+            ]),
+          }),
         };
       }),
     customData: "<language>zh-tw</language>",
