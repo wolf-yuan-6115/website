@@ -1,4 +1,3 @@
-import mdx from "@astrojs/mdx";
 import sitemap from "@astrojs/sitemap";
 import sectionize from "@hbsnow/rehype-sectionize";
 import {
@@ -20,16 +19,6 @@ export default defineConfig({
       },
     }),
     icon(),
-    mdx({
-      shikiConfig: {
-        theme: "catppuccin-mocha",
-        wrap: false,
-        transformers: [
-          transformerNotationDiff(),
-          transformerNotationFocus(),
-        ],
-      },
-    }),
   ],
   output: "static",
   i18n: {
@@ -44,6 +33,17 @@ export default defineConfig({
   },
   markdown: {
     rehypePlugins: [sectionize],
+    syntaxHighlight: {
+      type: "shiki",
+    },
+    shikiConfig: {
+      theme: "catppuccin-mocha",
+      wrap: false,
+      transformers: [
+        transformerNotationDiff(),
+        transformerNotationFocus(),
+      ],
+    },
   },
   prefetch: true,
 });
