@@ -9,7 +9,7 @@ export async function GET(context) {
   const posts = await getCollection("en");
 
   return rss({
-    title: "Wolf Yuan",
+    title: "Wolf's blog",
     description:
       "These are blog posts written by me, hope you like it! These posts are in English, for Chinese version, please subscribe /rss/blog-zh.xml",
     site: context.site,
