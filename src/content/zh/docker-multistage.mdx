@@ -217,7 +217,7 @@ ENTRYPOINT ["/app/donut"]
 
 而如果 Google 已經很好心的幫你做了一個包含你要使用的執行環境的 distroless base image，那麼請使用 distroless。目前，distroless 有 `python3`、`java-{17, 21}` 和 `nodejs-{18, 20, 22}`。這些映像檔包含了這些執行環境，而且*應該*是經過特別優化的。
 
-> [在 distroless 的 GitHub 上面看看有什麼環境已經做好了](http://github.com/GoogleContainerTools/distroless?tab=readme-ov-file#what-images-are-available)
+> [在 distroless 的 GitHub 上面看看有什麼可以用的環境](http://github.com/GoogleContainerTools/distroless?tab=readme-ov-file#what-images-are-available)
 
 至於 Alpine，如果你的應用程式用了一些特別的執行環境，而且恰恰好做那個環境的人有提供已經建立好的 Alpine 映像檔，那麼請使用它。
 
