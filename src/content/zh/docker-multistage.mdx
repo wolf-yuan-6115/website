@@ -73,7 +73,7 @@ COPY . /app
 RUN apt-get update && apt-get install -y build-essential && \
   gcc -o /app/donut /app/donut.c && \
 # [!code ++]
-  apt remove -y build-essential && apt autoremove -y && apt-get clean
+apt remove -y build-essential && apt autoremove -y && apt-get clean
 
 ENTRYPOINT ["/app/donut"]
 ```
