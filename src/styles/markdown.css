@@ -15,8 +15,8 @@
     @apply my-4 rounded-md border-l-4 border-l-indigo-400 bg-[#1e1e2e] pl-3 [&>p]:py-2;
   }
 
-  code {
-    @apply rounded-sm font-mono;
+  code:not(pre > code) {
+    @apply bg-gray-800 px-2 py-1 rounded-md;
   }
 
   h1 {
