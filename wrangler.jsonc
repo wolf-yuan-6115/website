@@ -10,7 +10,6 @@
     "mode": "smart"
   },
   "assets": {
-    "binding": "ASSETS",
     "directory": "./dist"
   },
   "vars": {
