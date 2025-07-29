@@ -14,7 +14,7 @@
     "not_found_handling": "404-page"
   },
   "vars": {
-    "NODE_VERSION": "24"
+    "NODE_VERSION": "24.4.1"
   },
   "routes": [
     {
