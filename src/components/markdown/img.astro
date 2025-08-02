@@ -7,7 +7,10 @@ const props = Astro.props;
 <figure class="py-4">
   <a href={props.src.src} target="_blank">
     <OptimizePicture
-      class={twMerge(props.class, "mx-auto w-[85%] aspect-auto")}
+      class={twMerge(
+        props.class,
+        "mx-auto w-[85%] aspect-auto rounded-md border-2 border-gray-400",
+      )}
       maxViewport="1280"
       maxWidth="1088"
       {...props}
