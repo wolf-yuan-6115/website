@@ -36,6 +36,10 @@
     @apply mb-2 scroll-mt-24 border-b border-b-gray-400 pt-5 pb-3 text-lg font-bold md:text-xl;
   }
 
+  h4 {
+    @apply mb-2 scroll-mt-24 border-b border-b-gray-400 pt-5 pb-3 text-lg font-bold;
+  }
+
   hr {
     @apply mx-auto my-6 block h-[2px] w-[95%] rounded-[999px] bg-gray-700;
   }
