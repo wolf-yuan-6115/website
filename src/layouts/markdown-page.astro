@@ -80,7 +80,7 @@ const colorArray: {
           publishedTime: frontmatter.createdTime,
           modifiedTime: frontmatter.lastModified,
           authors: ["Wolf Yuan"],
-          tags: frontmatter.tags,
+          tags: frontmatter.tags.concat(frontmatter.hiddenTags ?? []),
         },
       }}
       twitter={{
