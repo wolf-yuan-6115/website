@@ -1,0 +1,241 @@
+---
+title: "當個免費仔蹭免費雲端服務吧"
+description: "不小心程式寫太多沒地方託管怎麼辦？我們來看看有哪些免費的雲端服務可以使用吧！"
+image: "/src/assets/blog/free-cloud/cover.png"
+ogImage: "/opengraph/images/blog/free-cloud.png"
+tags: ["cloud", "hosting", "server", "database", "free"]
+hiddenTags: ["免費","雲端", "雲端服務", "免費雲端服務", "免費雲端", "免費 API", "免費 VPS", "免費 container", "免費 serverless functions","網頁託管", "網站部署", "免費網站部署"]
+sorting: 5
+publishDate: "2025-08-08T00:50:00.000Z"
+modifiedDate: "2025-08-08T00:50:00.000Z"
+---
+
+不論你在寫什麼類型的程式，總有一天會遇到需要雲端服務的時候。無論是網站、API、資料庫還是其他應用程式，總有一些雲端程式可以讓程式更方便地執行
+
+但雲端服務時常需要付費，對於個人開發者或小型專案來說，這可能會是一筆不小（有可能根本不想付）的開銷。幸運的是，現在有許多雲端服務提供免費方案，讓我們可以在開心 coding 的同時也一起用到一些額外的雲端服務
+
+反正你都會過來這裡看這篇文章了，我認為你應該會寫些程式，或是有興趣學習寫程式，我這裡就不會著墨太多在程式與設定方面，主要是介紹一些免費的雲端服務，讓你可以在不花錢的情況下，享受雲端服務帶來的便利。這篇文章會採分類的方式來介紹各個服務，你也可以到頁首找目錄點點看
+
+## 伺服器、私人伺服器
+
+這裡會舉幾個雲端可以託管的服務，不論是 VPS 的服務，或是一些可以直接部署網站的服務。
+
+適合用用來跑 Docker 容器、自架服務或是其他需要伺服器架構的服務
+
+部分平臺可以對網路、儲存空間、CPU、記憶體客製化，可以根據需求調整資源。
+
+### [GCP VM Instance](https://cloud.google.com/free/docs/gcp-free-tier)：推 👍
+
+> ❤️ 永久免費，前 90 天可用 $300 美金的信用額度。結束後可在額度內繼續免費使用
+
+GCP (Google Cloud Platform) 如名稱所示，是 Google 的雲端運算平臺，平臺上幾乎把所有的雲端服務都包了起來，從虛擬機器、容器、資料庫、儲存空間、機器學習等等都有。Google 也有提供一些其他服務的免費方案，不只 VM Instance
+
+在前 90 天用 300 美元的額度時，你可以隨便開機器、隨便開 Bucket、隨便用 IPv4 地址直到 90 天或是額度用完後。要注意的點是額度用完之後，Google 會直接把你的服務關掉，除非改到 Pay As You Go（按量付費）方案，否則無法繼續使用
+
+但在 Pay As You Go 的方案中，Google 還是有提供免費的服務額度。在永久免費方案中提供的 Compute Engine 的規格是：
+
+- 2 vCPU (0.25 ~ 2 vCPU) 是共享核心
+- 1 GB 記憶體
+- 30 GB 磁碟空間
+- 不知道多少的網路流量
+- **只能開在** `us-west1`（奧勒岡）、`us-central1`（愛荷華）、`us-east1`（南卡羅萊納）區域，**不能建立在台灣！**
+
+> 網路流量待確認，如果用標準層級的網路，流量理論上可以到 200 GB 不需額外付費
+
+以免費的規格來看，這個方案對於需要自架服務，不想自己組伺服器的人來說十分適合。唯獨要留意的是網路流量不能過多，太多會被收錢 QQ
+
+### [AWS EC2](https://aws.amazon.com/free/)
+
+> 🕑️ 有限期免費，前 6 個月可獲得最高 $200 美金的信用額度。結束後**無** VM 永久免費方案
+
+AWS（Amazon Web Services）又如名稱所示是 Amazon（對就是那個網購平臺）的雲端運算平臺，提供的服務非常多樣化，從虛擬機器、容器、資料庫、儲存空間、機器學習等等都有。AWS 也有提供一些其他服務的免費方案，像是 Lambda (類似 serverless functions)、DynamoDB 之類的
+
+AWS 在前 6 個月內，你可以隨意使用你有的額度。同樣跟 Google 一樣，在額度用完或是 6 個月後，AWS 會直接把你的服務關掉
+
+### [Azure VM](https://azure.microsoft.com/en-us/pricing/free-services)
+
+> 🕑️ 有限期免費，前 12 個月可獲得最高 $200 美金的信用額度。結束後**無** VM 永久免費方案
+
+Azure（Microsoft Azure）是微軟的雲端運算平臺，提供的服務跟其他平臺一樣也非常多樣化，從虛擬機器、容器、資料庫、儲存空間、機器學習等等都有。Azure 也有提供一些其他服務的免費方案，有興趣的可以去看看
+
+在前 12 個月內，你可以總共在一個月內跑 750 小時的虛擬機器，其中包含幾個方案，全部都是 **1 GB 記憶體** 的方案：
+
+- `B1s`：Intel Xeon E5-2673 v3，1 vCPU，1 GB 記憶體
+- `B2pts v2`：Arm CPU，2 vCUP，1 GB 記憶體
+- `B2ats v2`：AMD CPU，1 vCPU，1 GB 記憶體
+
+但我沒用過這幾個方案，目前不確定網路的限制是多少。網路上找到的資料寫的是 **outbound 流量 100 GB、inbound 流量無限制**
+
+### [Oracle Cloud](https://www.oracle.com/cloud/free/)：推 👍
+
+> ❤️ 永久免費，前 30 天可用 $300 美金的信用額度。結束後可在額度內繼續免費使用
+
+Oracle Cloud 是 Oracle（那個做 Java Runtime 很有名的）的雲端運算平臺，提供的服務跟其他平臺一樣也非常多樣化，有興趣的再自己去查查吧
+
+跟其他平臺一樣，Oracle Cloud 在前 30 天內提供 $300 美元的額度，讓你可以隨意使用。額度用完後，你可以繼續使用免費的服務，其他服務則會被關掉
+
+Oracle Cloud 的免費方案提供了 2 個 VM Instance，規格如下：
+
+其中一個是用 AMD CPU 的執行個體，提供了：
+
+- 0.25 vCPU
+- 1 GB 記憶體
+- 最多 200 GB 的磁碟空間（！）
+
+另外一個是用 Arm CPU 的執行個體，提供了誇張多的：
+
+- 3000 vCPU/hour
+- 24 GB 記憶體（！）
+- 最多 200 GB 的磁碟空間（！）
+
+永久免費方案給的額度很多，我不確定目前還有沒有註冊名額，但如果有的話，這個方案是非常適合用來自架服務的。~~可惜我搶不到~~
+
+## 網站託管
+
+這裡會舉幾個可以直接部署網站的服務，適合用來部署靜態網站、前端應用程式或是包含 serverless functions 的後端程式
+
+### [Vercel](https://vercel.com/)：極推 😍
+
+> ❤️ 永久免費，免費額度很多
+
+Vercel 是一個專門用來部署前端應用程式的服務，提供了非常慷慨的免費額度。Vercel 支援多種前端框架，如 Next.js、Nuxt.js、Astro 等等
+
+跟 GitHub Pages、GitLab Pages 不同的是，Vercel 支援部署包含 serverless functions 的後端程式，可以把前端應用程式跟後端程式一起部署在 Vercel 上
+
+Vercel 的免費方案的優點跟缺點是：
+
+- 每月 100 GB 的流量
+- 每月 100 萬次 functions 呼叫
+- 每月 4 小時的 CPU 時間
+- 每月 360 GB/hours 的 functions 執行記憶體
+- 免費的 analytics、speed insights、image optimization 等等功能
+
+至於 functions 執行的容器規格如下：
+
+- 1 vCPU
+- 2 GB 記憶體
+
+我用 Vercel 用下來仍感覺他是目前**最適合部署全端程式**的平臺，如果你有前端應用程式或是包含 serverless functions 的後端程式要部署，Vercel 是非常適合的選擇
+
+### [Cloudflare Workers](https://workers.cloudflare.com/) 極推 😍
+
+> ❤️ 永久免費，網路使用無限制！
+
+Cloudflare Workers 是 Cloudflare 提供的 serverless functions 平臺，可以讓你在 Cloudflare 的邊緣網路上執行程式碼。Cloudflare Workers 會把你的程式放到多個 edge node 上執行，這樣可以讓你的程式在全球各地都可以快速執行
+
+> 以前會推 Cloudflare Pages，但 Cloudflare Workers 在最近支援了 `ASSETS` binding，意思是你可以把 workers 當靜態網站來用，限制與 Pages 一樣
+
+Cloudflare Workers 主要的優點跟限制是：
+
+- **每天** 100000 次請求（超多）
+- 每次可使用 10 ms 的 CPU 時間
+- 執行記憶體 128 MB
+- Functions 總大小 1 MB
+- **不支援任何像是 sharp 的圖片最佳化套件**
+
+我認為 Cloudflare Workers (Pages) 是目前最適合部署**靜態網站**的平臺，因為他可以直接把靜態網站部署在 Cloudflare 的 edge network 上，並且提供了非常慷慨的免費額度
+
+### [Render](https://render.com/)
+
+> 🤔 永久免費，但有更好的替代方案
+
+Render 是一個提供多種雲端服務的平臺，像是網站託管、API、資料庫等等。Render 的免費方案提供了不錯的免費額度，讓你可以輕鬆地部署網站或是 API
+
+Render 的免費方案的優點跟限制是：
+
+- 每月 100 GB 的流量
+- 512 MB 的記憶體
+- **每月不限制請求次數**
+- 每月 750 小時的執行時間
+- 一段時間沒人上線會自己睡著，**啟動要花差不多一分鐘**
+
+Render 的免費方案適合用來部署一些小型的網站或是 API，但相比之下，在 Vercel 支援 Fluid Compute 的情況下，Render 的免費方案就顯得有點弱了，特別是在需要啟動時間的部分
+
+### [Netlify](https://www.netlify.com/)
+
+> 🤔 永久免費，但有更好的替代方案
+
+Netlify 是一個專門用來部署前端應用程式的服務，提供了還不錯的免費額度。Netlify 同樣支援多種前端框架，如 Next.js、Nuxt.js、Astro 等等
+
+Netlify 的主要優點跟限制是：
+
+- 每月 100 GB 的流量
+- 每月 100 萬次 functions 呼叫
+
+我個人認為 Netlify 跟 Vercel 提供的服務很像，像是流量限制跟 functions 呼叫次數都差不多，但我覺得 Vercel 的免費額度更慷慨一些，並且 Vercel 在我用過後感覺體驗更好一些
+
+### [GitHub Pages](https://pages.github.com/)：推 👍
+
+> ❤️ 永久免費，設定完可以直接忘記，GitHub CDN 加持
+
+GitHub Pages 想必超多人都有聽過，很多人的網站都架在他有名的 `*.github.io` 網域底下。GitHub Pages 會把你的網站部署在 GitHub 的伺服器上，並且可以直接幫你撈一個 SSL 憑證
+
+唯一的問題是 GitHub Pages 只能部署靜態網站，不能部署動態網站或是包含 serverless functions 的後端程式。如果你只是要部署一個靜態網站，GitHub Pages 是非常適合的選擇
+
+### [GitLab Pages](https://docs.gitlab.com/ee/user/project/pages/)：推 👍
+
+> ❤️ 永久免費，設定完可以直接忘記
+
+老實說跟 [GitHub Pages](#github-pages推) 差不多，GitLab Pages 也是可以直接部署靜態網站的服務。GitLab Pages 的部署方式跟 GitHub Pages 有點不一樣，但基本上也是可以直接部署靜態網站
+
+### [AWS Lambda](https://aws.amazon.com/lambda/)
+
+> ❤️ 永久免費，免費額度還不錯
+
+AWS Lambda 是 AWS 提供的 serverless functions 平臺，可以讓你在 AWS 的伺服器上執行程式碼。雖然這聽起來有點斜咖，但你其實是可以把 Next.js 的 SSR（Server side rendering）的網頁丟上 AWS Lambda 的，像[這個專案做的 adapter](https://github.com/opennextjs/opennextjs-aws)
+
+AWS Lambda 的免費方案的優點跟限制是：
+
+- 每月 100 萬次請求
+
+雖然我沒試過把網站丟到這種平臺上，但 AWS Lambda 的免費額度還不錯，適合用來部署一些小型的全端網頁
+
+## 資料庫
+
+這部份會講一下一些可以免費用的代管資料庫服務，但因為我對這部份比較不熟，可能會有些疏漏
+
+### [Supabase](https://supabase.com/)：極推 😍
+
+> ❤️ 永久免費，平臺直接開一個 AWS VM 跑你的資料庫，個人超愛
+
+Supabase 是一個**開源**的後端即服務（BaaS）平臺，提供了類似 Firebase 的功能，但使用 PostgreSQL 作為資料庫。Supabase 提供了非常慷慨的免費額度，讓你可以輕鬆地使用資料庫
+
+Supabase 的免費方案的優點跟限制是：
+
+- 500 MB 的資料庫儲存空間
+- 1 GB 的檔案儲存空間
+- **無限次**的資料庫請求
+- 每月 5 GB 的資料庫流量
+
+Supabase 還提供身分驗證的功能，可以串接框架與第三方 OAuth 平臺，可以對資料庫權限進行細緻的控制。還有他們的 TypeScript SDK 超級好用，typing 會自動產生，也很適合跟著後端一起包在 serverless functions 裡面使用
+
+### [AWS DynamoDB](https://aws.amazon.com/dynamodb/)
+
+> ❤️ 永久免費
+
+AWS DynamoDB 是 AWS 提供的 NoSQL 資料庫服務，AWS 會幫你管好理資料庫的執行，讓你可以直接把精力放在 coding 上
+
+DynamoDB 的免費方案的優點跟限制是：
+
+- 每月 25 GB 的儲存空間（！）
+- 每月 200 萬次讀取請求
+- 每月 200 萬次寫入請求
+
+雖然我沒用過 DynamoDB，但他其實跟等等要講的 MongoDB 類似，適合用來存一些非結構化的資料。如果你需要一個 NoSQL 資料庫，DynamoDB 是一個不錯的選擇，AWS 給的免費額度看上去也不錯，特別是儲存空間的部分
+
+### [MongoDB Atlas](https://www.mongodb.com/atlas/database)：推 👍
+
+> ❤️ 永久免費，平臺直接開一個 AWS/GCP/Azure 的 VM 跑你的資料庫
+
+MongoDB Atlas 是 MongoDB 提供的雲端資料庫服務，提供了很棒的免費額度，讓你可以直接把 MongoDB 資料庫丟在雲端上
+
+MongoDB Atlas 的免費方案的優點跟限制是：
+
+- 每月 512 MB 的儲存空間
+- 每秒最多 100 次讀取 / 寫入請求
+
+跟 Supabase 一樣，MongoDB Atlas 也同樣沒有限制制資料庫請求次數，這對於需要大量讀取 / 寫入資料的應用程式來說根本是福音。還有 MongoDB 可以選擇多個雲端平臺來部署資料庫，像是 AWS、GCP、Azure 等等，也可以自訂你要放在哪個地區
+
+## 更多服務？
+
+當然世界上還有千千百百萬萬種雲端服務，這裡只是列出一些我認為比較常用的免費雲端服務。如果你有其他推薦的免費雲端服務，歡迎寄一個郵件給我哦！你可以在頁尾找到我的聯絡方式

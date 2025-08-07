@@ -1,0 +1,241 @@
+---
+title: "Let's knock on some free cloud services!"
+description: "Accidentally wrote too many codes and don't know where to host them? Let's check out what free cloud services we can use!"
+image: "/src/assets/blog/free-cloud/cover.png"
+ogImage: "/opengraph/images/blog/free-cloud.png"
+tags: ["cloud", "hosting", "server", "database", "free"]
+hiddenTags: ["gcp", "aws", "azure", "oracle", "vercel", "render", "netlify", "supabase", "mongodb"]
+sorting: 5
+publishDate: "2025-08-08T00:50:00.000Z"
+modifiedDate: "2025-08-08T00:50:00.000Z"
+---
+
+No matter what type of program you're writing, you'll eventually need cloud services. Whether it's websites, APIs, databases, or other applications, there are always some cloud programs that can make your code run more easily.
+
+But cloud services often cost some bucks, which can be a big expense (or maybe you just don't want to pay) for individual developers or small projects. Luckily, many cloud services now offer free plans, so we can enjoy coding while also using some extra cloud services.
+
+Since you're here reading this article, I think you probably write some code or are interested in learning programming. I won't go into too much detail about programming and setup, mainly I'll introduce some free cloud services so you can enjoy the convenience of cloud services without spending money. This article will organize services by category, and you can also check out the table of contents at the top of the page.
+
+## Servers and VPS
+
+Here I'll mention several cloud hosting services, whether it's VPS services or platforms where you can directly deploy websites.
+
+These are good for running Docker containers, self-hosted services, or other services that need server architecture.
+
+Some platforms let you customize network, storage, CPU, and memory, so you can adjust resources based on your needs.
+
+### [GCP VM Instance](https://cloud.google.com/free/docs/gcp-free-tier): Recommended 👍
+
+> ❤️ Always free, plus $300 USD credit for the first 90 days. After that ends, you can continue using free services within the limits
+
+GCP (Google Cloud Platform), as the name said, is Google's own cloud computing platform. The platform includes almost all cloud services: virtual machines, containers, databases, storage, machine learning, and more. Google also offers free plans for many other services, not just VM Instance though.
+
+During the first 90 days with the $300 credit, you can freely create machines, open Buckets, and use IPv4 addresses until the 90 days are up, or you run out of credit. Important note: once the credit runs out, Google will shut down your services unless you switch to a Pay As You Go plan.
+
+But even in the Pay As You Go plan, Google still provides free service quotas. In the always-free plan, the Compute Engine specs are:
+
+- 2 vCPU (0.25 ~ 2 vCPU) with shared cores
+- 1 GB memory
+- 30 GB disk space
+- Unknown amount of network traffic
+- **Can only be deployed in** `us-west1` (Oregon), `us-central1` (Iowa), `us-east1` (South Carolina), **cannot be located in Taiwan!**
+
+> Network traffic to be confirmed. If using with standard tier network, the traffic quota can theoretically reach 200 GB without additional charges.
+
+For the free specs, this plan is very suitable for those who need self-hosted services and do not want to assemble their own servers. The only thing to watch out for is not to exceed the network traffic, or else you will be charged QQ.
+
+### [AWS EC2](https://aws.amazon.com/free/)
+
+> 🕑️ Limited time free, get up to $200 USD credit for the first 6 months. After that, **no** always free plan for VMs.
+
+AWS (Amazon Web Services), as the name suggests, is Amazon's (yes, the online shopping platform) cloud computing platform, offering a wide variety of services, including virtual machines, containers, databases, storage, machine learning, and more. AWS also provides free plans for some other services, such as Lambda (similar to serverless functions), DynamoDB, etc.
+
+In the first 6 months, you can use your credits as you like. Similar to Google, once the credit is used up or after 6 months, AWS will directly shut down your services.
+
+### [Azure VM](https://azure.microsoft.com/en-us/pricing/free-services)
+
+> 🕑️ Limited time free, get up to $200 USD credit for the first 12 months. After that, **no** always free plan for VMs.
+
+Azure (Microsoft Azure) is Microsoft's cloud computing platform, offering a wide variety of services just like other platforms, including virtual machines, containers, databases, storage, machine learning, and more. Azure also provides free plans for some other services, which you can check out if interested.
+
+In the first 12 months, you can run virtual machines for a total of 750 hours in a month, which includes several plans, all with **1 GB memory**:
+
+- `B1s`: Intel Xeon E5-2673 v3, 1 vCPU, 1 GB memory
+- `B2pts v2`: Arm CPU, 2 vCUP, 1 GB memory
+- `B2ats v2`: AMD CPU, 1 vCPU, 1 GB memory
+
+But I haven't used these plans, so I'm not sure what the network limitations are. The information I found online states **outbound traffic 100 GB, inbound traffic unlimited**.
+
+### [Oracle Cloud](https://www.oracle.com/cloud/free/): Recommended 👍
+
+> ❤️ Always free, plus $300 USD credit for the first 30 days. After that ends, you can continue using free services within the limits
+
+Oracle Cloud is Oracle's (the one famous for Java Runtime) cloud computing platform, offering a wide variety of services just like other platforms. You can check it out if interested.
+
+Like other platforms, Oracle Cloud offers $300 USD credit for the first 30 days, allowing you to use services as you like. After the credit is used up, you can continue using the free services, while other services will be shut down.
+
+The free plan from Oracle Cloud offers two VM Instances with the following specs:
+
+One instance uses AMD CPU and provides:
+
+- 0.25 vCPU
+- 1 GB memory
+- Up to 200 GB disk space (!)
+
+The other instance uses Arm CPU and provides glorious specs:
+
+- 3000 vCPU/hour
+- 24 GB memory (!)
+- Up to 200 GB disk space (!)
+
+The permanent free plan offers a lot of resources. I really don't know if there are still registration slots available, but if there are, this plan is very suitable for self-hosted services. ~~Too bad I couldn't grab it~~
+
+## Website hosting
+
+Here are some services that allow you to deploy websites directly, suitable for deploying static websites, front-end applications, or back-end programs with serverless functions.
+
+### [Vercel](https://vercel.com/): Love it 😍
+
+> ❤️ Always free, with generous free quotas
+
+Vercel is a service specifically for deploying front-end applications, offering very generous free quotas. Vercel supports various front-end frameworks, such as Next.js, Nuxt.js, Astro, and more.
+
+Unlike GitHub Pages and GitLab Pages, Vercel supports deploying back-end programs with serverless functions, allowing you to deploy both front-end and back-end applications on Vercel.
+
+The advantages and disadvantages of Vercel's free plan are:
+
+- 100 GB of traffic per month
+- One million function calls per month
+- Four hours of CPU time per month
+- 360 GB/hours of function execution memory per month
+- Free analytics, speed insights, image optimization, and other features
+
+As for the container specs for function execution:
+
+- 1 vCPU
+- 2 GB memory
+
+From my experience using Vercel, I still feel that it is currently **the most suitable platform for deploying full-stack programs**. If you have front-end applications or back-end programs with serverless functions to deploy, Vercel is a very suitable choice.
+
+### [Cloudflare Workers](https://workers.cloudflare.com/): Love it 😍
+
+> ❤️ Always free, with unlimited network usage!
+
+Cloudflare Workers is a serverless functions platform provided by Cloudflare, allowing you to execute code on Cloudflare's edge network. Cloudflare Workers deploys your code to multiple edge nodes, enabling your code to run quickly across the globe.
+
+> Previously, I would recommend Cloudflare Pages, but Cloudflare Workers recently supported `ASSETS` binding, meaning you can use workers as static websites, with limitations similar to Pages.
+
+The main advantages and limitations of Cloudflare Workers are:
+
+- **100,000 requests per day** (IT'S A LOT!)
+- Up to 10 ms of CPU time per request
+- 128 MB of execution memory
+- Total size of functions 1 MB
+- **Does not support image optimization packages like sharp**
+
+I believe Cloudflare Workers (Pages) is currently the most suitable platform for deploying **static websites**, as it allows direct deployment of static websites on Cloudflare's edge network and offers very generous free quotas.
+
+### [Render](https://render.com/)
+
+> 🤔 Always free, but there are better alternatives
+
+Render is a platform that provides various cloud services, such as website hosting, APIs, databases, and more. Render's free plan offers decent free quotas, allowing you to easily deploy websites or APIs.
+
+The advantages and limitations of Render's free plan are:
+
+- 100 GB of traffic per month
+- 512 MB of memory
+- **Unlimited requests per month**
+- 750 hours of execution time per month
+- Will go to sleep by itself after a period of inactivity, **taking about a minute to wake up**
+
+Render's free plan is suitable for deploying small websites or APIs. However, in comparison, with Vercel supporting Fluid Compute, Render's free plan seems a bit weaker, especially in terms of startup time.
+
+### [Netlify](https://www.netlify.com/)
+
+> 🤔 Always free, but there are better alternatives
+
+Netlify is a service specifically for deploying front-end applications, offering decent free quotas. Netlify also supports various front-end frameworks, such as Next.js, Nuxt.js, Astro, and more.
+
+The main advantages and limitations of Netlify are:
+
+- 100 GB of traffic per month
+- One million function calls per month
+
+I think Netlify and Vercel offer similar services, with similar traffic limits and function call quotas. However, I feel Vercel's free quotas are more generous, and my experience with Vercel has been slightly better.
+
+### [GitHub Pages](https://pages.github.com/): Recommended 👍
+
+> ❤️ Always free, set it and forget it, backed by GitHub CDN
+
+GitHub Pages is a service many people have heard of, with many websites hosted under the famous `*.github.io` domain. GitHub Pages deploys your website on GitHub's servers and can directly grab an SSL certificate for you and deploy it.
+
+The only issue is that GitHub Pages can only deploy static websites, not dynamic websites or back-end programs with serverless functions. If you just want to deploy a static website, GitHub Pages is a very suitable choice.
+
+### [GitLab Pages](https://docs.gitlab.com/ee/user/project/pages/): Recommended 👍
+
+> ❤️ Always free, set it and forget it
+
+Honestly, it's quite similar to [GitHub Pages](#github-pages-recommended). GitLab Pages also allows direct deployment of static websites. The deployment method of GitLab Pages is slightly different from GitHub Pages, but basically, it also enables direct deployment of static websites.
+
+### [AWS Lambda](https://aws.amazon.com/lambda/)
+
+> ❤️ Always free, with decent free quotas
+
+AWS Lambda is a serverless functions platform provided by AWS, allowing you to execute code on AWS's servers. Although this sounds a bit off, you can actually deploy Next.js's SSR (Server-side rendering) pages on AWS Lambda, like [this adapter](https://github.com/opennextjs/opennextjs-aws).
+
+The advantages and limitations of AWS Lambda's free plan are:
+
+- One million requests per month
+
+Although I haven't tried deploying a website on this kind of platform, AWS Lambda's free quota is not bad, suitable for deploying small full-stack web pages.
+
+## Databases
+
+This section will talk about some managed database services that you can use for free. However, I'm not very familiar with this part, so there might be some omissions.
+
+### [Supabase](https://supabase.com/): Love it 😍
+
+> ❤️ Always free, the platform directly opens an AWS VM to run your database, personally love it
+
+Supabase is an **open-source** Backend as a Service (BaaS) platform, offering functionalities similar to Firebase, but using PostgreSQL as the database. Supabase provides very generous free quotas, allowing you to easily use the database.
+
+The advantages and limitations of Supabase's free plan are:
+
+- 500 MB of database storage
+- 1 GB of file storage
+- **Unlimited** database requests
+- 5 GB of database traffic per month
+
+Supabase also offers authentication features, can be integrated with frameworks and third-party OAuth platforms, and allows fine-grained control over database permissions. Also, their TypeScript SDK is super great, with automatic typing generation, making it ideal to be used alongside the backend in serverless functions.
+
+### [AWS DynamoDB](https://aws.amazon.com/dynamodb/)
+
+> ❤️ Always free
+
+AWS DynamoDB is a NoSQL database service provided by AWS, which manages the operation of the database for you, allowing you to focus on coding.
+
+The advantages and limitations of DynamoDB's free plan are:
+
+- 25 GB of storage per month (!)
+- Two million read requests per month
+- Two million write requests per month
+
+Although I haven't used DynamoDB, it is similar to MongoDB, which will be mentioned later. It is suitable for storing unstructured data. If you need a NoSQL database, DynamoDB is a不错的选择, and the free quota offered by AWS looks good, especially the storage part.
+
+### [MongoDB Atlas](https://www.mongodb.com/atlas/database): Recommended 👍
+
+> ❤️ Always free, the platform directly opens an AWS/GCP/Azure VM to run your database
+
+MongoDB Atlas is a cloud database service provided by MongoDB, offering great free quotas, allowing you to directly host MongoDB databases in the cloud.
+
+The advantages and limitations of MongoDB Atlas's free plan are:
+
+- 512 MB of storage per month
+- Up to 100 read/write requests per second
+
+Like Supabase, MongoDB Atlas also does not limit the number of database requests, which is a blessing for applications that require大量读写数据. Additionally, MongoDB offers multiple cloud platforms for database deployment, such as AWS, GCP, Azure, etc., and you can also customize the region where you want to host your database.
+
+## More Services?
+
+Of course, there are millions of cloud services in the world. Here, I only listed some of the more commonly used free cloud services. If you have other recommended free cloud services, feel free to email me! You can find my contact information at the bottom of the page.
