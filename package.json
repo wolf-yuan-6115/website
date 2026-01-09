@@ -14,14 +14,14 @@
     "astro": "astro"
   },
   "dependencies": {
-    "@astrojs/mdx": "4.3.12",
+    "@astrojs/mdx": "4.3.13",
     "@astrojs/rss": "^4.0.14",
-    "@astrojs/sitemap": "3.6.0",
+    "@astrojs/sitemap": "3.6.1",
     "@fontsource-variable/jetbrains-mono": "^5.2.8",
     "@hbsnow/rehype-sectionize": "^1.0.7",
     "@shikijs/transformers": "^3.19.0",
     "@tailwindcss/vite": "^4.1.17",
-    "astro": "5.16.4",
+    "astro": "5.16.8",
     "astro-icon": "^1.1.5",
     "astro-seo": "^0.8.4",
     "autoprefixer": "^10.4.22",
