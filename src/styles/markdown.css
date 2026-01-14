@@ -7,6 +7,10 @@
     @apply my-4;
   }
 
+  blockquote :not(:last-child) {
+    @apply my-0;
+  }
+
   a {
     @apply underline decoration-gray-400 decoration-dashed decoration-1 underline-offset-4 transition-colors duration-100 hover:decoration-white;
   }
@@ -16,7 +20,7 @@
   }
 
   code:not(pre > code) {
-    @apply bg-gray-800 px-2 py-1 rounded-md;
+    @apply rounded-md bg-gray-800 px-2 py-1;
   }
 
   h1 {
@@ -69,7 +73,7 @@
   }
 
   thead > tr > th {
-    @apply px-6 py-4 bg-indigo-700;
+    @apply bg-indigo-700 px-6 py-4;
   }
 
   thead > tr > th:first-child {
