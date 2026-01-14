@@ -4,15 +4,19 @@ import { twMerge } from "tailwind-merge";
 const props = Astro.props;
 ---
 
-<figure class="py-4">
-  <a href={props.src.src} target="_blank">
-    <OptimizePicture
+<figure class="mx-auto w-fit py-4">
+  <a
+    href={props.src.src}
+    target="_blank"
+    class="mx-auto block w-[85%] md:w-[60%]"
+    ><OptimizePicture
       class={twMerge(
         props.class,
-        "mx-auto w-[85%] md:w-[60%] aspect-auto rounded-md border-2 border-gray-400",
+        "aspect-auto rounded-md border-2 border-gray-400",
       )}
       maxViewport="1280"
       maxWidth="1088"
+      pictureAttributes={{ class: "block" }}
       {...props}
     >
       <slot />
