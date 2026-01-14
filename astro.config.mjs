@@ -8,6 +8,7 @@ import {
 import tailwindcss from "@tailwindcss/vite";
 import icon from "astro-icon";
 import { defineConfig } from "astro/config";
+import externalLink from "rehype-external-links";
 
 export default defineConfig({
   site: "https://wolf-yuan.dev",
@@ -43,7 +44,7 @@ export default defineConfig({
     plugins: [tailwindcss()],
   },
   markdown: {
-    rehypePlugins: [sectionize],
+    rehypePlugins: [sectionize, [externalLink, { target: "_blank" }]],
   },
   prefetch: true,
 });
