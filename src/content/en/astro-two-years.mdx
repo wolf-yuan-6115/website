@@ -1,0 +1,108 @@
+---
+title: "Astro: Two Years Later"
+description: "This site has been built with Astro for two years — here are my thoughts."
+image: "/src/assets/blog/astro-two-years/cover.png"
+ogImage: "/opengraph/images/blog/astro-two-years.png"
+tags: ["astro", "two years", "review"]
+hiddenTags: ["astro experience", "astro review", "astro tutorial", "astro", "astro resources", "astro taiwan", "web development", "frontend development", "static site generator", "ssg"]
+sorting: 8
+publishDate: "2026-02-17T22:20:00.000Z"
+modifiedDate: "2026-02-17T22:20:00.000Z"
+---
+
+A few weeks ago, I saw the news that Cloudflare invested a huge amount of money in Astro, a web framework. That suddenly reminded me that I’ve also been using Astro on my site for a *long* time, so I figured it was a good moment to look back.
+
+I went back to check an old `package.json`. According to [my earliest commit](https://gitlab.com/wolf-yuan/website/-/commit/070fd7c623f942164e8a4597f2af0a60946ce80e), I was using Astro `2.9.6` back then. I looked up the [release date for 2.9.6](https://github.com/withastro/astro/releases/tag/astro%402.9.6), and it was released on 2023/7/29. Doing the math, it’s already been two to three years.
+
+## What Astro has changed
+
+Personally, I feel Astro’s update speed has slowed down a bit now. Still, it’s one of the fastest-moving web frameworks I’ve seen in terms of major versions — from 2.x all the way to 5.x. A lot changed along the way, from new features to improvements on older ones, and Astro has done a really good job in these areas.
+
+### View Transitions API
+
+The most exciting one for me was when Astro added support for the [View Transitions API](https://developer.chrome.com/docs/web-platform/view-transitions/), which at the time was only available in Chrome. This API makes page-to-page transitions much smoother.
+
+Astro built this feature in directly. I still remember seeing the demo and thinking it was *super-duper* cool. I immediately wrote some code so my own website could use it too.
+
+> The View Transitions API is now supported by more browsers, Firefox users can also see these fancy transitions.
+
+> In Astro, this is now called `<ClientRouter />`.
+
+### i18n routing
+
+In Astro 3.5, they introduced a new feature: [i18n routing](https://astro.build/blog/astro-350/). It made building multilingual websites much easier.
+
+Basically, Astro moved the routing work for multilingual sites into the framework layer, so developers can focus on content and design.
+
+In Astro 4, they improved the i18n routing logic again, adding support for defining a default language and exposing useful variables to help pages detect the current locale.
+
+#### i18n is... a half completed feature?
+
+Even though Astro added i18n, I personally think it only solved half the problem — mainly routing.
+
+If you’re building larger or more complex sites, you may still need tools like [astro-i18n-aut](https://github.com/jlarmstrongiv/astro-i18n-aut) to handle templates. Otherwise, you can end up with a somewhat awkward file structure like this site:
+
+```
+src/pages/
+├── 404.astro
+├── blog
+│   ├── index.astro
+│   └── [slug].astro
+├── index.astro
+├── rss
+│   ├── blog-en.xml.js
+│   └── blog-zh.xml.js
+└── zh-tw
+    ├── 404.astro
+    ├── blog
+    │   ├── index.astro
+    │   └── [slug].astro
+    └── index.astro
+```
+
+If you don’t see the issue right away: when I want to update page content, I have to edit both `/src/pages/index.astro` and `/src/pages/zh-tw/index.astro`. That becomes annoying fast when you’re making bigger layout or style changes.
+
+### Amazing template generation
+
+> This isn’t a new feature, but it’s so good that I need to mention it again.
+
+If you’ve used React-like frameworks, you’ve definitely seen syntax like this:
+
+```ts
+() => {
+  const mySuperTitle = "Hello World";
+  
+  return (
+    <h1>{mySuperTitle}</h1>
+  )
+}
+```
+
+The cool part is Astro supports a very similar style. Think of it as React, but without shipping all that JS:
+
+```astro
+---
+const mySuperTitle = "Hello World";
+---
+
+<h1>{mySuperTitle}</h1>
+```
+
+> Quick note: the JavaScript between the two `---` runs on the server. The part below is what gets sent to the client. So if you write a `<script>` tag below, that code runs in the browser — which is very handy for interactive pages.
+
+## I accidentally pulled a lot of people into the Astro rabbit hole
+
+It feels like more and more people are using Astro now. Around me, I’ve seen many people switch. For example, [Elvis Mao](https://elvismao.com) seems to really love Astro and even created a template called [fastro](https://github.com/elvisdragonmao/fastro).
+
+Others have started using Astro too, mostly for blogs:
+
+- [Frank’s frk.tw](https://blog.frk.tw)
+- [Ummit’s ummit.dev](https://ummit.dev)
+
+Even some big companies are using it now:
+
+- [The Firebase Blog](https://firebase.blog)
+- [IKEA’s official website](https://ikea.com)
+- And of course, [Cloudflare’s docs](https://developers.cloudflare.com)
+
+Astro has absolutely given many developers the ability to build websites quickly. Its learning curve is also pretty friendly, which makes it easy for a lot of people to pick up. I hope Astro keeps evolving and polishing its features in the future.

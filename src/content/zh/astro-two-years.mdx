@@ -1,0 +1,108 @@
+---
+title: "Astro: 過了兩年"
+description: "這個網站用了兩年的 Astro，來聊聊使用心得吧"
+image: "/src/assets/blog/astro-two-years/cover.png"
+ogImage: "/opengraph/images/blog/astro-two-years.png"
+tags: ["astro", "two years", "review"]
+hiddenTags: ["astro 使用心得", "astro 評價", "astro 教學", "astro 中文", "astro 中文教學", "astro 中文資源", "astro 台灣", "astro 台灣教學", "網站開發", "前端開發", "靜態網站生成器", "static site generator", "ssg"]
+sorting: 8
+publishDate: "2026-02-17T22:20:00.000Z"
+modifiedDate: "2026-02-17T22:20:00.000Z"
+---
+
+前幾週看到了 Cloudflare 丟了一大筆錢給 Astro 的消息，突然想到了我網站也用了好久好久的 Astro，想來點回顧
+
+回去翻以前的 `package.json`，[最早的一個 commit](https://gitlab.com/wolf-yuan/website/-/commit/070fd7c623f942164e8a4597f2af0a60946ce80e) 說我當時用的是 Astro `2.9.6`，找了找 2.9.6 的 [release date](https://github.com/withastro/astro/releases/tag/astro%402.9.6)，好像是 2023/7/29 發的版本，算一下也過了兩三年ㄌ
+
+## Astro 改了什麼
+
+其實 Astro 我個人覺得他現在的更新速度已經有些些的變慢了，但他還是我看過 major version 翻最快的網頁框架，從當時的 2.x 版本一路跳到現在的 5.x 版本，這中間經歷了不少改變，從新功能到舊有的改進，Astro 在這塊還是做的很好
+
+### View Transitions API
+
+我最印象深刻的還是當時 Astro 加進了當時只有 Chrome 有的 API [View Transitions API](https://developer.chrome.com/docs/web-platform/view-transitions/)，這個 API 可以讓網頁在切換頁面的時候有更平滑的過渡動畫
+
+當時 Astro 直接把這個功能內建進去，我只記得我看到 Demo 的時候覺得超級酷，後來就敲了敲程式碼讓我的網頁也能用上這個功能
+
+> 哦 View Transitions API 目前已經被更多瀏覽器支援了，像是 Firefox 的使用者現在也可以看到這個炫泡的動畫
+
+> View Transiton 現在在 Astro 裡面叫做 `<ClientRouter />`
+
+### i18n routing
+
+在 Astro 3.5 版本的時候，他們加入了一個心的功能，[i18n routing](https://astro.build/blog/astro-350/)，這讓要寫多語言網站的開發者可以更輕鬆的寫出多語言的網頁
+
+Astro 這個新東西基本上把正常多語言需要的 routing 的工作轉到框架層面去做，開發者只需要專注在網頁的撰寫與設計即可
+
+在 Astro 4 中，他們把 i18n 的 routing 邏輯更加完善了一次，讓開發者可以定義預設語言跟加入了一些好用的變數幫助頁面知道現在的語言
+
+#### 做半套的 i18n 
+
+雖說 Astro 的確有加入 i18n，但我個人覺得他 i18n 只做了一半，也就是 routing 的部分
+
+如果要寫更多更複雜的網頁，可能還是需要像是 [astro-i18n-aut](https://github.com/jlarmstrongiv/astro-i18n-aut) 這種神奇的套件來處理 template，不然你會像這個網站一樣有這種有點奇怪的檔案結構
+
+```
+src/pages/
+├── 404.astro
+├── blog
+│   ├── index.astro
+│   └── [slug].astro
+├── index.astro
+├── rss
+│   ├── blog-en.xml.js
+│   └── blog-zh.xml.js
+└── zh-tw
+    ├── 404.astro
+    ├── blog
+    │   ├── index.astro
+    │   └── [slug].astro
+    └── index.astro
+```
+
+如果你找不出問題，這個問題出在如果我要更新檔案的內容，我得開 `/src/pages/index.astro` 跟 `/src/pages/zh-tw/index.astro` 這兩個檔案一起改，這在要大改網頁樣式的時候會變得很難搞
+
+### 超棒的 template generation
+
+> 哦這個不是新功能，但他真的很棒，我要講第二次
+
+反正如果你用過 React 那類的前端框架，你一定有用過這種語法：
+
+```ts
+() => {
+  const mySuperTitle = "Hello World";
+  
+  return (
+    <h1>{mySuperTitle}</h1>
+  )
+}
+```
+
+神奇的是 Astro 其實也支援這個語法，你可以把它想成 React 但是沒有 JS：
+
+```astro
+---
+const mySuperTitle = "Hello World";
+---
+
+<h1>{mySuperTitle}</h1>
+```
+
+> Quick note: 那兩個 `---` 的 JS 會在伺服器端跑，底下的是會送到使用者端跑的東西，所以如果你在底下寫 `<script>`，那串程式碼就會跑到使用者端那邊，這在要寫動態網頁的時候蠻好用的
+
+## 不小心推一堆人進坑
+
+感覺是因為現在用 Astro 的人也變多了，我身邊越來越多人用 Astro，像是[毛哥](https://elvismao.com)現在感覺超喜歡用 Astro，甚至開了一個叫做 [fastro 的 template](https://github.com/elvisdragonmao/fastro)
+
+還有其他人也開始用了 Astro，大多數都在部落格網站上：
+
+- [資安電神的 Frank 的 frk.tw](https://blog.frk.tw)
+- [女裝大佬 Ummit 的 ummit.dev](https://ummit.dev)
+
+甚至是一些大公司也開始用了：
+
+- [Firebase 的部落格](https://firebase.blog)
+- [IKEA 的官網](https://ikea.com)
+- 當然還有 [Cloudflare 自己的 docs](https://developers.cloudflare.com)
+
+Astro 的確帶給了許多開發者快速建站的能力，加上他的入門門檻其實不高，讓很多人都能夠輕鬆的上手。也希望 Astro 未來可以繼續完善他的功能！
