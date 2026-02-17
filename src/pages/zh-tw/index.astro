@@ -325,6 +325,29 @@ const locale = Astro.currentLocale;
         </div>
       </div>
       <div
+        class="rounded-md border-2 border-fuchsia-400 bg-gray-800 py-4"
+      >
+        <p class="px-6 pt-2 pb-4 text-lg font-bold md:text-xl">
+          硬體設計相關
+        </p>
+        <div
+          class="relative px-2 before:absolute before:left-0 before:h-9 before:w-8 before:bg-linear-to-r before:from-gray-800 before:to-transparent before:content-[''] after:absolute after:top-0 after:right-0 after:inline-block after:h-9 after:w-8 after:bg-linear-to-l after:from-gray-800 after:to-transparent after:content-['']"
+        >
+          <div
+            class="flex flex-row items-center overflow-x-auto py-2 [&>div]:flex [&>div]:flex-row [&>div]:items-center [&>div]:gap-4 [&>div]:px-4"
+          >
+            <div>
+              <Icon name="simple-icons:kicad" class="md:text-lg" />
+              <p class="text-nowrap md:text-lg">KiCad</p>
+            </div>
+            <div>
+              <Icon name="simple-icons:qmk" class="md:text-lg" />
+              <p class="text-nowrap md:text-lg">QMK</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
         class="rounded-md border-2 border-amber-400 bg-gray-800 py-4"
       >
         <p class="px-6 pt-2 pb-4 text-lg font-bold md:text-xl">
@@ -350,6 +373,10 @@ const locale = Astro.currentLocale;
                 class="md:text-lg"
               />
               <p class="text-nowrap md:text-lg">C++</p>
+            </div>
+            <div>
+              <Icon name="simple-icons:autodesk" class="md:text-lg" />
+              <p class="text-nowrap md:text-lg">Autodesk Fusion</p>
             </div>
           </div>
         </div>
@@ -408,7 +435,6 @@ const locale = Astro.currentLocale;
         ]}
       />
       <Card
-        <Card
         title="Dolphin Container"
         description="Dolphin 是一個 Docker 映像檔，讓你以輕鬆的方式部署您的程式至各大託管商"
         link="https://w.wolf-yuan.dev/projects/dolphin"
