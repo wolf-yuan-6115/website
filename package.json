@@ -19,7 +19,7 @@
     "@astrojs/sitemap": "3.7.0",
     "@fontsource-variable/jetbrains-mono": "^5.2.8",
     "@hbsnow/rehype-sectionize": "^1.0.7",
-    "@shikijs/transformers": "^3.22.0",
+    "@shikijs/transformers": "^4.0.0",
     "@tailwindcss/vite": "^4.1.18",
     "astro": "5.17.2",
     "astro-icon": "^1.1.5",
