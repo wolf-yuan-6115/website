@@ -5,6 +5,7 @@ import "../styles/global.css";
 import Nav from "../components/Nav.astro";
 import Footer from "../components/Footer.astro";
 import Noscript from "../components/Noscript.astro";
+import NavPlaceholder from "../components/NavPlaceholder.astro";
 import { ClientRouter } from "astro:transitions";
 import { SEO } from "astro-seo";
 import strings from "../i18n/strings";
@@ -76,6 +77,7 @@ const t = strings.seo[Astro.currentLocale];
     <ClientRouter />
   </head>
   <body class="bg-gray-900 text-gray-50">
+    <NavPlaceholder />
     <div
       class={twMerge(
         "flex flex-col",

@@ -9,6 +9,7 @@ import timezone from "dayjs/plugin/timezone";
 import Nav from "../components/Nav.astro";
 import Footer from "../components/Footer.astro";
 import Noscript from "../components/Noscript.astro";
+import NavPlaceholder from "../components/NavPlaceholder.astro";
 import { ClientRouter } from "astro:transitions";
 import { SEO } from "astro-seo";
 import strings from "../i18n/strings";
@@ -107,6 +108,7 @@ const colorArray: {
     <ClientRouter />
   </head>
   <body class="flex h-full flex-col bg-gray-900 text-gray-50">
+    <NavPlaceholder />
     <div class="flex min-h-screen flex-col">
       <Nav fullPage={true} transition:persist />
 
