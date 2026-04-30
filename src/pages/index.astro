@@ -102,9 +102,9 @@ const locale = Astro.currentLocale;
       <div
         class="rounded-md border-2 border-indigo-400 bg-gray-800 px-6 py-4"
       >
-        <p class="pt-2 pb-4 text-lg font-bold md:text-xl">
-          Currently:
-        </p>
+        <p class="pt-2 pb-4 text-lg font-bold md:text-xl"
+          >Currently:</p
+        >
         <ul
           class="list-inside list-disc px-3 text-sm leading-loose md:text-base"
         >
@@ -122,17 +122,28 @@ const locale = Astro.currentLocale;
       <div
         class="rounded-md border-2 border-gray-500 bg-gray-800 px-6 py-4"
       >
+        <p class="pt-2 pb-4 text-lg font-bold md:text-xl">2026</p>
+        <ul
+          class="list-inside list-disc px-3 text-sm leading-loose md:text-base"
+        >
+          <li>Editor @ SITCON 2026</li>
+          <li>Camp counselor lead @ SITCON Camp 2026</li>
+          <li>Scored 970 in TOEIC again</li>
+        </ul>
+      </div>
+      <div
+        class="rounded-md border-2 border-gray-500 bg-gray-800 px-6 py-4"
+      >
         <p class="pt-2 pb-4 text-lg font-bold md:text-xl">2025</p>
         <ul
           class="list-inside list-disc px-3 text-sm leading-loose md:text-base"
         >
-          <li>Mobile team @ SITCON 2025</li>
-          <li>Camp counselor & development team @ SITCON Camp 2025</li
-          >
+          <li>Operations team @ SITCON 2025</li>
+          <li>Camp counselors & IT team @ SITCON Camp 2025</li>
           <li>Staff @ Hack Club Scrapyard Taiwan</li>
           <li>Club leader @ Hack Club</li>
           <li>Technology team @ HackIt</li>
-          <li>Scored 930 in TOEIC reading and listening test</li>
+          <li>Scored 930 in TOEIC</li>
         </ul>
       </div>
       <div
@@ -505,6 +516,15 @@ const locale = Astro.currentLocale;
           "simple-icons:telegram",
           "material-symbols:construction-rounded",
         ]}
+      />
+      <Card
+        title="LightWolf"
+        description="LightWolf is a series of RP2350 based hardware I've made. It's sponsored by Hack Club to make those boards happen. Currently it has two boards: One is RP2350 based development board, another one is PCM5102A based USB headphone DAC"
+        link="https://w.wolf-yuan.dev/projects/lightwolf"
+        linkDescription="github.com/wolf-yuan-6115/lightwolf"
+        className="border-gray-400 hover:bg-gray-400"
+        target="_blank"
+        icons={["simple-icons:raspberrypi", "simple-icons:kicad"]}
       />
     </div>
   </section>
