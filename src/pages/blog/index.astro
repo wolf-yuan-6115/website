@@ -6,7 +6,9 @@ import { Image, Picture } from "astro:assets";
 import { getCollection } from "astro:content";
 import { ClassNameValue, twMerge } from "tailwind-merge";
 const posts = (await getCollection("en")).sort(
-  (a, b) => b.data.sorting - a.data.sorting,
+  (a, b) =>
+    new Date(b.data.publishDate).getTime() -
+    new Date(a.data.publishDate).getTime(),
 );
 const locale = Astro.currentLocale;
 
