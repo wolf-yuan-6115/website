@@ -21,7 +21,7 @@
     "@hbsnow/rehype-sectionize": "^1.0.7",
     "@shikijs/transformers": "^4.0.2",
     "@tailwindcss/vite": "^4.2.4",
-    "astro": "6.1.9",
+    "astro": "6.2.2",
     "astro-icon": "^1.1.5",
     "astro-seo": "^1.1.0",
     "autoprefixer": "^10.5.0",
@@ -42,7 +42,7 @@
     "prettier": "^3.8.3",
     "prettier-plugin-astro": "^0.14.1",
     "prettier-plugin-organize-imports": "^4.3.0",
-    "prettier-plugin-tailwindcss": "^0.0.0-insiders.f7d2598",
+    "prettier-plugin-tailwindcss": "^0.8.0",
     "typescript": "^6.0.3",
     "wrangler": "^4.84.1"
   },
