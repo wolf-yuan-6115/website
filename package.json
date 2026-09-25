@@ -40,7 +40,7 @@
     "@iconify-json/material-symbols": "^1.2.68",
     "@iconify-json/simple-icons": "^1.2.79",
     "prettier": "^3.8.3",
-    "prettier-plugin-astro": "^0.14.1",
+    "prettier-plugin-astro": "^1.0.0",
     "prettier-plugin-organize-imports": "^4.3.0",
     "prettier-plugin-tailwindcss": "^0.0.0-insiders.f7d2598",
     "typescript": "^6.0.3",
