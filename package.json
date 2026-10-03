@@ -52,7 +52,7 @@
     "prettier-plugin-astro": "^0.14.1",
     "prettier-plugin-organize-imports": "^4.3.0",
     "prettier-plugin-tailwindcss": "0.0.0-insiders.f7d2598",
-    "typescript": "5.9.3",
+    "typescript": "7.0.2",
     "wrangler": "^4.147.0"
   },
   "trustedDependencies": [
