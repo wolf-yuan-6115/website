@@ -1,3 +1,10 @@
 include:
   - project: "renovate-bot/renovate-runner"
     file: "/templates/renovate.gitlab-ci.yml"
+
+verify:
+  stage: test
+  image: oven/bun:1.3.11
+  script:
+    - bun install --frozen-lockfile
+    - bun run verify

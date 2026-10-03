@@ -1,0 +1,143 @@
+---
+import {
+  defaultLocale,
+  localeConfig,
+  locales,
+  type Locale,
+} from "../i18n/config";
+
+export type AlternateUrls = Partial<Record<Locale, string>>;
+
+export interface SeoProps {
+  title: string;
+  description: string;
+  locale: Locale;
+  openGraphTitle?: string;
+  image?: string;
+  type?: "website" | "article";
+  publishedTime?: Date;
+  modifiedTime?: Date;
+  tags?: string[];
+  alternateUrls?: AlternateUrls;
+  noindex?: boolean;
+}
+
+interface Props extends SeoProps {}
+
+const {
+  title,
+  description,
+  locale,
+  openGraphTitle = title,
+  image = "/logo_512x512.webp",
+  type = "website",
+  publishedTime,
+  modifiedTime,
+  tags = [],
+  alternateUrls = {},
+  noindex = false,
+} = Astro.props;
+
+const site = Astro.site ?? new URL("https://wolf-yuan.dev");
+const canonicalUrl = new URL(Astro.url.pathname, site);
+const imageUrl = new URL(image, site);
+const availableAlternates = locales.flatMap((alternateLocale) => {
+  const path = alternateUrls[alternateLocale];
+  return path
+    ? [{ locale: alternateLocale, url: new URL(path, site) }]
+    : [];
+});
+const defaultAlternate = alternateUrls[defaultLocale];
+---
+
+<title>{`${title} - Wolf Yuan`}</title>
+<link rel="canonical" href={canonicalUrl} />
+<meta name="description" content={description} />
+<meta
+  name="robots"
+  content={noindex ? "noindex, follow" : "index, follow"}
+/>
+
+<meta property="og:title" content={openGraphTitle} />
+<meta property="og:type" content={type} />
+<meta property="og:url" content={canonicalUrl} />
+<meta property="og:image" content={imageUrl} />
+<meta property="og:description" content={description} />
+<meta property="og:site_name" content="Wolf Yuan" />
+<meta property="og:locale" content={localeConfig[locale].ogLocale} />
+{
+  availableAlternates
+    .filter(
+      ({ locale: alternateLocale }) => alternateLocale !== locale,
+    )
+    .map(({ locale: alternateLocale }) => (
+      <meta
+        property="og:locale:alternate"
+        content={localeConfig[alternateLocale].ogLocale}
+      />
+    ))
+}
+
+{
+  type === "article" && (
+    <>
+      <meta property="article:author" content="Wolf Yuan" />
+      {publishedTime && (
+        <meta
+          property="article:published_time"
+          content={publishedTime.toISOString()}
+        />
+      )}
+      {modifiedTime && (
+        <meta
+          property="article:modified_time"
+          content={modifiedTime.toISOString()}
+        />
+      )}
+      {tags.map((tag) => (
+        <meta property="article:tag" content={tag} />
+      ))}
+    </>
+  )
+}
+
+<meta
+  name="twitter:card"
+  content={type === "article" ? "summary_large_image" : "summary"}
+/>
+<meta name="twitter:site" content="@wolfyuan1135" />
+<meta name="twitter:title" content={openGraphTitle} />
+<meta name="twitter:description" content={description} />
+<meta name="twitter:image" content={imageUrl} />
+
+{
+  availableAlternates.map(({ locale: alternateLocale, url }) => (
+    <link
+      rel="alternate"
+      hreflang={localeConfig[alternateLocale].hrefLang}
+      href={url}
+    />
+  ))
+}
+{
+  defaultAlternate && (
+    <link
+      rel="alternate"
+      hreflang="x-default"
+      href={new URL(defaultAlternate, site)}
+    />
+  )
+}
+
+{
+  locales.map((feedLocale) => (
+    <link
+      rel="alternate"
+      type="application/rss+xml"
+      title={
+        feedLocale === "en" ? "Wolf's blog" : "Wolf 的小小部落格"
+      }
+      href={new URL(localeConfig[feedLocale].feedPath, site)}
+    />
+  ))
+}

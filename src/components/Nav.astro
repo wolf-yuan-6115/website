@@ -1,19 +1,26 @@
 ---
 import { Image } from "astro:assets";
-import { getRelativeLocaleUrl } from "astro:i18n";
 import { Icon } from "astro-icon/components";
-import strings from "../i18n/strings.js";
-
-import avatarImage from "../assets/transparent_2000x2000.png";
 import { twMerge } from "tailwind-merge";
 
-const t = strings.nav[Astro.currentLocale];
+import avatarImage from "../assets/transparent_2000x2000.png";
+import { getLocalePath, type Locale } from "../i18n/config";
+import { getMessages } from "../i18n/messages";
 
-const { fullPage = false } = Astro.props;
+interface Props {
+  locale: Locale;
+  alternateUrls?: Partial<Record<Locale, string>>;
+  fullPage?: boolean;
+}
+
+const { locale, alternateUrls = {}, fullPage = false } = Astro.props;
+const t = getMessages(locale).nav;
+const alternateLocale: Locale = locale === "en" ? "zh-tw" : "en";
+const alternateUrl = alternateUrls[alternateLocale];
 ---
 
 {
-  /* Setting raw class below, cuz dumb TailwindCSS treat bg-[100%_200%] as background-position*/
+  /* Keep background-size inline because Tailwind parses this value as a position. */
 }
 <nav
   class={twMerge(
@@ -28,7 +35,7 @@ const { fullPage = false } = Astro.props;
     <div class="flex justify-between">
       <div>
         <div class="flex flex-row items-center gap-4">
-          <a href={getRelativeLocaleUrl(Astro.currentLocale, "/")}>
+          <a href={getLocalePath(locale)} aria-label={t.imageAlt}>
             <div>
               <Image
                 src={avatarImage}
@@ -39,21 +46,18 @@ const { fullPage = false } = Astro.props;
                 loading="eager"
               />
               <p class="sr-only">
-                {t["image-alt"]}
+                {t.imageAlt}
               </p>
             </div>
           </a>
-          <a
-            href={getRelativeLocaleUrl(Astro.currentLocale, "/")}
-            data-astro-prefetch
-          >
+          <a href={getLocalePath(locale)} data-astro-prefetch>
             <div
               class="js:nav-title text-lg font-bold opacity-0 transition-opacity duration-300 sm:opacity-0"
             >
               Wolf Yuan
             </div>
             <p class="sr-only">
-              {t["image-alt"]}
+              {t.imageAlt}
             </p>
           </a>
         </div>
@@ -62,10 +66,7 @@ const { fullPage = false } = Astro.props;
         <div class="flex h-10 items-center justify-end gap-6">
           <div>
             <a
-              href={getRelativeLocaleUrl(
-                Astro.currentLocale,
-                "/blog",
-              )}
+              href={getLocalePath(locale, "/blog/")}
               class="text-gray-300 duration-300 hover:text-gray-50"
             >
               <div class="flex items-center justify-between md:gap-2">
@@ -73,30 +74,30 @@ const { fullPage = false } = Astro.props;
                   name="material-symbols:newspaper-rounded"
                   class="text-lg md:text-base"
                 />
-                <p class="sr-only md:not-sr-only">{t["blog-title"]}</p
-                >
+                <p class="sr-only md:not-sr-only">{t.blogTitle}</p>
               </div>
             </a>
           </div>
-          <div>
-            <a
-              href={getRelativeLocaleUrl(
-                Astro.currentLocale === "en" ? "zh-tw" : "en",
-                Astro.url.pathname.replace("/zh-tw", ""),
-              )}
-              class="text-gray-300 duration-300 hover:text-gray-50"
-            >
-              <div class="flex items-center justify-between md:gap-2">
-                <Icon
-                  name="material-symbols:translate-rounded"
-                  class="text-lg md:text-base"
-                />
-                <p class="sr-only inline md:not-sr-only"
-                  >{t["switch-language"]}</p
+          {
+            alternateUrl && (
+              <div>
+                <a
+                  href={alternateUrl}
+                  class="text-gray-300 duration-300 hover:text-gray-50"
                 >
+                  <div class="flex items-center justify-between md:gap-2">
+                    <Icon
+                      name="material-symbols:translate-rounded"
+                      class="text-lg md:text-base"
+                    />
+                    <p class="sr-only inline md:not-sr-only">
+                      {t.switchLanguage}
+                    </p>
+                  </div>
+                </a>
               </div>
-            </a>
-          </div>
+            )
+          }
         </div>
       </div>
     </div>
@@ -192,13 +193,20 @@ const { fullPage = false } = Astro.props;
 
 <script>
   document.addEventListener("astro:page-load", () => {
-    let navContainer = document.getElementsByClassName(
-      "js:nav-container",
-    )[0];
-    let navPaddingArea =
-      document.getElementsByClassName("js:nav-padding")[0];
-    let navTitleElement =
-      document.getElementsByClassName("js:nav-title")[0];
+    const navContainer = document.querySelector<HTMLElement>(
+      ".js\\:nav-container",
+    );
+    const navPaddingArea = document.querySelector<HTMLElement>(
+      ".js\\:nav-padding",
+    );
+    const navTitleElement =
+      document.querySelector<HTMLElement>(".js\\:nav-title");
+
+    if (!navContainer || !navPaddingArea || !navTitleElement) return;
+
+    const container = navContainer;
+    const paddingArea = navPaddingArea;
+    const titleElement = navTitleElement;
     let currentState = false;
 
     function compareScrollDistance() {
@@ -214,23 +222,23 @@ const { fullPage = false } = Astro.props;
 
     function changeState(state: boolean) {
       if (state) {
-        navContainer.classList.add("bg-top");
-        navContainer.classList.remove("bg-bottom");
+        container.classList.add("bg-top");
+        container.classList.remove("bg-bottom");
 
-        navPaddingArea.classList.add("py-4");
-        navPaddingArea.classList.remove("py-6");
+        paddingArea.classList.add("py-4");
+        paddingArea.classList.remove("py-6");
 
-        navTitleElement.classList.add("sm:opacity-100");
-        navTitleElement.classList.remove("sm:opacity-0");
+        titleElement.classList.add("sm:opacity-100");
+        titleElement.classList.remove("sm:opacity-0");
       } else {
-        navContainer.classList.add("bg-bottom");
-        navContainer.classList.remove("bg-top");
+        container.classList.add("bg-bottom");
+        container.classList.remove("bg-top");
 
-        navPaddingArea.classList.add("py-6");
-        navPaddingArea.classList.remove("py-4");
+        paddingArea.classList.add("py-6");
+        paddingArea.classList.remove("py-4");
 
-        navTitleElement.classList.add("sm:opacity-0");
-        navTitleElement.classList.remove("sm:opacity-100");
+        titleElement.classList.add("sm:opacity-0");
+        titleElement.classList.remove("sm:opacity-100");
       }
     }
 

@@ -1,28 +1,29 @@
 ---
-import OptimizePicture from "../OptimizePicture.astro";
+import type { ImageMetadata } from "astro";
 import { twMerge } from "tailwind-merge";
-const props = Astro.props;
+import ResponsivePicture, {
+  type Props as ResponsivePictureProps,
+} from "../ResponsivePicture.astro";
+
+type Props = Omit<ResponsivePictureProps, "src"> & {
+  src: ImageMetadata;
+};
+
+const { class: className, src, ...attributes } = Astro.props;
 ---
 
-<figure class="mx-auto w-fit py-4">
-  <a
-    href={props.src.src}
-    target="_blank"
-    class="mx-auto block w-[85%] md:w-[60%]"
-    ><OptimizePicture
-      class={twMerge(
-        props.class,
-        "aspect-auto rounded-md border-2 border-gray-400",
-      )}
-      maxViewport="1280"
-      maxWidth="1088"
-      pictureAttributes={{ class: "block" }}
-      {...props}
-    >
-      <slot />
-    </OptimizePicture></a
-  >
-  <figcaption class="mt-4 text-center text-sm italic"
-    >{props.alt}</figcaption
-  >
-</figure>
+<a
+  href={src.src}
+  target="_blank"
+  rel="noopener noreferrer"
+  class="block w-full"
+>
+  <ResponsivePicture
+    {...attributes}
+    src={src}
+    class={twMerge(
+      className,
+      "aspect-auto rounded-md border-2 border-gray-400",
+    )}
+  />
+</a>

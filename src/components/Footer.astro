@@ -1,28 +1,33 @@
 ---
-import { getRelativeLocaleUrl } from "astro:i18n";
 import { Image } from "astro:assets";
 import { Icon } from "astro-icon/components";
-import strings from "../i18n/strings.js";
+import { twMerge } from "tailwind-merge";
 import notDevelopedByEnglish from "../assets/not_developed_ai_english.svg";
 import notDevelopedByAIChinese from "../assets/not_developed_ai_chinese.svg";
 import notWrittenByEnglish from "../assets/not_written_ai_english.svg";
 import notWrittenByAIChinese from "../assets/not_written_ai_chinese.svg";
+import { localeConfig, type Locale } from "../i18n/config";
+import { getMessages } from "../i18n/messages";
 
-const notByAIImage =
-  Astro.url.pathname.startsWith("/blog") ||
-  Astro.url.pathname.startsWith("/zh-tw/blog")
-    ? Astro.currentLocale === "en"
-      ? notWrittenByEnglish
-      : notWrittenByAIChinese
-    : Astro.currentLocale === "en"
-      ? notDevelopedByEnglish
-      : notDevelopedByAIChinese;
+interface Props {
+  locale: Locale;
+  isBlog?: boolean;
+  class?: string;
+}
 
-const t = strings.footer[Astro.currentLocale];
+const { locale, isBlog = false, class: className } = Astro.props;
+const notByAIImage = isBlog
+  ? locale === "en"
+    ? notWrittenByEnglish
+    : notWrittenByAIChinese
+  : locale === "en"
+    ? notDevelopedByEnglish
+    : notDevelopedByAIChinese;
+const t = getMessages(locale).footer;
 ---
 
 <footer
-  class="mt-8 bg-gray-950"
+  class={twMerge("mt-8 bg-gray-950", className)}
   transition:name="footer"
   transition:animate="none"
 >
@@ -33,6 +38,7 @@ const t = strings.footer[Astro.currentLocale];
           <a
             href="https://w.wolf-yuan.dev/projects/website"
             target="_blank"
+            rel="noopener noreferrer"
             class="transition-colors duration-200 hover:text-gray-400"
           >
             <Icon name="simple-icons:gitlab" class="inline" />
@@ -40,15 +46,23 @@ const t = strings.footer[Astro.currentLocale];
           </a>
         </p>
         <p class="text-lg font-bold text-gray-400">
-          {t.madewith}
-          <a href="https://astro.build" target="_blank">
+          {t.madeWith}
+          <a
+            href="https://astro.build"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             <Icon
               name="simple-icons:astro"
               class="inline text-[#BC52EE]"
             />
             <span class="sr-only">Astro</span>
           </a>
-          <a href="https://tailwindcss.com" target="_blank">
+          <a
+            href="https://tailwindcss.com"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             <Icon
               name="simple-icons:tailwindcss"
               class="inline text-[#06B6D4]"
@@ -70,9 +84,7 @@ const t = strings.footer[Astro.currentLocale];
           > •
           <a
             class="underline decoration-gray-400 decoration-dashed decoration-1 underline-offset-4 transition-colors duration-100 hover:decoration-white"
-            href={Astro.currentLocale === "en"
-              ? "/rss/blog-en.xml"
-              : "/rss/blog-zh.xml"}>RSS</a
+            href={localeConfig[locale].feedPath}>RSS</a
           >
         </span>
       </div>
@@ -85,6 +97,7 @@ const t = strings.footer[Astro.currentLocale];
               href="https://w.wolf-yuan.dev/facebook"
               class="w-fit"
               target="_blank"
+              rel="noopener noreferrer"
             >
               <Icon
                 name="simple-icons:facebook"
@@ -98,6 +111,7 @@ const t = strings.footer[Astro.currentLocale];
               href="https://w.wolf-yuan.dev/instagram"
               class="w-fit"
               target="_blank"
+              rel="noopener noreferrer"
             >
               <Icon
                 name="simple-icons:instagram"
@@ -111,6 +125,7 @@ const t = strings.footer[Astro.currentLocale];
               href="https://w.wolf-yuan.dev/discord"
               class="w-fit"
               target="_blank"
+              rel="noopener noreferrer"
             >
               <Icon
                 name="simple-icons:discord"
@@ -123,7 +138,13 @@ const t = strings.footer[Astro.currentLocale];
 
         <Image
           src={notByAIImage}
-          alt="Not developed by AI"
+          alt={isBlog
+            ? locale === "en"
+              ? "Not written by AI"
+              : "非 AI 撰寫"
+            : locale === "en"
+              ? "Not developed by AI"
+              : "非 AI 開發"}
           loading="eager"
           class="md:ml-auto"
         />

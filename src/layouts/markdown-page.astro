@@ -1,261 +1,159 @@
 ---
-import "@fontsource-variable/jetbrains-mono/wght.css";
-import "../styles/global.css";
 import "../styles/markdown.css";
 
-import dayjs from "dayjs";
-import utc from "dayjs/plugin/utc";
-import timezone from "dayjs/plugin/timezone";
-import Nav from "../components/Nav.astro";
-import Footer from "../components/Footer.astro";
-import Noscript from "../components/Noscript.astro";
-import NavPlaceholder from "../components/NavPlaceholder.astro";
-import { ClientRouter } from "astro:transitions";
-import { SEO } from "astro-seo";
-import strings from "../i18n/strings";
-import { ClassNameValue, twMerge } from "tailwind-merge";
+import type { MarkdownHeading } from "astro";
 import { Image } from "astro:assets";
+import dayjs from "dayjs";
+import timezone from "dayjs/plugin/timezone";
+import utc from "dayjs/plugin/utc";
+
+import PostTags from "../components/PostTags.astro";
+import type { AlternateUrls } from "../components/SeoHead.astro";
+import { getMessages } from "../i18n/messages";
+import { getEntryLocale, type BlogEntry } from "../lib/blog";
+import SiteLayout from "./SiteLayout.astro";
 
 dayjs.extend(utc);
 dayjs.extend(timezone);
 
-const frontmatter = Astro.props.frontmatter;
+interface Props {
+  entry: BlogEntry;
+  headings: MarkdownHeading[];
+  alternateUrls: AlternateUrls;
+}
 
+const { entry, headings, alternateUrls } = Astro.props;
+const frontmatter = entry.data;
+const locale = getEntryLocale(entry);
+const t = getMessages(locale).blog;
 const created = dayjs(frontmatter.publishDate)
   .tz("UTC")
   .format("YYYY/MM/DD");
 const lastModified = dayjs(frontmatter.modifiedDate)
   .tz("UTC")
   .format("YYYY/MM/DD hh:mm A");
-
-const postImages = import.meta.glob(
-  "/src/assets/blog/**/*.{jpeg,jpg,png,gif,webp}",
-);
-
-const localeCode = Astro.currentLocale === "en" ? "en_US" : "zh_Hant";
-const t = strings.blog[Astro.currentLocale];
-
-const colorArray: {
-  circleColor: ClassNameValue;
-  border: ClassNameValue;
-}[] = [
-  { circleColor: "bg-blue-300", border: "border-blue-300" },
-  { circleColor: "bg-green-300", border: "border-green-300" },
-  { circleColor: "bg-yellow-300", border: "border-yellow-300" },
-  { circleColor: "bg-red-300", border: "border-red-300" },
-  { circleColor: "bg-indigo-300", border: "border-indigo-300" },
-  { circleColor: "bg-purple-300", border: "border-purple-300" },
-  { circleColor: "bg-pink-300", border: "border-pink-300" },
-  { circleColor: "bg-fuchsia-300", border: "border-fuchsia-300" },
-];
+const allTags = frontmatter.tags.concat(frontmatter.hiddenTags ?? []);
+const coverAlt = locale === "en" ? "Cover for article" : "文章封面：";
 ---
 
-<html
-  lang={Astro.currentLocale === "en" ? "en" : "zh-Hant"}
-  transition:name="root"
-  transition:animate="none"
-  class="scrollbar-stable overflow-y-auto scroll-smooth"
+<SiteLayout
+  locale={locale}
+  title={frontmatter.title}
+  description={frontmatter.description}
+  image={frontmatter.ogImage}
+  type="article"
+  publishedTime={frontmatter.publishDate}
+  modifiedTime={frontmatter.modifiedDate}
+  tags={allTags}
+  alternateUrls={alternateUrls}
+  contentMode="article"
+  isBlog
 >
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width" />
-    <link rel="icon" href="/favicon.ico" type="image/x-icon" />
-    <title>{`${frontmatter.title} - Wolf Yuan`}</title>
-    <meta name="generator" content={Astro.generator} />
-    <SEO
-      description={frontmatter.description}
-      charset="UTF-8"
-      openGraph={{
-        basic: {
-          title: frontmatter.title,
-          type: "article",
-          image: frontmatter.ogImage,
-        },
-        optional: {
-          siteName: "Wolf Yuan",
-          description: frontmatter.description,
-          locale: localeCode,
-          localeAlternate: ["en_US", "zh_Hant"],
-        },
-        article: {
-          publishedTime: frontmatter.createdTime,
-          modifiedTime: frontmatter.lastModified,
-          authors: ["Wolf Yuan"],
-          tags: frontmatter.tags.concat(frontmatter.hiddenTags ?? []),
-        },
-      }}
-      twitter={{
-        title: frontmatter.title,
-        description: frontmatter.description,
-        card: "summary_large_image",
-        site: "@wolfyuan1135",
-      }}
-    />
-
-    <link
-      rel="alternate"
-      type="application/rss+xml"
-      title="Wolf's blog"
-      href="https://wolf-yuan.dev/rss/blog-en.xml"
-    />
-    <link
-      rel="alternate"
-      type="application/rss+xml"
-      title="Wolf 的小小部落格"
-      href="https://wolf-yuan.dev/rss/blog-zh.xml"
-    />
-
-    <ClientRouter />
-  </head>
-  <body class="flex h-full flex-col bg-gray-900 text-gray-50">
-    <NavPlaceholder />
-    <div class="flex min-h-screen flex-col">
-      <Nav fullPage={true} transition:persist />
-
-      <div transition:animate="fade">
-        <div
-          class="mx-auto max-w-7xl"
-          transition:name={frontmatter.title}
+  <main>
+    <article transition:name={frontmatter.title}>
+      <div class="xl:mx-7">
+        <header
+          class="relative z-5 mx-auto mb-4 w-full overflow-hidden bg-cover bg-center bg-no-repeat pt-[50%] before:absolute before:inset-0 before:z-[-5] before:block before:bg-linear-to-t before:from-black before:from-20% before:to-transparent before:opacity-80 before:content-[''] xl:rounded-xl xl:pt-[30%] xl:before:rounded-xl"
+          transition:name={frontmatter.title + "i"}
         >
-          <div class="xl:mx-7">
-            <div
-              class="relative z-5 mx-auto mb-4 w-full overflow-hidden bg-cover bg-center bg-no-repeat pt-[50%] before:absolute before:inset-0 before:z-[-5] before:block before:bg-linear-to-t before:from-black before:from-20% before:to-transparent before:opacity-80 before:content-[''] xl:rounded-xl xl:pt-[30%] xl:before:rounded-xl"
-              transition:name={frontmatter.title + "i"}
+          <Image
+            src={frontmatter.image}
+            alt={`${coverAlt} ${frontmatter.title}`}
+            class="pointer-events-none absolute top-0 left-0 z-[-10] h-full w-full object-cover"
+            densities={[1, 2]}
+            priority
+          />
+          <div class="px-8 py-6">
+            <h1
+              class="py-4 text-2xl font-extrabold md:text-4xl"
+              transition:name={frontmatter.title + "t"}
             >
-              <Image
-                src={postImages[frontmatter.image]()}
-                alt={`Cover for article ${frontmatter.title}`}
-                class="pointer-events-none absolute top-0 left-0 z-[-10] h-full w-full object-cover"
-                densities={[1, 2]}
-                loading="eager"
+              {frontmatter.title}
+            </h1>
+            <p
+              class="py-2 text-sm text-gray-300 sm:text-base md:text-xl"
+              transition:name={frontmatter.title + "d"}
+            >
+              {frontmatter.description}
+            </p>
+            <p class="py-2 text-sm text-gray-400 md:text-lg">
+              {t.modified}<time
+                datetime={frontmatter.modifiedDate.toISOString()}
+                >{lastModified}</time
+              >
+            </p>
+            <p class="text-sm text-gray-500 md:text-base">
+              {t.created}<time
+                datetime={frontmatter.publishDate.toISOString()}
+                >{created}</time
+              >
+            </p>
+            <div class="mt-6">
+              <PostTags
+                tags={frontmatter.tags}
+                transitionName={frontmatter.title + "k"}
               />
-              <div class="px-8 py-6">
-                <h1
-                  class="py-4 text-2xl font-extrabold md:text-4xl"
-                  transition:name={frontmatter.title + "t"}
-                >
-                  {frontmatter.title}
-                </h1>
-                <p
-                  class="py-2 text-sm text-gray-300 sm:text-base md:text-xl"
-                  transition:name={frontmatter.title + "d"}
-                >
-                  {frontmatter.description}
-                </p>
-                <p class="py-2 text-sm text-gray-400 md:text-lg">
-                  {t["modified"]}{lastModified}
-                </p>
-                <p class="text-sm text-gray-500 md:text-base">
-                  {t["created"]}{created}
-                </p>
-
-                <div
-                  class="mt-6 flex flex-wrap place-items-center gap-3 text-sm"
-                  transition:name={frontmatter.title + "k"}
-                >
-                  {
-                    frontmatter.tags.map((tag, index) => (
-                      <div
-                        class={twMerge(
-                          "flex place-items-center gap-2 rounded-md border-2 px-3 py-1",
-                          colorArray[index % 8].border,
-                        )}
-                      >
-                        <div
-                          class={twMerge(
-                            "h-2 w-2 rounded-full",
-                            colorArray[index % 8].circleColor,
-                          )}
-                        />
-                        {tag.trim()}
-                      </div>
-                    ))
-                  }
-                </div>
-              </div>
             </div>
           </div>
-
-          <div class="mx-7">
-            {
-              Astro.props.headings.length > 1 && (
-                <div class="rounded-xl bg-gray-800">
-                  <p class="border-b-2 border-b-gray-600 px-6 py-4 text-2xl font-bold">
-                    {t["toc"]}
-                  </p>
-                  <ul class="list-inside list-disc space-y-1 px-6 py-4 text-sm sm:text-base">
-                    {Astro.props.headings.map((heading) => {
-                      return (
-                        <li
-                          style={{
-                            paddingLeft: `${(heading.depth - 2) * 4 * 0.25}rem`,
-                          }}
-                        >
-                          <a
-                            href={`#${heading.slug}`}
-                            class="transition-colors hover:text-gray-300"
-                          >
-                            {heading.text}
-                          </a>
-                        </li>
-                      );
-                    })}
-                  </ul>
-                </div>
-              )
-            }
-
-            <main class="markdown-content mt-8">
-              <slot />
-            </main>
-
-            <section class="mt-6 border-t-2 border-gray-600 py-16">
-              <p
-                class="pb-4 text-center text-xl font-semibold md:text-2xl"
-              >
-                {t["chatWithMe"]}
-              </p>
-              <p
-                class="text-center text-lg font-semibold text-gray-400 md:text-xl"
-              >
-                {t["sendAEmail"]}
-                <a
-                  href="mailto:me@wolf-yuan.dev?subject=I%20have%20some%20ideas!"
-                  class="underline decoration-gray-500 decoration-dotted underline-offset-4 transition-colors duration-100 hover:decoration-white"
-                >
-                  me@wolf-yuan.dev</a
-                >!
-              </p>
-            </section>
-          </div>
-        </div>
+        </header>
       </div>
 
-      <Footer transition:persist />
-      <Noscript />
-    </div>
+      <div class="mx-7">
+        {
+          headings.length > 1 && (
+            <aside
+              class="rounded-xl bg-gray-800"
+              aria-labelledby="table-of-contents"
+            >
+              <h2
+                id="table-of-contents"
+                class="border-b-2 border-b-gray-600 px-6 py-4 text-2xl font-bold"
+              >
+                {t.toc}
+              </h2>
+              <ul class="list-inside list-disc space-y-1 px-6 py-4 text-sm sm:text-base">
+                {headings.map((heading) => (
+                  <li
+                    style={{
+                      paddingLeft: `${(heading.depth - 2) * 4 * 0.25}rem`,
+                    }}
+                  >
+                    <a
+                      href={`#${heading.slug}`}
+                      class="transition-colors hover:text-gray-300"
+                    >
+                      {heading.text}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </aside>
+          )
+        }
 
-    <style is:global>
-      :root {
-        color-scheme: dark;
-      }
+        <div class="markdown-content mt-8">
+          <slot />
+        </div>
 
-      @keyframes astroFadeIn {
-        from {
-          opacity: 0;
-        }
-        to {
-          opacity: 1;
-        }
-      }
-      @keyframes astroFadeOut {
-        from {
-          opacity: 1;
-        }
-        to {
-          opacity: 0;
-        }
-      }
-    </style>
-  </body></html
->
+        <footer class="mt-6 border-t-2 border-gray-600 py-16">
+          <h2
+            class="pb-4 text-center text-xl font-semibold md:text-2xl"
+          >
+            {t.chatWithMe}
+          </h2>
+          <p
+            class="text-center text-lg font-semibold text-gray-400 md:text-xl"
+          >
+            {t.sendAnEmail}{" "}
+            <a
+              href="mailto:me@wolf-yuan.dev?subject=I%20have%20some%20ideas!"
+              class="underline decoration-gray-500 decoration-dotted underline-offset-4 transition-colors duration-100 hover:decoration-white"
+            >
+              me@wolf-yuan.dev</a
+            >!
+          </p>
+        </footer>
+      </div>
+    </article>
+  </main>
+</SiteLayout>

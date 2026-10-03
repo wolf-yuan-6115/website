@@ -1,24 +1,5 @@
 ---
-import Base from "../../layouts/main.astro";
-import Button from "../../components/Button.astro";
+import NotFoundPage from "../../components/pages/NotFoundPage.astro";
 ---
 
-<Base title="404 找不到" description="你迷路了嗎？" fullPage={true}>
-  <div class="grid h-full place-items-center content-center gap-y-12">
-    <div>
-      <p class="text-6xl font-extrabold md:text-7xl">404 找不到</p>
-    </div>
-    <div class="grid grid-cols-2 gap-x-4">
-      <Button link="/">
-        <p>回到首頁</p>
-      </Button>
-      <Button
-        link="https://w.wolf-yuan.dev/youtube"
-        target="_blank"
-        className="border-indigo-200 hover:bg-indigo-200"
-      >
-        <p>點我拿一個秘密餅乾</p>
-      </Button>
-    </div>
-  </div>
-</Base>
+<NotFoundPage locale="zh-tw" />

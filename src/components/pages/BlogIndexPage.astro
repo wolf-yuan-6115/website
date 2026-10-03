@@ -1,0 +1,100 @@
+---
+import type { Locale } from "../../i18n/config";
+import { getMessages } from "../../i18n/messages";
+import { getPosts } from "../../lib/blog";
+import SiteLayout from "../../layouts/SiteLayout.astro";
+import PostCard from "../PostCard.astro";
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const posts = await getPosts(locale);
+const [latestPost, ...olderPosts] = posts;
+const t = getMessages(locale).blog;
+const copy = {
+  en: {
+    title: "Blog posts",
+    openGraphTitle: "My blog posts",
+    description:
+      "I will share what I see happening, some programming tips, and a bit of my perspective on the world.",
+    heading: "Posts",
+    latest: "Latest post",
+    older: "Older posts",
+    coverAlt: "Cover for post",
+  },
+  "zh-tw": {
+    title: "部落格",
+    openGraphTitle: "我的部落格",
+    description:
+      "我會分享我看到的事務，一些寫程式的技巧，還有一點我對世界的看法",
+    heading: "貼文",
+    latest: "最新的貼文",
+    older: "較舊的貼文",
+    coverAlt: "文章封面：",
+  },
+} satisfies Record<
+  Locale,
+  {
+    title: string;
+    openGraphTitle: string;
+    description: string;
+    heading: string;
+    latest: string;
+    older: string;
+    coverAlt: string;
+  }
+>;
+const page = copy[locale];
+const alternateUrls = { en: "/blog/", "zh-tw": "/zh-tw/blog/" };
+---
+
+<SiteLayout
+  locale={locale}
+  title={page.title}
+  openGraphTitle={page.openGraphTitle}
+  description={page.description}
+  alternateUrls={alternateUrls}
+  isBlog
+>
+  <main>
+    <h1 class="py-6 text-2xl font-bold md:text-3xl">{page.heading}</h1
+    >
+    <p class="pb-4 text-gray-300">{page.description}</p>
+
+    {
+      latestPost ? (
+        <>
+          <PostCard
+            entry={latestPost}
+            locale={locale}
+            featured
+            latestLabel={page.latest}
+            coverAlt={page.coverAlt}
+          />
+
+          {olderPosts.length > 0 && (
+            <>
+              <div class="mx-auto mt-12 mb-2 h-0.5 w-full rounded-full bg-gray-500" />
+              <h2 class="pt-6 text-xl text-gray-300 md:text-2xl">
+                {page.older}
+              </h2>
+              <div class="mt-6 flex flex-col gap-8">
+                {olderPosts.map((entry) => (
+                  <PostCard
+                    entry={entry}
+                    locale={locale}
+                    coverAlt={page.coverAlt}
+                  />
+                ))}
+              </div>
+            </>
+          )}
+        </>
+      ) : (
+        <p class="py-12 text-gray-300">{t.noPosts}</p>
+      )
+    }
+  </main>
+</SiteLayout>

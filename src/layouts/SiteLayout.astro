@@ -1,0 +1,109 @@
+---
+import "@fontsource-variable/jetbrains-mono/wght.css";
+import "../styles/global.css";
+
+import { ClientRouter } from "astro:transitions";
+import { twMerge } from "tailwind-merge";
+
+import Footer from "../components/Footer.astro";
+import Nav from "../components/Nav.astro";
+import NavPlaceholder from "../components/NavPlaceholder.astro";
+import Noscript from "../components/Noscript.astro";
+import SeoHead, { type SeoProps } from "../components/SeoHead.astro";
+import { localeConfig } from "../i18n/config";
+
+interface Props extends SeoProps {
+  fullPage?: boolean;
+  contentMode?: "standard" | "article";
+  isBlog?: boolean;
+}
+
+const {
+  fullPage = false,
+  contentMode = "standard",
+  isBlog = false,
+  alternateUrls = {},
+  ...seoProps
+} = Astro.props;
+const { locale } = seoProps;
+---
+
+<html
+  lang={localeConfig[locale].htmlLang}
+  transition:name="root"
+  transition:animate="none"
+  class:list={[
+    "scrollbar-stable overflow-y-auto",
+    contentMode === "article" && "scroll-smooth",
+  ]}
+>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+    <meta name="generator" content={Astro.generator} />
+    <SeoHead {...seoProps} alternateUrls={alternateUrls} />
+    <ClientRouter />
+  </head>
+  <body class="bg-gray-900 text-gray-50">
+    <NavPlaceholder locale={locale} />
+    <div
+      class={twMerge(
+        "flex flex-col",
+        fullPage ? "h-screen" : "min-h-screen",
+      )}
+    >
+      <Nav
+        locale={locale}
+        alternateUrls={alternateUrls}
+        fullPage={isBlog}
+      />
+
+      <div
+        class={twMerge(
+          "mx-auto mb-auto w-full max-w-7xl",
+          fullPage && "h-full",
+        )}
+        transition:name="content"
+        transition:animate="fade"
+      >
+        <div
+          class={twMerge(
+            contentMode === "standard" && "mx-7",
+            fullPage && "h-full",
+          )}
+          transition:animate="none"
+        >
+          <slot />
+        </div>
+      </div>
+
+      <Footer locale={locale} isBlog={isBlog} />
+      <Noscript locale={locale} />
+    </div>
+  </body></html
+>
+
+<style is:global>
+  :root {
+    color-scheme: dark;
+  }
+
+  @keyframes astroFadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  @keyframes astroFadeOut {
+    from {
+      opacity: 1;
+    }
+    to {
+      opacity: 0;
+    }
+  }
+</style>
