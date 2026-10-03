@@ -1,10 +1,13 @@
 @import "tailwind-scrollbar-utilities";
-@import 'tailwindcss';
+@import "tailwindcss";
 
 @source "../";
 
 @theme {
-  --font-sans:  'JetBrains Mono Variable', ui-monospace, 'SFMono-Regular', 'Menlo', 'Monaco', 'Consolas', 'Liberation Mono', 'Courier New', LiHei Pro, 黑體-繁, 微軟正黑體;
+  --font-sans:
+    "JetBrains Mono Variable", ui-monospace, "SFMono-Regular",
+    "Menlo", "Monaco", "Consolas", "Liberation Mono", "Courier New",
+    LiHei Pro, 黑體-繁, 微軟正黑體;
 }
 
 @layer base {

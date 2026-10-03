@@ -1,0 +1,23 @@
+---
+import { render } from "astro:content";
+
+import MarkdownImage from "../markdown/img.astro";
+import { getTranslationUrls, type BlogEntry } from "../../lib/blog";
+import MarkdownPostLayout from "../../layouts/markdown-page.astro";
+
+interface Props {
+  entry: BlogEntry;
+}
+
+const { entry } = Astro.props;
+const { Content, headings } = await render(entry);
+const alternateUrls = await getTranslationUrls(entry);
+---
+
+<MarkdownPostLayout
+  entry={entry}
+  headings={headings}
+  alternateUrls={alternateUrls}
+>
+  <Content components={{ img: MarkdownImage }} />
+</MarkdownPostLayout>

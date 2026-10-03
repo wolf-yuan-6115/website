@@ -1,49 +1,46 @@
 ---
 import { Icon } from "astro-icon/components";
-import { twMerge } from "tailwind-merge";
-import strings from "../i18n/strings.js";
+import LinkPanel from "./LinkPanel.astro";
 
-const { className, title, description, link, icons, changed } =
-  Astro.props;
+interface Props {
+  class?: string;
+  title: string;
+  description: string;
+  link: string;
+  icons: string[];
+  changed?: string;
+}
+
+const {
+  class: className,
+  title,
+  description,
+  link,
+  icons,
+  changed,
+} = Astro.props;
 ---
 
 <div>
-  <a href={link} target="_blank">
-    <div
-      class={twMerge(
-        "px-5 py-5 bg-gray-800 border-2 border-emerald-200 border-solid hover:bg-emerald-200 hover:text-gray-800 md:hover:scale-105 transform-gpu duration-300 rounded-md",
-        className,
-      )}
-    >
-      <div class="grid grid-flow-col">
-        <p
-          class="my-auto place-self-start text-lg font-semibold md:text-xl"
-        >
-          {title}
-        </p>
-        <div class="place-self-end text-xl md:text-2xl">
-          {
-            icons.map((i) => (
-              <Icon
-                name={i}
-                class={twMerge("mx-2 inline", className)}
-              />
-            ))
-          }
-        </div>
+  <LinkPanel href={link} target="_blank" class={className}>
+    <div class="grid grid-flow-col">
+      <p
+        class="my-auto place-self-start text-lg font-semibold md:text-xl"
+      >
+        {title}
+      </p>
+      <div class="place-self-end text-xl md:text-2xl">
+        {icons.map((i) => <Icon name={i} class="mx-2 inline" />)}
       </div>
-      <p class="pt-4 text-sm md:text-base">{description}</p>
-      {
-        changed && (
-          <p class="pt-4 text-sm md:text-base">
-            <Icon
-              name="material-symbols:bolt-rounded"
-              class="inline"
-            />
-            <span class="font-bold">{changed}</span>
-          </p>
-        )
-      }
     </div>
-  </a>
+    <p class="pt-4 text-sm md:text-base">{description}</p>
+    {
+      changed && (
+        <p class="pt-4 text-sm md:text-base">
+          <Icon name="material-symbols:bolt-rounded" class="inline" />
+          <span class="font-bold">{changed}</span>
+        </p>
+      )
+    }
+  </LinkPanel>
 </div>

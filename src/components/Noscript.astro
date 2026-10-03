@@ -1,7 +1,13 @@
 ---
-import strings from "../i18n/strings.js";
+import type { Locale } from "../i18n/config";
+import { getMessages } from "../i18n/messages";
 
-const t = strings["noscript"][Astro.currentLocale];
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const t = getMessages(locale).noscript;
 ---
 
 <noscript>
@@ -9,13 +15,13 @@ const t = strings["noscript"][Astro.currentLocale];
     <div class="mx-auto max-w-6xl">
       <div class="w-full p-4 py-8">
         <p class="pb-4 text-xl font-extrabold">
-          {t["title"]}
+          {t.title}
         </p>
         <p class="py-4 md:py-0">
-          {t["description"]}
+          {t.description}
         </p>
         <p class="hidden md:block">
-          {t["additional"]}
+          {t.additional}
         </p>
       </div>
     </div>

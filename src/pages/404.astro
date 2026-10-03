@@ -1,28 +1,5 @@
 ---
-import Base from "../layouts/main.astro";
-import Button from "../components/Button.astro";
+import NotFoundPage from "../components/pages/NotFoundPage.astro";
 ---
 
-<Base
-  title="404 Not found"
-  description="Are you lost?"
-  fullPage={true}
->
-  <div class="grid h-full place-items-center content-center gap-y-12">
-    <div>
-      <p class="text-6xl font-extrabold md:text-7xl">404 Not Found</p>
-    </div>
-    <div class="grid grid-cols-2 gap-x-4">
-      <Button link="/">
-        <p>Back to home page</p>
-      </Button>
-      <Button
-        link="https://w.wolf-yuan.dev/youtube"
-        target="_blank"
-        className="border-indigo-200 hover:bg-indigo-200"
-      >
-        <p>Secret cookie</p>
-      </Button>
-    </div>
-  </div>
-</Base>
+<NotFoundPage locale="en" />

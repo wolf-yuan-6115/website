@@ -1,0 +1,65 @@
+---
+import type { Locale } from "../../i18n/config";
+import { getLocalePath } from "../../i18n/config";
+import SiteLayout from "../../layouts/SiteLayout.astro";
+import Button from "../Button.astro";
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const copy = {
+  en: {
+    title: "404 Not found",
+    description: "Are you lost?",
+    heading: "404 Not Found",
+    back: "Back to home page",
+    secret: "Secret cookie",
+  },
+  "zh-tw": {
+    title: "404 找不到",
+    description: "你迷路了嗎？",
+    heading: "404 找不到",
+    back: "回到首頁",
+    secret: "點我拿一個秘密餅乾",
+  },
+} satisfies Record<
+  Locale,
+  {
+    title: string;
+    description: string;
+    heading: string;
+    back: string;
+    secret: string;
+  }
+>;
+const page = copy[locale];
+const alternateUrls = { en: "/404/", "zh-tw": "/zh-tw/404/" };
+---
+
+<SiteLayout
+  locale={locale}
+  title={page.title}
+  description={page.description}
+  fullPage
+  noindex
+  alternateUrls={alternateUrls}
+>
+  <main
+    class="grid h-full place-items-center content-center gap-y-12"
+  >
+    <h1 class="text-6xl font-extrabold md:text-7xl">{page.heading}</h1
+    >
+    <div class="grid grid-cols-2 gap-x-4">
+      <Button link={getLocalePath(locale)}>{page.back}</Button>
+      <Button
+        link="https://w.wolf-yuan.dev/youtube"
+        target="_blank"
+        class="border-indigo-200 hover:bg-indigo-200"
+      >
+        {page.secret}
+      </Button>
+    </div>
+  </main>
+</SiteLayout>

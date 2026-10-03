@@ -1,0 +1,44 @@
+---
+import { twMerge } from "tailwind-merge";
+
+interface Props {
+  tags: string[];
+  transitionName?: string;
+}
+
+const { tags, transitionName } = Astro.props;
+const colors = [
+  { circle: "bg-blue-300", border: "border-blue-300" },
+  { circle: "bg-green-300", border: "border-green-300" },
+  { circle: "bg-yellow-300", border: "border-yellow-300" },
+  { circle: "bg-red-300", border: "border-red-300" },
+  { circle: "bg-indigo-300", border: "border-indigo-300" },
+  { circle: "bg-purple-300", border: "border-purple-300" },
+  { circle: "bg-pink-300", border: "border-pink-300" },
+  { circle: "bg-fuchsia-300", border: "border-fuchsia-300" },
+] as const;
+---
+
+<div
+  class="flex flex-wrap place-items-center gap-3 text-sm"
+  transition:name={transitionName}
+>
+  {
+    tags.map((tag, index) => {
+      const color = colors[index % colors.length];
+      return (
+        <div
+          class={twMerge(
+            "flex place-items-center gap-2 rounded-md border-2 px-3 py-1",
+            color.border,
+          )}
+        >
+          <span
+            class={twMerge("h-2 w-2 rounded-full", color.circle)}
+          />
+          {tag.trim()}
+        </div>
+      );
+    })
+  }
+</div>

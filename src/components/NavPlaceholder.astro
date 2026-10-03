@@ -1,12 +1,27 @@
+---
+import type { Locale } from "../i18n/config";
+import { getMessages } from "../i18n/messages";
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const t = getMessages(locale).loader;
+---
+
 <div
   class="pointer-events-none fixed top-0 left-0 z-50 h-screen w-screen place-items-center justify-center bg-gray-800/0 opacity-0 transition-all duration-300 ease-in-out"
   id="loader-overlay"
+  role="status"
+  aria-live="polite"
+  aria-hidden="true"
 >
   <div
     class="flex h-full w-full flex-col place-items-center justify-center space-y-4"
   >
-    <p class="text-xl font-bold">Loading</p>
-    <p class="">Receiving radio waves...</p>
+    <p class="text-xl font-bold">{t.loading}</p>
+    <p>{t.receiving}</p>
   </div>
 </div>
 
@@ -18,13 +33,17 @@
   }
 </style>
 
-<script is:inline>
+<script>
   document.addEventListener("astro:before-preparation", (event) => {
     const originalLoader = event.loader;
 
     event.loader = async () => {
       const loaderOverlay = document.getElementById("loader-overlay");
-      if (loaderOverlay) {
+      let visible = false;
+      const showTimer = window.setTimeout(() => {
+        if (!loaderOverlay) return;
+        visible = true;
+        loaderOverlay.ariaHidden = "false";
         loaderOverlay.classList.remove(
           "opacity-0",
           "pointer-events-none",
@@ -32,21 +51,19 @@
         window.requestAnimationFrame(() => {
           loaderOverlay.classList.add("loader-started");
         });
-      }
+      }, 150);
 
-      await Promise.all([
-        originalLoader(),
-        new Promise((k) => setTimeout(k, 1000)),
-      ]);
-
-      if (loaderOverlay) {
+      try {
+        await originalLoader();
+      } finally {
+        window.clearTimeout(showTimer);
+        if (!loaderOverlay || !visible) return;
         loaderOverlay.classList.remove("loader-started");
         loaderOverlay.classList.add(
           "pointer-events-none",
           "opacity-0",
         );
-
-        await new Promise((k) => setTimeout(k, 300));
+        loaderOverlay.ariaHidden = "true";
       }
     };
   });

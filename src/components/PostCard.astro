@@ -1,0 +1,78 @@
+---
+import { Image } from "astro:assets";
+import { twMerge } from "tailwind-merge";
+
+import type { Locale } from "../i18n/config";
+import { getBlogPostPath, type BlogEntry } from "../lib/blog";
+import PostTags from "./PostTags.astro";
+
+interface Props {
+  entry: BlogEntry;
+  locale: Locale;
+  featured?: boolean;
+  latestLabel?: string;
+  coverAlt: string;
+}
+
+const {
+  entry,
+  locale,
+  featured = false,
+  latestLabel,
+  coverAlt,
+} = Astro.props;
+const { title, description, image, tags } = entry.data;
+---
+
+<a
+  href={getBlogPostPath(entry)}
+  transition:name={title}
+  data-astro-prefetch
+  lang={locale}
+>
+  <article
+    class={twMerge(
+      "flex w-full flex-col border-2 border-gray-600 bg-gray-800 duration-300 hover:border-gray-400 md:flex-row",
+      featured ? "rounded-lg" : "rounded-md",
+    )}
+  >
+    <div class="md:basis-5/12" transition:name={title + "i"}>
+      <Image
+        src={image}
+        alt={`${coverAlt} ${title}`}
+        densities={featured ? [1, 2] : [1, 1.5, 2, 2.5]}
+        loading={featured ? "eager" : "lazy"}
+        class="h-full w-full rounded-tl-md rounded-tr-md object-cover md:rounded-tr-none md:rounded-bl-md"
+      />
+    </div>
+    <div class="flex flex-col px-6 py-8 md:basis-7/12">
+      {
+        featured && latestLabel && (
+          <p class="pb-2 text-gray-300/85 md:text-lg">
+            {latestLabel}
+          </p>
+        )
+      }
+      <h2
+        class={twMerge(
+          "font-bold",
+          featured
+            ? "pb-3 text-2xl md:text-3xl"
+            : "text-xl md:text-2xl",
+        )}
+        transition:name={title + "t"}
+      >
+        {title}
+      </h2>
+      <p
+        class={twMerge(featured ? "md:text-lg" : "pt-4 md:text-lg")}
+        transition:name={title + "d"}
+      >
+        {description}
+      </p>
+      <div class="mt-auto pt-4">
+        <PostTags tags={tags} transitionName={title + "k"} />
+      </div>
+    </div>
+  </article>
+</a>

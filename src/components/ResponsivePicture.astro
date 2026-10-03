@@ -1,0 +1,37 @@
+---
+import type { ImageMetadata } from "astro";
+import { Picture, type LocalImageProps } from "astro:assets";
+
+const RESPONSIVE_WIDTHS = [320, 480, 640, 735, 1080, 1470];
+const RESPONSIVE_SIZES =
+  "(min-width: 1280px) 735px, (min-width: 768px) calc(60vw - 2.1rem), calc(85vw - 2.975rem)";
+
+type ReservedPictureProps =
+  | "densities"
+  | "fallbackFormat"
+  | "format"
+  | "formats"
+  | "layout"
+  | "pictureAttributes"
+  | "quality"
+  | "sizes"
+  | "src"
+  | "srcset"
+  | "widths";
+
+export type Props = Omit<LocalImageProps, ReservedPictureProps> & {
+  src: ImageMetadata;
+};
+
+const props = Astro.props;
+---
+
+<Picture
+  {...props}
+  formats={["avif"]}
+  fallbackFormat="webp"
+  pictureAttributes={{ class: "block" }}
+  quality={90}
+  sizes={RESPONSIVE_SIZES}
+  widths={RESPONSIVE_WIDTHS}
+/>

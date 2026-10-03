@@ -1,0 +1,255 @@
+---
+import { Icon } from "astro-icon/components";
+
+import Button from "../Button.astro";
+import Card from "../Card.astro";
+import List from "../List.astro";
+import {
+  contributions,
+  experiences,
+  getLocalizedText,
+  heroRoles,
+  homeActions,
+  homeText,
+  projects,
+  skillGroups,
+} from "../../data/home";
+import { getLocalePath, type Locale } from "../../i18n/config";
+import SiteLayout from "../../layouts/SiteLayout.astro";
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const t = homeText[locale];
+const alternateUrls = {
+  en: "/",
+  "zh-tw": "/zh-tw/",
+} satisfies Record<Locale, string>;
+---
+
+<SiteLayout
+  title={t.seo.title}
+  openGraphTitle={t.seo.openGraphTitle}
+  description={t.seo.description}
+  locale={locale}
+  alternateUrls={alternateUrls}
+>
+  <main>
+    <section class="min-h-screen" aria-labelledby="home-title">
+      <p class="pt-6 text-lg md:text-xl lg:text-2xl"
+        >{t.hero.greeting}</p
+      >
+      <h1
+        id="home-title"
+        class="py-6 text-5xl font-extrabold lg:text-6xl"
+      >
+        Wolf Yuan
+      </h1>
+      <p class="pt-4 pb-10 text-slate-300 md:text-xl lg:text-2xl">
+        {t.hero.locationBeforeFlag}
+        <Icon name="flagpack:tw" class="inline" />
+        {t.hero.locationAfterFlag}
+      </p>
+      <p
+        class="pt-2 pb-5 text-sm text-slate-200 md:text-base lg:text-lg"
+      >
+        {t.hero.rolesIntro}
+      </p>
+      {
+        heroRoles.map((role) => (
+          <p class:list={["py-2 md:text-lg lg:text-xl", role.class]}>
+            {role.emphasis && (
+              <>
+                <i>{role.emphasis[locale]}</i>{" "}
+              </>
+            )}
+            {role.label[locale]}
+          </p>
+        ))
+      }
+      <div class="py-8 md:py-12">
+        {
+          homeActions.map((action) => (
+            <div class="py-4">
+              <Button
+                link={
+                  action.localized
+                    ? getLocalePath(locale, action.href)
+                    : action.href
+                }
+                target={action.target}
+                class={action.class}
+                glow={true}
+                prefetch={action.prefetch}
+              >
+                <Icon
+                  name={action.icon}
+                  class="text-sm md:text-base"
+                />
+                <p class="inline text-sm">{action.label[locale]}</p>
+                <Icon
+                  name="material-symbols:arrow-forward-rounded"
+                  class="text-sm md:text-base"
+                />
+              </Button>
+            </div>
+          ))
+        }
+      </div>
+    </section>
+
+    <section aria-labelledby="experiences-title">
+      <h2
+        id="experiences-title"
+        class="py-12 text-2xl font-bold lg:text-3xl"
+      >
+        {t.sections.experiences}
+      </h2>
+      <div class="grid gap-5">
+        {
+          experiences.map((experience) => (
+            <div
+              class:list={[
+                "rounded-md border-2 bg-gray-800 px-6 py-4",
+                experience.class,
+              ]}
+            >
+              <h3 class="pt-2 pb-4 text-lg font-bold md:text-xl">
+                {experience.title[locale]}
+              </h3>
+              <ul class="list-inside list-disc px-3 text-sm leading-loose md:text-base">
+                {experience.items[locale].map((item) => (
+                  <li>{item}</li>
+                ))}
+              </ul>
+            </div>
+          ))
+        }
+      </div>
+    </section>
+
+    <section aria-labelledby="skills-title">
+      <h2
+        id="skills-title"
+        class="pt-12 text-2xl font-bold lg:text-3xl"
+      >
+        {t.sections.skills}
+      </h2>
+      <p class="pt-4 pb-6 text-gray-400 md:text-lg">
+        {t.sections.skillsDescription}
+      </p>
+      <div class="grid grid-flow-row grid-cols-1 gap-6">
+        {
+          skillGroups.map((group) => (
+            <div
+              class:list={[
+                "rounded-md border-2 bg-gray-800 py-4",
+                group.class,
+              ]}
+            >
+              <h3
+                class:list={[
+                  "px-6 pt-2 text-lg font-bold md:text-xl",
+                  group.description ? "pb-2" : "pb-4",
+                ]}
+              >
+                {group.title[locale]}
+              </h3>
+              {group.description && (
+                <p class="px-6 pb-2 text-sm text-gray-400 md:text-base">
+                  {group.description[locale]}
+                </p>
+              )}
+              <div class="relative px-2 before:absolute before:left-0 before:h-9 before:w-8 before:bg-linear-to-r before:from-gray-800 before:to-transparent before:content-[''] after:absolute after:top-0 after:right-0 after:inline-block after:h-9 after:w-8 after:bg-linear-to-l after:from-gray-800 after:to-transparent after:content-['']">
+                <div class="flex flex-row items-center overflow-x-auto py-2 [&>div]:flex [&>div]:flex-row [&>div]:items-center [&>div]:gap-4 [&>div]:px-4">
+                  {group.skills.map((skill) => (
+                    <div>
+                      <Icon name={skill.icon} class="md:text-lg" />
+                      <p class="text-nowrap md:text-lg">
+                        {getLocalizedText(skill.label, locale)}
+                      </p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          ))
+        }
+      </div>
+    </section>
+
+    <section aria-labelledby="projects-title">
+      <h2
+        id="projects-title"
+        class="py-12 text-2xl font-bold lg:text-3xl"
+      >
+        {t.sections.projects}
+      </h2>
+      <div
+        class="grid grid-flow-row grid-cols-1 content-start gap-8 md:grid-cols-2 md:gap-6"
+      >
+        {
+          projects.map((project) => (
+            <Card
+              locale={locale}
+              title={project.title[locale]}
+              description={project.description[locale]}
+              link={getLocalizedText(project.href, locale)}
+              linkDescription={project.linkDescription}
+              class={project.class}
+              target="_blank"
+              appearedIn={project.appearedIn?.[locale]}
+              icons={project.icons}
+            />
+          ))
+        }
+      </div>
+    </section>
+
+    <section aria-labelledby="contributions-title">
+      <h2
+        id="contributions-title"
+        class="py-12 text-2xl font-bold lg:text-3xl"
+      >
+        {t.sections.contributions}
+      </h2>
+      <div class="grid gap-6">
+        {
+          contributions.map((contribution) => (
+            <List
+              title={contribution.title[locale]}
+              description={contribution.description[locale]}
+              link={contribution.href}
+              class={contribution.class}
+              changed={contribution.changed[locale]}
+              icons={contribution.icons}
+            />
+          ))
+        }
+      </div>
+    </section>
+
+    <section class="py-16" aria-labelledby="contact-title">
+      <h2
+        id="contact-title"
+        class="pb-4 text-center text-xl font-semibold md:text-2xl"
+      >
+        {t.contact.title}
+      </h2>
+      <p
+        class="text-center text-lg font-semibold text-gray-400 md:text-xl"
+      >
+        {t.contact.prefix}{" "}
+        <a
+          href="mailto:me@wolf-yuan.dev?subject=I%20have%20some%20ideas!"
+          class="underline decoration-gray-500 decoration-dotted underline-offset-4 transition-colors duration-100 hover:decoration-white"
+        >
+          me@wolf-yuan.dev
+        </a>
+        {t.contact.suffix && <> {t.contact.suffix}</>}
+      </p>
+    </section>
+  </main>
+</SiteLayout>

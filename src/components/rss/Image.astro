@@ -1,0 +1,30 @@
+---
+import type { ImageMetadata } from "astro";
+import { getImage } from "astro:assets";
+import type { HTMLAttributes } from "astro/types";
+
+interface Props extends Omit<HTMLAttributes<"img">, "src"> {
+  src: ImageMetadata | string;
+}
+
+const { src, alt = "", ...attributes } = Astro.props;
+const site = Astro.site ?? Astro.url;
+
+let imageSrc: string;
+let imageAttributes: HTMLAttributes<"img"> = {};
+
+if (typeof src === "string") {
+  imageSrc = new URL(src, site).href;
+} else {
+  const image = await getImage({
+    src,
+    width: Math.min(src.width, 1088),
+    format: "webp",
+  });
+
+  imageSrc = new URL(image.src, site).href;
+  imageAttributes = image.attributes;
+}
+---
+
+<img {...imageAttributes} {...attributes} src={imageSrc} alt={alt} />
