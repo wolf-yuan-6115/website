@@ -21,12 +21,14 @@ test("all routes replace the blocking overlay with a localized, indeterminate ba
       route,
     ).toBeTruthy();
     expect(bar.hasClass("pointer-events-none"), route).toBe(true);
-    expect(bar.find("progress").attr("value"), route).toBe("0");
-    expect(bar.find("progress").attr("data-reset"), route).toBe(
-      "true",
-    );
-    expect(bar.find("progress").attr("aria-hidden"), route).toBe(
-      "true",
-    );
+    const fill = bar.find("[data-progress-fill]");
+    expect(fill, route).toHaveLength(1);
+    expect(bar.find("progress"), route).toHaveLength(0);
+    expect(
+      fill.hasClass("w-[var(--navigation-progress,0%)]"),
+      route,
+    ).toBe(true);
+    expect(fill.attr("data-reset"), route).toBe("true");
+    expect(fill.attr("aria-hidden"), route).toBe("true");
   }
 });

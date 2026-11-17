@@ -19,30 +19,25 @@ const t = getMessages(locale).loader;
   transition:persist="navigation-progress"
   transition:animate="none"
 >
-  <progress
-    max="1"
-    value="0"
+  <div
+    data-progress-fill
     data-reset="true"
     data-complete="false"
     aria-hidden="true"
-    class="block h-full w-full appearance-none overflow-hidden border-0 bg-transparent drop-shadow-sm drop-shadow-indigo-400/60 [&::-webkit-progress-bar]:bg-transparent [&::-webkit-progress-value]:bg-indigo-400 [&::-webkit-progress-value]:transition-[width] [&::-webkit-progress-value]:duration-1000 [&::-webkit-progress-value]:ease-linear [&::-moz-progress-bar]:bg-indigo-400 [&::-moz-progress-bar]:transition-[width] [&::-moz-progress-bar]:duration-1000 [&::-moz-progress-bar]:ease-linear data-[complete=true]:[&::-webkit-progress-value]:ease-out data-[complete=true]:[&::-moz-progress-bar]:ease-out data-[reset=true]:[&::-webkit-progress-value]:transition-none data-[reset=true]:[&::-moz-progress-bar]:transition-none motion-reduce:[&::-webkit-progress-value]:transition-none motion-reduce:[&::-moz-progress-bar]:transition-none"
-  ></progress>
+    class="h-full w-[var(--navigation-progress,0%)] bg-indigo-400 drop-shadow-sm drop-shadow-indigo-400/60 transition-[width] duration-1000 ease-linear data-[complete=true]:ease-out data-[reset=true]:transition-none motion-reduce:transition-none"
+  ></div>
 </div>
 
 <script>
   import { createNavigationProgress } from "../lib/navigation-progress";
+  import { createNavigationProgressView } from "../lib/navigation-progress-view";
 
   const bar = document.getElementById("navigation-progress")!;
-  const fill = bar.querySelector("progress")!;
-  const progress = createNavigationProgress(({ value, visible }) => {
-    // Reset instantly while hidden; never animate a retreat to zero.
-    fill.dataset.reset = String(value === 0);
-    fill.dataset.complete = String(value === 1);
-    fill.value = value;
-    bar.classList.toggle("opacity-0", !visible);
-    bar.classList.toggle("opacity-100", visible);
-    bar.setAttribute("aria-hidden", String(!visible));
-  });
+  const fill = bar.querySelector<HTMLElement>(
+    "[data-progress-fill]",
+  )!;
+  const view = createNavigationProgressView(bar, fill);
+  const progress = createNavigationProgress(view.render);
 
   let active:
     | { id: number; signal: AbortSignal; cleanup: () => void }
@@ -53,6 +48,7 @@ const t = getMessages(locale).loader;
     if (active?.id !== id) return;
     active.cleanup();
     active = undefined;
+    view.resume();
     if (complete) progress.complete(id);
     else progress.cancel(id);
   }
@@ -62,6 +58,7 @@ const t = getMessages(locale).loader;
     (event) => {
       if (event.defaultPrevented || event.signal.aborted) return;
       active?.cleanup();
+      view.resume();
       const id = progress.start();
       const abort = () => stop(id);
       event.signal.addEventListener("abort", abort, { once: true });
@@ -98,6 +95,9 @@ const t = getMessages(locale).loader;
     (event) => {
       if (!active || active.signal !== event.signal) return;
       const id = active.id;
+      // Reparenting a persisted element can discard its running CSS transition.
+      // Keep the actual drawn width, rather than jumping to its pending target.
+      view.freeze();
       const label = event.newDocument
         .getElementById("navigation-progress")
         ?.getAttribute("aria-label");
@@ -117,6 +117,7 @@ const t = getMessages(locale).loader;
   function reset() {
     active?.cleanup();
     active = undefined;
+    view.resume();
     progress.reset();
   }
 
