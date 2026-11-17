@@ -109,19 +109,52 @@ const alternateUrls = {
       </h2>
       <div class="grid gap-5">
         {
-          experiences.map((experience) => (
+          experiences.map((experience, index) => (
             <div
               class:list={[
-                "rounded-md border-2 bg-gray-800 px-6 py-4",
+                "relative grid min-h-40 grid-cols-[minmax(0,1fr)_auto] items-start gap-x-8 gap-y-4 overflow-hidden rounded-md border-2 bg-gray-800 p-5 md:p-6",
                 experience.class,
               ]}
             >
-              <h3 class="pt-2 pb-4 text-lg font-bold md:text-xl">
-                {experience.title[locale]}
+              <h3
+                class="col-span-2 h-24 w-40 justify-self-end sm:col-span-1 sm:col-start-2 sm:row-start-1 sm:h-16 md:w-48"
+              >
+                <span class="sr-only">{experience.title[locale]}</span>
               </h3>
-              <ul class="list-inside list-disc px-3 text-sm leading-loose md:text-base">
+              <div
+                aria-hidden="true"
+                class="pointer-events-none absolute top-0 right-0 h-28 w-52 font-bold tabular-nums md:h-32 md:w-64"
+              >
+                <span
+                  class:list={[
+                    "absolute inset-0 [clip-path:polygon(35%_0,100%_0,100%_100%)]",
+                    index === 0 ? "bg-indigo-400" : "bg-gray-500",
+                  ]}
+                />
+                <span
+                  class:list={[
+                    "absolute top-5 right-5 text-4xl leading-none md:top-6 md:right-6 md:text-5xl md:leading-none",
+                    index === 0 ? "text-indigo-400" : "text-gray-500",
+                  ]}
+                >
+                  {experience.title[locale]}
+                </span>
+                <span class="absolute inset-0 [clip-path:polygon(35%_0,100%_0,100%_100%)]">
+                  <span class="absolute top-5 right-5 text-4xl leading-none text-gray-800 md:top-6 md:right-6 md:text-5xl md:leading-none">
+                    {experience.title[locale]}
+                  </span>
+                </span>
+              </div>
+              <ul
+                class:list={[
+                  "col-span-2 min-w-0 list-disc pl-5 text-sm leading-loose wrap-anywhere text-gray-50 sm:col-span-1 sm:col-start-1 sm:row-start-1 md:text-base md:leading-loose",
+                  index === 0 && "columns-1 gap-10 lg:columns-2",
+                ]}
+              >
                 {experience.items[locale].map((item) => (
-                  <li>{item}</li>
+                  <li class:list={[index === 0 && "break-inside-avoid"]}>
+                    {item}
+                  </li>
                 ))}
               </ul>
             </div>

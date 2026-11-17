@@ -210,7 +210,7 @@ export const homeActions: readonly HomeAction[] = [
 
 export const experiences: readonly Experience[] = [
   {
-    title: localized("Currently:", "現今"),
+    title: localized("Current", "現況"),
     items: localized(
       [
         "~6 years in backend development",

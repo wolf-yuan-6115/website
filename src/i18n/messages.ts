@@ -8,7 +8,6 @@ export interface Messages {
   };
   loader: {
     loading: string;
-    receiving: string;
   };
   footer: {
     madeWith: string;
@@ -44,7 +43,6 @@ export const messages = {
     },
     loader: {
       loading: "Loading",
-      receiving: "Receiving radio waves...",
     },
     footer: {
       madeWith: "Made with",
@@ -80,7 +78,6 @@ export const messages = {
     },
     loader: {
       loading: "載入中",
-      receiving: "正在接收無線電波...",
     },
     footer: {
       madeWith: "使用",

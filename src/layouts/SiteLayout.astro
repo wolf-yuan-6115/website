@@ -7,7 +7,7 @@ import { twMerge } from "tailwind-merge";
 
 import Footer from "../components/Footer.astro";
 import Nav from "../components/Nav.astro";
-import NavPlaceholder from "../components/NavPlaceholder.astro";
+import NavigationProgress from "../components/NavigationProgress.astro";
 import Noscript from "../components/Noscript.astro";
 import SeoHead, { type SeoProps } from "../components/SeoHead.astro";
 import { localeConfig } from "../i18n/config";
@@ -46,7 +46,7 @@ const { locale } = seoProps;
     <ClientRouter />
   </head>
   <body class="bg-gray-900 text-gray-50">
-    <NavPlaceholder locale={locale} />
+    <NavigationProgress locale={locale} />
     <div
       class={twMerge(
         "flex flex-col",

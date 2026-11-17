@@ -1,0 +1,138 @@
+---
+import type { Locale } from "../i18n/config";
+import { getMessages } from "../i18n/messages";
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const t = getMessages(locale).loader;
+---
+
+<div
+  id="navigation-progress"
+  class="pointer-events-none fixed inset-x-0 top-0 z-50 h-1 opacity-0 transition-opacity duration-500 ease-out motion-reduce:transition-none"
+  role="progressbar"
+  aria-label={t.loading}
+  aria-hidden="true"
+  transition:persist="navigation-progress"
+  transition:animate="none"
+>
+  <progress
+    max="1"
+    value="0"
+    data-reset="true"
+    aria-hidden="true"
+    class="block h-full w-full appearance-none overflow-hidden border-0 bg-transparent drop-shadow-sm drop-shadow-indigo-400/60 [&::-webkit-progress-bar]:bg-transparent [&::-webkit-progress-value]:bg-indigo-400 [&::-webkit-progress-value]:transition-[width] [&::-webkit-progress-value]:duration-1000 [&::-webkit-progress-value]:ease-linear [&::-moz-progress-bar]:bg-indigo-400 [&::-moz-progress-bar]:transition-[width] [&::-moz-progress-bar]:duration-1000 [&::-moz-progress-bar]:ease-linear data-[reset=true]:[&::-webkit-progress-value]:transition-none data-[reset=true]:[&::-moz-progress-bar]:transition-none motion-reduce:[&::-webkit-progress-value]:transition-none motion-reduce:[&::-moz-progress-bar]:transition-none"
+  ></progress>
+</div>
+
+<script>
+  import { createNavigationProgress } from "../lib/navigation-progress";
+
+  const bar = document.getElementById("navigation-progress")!;
+  const fill = bar.querySelector("progress")!;
+  const progress = createNavigationProgress(({ value, visible }) => {
+    // Reset instantly while hidden; never animate a retreat to zero.
+    fill.dataset.reset = String(value === 0);
+    fill.value = value;
+    bar.classList.toggle("opacity-0", !visible);
+    bar.classList.toggle("opacity-100", visible);
+    bar.setAttribute("aria-hidden", String(!visible));
+  });
+
+  let active:
+    | { id: number; signal: AbortSignal; cleanup: () => void }
+    | undefined;
+  const listeners = new AbortController();
+
+  function stop(id: number, complete = false) {
+    if (active?.id !== id) return;
+    active.cleanup();
+    active = undefined;
+    if (complete) progress.complete(id);
+    else progress.cancel(id);
+  }
+
+  document.addEventListener(
+    "astro:before-preparation",
+    (event) => {
+      if (event.defaultPrevented || event.signal.aborted) return;
+      active?.cleanup();
+      const id = progress.start();
+      const abort = () => stop(id);
+      event.signal.addEventListener("abort", abort, { once: true });
+      active = {
+        id,
+        signal: event.signal,
+        cleanup: () =>
+          event.signal.removeEventListener("abort", abort),
+      };
+
+      // A later event handler may cancel preparation before its loader runs.
+      queueMicrotask(() => {
+        if (event.defaultPrevented || event.signal.aborted) stop(id);
+      });
+
+      const load = event.loader;
+      event.loader = async () => {
+        try {
+          await load();
+          if (event.defaultPrevented || event.signal.aborted)
+            stop(id);
+          else progress.prepared(id);
+        } catch (error) {
+          stop(id);
+          throw error;
+        }
+      };
+    },
+    { signal: listeners.signal },
+  );
+
+  document.addEventListener(
+    "astro:before-swap",
+    (event) => {
+      if (!active || active.signal !== event.signal) return;
+      const id = active.id;
+      const label = event.newDocument
+        .getElementById("navigation-progress")
+        ?.getAttribute("aria-label");
+      void event.viewTransition.updateCallbackDone.then(
+        () => {
+          if (active?.id !== id) return;
+          // The persisted indicator must adopt the destination page's language.
+          if (label) bar.setAttribute("aria-label", label);
+          stop(id, true);
+        },
+        () => stop(id),
+      );
+    },
+    { signal: listeners.signal },
+  );
+
+  function reset() {
+    active?.cleanup();
+    active = undefined;
+    progress.reset();
+  }
+
+  window.addEventListener("pagehide", reset, {
+    signal: listeners.signal,
+  });
+  window.addEventListener(
+    "pageshow",
+    (event) => {
+      if (event.persisted) reset();
+    },
+    { signal: listeners.signal },
+  );
+
+  if (import.meta.hot) {
+    import.meta.hot.dispose(() => {
+      listeners.abort();
+      reset();
+    });
+  }
+</script>
